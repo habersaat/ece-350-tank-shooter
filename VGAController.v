@@ -13,7 +13,7 @@ module VGAController(
 	input [10:1] JD);
 	
 	// Lab Memory Files Location
-	localparam FILES_PATH = "C:/Users/hah50/Downloads/ece-350-tank-shooter/";
+	localparam MEM_FILES_PATH = "C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/";
 	
 	reg [9:0] currX;
 	reg [10:0] currY;
@@ -106,7 +106,7 @@ module VGAController(
 		.DEPTH(SPRITE_PIXEL_COUNT), 		            // Set RAM depth to contain every pixel
 		.DATA_WIDTH(PALETTE_ADDRESS_WIDTH),             // Set data width according to the color palette
 		.ADDRESS_WIDTH(SPRITE_PIXEL_ADDRESS_WIDTH),     // Set address with according to the pixel count
-		.MEMFILE({FILES_PATH, "p1Tankimage.mem"}))            // Memory initialization
+		.MEMFILE({MEM_FILES_PATH, "p1Tankimage.mem"}))            // Memory initialization
 	ImageData2(
 		.clk(clk), 						         // Falling edge of the 100 MHz clk
 		.addr(spriteAddress),					 // Image data address
@@ -120,7 +120,7 @@ module VGAController(
 		.DEPTH(PALETTE_COLOR_COUNT), 		       // Set depth to contain every color		
 		.DATA_WIDTH(BITS_PER_COLOR), 		       // Set data width according to the bits per color
 		.ADDRESS_WIDTH(PALETTE_ADDRESS_WIDTH),     // Set address width according to the color count
-		.MEMFILE({FILES_PATH, "p1Tankcolors.mem"}))  // Memory initialization
+		.MEMFILE({MEM_FILES_PATH, "p1Tankcolors.mem"}))  // Memory initialization
 	ColorPalette2(
 		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
 		.addr(spriteColorAddr),					   // Address from the ImageData RAM
@@ -135,7 +135,7 @@ module VGAController(
 		.DEPTH(PIXEL_COUNT), 				     // Set RAM depth to contain every pixel
 		.DATA_WIDTH(PALETTE_ADDRESS_WIDTH),      // Set data width according to the color palette
 		.ADDRESS_WIDTH(PIXEL_ADDRESS_WIDTH),     // Set address with according to the pixel count
-		.MEMFILE({FILES_PATH, "image.mem"})) // Memory initialization
+		.MEMFILE({MEM_FILES_PATH, "image.mem"})) // Memory initialization
 	ImageData (
 		.clk(clk), 						 // Falling edge of the 100 MHz clk
 		.addr(imgAddress),					 // Image data address
@@ -149,7 +149,7 @@ module VGAController(
 		.DEPTH(PALETTE_COLOR_COUNT), 		       // Set depth to contain every color		
 		.DATA_WIDTH(BITS_PER_COLOR), 		       // Set data width according to the bits per color
 		.ADDRESS_WIDTH(PALETTE_ADDRESS_WIDTH),     // Set address width according to the color count
-		.MEMFILE({FILES_PATH, "colors.mem"}))  // Memory initialization
+		.MEMFILE({MEM_FILES_PATH, "colors.mem"}))  // Memory initialization
 	ColorPalette (
 		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
 		.addr(colorAddr),					       // Address from the ImageData RAM

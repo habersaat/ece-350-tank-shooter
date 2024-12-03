@@ -1,0 +1,91 @@
+Cycle   9: Wrote 11 into register 1
+Cycle  10: Wrote 17 into register 2
+Cycle  19: Wrote 1 into register 5
+Cycle  27: Wrote 1 into register 6
+Cycle  30: Wrote 30 into register 1
+Cycle  31: Wrote 30 into register 2
+Cycle  32: Wrote 36 into register 3
+Cycle  33: Wrote 36 into register 4
+Cycle  42: Wrote 1 into register 7
+Cycle  50: Wrote 1 into register 8
+Cycle  51: Wrote 45 into register 1
+Cycle  52: Wrote 45 into register 2
+Cycle  53: Wrote 51 into register 3
+Cycle  54: Wrote 51 into register 4
+Cycle  61: Wrote 1 into register 9
+Cycle  69: Wrote 1 into register 10
+Cycle  70: Wrote 175 into register 1
+Cycle  74: Wrote 175 into register 11
+Cycle  78: Wrote 175 into register 12
+Cycle  79: Wrote 175 into register 1
+Cycle  80: Wrote 350 into register 2
+Cycle  85: Wrote 525 into register 13
+Cycle  90: Wrote 525 into register 14
+Cycle 103: Wrote 175 into register 15
+Cycle 104: Wrote 350 into register 16
+Cycle 107: Wrote 350 into register 1
+Cycle 108: Wrote 175 into register 2
+Cycle 110: Wrote 525 into register 17
+Cycle 113: Wrote 0 into register 1
+Cycle 114: Wrote 0 into register 2
+Cycle 117: Wrote 350 into register 2
+Cycle 118: Wrote 175 into register 1
+Cycle 120: Wrote 525 into register 18
+Cycle 123: Wrote 0 into register 1
+Cycle 124: Wrote 1 into register 19
+Cycle 129: Wrote 0 into register 19
+Cycle 132: Wrote 350 into register 1
+Cycle 133: Wrote 350 into register 2
+Cycle 134: Wrote 175 into register 3
+Cycle 135: Wrote 175 into register 4
+Cycle 140: Wrote 700 into register 20
+Cycle 145: Wrote 700 into register 21
+Cycle 148: Wrote 350 into register 1
+Cycle 149: Wrote 350 into register 2
+Cycle 154: Wrote 700 into register 22
+Cycle 159: Wrote 700 into register 23
+Cycle 167: Wrote 1 into register 24
+Cycle 175: Wrote 1 into register 25
+Cycle 182: Wrote 1 into register 26
+Cycle 190: Wrote 1 into register 27
+Cycle 193: Wrote 35 into register 1
+Cycle 194: Wrote 35 into register 2
+Cycle 201: Wrote 1 into register 28
+Cycle 209: Wrote 1 into register 29
+Cycle 214: Wrote 0 into register 1
+Cycle 215: Wrote 0 into register 2
+Cycle 216: Wrote 0 into register 3
+Cycle 217: Wrote 0 into register 4
+============== Testing Mode ==============
+Reg  0:           0
+Reg  1:           0
+Reg  2:           0
+Reg  3:           0
+Reg  4:           0
+Reg  5:           1
+Reg  6:           1
+Reg  7:           1
+Reg  8:           1
+Reg  9:           1
+Reg 10:           1
+Reg 11:         175
+Reg 12:         175
+Reg 13:         525
+Reg 14:         525
+Reg 15:         175
+Reg 16:         350
+Reg 17:         525
+Reg 18:         525
+Reg 19:           0
+Reg 20:         700
+Reg 21:         700
+Reg 22:         700
+Reg 23:         700
+Reg 24:           1
+Reg 25:           1
+Reg 26:           1
+Reg 27:           1
+Reg 28:           1
+Reg 29:           1
+Reg 30:           0
+Reg 31:           0

@@ -1,0 +1,105 @@
+Cycle   9: Wrote 10 into register 1
+Cycle  10: Wrote 20 into register 2
+Cycle  18: Wrote 10 into register 3
+Cycle  19: Wrote 20 into register 4
+Cycle  20: Wrote 20 into register 4
+Cycle  21: Wrote 20 into register 4
+Cycle  22: Wrote 20 into register 4
+Cycle  23: Wrote 20 into register 4
+Cycle  24: Wrote 20 into register 4
+Cycle  25: Wrote 20 into register 4
+Cycle  26: Wrote 20 into register 4
+Cycle  27: Wrote 20 into register 4
+Cycle  28: Wrote 20 into register 4
+Cycle  29: Wrote 20 into register 4
+Cycle  30: Wrote 20 into register 4
+Cycle  31: Wrote 20 into register 4
+Cycle  32: Wrote 20 into register 4
+Cycle  33: Wrote 20 into register 4
+Cycle  34: Wrote 20 into register 4
+Cycle  35: Wrote 20 into register 4
+Cycle  37: Wrote 200 into register 6
+Cycle  39: Wrote 10 into register 7
+Cycle  40: Wrote 10 into register 7
+Cycle  41: Wrote 20 into register 8
+Cycle  42: Wrote 20 into register 8
+Cycle  43: Wrote 20 into register 8
+Cycle  44: Wrote 20 into register 8
+Cycle  45: Wrote 20 into register 8
+Cycle  46: Wrote 20 into register 8
+Cycle  47: Wrote 20 into register 8
+Cycle  48: Wrote 20 into register 8
+Cycle  49: Wrote 20 into register 8
+Cycle  50: Wrote 20 into register 8
+Cycle  51: Wrote 20 into register 8
+Cycle  52: Wrote 20 into register 8
+Cycle  53: Wrote 20 into register 8
+Cycle  54: Wrote 20 into register 8
+Cycle  55: Wrote 20 into register 8
+Cycle  56: Wrote 20 into register 8
+Cycle  57: Wrote 20 into register 8
+Cycle  58: Wrote 20 into register 8
+Cycle  59: Wrote 20 into register 8
+Cycle  60: Wrote 20 into register 8
+Cycle  61: Wrote 20 into register 8
+Cycle  62: Wrote 20 into register 8
+Cycle  63: Wrote 20 into register 8
+Cycle  64: Wrote 20 into register 8
+Cycle  65: Wrote 20 into register 8
+Cycle  66: Wrote 20 into register 8
+Cycle  67: Wrote 20 into register 8
+Cycle  68: Wrote 20 into register 8
+Cycle  69: Wrote 20 into register 8
+Cycle  70: Wrote 20 into register 8
+Cycle  71: Wrote 20 into register 8
+Cycle  72: Wrote 20 into register 8
+Cycle  73: Wrote 20 into register 8
+Cycle  74: Wrote 20 into register 8
+Cycle  76: Wrote 2 into register 9
+Cycle  80: Wrote 10 into register 10
+Cycle  82: Wrote 10 into register 11
+Cycle  84: Wrote 20 into register 12
+Cycle  87: Wrote 10 into register 13
+Cycle  94: Wrote 10 into register 14
+Cycle  95: Wrote 10 into register 15
+Cycle  99: Wrote 10 into register 16
+Cycle 101: Wrote 20 into register 17
+Cycle 104: Wrote 20 into register 18
+Cycle 105: Wrote 10 into register 18
+Cycle 108: Wrote 10 into register 19
+Cycle 109: Wrote 20 into register 20
+Cycle 114: Wrote 10 into register 21
+Cycle 115: Wrote 20 into register 22
+============== Testing Mode ==============
+Reg  0:           0
+Reg  1:          10
+Reg  2:          20
+Reg  3:          10
+Reg  4:          20
+Reg  5:           0
+Reg  6:         200
+Reg  7:          10
+Reg  8:          20
+Reg  9:           2
+Reg 10:          10
+Reg 11:          10
+Reg 12:          20
+Reg 13:          10
+Reg 14:          10
+Reg 15:          10
+Reg 16:          10
+Reg 17:          20
+Reg 18:          10
+Reg 19:          10
+Reg 20:          20
+Reg 21:          10
+Reg 22:          20
+Reg 23:           0
+Reg 24:           0
+Reg 25:           0
+Reg 26:           0
+Reg 27:           0
+Reg 28:           0
+Reg 29:           0
+Reg 30:           0
+Reg 31:           0
