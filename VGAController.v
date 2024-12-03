@@ -21,6 +21,68 @@ module VGAController(
 	// Boolan for whether x,y in square:
 	wire isInSquare;
 	assign isInSquare = (x >= currX && x < currX + SPRITE_SIZE) && (y >= currY && y < currY + SPRITE_SIZE);
+
+	// Boolean for whether x,y in bullet:
+	reg isBulletActive;
+	integer i;
+
+	// Boolean for whether x,y in any bullet
+    reg isBulletActive;
+    integer i;
+
+    always @(*) begin
+        isBulletActive = 0;
+        for (i = 0; i < MAX_BULLETS; i = i + 1) begin
+            if (bulletManager.active[i] && 
+                (x >= bulletManager.x_positions[i] && x < bulletManager.x_positions[i] + BULLET_SIZE) &&
+                (y >= bulletManager.y_positions[i] && y < bulletManager.y_positions[i] + BULLET_SIZE)) begin
+                isBulletActive = 1;
+            end
+        end
+    end
+
+	// BulletRAM for managing bullet data
+    wire [31:0] ram_data_in;
+    wire [31:0] ram_data_out;
+    wire [7:0] ram_address;
+    wire ram_write_enable;
+    wire ram_read_enable = 1'b1; // Always enable reading
+
+    BulletRAM #(
+        .DATA_WIDTH(32),
+        .ADDRESS_WIDTH(8),
+        .DEPTH(MAX_BULLETS)
+    ) BulletRAMInstance (
+        .clk(clk),
+        .wEn(ram_write_enable),
+        .readEn(ram_read_enable),
+        .addr(ram_address),
+        .dataIn(ram_data_out),
+        .dataOut(ram_data_in)
+    );
+
+    // BULLET LOGIC
+    wire [8:0] bullet_x_position = currX + (SPRITE_SIZE / 2);
+    wire [10:0] bullet_y_position = currY + (SPRITE_SIZE / 2);
+    wire [4:0] bullet_TTL = 5'd20; // Lifespan of 20 frames
+    wire [2:0] bullet_direction = 3'b100; // Example: Down
+
+    wire SHOOT = BTNC; // Button C to shoot
+
+    bullet_manager bulletManager (
+        .clk(clk),
+        .reset(reset),
+        .spawn_bullet(SHOOT),
+        .new_x_position(bullet_x_position),
+        .new_y_position(bullet_y_position),
+        .new_TTL(bullet_TTL),
+        .new_direction(bullet_direction),
+        .base_address(8'h00),
+        .ram_data_in(ram_data_in),
+        .ram_data_out(ram_data_out),
+        .ram_address(ram_address),
+        .ram_write_enable(ram_write_enable)
+    );
 	
 	// Always loop to update on active
 	always @ (posedge screenEnd) begin
@@ -58,7 +120,9 @@ module VGAController(
 	localparam 
 		VIDEO_WIDTH = 640,  // Standard VGA Width
 		VIDEO_HEIGHT = 480, // Standard VGA Height
-		SPRITE_SIZE = 64;
+		SPRITE_SIZE = 64,   // Size of the sprite
+		BULLET_SIZE = 8,	// Size of the bullet
+        MAX_BULLETS = 256;	// Maximum number of bullets
 
 	wire active, screenEnd;
 	wire[9:0] x;
@@ -159,8 +223,15 @@ module VGAController(
 
 	// Assign to output color from register if active
 	wire[BITS_PER_COLOR-1:0] colorOut; 			  // Output color 
-	assign colorOut = active ? (isInSquare ? spriteColorData : colorData) : 12'd0; // When not active, output black
+	wire [11:0] bulletColorData = 12'hF00; // Red color for bullets
+	
+	assign colorOut = active ? 
+    	(isInSquare ? spriteColorData : 
+     	(isBulletActive ? bulletColorData : colorData)) : 
+    	12'd0; // Black when not active
 
 	// Quickly assign the output colors to their channels using concatenation
 	assign {VGA_R, VGA_G, VGA_B} = colorOut;
+
+
 endmodule
