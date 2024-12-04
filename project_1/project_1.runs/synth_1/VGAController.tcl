@@ -72,7 +72,6 @@ proc create_report { reportName command } {
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 3
 set_param xicom.use_bs_reader 1
-set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
@@ -97,8 +96,8 @@ read_mem {
 }
 read_verilog -library xil_defaultlib {
   C:/Users/hah50/Downloads/ece-350-tank-shooter/BulletRAM.v
-  C:/Users/hah50/Downloads/ece-350-tank-shooter/RAM.v
   C:/Users/hah50/Downloads/ece-350-tank-shooter/VGATimingGenerator.v
+  C:/Users/hah50/Downloads/ece-350-tank-shooter/VRAM.v
   C:/Users/hah50/Downloads/ece-350-tank-shooter/VGAController.v
 }
 OPTRACE "Adding files" END { }

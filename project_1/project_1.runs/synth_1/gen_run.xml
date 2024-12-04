@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1733281273">
+<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1733283426">
   <File Type="PA-TCL" Name="VGAController.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="VGAController_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="VGAController_reports.tcl"/>
@@ -18,14 +18,14 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../RAM.v">
+    <File Path="$PPRDIR/../VGATimingGenerator.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../VGATimingGenerator.v">
+    <File Path="$PPRDIR/../VRAM.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -79,14 +79,6 @@
     <File Path="$PPRDIR/../mem_files/p1Tankimage.mem">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PPRDIR/../bullet_manager.v">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>

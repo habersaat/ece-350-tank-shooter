@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-| Date         : Tue Dec  3 22:02:25 2024
+| Date         : Tue Dec  3 22:38:20 2024
 | Host         : P1-04 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file VGAController_control_sets_placed.rpt
 | Design       : VGAController
@@ -73,9 +73,9 @@ Table of Contents
 +----------------+------------------+------------------+------------------+----------------+--------------+
 |  Clock Signal  |   Enable Signal  | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
 +----------------+------------------+------------------+------------------+----------------+--------------+
+|  clk_IBUF_BUFG |                  |                  |                6 |             10 |         1.67 |
 |  clk25         |                  | reset_IBUF       |                5 |             10 |         2.00 |
 |  clk25         | Display/vPos     | reset_IBUF       |                5 |             10 |         2.00 |
-|  clk_IBUF_BUFG |                  |                  |                6 |             10 |         1.67 |
 |  Display/CLK   | currX[9]_i_1_n_0 |                  |                4 |             10 |         2.50 |
 |  Display/CLK   | currY[9]_i_1_n_0 |                  |                4 |             10 |         2.50 |
 +----------------+------------------+------------------+------------------+----------------+--------------+
