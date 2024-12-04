@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-| Date             : Tue Dec  3 22:38:41 2024
+| Date             : Tue Dec  3 23:34:38 2024
 | Host             : P1-04 running 64-bit major release  (build 9200)
 | Command          : report_power -file VGAController_power_routed.rpt -pb VGAController_power_summary_routed.pb -rpx VGAController_power_routed.rpx
 | Design           : VGAController
@@ -52,13 +52,13 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Slice Logic    |     1.281 |      330 |       --- |             --- |
-|   LUT as Logic |     1.158 |      200 |     63400 |            0.32 |
+| Slice Logic    |     1.275 |      330 |       --- |             --- |
+|   LUT as Logic |     1.152 |      200 |     63400 |            0.32 |
 |   CARRY4       |     0.087 |       21 |     15850 |            0.13 |
 |   Register     |     0.030 |       50 |    126800 |            0.04 |
 |   BUFG         |     0.006 |        1 |        32 |            3.13 |
 |   Others       |     0.000 |       15 |       --- |             --- |
-| Signals        |     2.352 |      366 |       --- |             --- |
+| Signals        |     2.357 |      366 |       --- |             --- |
 | Block RAM      |     1.918 |       82 |       135 |           60.74 |
 | DSPs           |     0.304 |        1 |       240 |            0.42 |
 | I/O            |    12.668 |       24 |       210 |           11.43 |
@@ -141,11 +141,11 @@ Table of Contents
 | Name            | Power (W) |
 +-----------------+-----------+
 | VGAController   |    18.523 |
-|   ColorPalette  |     0.145 |
-|   ColorPalette2 |     0.121 |
-|   Display       |     1.403 |
-|   ImageData     |     1.895 |
-|   ImageData2    |     0.192 |
+|   ColorPalette  |     0.134 |
+|   ColorPalette2 |     0.110 |
+|   Display       |     1.442 |
+|   ImageData     |     1.911 |
+|   ImageData2    |     0.198 |
 +-----------------+-----------+
 
 

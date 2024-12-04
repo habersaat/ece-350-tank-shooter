@@ -40,10 +40,15 @@ module VGAController(
 	           currY <= currY - 3;   
 	end
 	       
-	wire DOWN = JD[4];
-	wire RIGHT = JD[3];
-	wire LEFT = JD[2];
-	wire UP = JD[1];
+//	wire DOWN = JD[4];
+//	wire RIGHT = JD[3];
+//	wire LEFT = JD[2];
+//	wire UP = JD[1];
+
+    wire DOWN = JD[7];
+    wire RIGHT = JD[10];
+    wire LEFT = JD[9];
+    wire UP = JD[8];
 	
 	// Clock divider 100 MHz -> 25 MHz
 	wire clk25; // 25MHz clock
