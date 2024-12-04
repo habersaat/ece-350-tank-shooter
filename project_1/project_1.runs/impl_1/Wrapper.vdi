@@ -1,14 +1,14 @@
-
-*** Running vivado
-    with args -log Wrapper.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source Wrapper.tcl -notrace
-
-
-
-****** Vivado v2021.1 (64-bit)
-  **** SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
-  **** IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
-    ** Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
-
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Wed Dec  4 02:39:06 2024
+# Process ID: 10416
+# Current directory: C:/Users/hah50/Downloads/ece-350-tank-shooter/project_1/project_1.runs/impl_1
+# Command line: vivado.exe -log Wrapper.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source Wrapper.tcl -notrace
+# Log file: C:/Users/hah50/Downloads/ece-350-tank-shooter/project_1/project_1.runs/impl_1/Wrapper.vdi
+# Journal file: C:/Users/hah50/Downloads/ece-350-tank-shooter/project_1/project_1.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
 source Wrapper.tcl -notrace
 Command: link_design -top Wrapper -part xc7a100tcsg324-1
 Design is defaulting to srcset: sources_1
