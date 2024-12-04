@@ -33,6 +33,13 @@ module Wrapper (clock, reset);
 		rData, regA, regB,
 		memAddr, memDataIn, memDataOut;
 
+	// MMIO Signals
+    wire [31:0] mmioDataOut;
+    wire mmioAccess = (memAddr[31:16] == 16'hFFFF) && (memAddr[15:8] == 8'h00); // Detect MMIO range
+
+    // RAM Signals
+    wire [31:0] ramDataOut;
+    wire ramAccess = (memAddr[31:12] == 0); // RAM is accessed when address is within 0x00000000 to 0x00000FFF
 
 	// ADD YOUR MEMORY FILE HERE
 	localparam INSTR_FILE = "addi_basic2";
@@ -49,14 +56,17 @@ module Wrapper (clock, reset);
 		.data_writeReg(rData), .data_readRegA(regA), .data_readRegB(regB),
 									
 		// RAM
-		.wren(mwe), .address_dmem(memAddr), 
-		.data(memDataIn), .q_dmem(memDataOut)); 
+		.wren(mwe), 
+		.address_dmem(memAddr), 
+		.data(memDataIn), 
+		.q_dmem(mmioAccess ? mmioDataOut : ramDataOut)); // Select data from MMIO or RAM
 	
 	// Instruction Memory (ROM)
 	ROM #(.MEMFILE({INSTR_FILE, ".mem"}))
 	InstMem(.clk(clock), 
 		.addr(instAddr[11:0]), 
 		.dataOut(instData));
+		
 	
 	// Register File
 	regfile RegisterFile(.clock(clock), 
@@ -66,10 +76,22 @@ module Wrapper (clock, reset);
 		.data_writeReg(rData), .data_readRegA(regA), .data_readRegB(regB));
 						
 	// Processor Memory (RAM)
-	RAM ProcMem(.clk(clock), 
-		.wEn(mwe), 
-		.addr(memAddr[11:0]), 
-		.dataIn(memDataIn), 
-		.dataOut(memDataOut));
+	RAM ProcMem (
+        .clk(clock), 
+        .wEn(mwe && ramAccess), // Write to RAM only if address is within RAM range
+        .addr(memAddr[11:0]), 
+        .dataIn(memDataIn), 
+        .dataOut(ramDataOut)
+    );
+
+	// MMIO Module
+    MMIO mmio_unit (
+        .clk(clock),
+        .reset(reset),
+        .address(memAddr),        // Full 32-bit address from the processor
+        .readEn(~mwe && mmioAccess), // MMIO read enable
+        .readData(mmioDataOut),   // Data read from MMIO
+        .JD(JD)                   // Controller input
+    );
 
 endmodule
