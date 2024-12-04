@@ -175,7 +175,7 @@ module Wrapper (clk_100mhz, reset, JD, hSync, vSync, VGA_R, VGA_G, VGA_B);
         .BTNR(),      // Leave unconnected for now
         .BTND(),      // Leave unconnected for now
         .JD(JD),       // Pass controller input to VGA Controller
-		.bulletRamDataIn(bulletRamWriteEnable ? bulletRamDataIn : 32'b0), // Write bullet data to BulletRAM
+		.bulletRamDataIn(bulletRamWriteEnable ? bulletRamDataIn : 32'b0) // Write bullet data to BulletRAM
     );
 
 
