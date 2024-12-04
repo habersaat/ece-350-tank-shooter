@@ -11,7 +11,7 @@ module VGAController(
 	inout ps2_data,
 	input CPU_RESETN, BTNC, BTNU, BTNL, BTNR, BTND,
 	input [10:1] JD,
-	input [31:0] bulletRamDataIn);
+	input [31:0] bulletData);
 	
 	// Lab Memory Files Location
 	localparam MEM_FILES_PATH = "C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/";
@@ -168,10 +168,10 @@ module VGAController(
 
 
 	// Unpack bullet data
-    wire [8:0] bullet_x_position = bulletRamDataIn[31:23];
-    wire [8:0] bullet_y_position = bulletRamDataIn[22:14];
-    wire bullet_is_active = bulletRamDataIn[5];
-	wire isBulletActive;
+    wire [8:0] bullet_x_position = bulletData[31:23];
+    wire [8:0] bullet_y_position = bulletData[22:14];
+    wire bullet_is_active = bulletData[5];
+	reg isBulletActive;
 
     // Check if the current pixel overlaps with the active bullet
     always @(*) begin

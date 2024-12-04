@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-| Date         : Wed Dec  4 04:15:29 2024
+| Date         : Wed Dec  4 06:22:56 2024
 | Host         : P1-04 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file Wrapper_control_sets_placed.rpt
 | Design       : Wrapper
@@ -73,11 +73,11 @@ Table of Contents
 +------------------------------------+----------------------------------------+------------------+------------------+----------------+--------------+
 |            Clock Signal            |              Enable Signal             | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
 +------------------------------------+----------------------------------------+------------------+------------------+----------------+--------------+
-|  VGAControllerInstance/Display/CLK | VGAControllerInstance/currX[9]_i_1_n_0 |                  |                4 |             10 |         2.50 |
-|  VGAControllerInstance/Display/CLK | VGAControllerInstance/currY[9]_i_1_n_0 |                  |                4 |             10 |         2.50 |
 |  VGAControllerInstance/clk25       |                                        | reset_IBUF       |                5 |             10 |         2.00 |
 |  VGAControllerInstance/clk25       | VGAControllerInstance/Display/vPos     | reset_IBUF       |                3 |             10 |         3.33 |
 |  clk_100mhz_IBUF_BUFG              |                                        |                  |                5 |             10 |         2.00 |
+|  VGAControllerInstance/Display/CLK | VGAControllerInstance/currX[9]_i_1_n_0 |                  |                4 |             10 |         2.50 |
+|  VGAControllerInstance/Display/CLK | VGAControllerInstance/currY[9]_i_1_n_0 |                  |                4 |             10 |         2.50 |
 +------------------------------------+----------------------------------------+------------------+------------------+----------------+--------------+
 
 

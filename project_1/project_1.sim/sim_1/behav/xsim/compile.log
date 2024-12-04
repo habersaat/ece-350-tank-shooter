@@ -1,0 +1,6 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/dffe_ref_negedge.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dffe_ref_negedge
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/register_32_f.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module register_32_f
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/hah50/Downloads/ece-350-tank-shooter/project_1/project_1.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
