@@ -138,25 +138,6 @@ module Wrapper (clk_100mhz, reset, JD, hSync, vSync, VGA_R, VGA_G, VGA_B);
 
 
 
-	reg [5:0] current_bullet_index;
-	reg [31:0] bulletData; // Bullet data for VGAController
-
-	always @(posedge clock or posedge reset) begin
-		if (reset) begin
-			current_bullet_index <= 0;
-		end else if (screenEnd) begin
-			// Sequentially read bullet data
-			if (current_bullet_index < MAX_BULLETS - 1) begin
-				current_bullet_index <= current_bullet_index + 1;
-			end else begin
-				current_bullet_index <= 0; // Wrap around
-			end
-			bulletData <= bulletRamDataOut; // Provide data to VGAController
-		end
-	end
-
-
-
 	// VGA Controller
     VGAController VGAControllerInstance (
         .clk(clk_100mhz),
