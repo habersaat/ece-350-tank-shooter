@@ -188,7 +188,6 @@ module VGAController(
 				x >= bulletX && x < bulletX + BULLET_SIZE &&
 				y >= bulletY && y < bulletY + BULLET_SIZE) begin
 				isBulletActive = 1; // Set active flag if there's an overlap
-				break; // break out if bullet is found
 			end
 		end
 	end
