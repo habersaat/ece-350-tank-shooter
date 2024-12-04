@@ -70,6 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 3
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
@@ -100,6 +101,9 @@ read_verilog -library xil_defaultlib {
   C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/MMIO.v
   C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/RAM.v
   C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/ROM.v
+  C:/Users/hah50/Downloads/ece-350-tank-shooter/VGAController.v
+  C:/Users/hah50/Downloads/ece-350-tank-shooter/VGATimingGenerator.v
+  C:/Users/hah50/Downloads/ece-350-tank-shooter/VRAM.v
   C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/add.v
   C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/alu.v
   C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/bitwise_and.v
@@ -138,7 +142,7 @@ read_verilog -library xil_defaultlib {
   C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/t_flip_flop.v
   C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Wrapper.v
 }
-read_ip -quiet c:/Users/hah50/Downloads/ece-350-tank-shooter/project_1/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
+read_ip -quiet C:/Users/hah50/Downloads/ece-350-tank-shooter/project_1/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
 set_property used_in_implementation false [get_files -all c:/Users/hah50/Downloads/ece-350-tank-shooter/project_1/project_1.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/hah50/Downloads/ece-350-tank-shooter/project_1/project_1.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/hah50/Downloads/ece-350-tank-shooter/project_1/project_1.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]

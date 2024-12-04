@@ -24,25 +24,25 @@
  *
  **/
 
-module Wrapper (clock_100mhz, reset, JD, hSync, vSync, VGA_R, VGA_G, VGA_B);
-    input clock_100mhz, reset;
+module Wrapper (clk_100mhz, reset, JD, hSync, vSync, VGA_R, VGA_G, VGA_B);
+    input clk_100mhz, reset;
     input [10:1] JD; // Controller input
     output hSync, vSync; // VGA sync signals
     output [3:0] VGA_R, VGA_G, VGA_B; // VGA RGB signals
 	
 	wire clock;
-	assign clock = clock_25mhz;
+	assign clock = clk_25mhz;
 	   
 	wire clock_25mhz;
 	wire locked;
 	clk_wiz_0 pll (
       // Clock out ports
-      .clk_out1(clock_25mhz),
+      .clk_out1(clk_25mhz),
       // Status and control signals
       .reset(reset),
       .locked(locked),
      // Clock in ports
-      .clk_in1(clock_100mhz)
+      .clk_in1(clk_100mhz)
     );
     
 	wire rwe, mwe;

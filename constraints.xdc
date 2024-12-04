@@ -1,6 +1,10 @@
 // Clock on E3
-set_property PACKAGE_PIN E3 [get_ports clk]
-set_property IOSTANDARD LVCMOS33 [get_ports clk]
+#set_property PACKAGE_PIN E3 [get_ports clk]
+#set_property IOSTANDARD LVCMOS33 [get_ports clk]
+set_property -dict {PACKAGE_PIN E3 IOSTANDARD LVCMOS33} [get_ports clk_100mhz]
+create_clock -period 10.000 -name sys_clk_pin -waveform {0.000 5.000} -add [get_ports clk_100mhz]
+#create_clock -period 20.000 -name sys_clk_pin -waveform {0.000 10.000} -add [get_ports clk_50mhz]
+#create_clock -period 40.000 -name sys_clk_pin -waveform {0.000 20.000} -add [get_ports clk_25mhz]
 
 // Rest Signal
 set_property PACKAGE_PIN N17 [get_ports reset]
