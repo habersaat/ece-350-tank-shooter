@@ -10,7 +10,8 @@ module VGAController(
 	inout ps2_clk,
 	inout ps2_data,
 	input CPU_RESETN, BTNC, BTNU, BTNL, BTNR, BTND,
-	input [10:1] JD);
+	input [10:1] JD,
+	input bulletRamDataIn [31:0]);
 	
 	// Lab Memory Files Location
 	localparam MEM_FILES_PATH = "C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/";
@@ -165,70 +166,26 @@ module VGAController(
 	
 
 
-	// BULLET LOGIC for drawing bullets
 
-	// Register to track the current bullet being processed
-	reg [7:0] current_bullet_index;  // 8-bit index to match RAM address width
+	// Unpack bullet data
+    wire [8:0] bullet_x_position = bulletRamDataIn[31:23];
+    wire [8:0] bullet_y_position = bulletRamDataIn[22:14];
+    wire bullet_is_active = bulletRamDataIn[5];
 
-	// Register to store bullet data during iteration
-	reg [31:0] bullet_data;
+    // Check if the current pixel overlaps with the active bullet
+    always @(*) begin
+        if (bullet_is_active &&
+            x >= bullet_x_position && x < bullet_x_position + BULLET_SIZE &&
+            y >= bullet_y_position && y < bullet_y_position + BULLET_SIZE) begin
+            isBulletActive = 1;
+        end else begin
+            isBulletActive = 0;
+        end
+    end
 
-	// Extracted bullet parameters
-	reg [8:0] bullet_x_position;
-	reg [10:0] bullet_y_position;
-	reg bullet_is_active;
-	reg isBulletActive;
 
-	// Bullet logic to check each frame
-	always @(posedge screenEnd or posedge reset) begin
-		if (reset) begin
-			current_bullet_index <= 0;
-			isBulletActive <= 0;
-		end else begin
-			isBulletActive <= 0; // Reset active flag
-			for (current_bullet_index = 0; current_bullet_index < MAX_BULLETS; current_bullet_index = current_bullet_index + 1) begin
-				// Read bullet data from RAM
-				bullet_ram_address <= current_bullet_index;
-				bullet_data <= bullet_ram_data_out;
 
-				// Unpack bullet data
-				bullet_x_position <= bullet_data[31:23];
-				bullet_y_position <= bullet_data[22:14];
-				bullet_is_active <= bullet_data[5];
 
-				// Check if bullet is active and overlaps the current pixel
-				if (bullet_is_active &&
-					x >= bullet_x_position && x < bullet_x_position + BULLET_SIZE &&
-					y >= bullet_y_position && y < bullet_y_position + BULLET_SIZE) begin
-					isBulletActive <= 1; // Set active flag if a match is found
-				end
-			end
-		end
-	end
-
-	// BulletRAM for managing bullet data
-	wire [31:0] bullet_ram_data_out;
-	reg [5:0] bullet_ram_address; // Made reg to allow sequential access
-
-	BulletRAM #(
-		.DATA_WIDTH(32),
-		.ADDRESS_WIDTH(6),
-		.DEPTH(MAX_BULLETS)
-	) BulletRAMInstance (
-		.clk(clk),
-		.wEn(1'b0), // Write disable for rendering
-		.readEn(1'b1), // Always enable reading
-		.addr(bullet_ram_address),
-		.dataOut(bullet_ram_data_out)
-	);
-
-    // // BULLET LOGIC for spawning bullets
-    // wire [8:0] bullet_x_position = currX + (SPRITE_SIZE / 2);
-    // wire [10:0] bullet_y_position = currY + (SPRITE_SIZE / 2);
-    // wire [4:0] bullet_TTL = 5'd20; // Lifespan of 20 frames
-    // wire [2:0] bullet_direction = 3'b100; // Example: Down
-
-    // wire SHOOT = BTNC; // Button C to shoot
 
 
 	// Assign to output color from register if active
