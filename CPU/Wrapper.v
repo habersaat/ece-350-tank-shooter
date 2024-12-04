@@ -51,7 +51,7 @@ module Wrapper (clock, reset, JD);
     wire [5:0] bulletRamAddress = memAddr[7:2]; // Use bits [7:2] for 64 entries
 
 	// ADD YOUR MEMORY FILE HERE
-	localparam INSTR_FILE = "addi_basic2";
+	localparam INSTR_FILE = "project_test";
 	
 	// Main Processing Unit
 	processor CPU(.clock(clock), .reset(reset), 
