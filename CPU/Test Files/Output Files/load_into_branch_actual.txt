@@ -15,30 +15,27 @@ Cycle  42: Wrote 0 into register 3
 Cycle  43: Wrote 0 into register 4
 Cycle  46: Wrote 4294966946 into register 3
 Cycle  47: Wrote 4294967121 into register 4
-Cycle  52: Wrote 2 into register 7
-Cycle  53: Wrote 0 into register 3
-Cycle  54: Wrote 0 into register 4
-Cycle  57: Wrote 4294967121 into register 3
-Cycle  58: Wrote 4294966946 into register 4
-Cycle  63: Wrote 3 into register 8
-Cycle  66: Wrote 350 into register 1
-Cycle  67: Wrote 175 into register 2
-Cycle  68: Wrote 350 into register 3
-Cycle  69: Wrote 175 into register 4
-Cycle  70: Wrote 175 into register 1
-Cycle  73: Wrote 1 into register 9
-Cycle  74: Wrote 3 into register 9
-Cycle  77: Wrote 350 into register 1
-Cycle  82: Wrote 350 into register 4
-Cycle  85: Wrote 1 into register 11
-Cycle  86: Wrote 3 into register 11
-Cycle  89: Wrote 175 into register 4
-Cycle  92: Wrote 1 into register 12
-Cycle  93: Wrote 3 into register 12
-Cycle  96: Wrote 0 into register 1
-Cycle  97: Wrote 0 into register 2
-Cycle  98: Wrote 0 into register 3
-Cycle  99: Wrote 0 into register 4
+Cycle  52: Wrote 0 into register 3
+Cycle  53: Wrote 0 into register 4
+Cycle  56: Wrote 4294967121 into register 3
+Cycle  57: Wrote 4294966946 into register 4
+Cycle  62: Wrote 3 into register 8
+Cycle  65: Wrote 350 into register 1
+Cycle  66: Wrote 175 into register 2
+Cycle  67: Wrote 350 into register 3
+Cycle  68: Wrote 175 into register 4
+Cycle  69: Wrote 175 into register 1
+Cycle  72: Wrote 1 into register 9
+Cycle  73: Wrote 3 into register 9
+Cycle  76: Wrote 350 into register 1
+Cycle  81: Wrote 350 into register 4
+Cycle  84: Wrote 1 into register 11
+Cycle  85: Wrote 3 into register 11
+Cycle  88: Wrote 175 into register 4
+Cycle  93: Wrote 0 into register 1
+Cycle  94: Wrote 0 into register 2
+Cycle  95: Wrote 0 into register 3
+Cycle  96: Wrote 0 into register 4
 ============== Testing Mode ==============
 Reg  0:           0
 Reg  1:           0
@@ -47,12 +44,12 @@ Reg  3:           0
 Reg  4:           0
 Reg  5:           0
 Reg  6:           0
-Reg  7:           2
+Reg  7:           0
 Reg  8:           3
 Reg  9:           3
 Reg 10:           0
 Reg 11:           3
-Reg 12:           3
+Reg 12:           0
 Reg 13:           0
 Reg 14:           0
 Reg 15:           0

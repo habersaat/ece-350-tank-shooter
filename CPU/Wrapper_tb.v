@@ -100,7 +100,8 @@ module Wrapper_tb #(parameter FILE = "bullet_test_advanced");
                                     
         // RAM
         .wren(mwe), .address_dmem(memAddr), 
-        .data(memDataIn), .q_dmem(memDataOut),
+        .data(memDataIn), .q_dmem(mmioAccess ? mmioDataOut : 
+                (bulletRamAccess ? bulletRamDataOut : ramDataOut)),
 
         // Debug ports connected
         .pc_counter_debug(pc_counter_debug),
@@ -109,6 +110,22 @@ module Wrapper_tb #(parameter FILE = "bullet_test_advanced");
         .branch_target_debug(branch_target_debug),
 		.opA_debug(opA_debug)
     ); 
+
+    // MMIO Signals
+    wire [31:0] mmioDataOut;
+    wire mmioAccess = (memAddr[31:16] == 16'hFFFF) && (memAddr[15:8] == 8'h00); // Detect MMIO range
+
+    // RAM Signals
+    wire [31:0] ramDataOut;
+    wire ramAccess = (memAddr[31:12] == 0); // RAM is accessed when address is within 0x00000000 to 0x00000FFF
+
+	// BulletRAM Signals
+    wire [31:0] bulletRamDataOut;
+    wire bulletRamAccess = (memAddr[31:16] == 16'h4000); // BulletRAM range: 0x4000_0000 - 0x4000_00FF
+    wire [31:0] bulletRamDataIn = memDataIn;
+    wire bulletRamWriteEnable = mwe && bulletRamAccess;
+    wire bulletRamReadEnable = ~mwe && bulletRamAccess;
+    wire [5:0] bulletRamAddress = memAddr[7:2]; // Use bits [7:2] for 64 entries
     
     // Instruction Memory (ROM)
     ROM #(.MEMFILE({DIR, MEM_DIR, FILE, ".mem"}))
@@ -124,11 +141,65 @@ module Wrapper_tb #(parameter FILE = "bullet_test_advanced");
         .data_writeReg(rData), .data_readRegA(regA), .data_readRegB(regB));
                         
     // Processor Memory (RAM)
-    RAM ProcMem(.clk(clock), 
-        .wEn(mwe), 
+	RAM ProcMem (
+        .clk(clock), 
+        .wEn(mwe && ramAccess), // Write enable for RAM
         .addr(memAddr[11:0]), 
         .dataIn(memDataIn), 
-        .dataOut(memDataOut));
+        .dataOut(ramDataOut)
+    );
+
+    wire [9:0] JD = 10'd0; // Default value for JD
+
+    // MMIO Module
+    MMIO mmio_unit (
+        .clk(clock),
+        .reset(reset),
+        .address(memAddr),        // Full 32-bit address from the processor
+        .readEn(~mwe && mmioAccess), // MMIO read enable
+        .readData(mmioDataOut),   // Data read from MMIO
+        .JD(JD)                   // Controller input
+    );
+
+    wire [2047:0] allBulletContents;
+
+	// BulletRAM Module
+    BulletRAM #(
+        .DATA_WIDTH(32),
+        .ADDRESS_WIDTH(6),
+        .DEPTH(64)
+    ) BulletRAMInstance (
+        .clk(clock),
+        .wEn(bulletRamWriteEnable), // Write enable for BulletRAM
+        .readEn(bulletRamReadEnable), // Read enable for BulletRAM
+        .addr(bulletRamAddress),    // Address for BulletRAM
+        .dataIn(bulletRamDataIn),   // Data to write into BulletRAM
+        .dataOut(bulletRamDataOut),  // Data read from BulletRAM
+        .allContents(allBulletContents)    // 2048-bit output with all contents
+    );
+
+    // VGA Controller
+    VGAController VGAControllerInstance (
+        .clk(clock),
+        .reset(reset),
+        .hSync(),
+        .vSync(),
+        .VGA_R(),
+        .VGA_G(),
+        .VGA_B(),
+        .ps2_clk(),   // Leave unconnected for now
+        .ps2_data(),  // Leave unconnected for now
+        .CPU_RESETN(),// Leave unconnected for now
+        .BTNC(),      // Leave unconnected for now
+        .BTNU(),      // Leave unconnected for now
+        .BTNL(),      // Leave unconnected for now
+        .BTNR(),      // Leave unconnected for now
+        .BTND(),      // Leave unconnected for now
+        .JD(JD),       // Pass controller input to VGA Controller
+        .allBulletContents(allBulletContents) // Pass all bullet contents to VGA Controller
+    );
+
+
 
     // Create the clock
     always
@@ -193,6 +264,7 @@ module Wrapper_tb #(parameter FILE = "bullet_test_advanced");
             @(posedge clock);
             $display("Cycle %d: PC = %d, Instruction = %b, Branch Taken = %b, Branch Target = %d, OperandA = %d",
                      cycles, pc_counter_debug, pc_instruction_debug, branch_taken_debug, branch_target_debug, opA_debug);
+                     $display("BulletRAM Contents: %h", allBulletContents);
             if (rwe && rd != 0) begin
                 $fdisplay(actFile, "Cycle %3d: Wrote %0d into register %0d", cycles, rData, rd);
             end

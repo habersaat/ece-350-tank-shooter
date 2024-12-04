@@ -66,6 +66,7 @@ module Wrapper (clk_100mhz, reset, JD, hSync, vSync, VGA_R, VGA_G, VGA_B);
     wire bulletRamWriteEnable = mwe && bulletRamAccess;
     wire bulletRamReadEnable = ~mwe && bulletRamAccess;
     wire [5:0] bulletRamAddress = memAddr[7:2]; // Use bits [7:2] for 64 entries
+    wire [2047:0] allBulletContents;
 
 	// ADD YOUR MEMORY FILE HERE
 	localparam INSTR_FILE = "C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Test Files/Memory Files/project_test";
@@ -133,7 +134,8 @@ module Wrapper (clk_100mhz, reset, JD, hSync, vSync, VGA_R, VGA_G, VGA_B);
         .readEn(bulletRamReadEnable), // Read enable for BulletRAM
         .addr(bulletRamAddress),    // Address for BulletRAM
         .dataIn(bulletRamDataIn),   // Data to write into BulletRAM
-        .dataOut(bulletRamDataOut)  // Data read from BulletRAM
+        .dataOut(bulletRamDataOut),  // Data read from BulletRAM
+        .allContents(allBulletContents)    // 2048-bit output with all contents
     );
 
 	// VGA Controller
@@ -154,7 +156,7 @@ module Wrapper (clk_100mhz, reset, JD, hSync, vSync, VGA_R, VGA_G, VGA_B);
         .BTNR(),      // Leave unconnected for now
         .BTND(),      // Leave unconnected for now
         .JD(JD),       // Pass controller input to VGA Controller
-		.bulletData(32'b0) // Write bullet data to BulletRAM
+		.allBulletContents(allBulletContents) // Pass all bullet contents to VGA Controller
     );
 
 

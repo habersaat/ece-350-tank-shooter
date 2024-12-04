@@ -1,0 +1,74 @@
+Cycle   4: Wrote 42 into register 1
+Cycle   6: Wrote 16384 into register 2
+Cycle   7: Wrote 1073741824 into register 2
+Cycle   8: Wrote 200 into register 3
+Cycle   9: Wrote 102400 into register 3
+Cycle  10: Wrote 200 into register 4
+Cycle  11: Wrote 102600 into register 3
+Cycle  12: Wrote 3283200 into register 3
+Cycle  13: Wrote 20 into register 4
+Cycle  14: Wrote 3283220 into register 3
+Cycle  15: Wrote 26265760 into register 3
+Cycle  16: Wrote 3 into register 4
+Cycle  17: Wrote 26265763 into register 3
+Cycle  18: Wrote 52531526 into register 3
+Cycle  19: Wrote 1 into register 4
+Cycle  20: Wrote 52531527 into register 3
+Cycle  21: Wrote 1681008864 into register 3
+Cycle  23: Wrote 0 into register 3
+Cycle  24: Wrote 0 into register 4
+Cycle  28: Wrote 42 into register 5
+Cycle  29: Wrote 1681008864 into register 6
+Cycle  30: Wrote 42 into register 10
+Cycle  31: Wrote 200 into register 11
+Cycle  32: Wrote 511 into register 7
+Cycle  33: Wrote 200 into register 11
+Cycle  34: Wrote 102600 into register 12
+Cycle  35: Wrote 200 into register 12
+Cycle  36: Wrote 3283220 into register 13
+Cycle  37: Wrote 31 into register 7
+Cycle  38: Wrote 20 into register 13
+Cycle  39: Wrote 26265763 into register 14
+Cycle  40: Wrote 7 into register 7
+Cycle  41: Wrote 3 into register 14
+Cycle  42: Wrote 52531527 into register 15
+Cycle  43: Wrote 1 into register 7
+Cycle  44: Wrote 1 into register 15
+Cycle  45: Wrote 0 into register 7
+Cycle  46: Wrote 0 into register 5
+Cycle  47: Wrote 0 into register 6
+Cycle  48: Wrote 0 into register 2
+Cycle  49: Wrote 0 into register 1
+============== Testing Mode ==============
+Reg  0:           0
+Reg  1:           0
+Reg  2:           0
+Reg  3:           0
+Reg  4:           0
+Reg  5:           0
+Reg  6:           0
+Reg  7:           0
+Reg  8:           0
+Reg  9:           0
+Reg 10:          42
+Reg 11:         200
+Reg 12:         200
+Reg 13:          20
+Reg 14:           3
+Reg 15:           1
+Reg 16:           0
+Reg 17:           0
+Reg 18:           0
+Reg 19:           0
+Reg 20:           0
+Reg 21:           0
+Reg 22:           0
+Reg 23:           0
+Reg 24:           0
+Reg 25:           0
+Reg 26:           0
+Reg 27:           0
+Reg 28:           0
+Reg 29:           0
+Reg 30:           0
+Reg 31:           0

@@ -45,3 +45,7 @@ ROM.v
 Wrapper.v
 Wrapper_tb.v
 MMIO.v
+BulletRAM.v
+VGAController.v
+VGATimingGenerator.v
+VRAM.v
