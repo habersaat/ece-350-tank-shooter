@@ -33,7 +33,7 @@
  *
  **/
 
-module Wrapper_tb #(parameter FILE = "nop");
+module Wrapper_tb #(parameter FILE = "bullet_test_advanced");
 
     // FileData
     localparam DIR = "Test Files/";
