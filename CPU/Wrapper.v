@@ -136,6 +136,27 @@ module Wrapper (clk_100mhz, reset, JD, hSync, vSync, VGA_R, VGA_G, VGA_B);
         .dataOut(bulletRamDataOut)  // Data read from BulletRAM
     );
 
+
+
+	reg [5:0] current_bullet_index;
+	reg [31:0] bulletData; // Bullet data for VGAController
+
+	always @(posedge clock or posedge reset) begin
+		if (reset) begin
+			current_bullet_index <= 0;
+		end else if (screenEnd) begin
+			// Sequentially read bullet data
+			if (current_bullet_index < MAX_BULLETS - 1) begin
+				current_bullet_index <= current_bullet_index + 1;
+			end else begin
+				current_bullet_index <= 0; // Wrap around
+			end
+			bulletData <= bulletRamDataOut; // Provide data to VGAController
+		end
+	end
+
+
+
 	// VGA Controller
     VGAController VGAControllerInstance (
         .clk(clk_100mhz),
@@ -153,7 +174,8 @@ module Wrapper (clk_100mhz, reset, JD, hSync, vSync, VGA_R, VGA_G, VGA_B);
         .BTNL(),      // Leave unconnected for now
         .BTNR(),      // Leave unconnected for now
         .BTND(),      // Leave unconnected for now
-        .JD(JD)       // Pass controller input to VGA Controller
+        .JD(JD),       // Pass controller input to VGA Controller
+		.bulletRamDataIn(bulletRamWriteEnable ? bulletRamDataIn : 32'b0), // Write bullet data to BulletRAM
     );
 
 
