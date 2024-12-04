@@ -24,8 +24,9 @@
  *
  **/
 
-module Wrapper (clock, reset);
+module Wrapper (clock, reset, JD);
 	input clock, reset;
+	input [10:1] JD; // Controller input
 
 	wire rwe, mwe;
 	wire[4:0] rd, rs1, rs2;
@@ -40,6 +41,14 @@ module Wrapper (clock, reset);
     // RAM Signals
     wire [31:0] ramDataOut;
     wire ramAccess = (memAddr[31:12] == 0); // RAM is accessed when address is within 0x00000000 to 0x00000FFF
+
+	// BulletRAM Signals
+    wire [31:0] bulletRamDataOut;
+    wire bulletRamAccess = (memAddr[31:16] == 16'h4000); // BulletRAM range: 0x4000_0000 - 0x4000_00FF
+    wire [31:0] bulletRamDataIn = memDataIn;
+    wire bulletRamWriteEnable = mwe && bulletRamAccess;
+    wire bulletRamReadEnable = ~mwe && bulletRamAccess;
+    wire [5:0] bulletRamAddress = memAddr[7:2]; // Use bits [7:2] for 64 entries
 
 	// ADD YOUR MEMORY FILE HERE
 	localparam INSTR_FILE = "addi_basic2";
@@ -59,7 +68,9 @@ module Wrapper (clock, reset);
 		.wren(mwe), 
 		.address_dmem(memAddr), 
 		.data(memDataIn), 
-		.q_dmem(mmioAccess ? mmioDataOut : ramDataOut)); // Select data from MMIO or RAM
+		.q_dmem(mmioAccess ? mmioDataOut : 
+                (bulletRamAccess ? bulletRamDataOut : ramDataOut)) // Select data from MMIO, BulletRAM, or RAM
+    );
 	
 	// Instruction Memory (ROM)
 	ROM #(.MEMFILE({INSTR_FILE, ".mem"}))
@@ -78,7 +89,7 @@ module Wrapper (clock, reset);
 	// Processor Memory (RAM)
 	RAM ProcMem (
         .clk(clock), 
-        .wEn(mwe && ramAccess), // Write to RAM only if address is within RAM range
+        .wEn(mwe && ramAccess), // Write enable for RAM
         .addr(memAddr[11:0]), 
         .dataIn(memDataIn), 
         .dataOut(ramDataOut)
@@ -93,5 +104,20 @@ module Wrapper (clock, reset);
         .readData(mmioDataOut),   // Data read from MMIO
         .JD(JD)                   // Controller input
     );
+
+	// BulletRAM Module
+    BulletRAM #(
+        .DATA_WIDTH(32),
+        .ADDRESS_WIDTH(6),
+        .DEPTH(64)
+    ) BulletRAMInstance (
+        .clk(clock),
+        .wEn(bulletRamWriteEnable), // Write enable for BulletRAM
+        .readEn(bulletRamReadEnable), // Read enable for BulletRAM
+        .addr(bulletRamAddress),    // Address for BulletRAM
+        .dataIn(bulletRamDataIn),   // Data to write into BulletRAM
+        .dataOut(bulletRamDataOut)  // Data read from BulletRAM
+    );
+
 
 endmodule
