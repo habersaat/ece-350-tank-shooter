@@ -76,8 +76,10 @@ create_project -in_memory -part xc7a100tcsg324-1
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
+set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
 set_property webtalk.parent_dir C:/Users/hah50/Downloads/ece-350-tank-shooter/project_1/project_1.cache/wt [current_project]
 set_property parent.project_path C:/Users/hah50/Downloads/ece-350-tank-shooter/project_1/project_1.xpr [current_project]
+set_property XPM_LIBRARIES XPM_CDC [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property ip_output_repo c:/Users/hah50/Downloads/ece-350-tank-shooter/project_1/project_1.cache/ip [current_project]
@@ -136,6 +138,11 @@ read_verilog -library xil_defaultlib {
   C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/t_flip_flop.v
   C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Wrapper.v
 }
+read_ip -quiet c:/Users/hah50/Downloads/ece-350-tank-shooter/project_1/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
+set_property used_in_implementation false [get_files -all c:/Users/hah50/Downloads/ece-350-tank-shooter/project_1/project_1.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/hah50/Downloads/ece-350-tank-shooter/project_1/project_1.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/hah50/Downloads/ece-350-tank-shooter/project_1/project_1.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]
+
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
