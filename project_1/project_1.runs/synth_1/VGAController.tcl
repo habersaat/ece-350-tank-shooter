@@ -72,6 +72,7 @@ proc create_report { reportName command } {
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 3
 set_param xicom.use_bs_reader 1
+set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
@@ -87,12 +88,15 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_mem {
-  C:/Users/hah50/Downloads/ece-350-tank-shooter/p1Tankimage.mem
-  C:/Users/hah50/Downloads/ece-350-tank-shooter/p1Tankcolors.mem
-  C:/Users/hah50/Downloads/ece-350-tank-shooter/colors.mem
-  C:/Users/hah50/Downloads/ece-350-tank-shooter/image.mem
+  C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/ascii.mem
+  C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/image.mem
+  C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/sprites.mem
+  C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/colors.mem
+  C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/p1Tankcolors.mem
+  C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/p1Tankimage.mem
 }
 read_verilog -library xil_defaultlib {
+  C:/Users/hah50/Downloads/ece-350-tank-shooter/BulletRAM.v
   C:/Users/hah50/Downloads/ece-350-tank-shooter/RAM.v
   C:/Users/hah50/Downloads/ece-350-tank-shooter/VGATimingGenerator.v
   C:/Users/hah50/Downloads/ece-350-tank-shooter/VGAController.v

@@ -1,8 +1,8 @@
 `timescale 1ns / 1ps
 module BulletRAM #( 
     parameter DATA_WIDTH = 32,     // Width for a bullet's parameters
-    parameter ADDRESS_WIDTH = 8,   // 256 bullets max (2^8)
-    parameter DEPTH = 256          // Number of bullets
+    parameter ADDRESS_WIDTH = 6,   // 64 bullets max (2^6)
+    parameter DEPTH = 64          // Number of bullets
 ) (
     input wire                     clk,
     input wire                     wEn,

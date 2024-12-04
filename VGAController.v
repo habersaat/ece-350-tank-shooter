@@ -60,7 +60,7 @@ module VGAController(
 		VIDEO_HEIGHT = 480, // Standard VGA Height
 		SPRITE_SIZE = 64,   // Size of the sprite
 		BULLET_SIZE = 8,	// Size of the bullet
-        MAX_BULLETS = 256;	// Maximum number of bullets
+        MAX_BULLETS = 64;	// Maximum number of bullets
 
 	wire active, screenEnd;
 	wire[9:0] x;
@@ -172,6 +172,7 @@ module VGAController(
 	reg [8:0] bullet_x_position;
 	reg [10:0] bullet_y_position;
 	reg bullet_is_active;
+	reg isBulletActive;
 
 	// Bullet logic to check each frame
 	always @(posedge screenEnd or posedge reset) begin
@@ -202,11 +203,11 @@ module VGAController(
 
 	// BulletRAM for managing bullet data
 	wire [31:0] bullet_ram_data_out;
-	reg [7:0] bullet_ram_address; // Made reg to allow sequential access
+	reg [5:0] bullet_ram_address; // Made reg to allow sequential access
 
 	BulletRAM #(
 		.DATA_WIDTH(32),
-		.ADDRESS_WIDTH(8),
+		.ADDRESS_WIDTH(6),
 		.DEPTH(MAX_BULLETS)
 	) BulletRAMInstance (
 		.clk(clk),
@@ -223,22 +224,6 @@ module VGAController(
     // wire [2:0] bullet_direction = 3'b100; // Example: Down
 
     // wire SHOOT = BTNC; // Button C to shoot
-
-    // bullet_manager bulletManager (
-    //     .clk(clk),
-    //     .reset(reset),
-    //     .spawn_bullet(SHOOT),
-    //     .new_x_position(bullet_x_position),
-    //     .new_y_position(bullet_y_position),
-    //     .new_TTL(bullet_TTL),
-    //     .new_direction(bullet_direction),
-    //     .base_address(8'h00),
-    //     .ram_data_in(ram_data_in),
-    //     .ram_data_out(ram_data_out),
-    //     .ram_address(ram_address),
-    //     .ram_write_enable(ram_write_enable)
-    // );
-
 
 
 	// Assign to output color from register if active

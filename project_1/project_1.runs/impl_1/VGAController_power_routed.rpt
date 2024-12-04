@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-| Date             : Tue Dec  3 16:33:30 2024
+| Date             : Tue Dec  3 22:02:46 2024
 | Host             : P1-04 running 64-bit major release  (build 9200)
 | Command          : report_power -file VGAController_power_routed.rpt -pb VGAController_power_summary_routed.pb -rpx VGAController_power_routed.rpx
 | Design           : VGAController
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+----------------------------------+
-| Total On-Chip Power (W)  | 21.622 (Junction temp exceeded!) |
+| Total On-Chip Power (W)  | 19.123 (Junction temp exceeded!) |
 | Design Power Budget (W)  | Unspecified*                     |
 | Power Budget Margin (W)  | NA                               |
-| Dynamic (W)              | 20.812                           |
-| Device Static (W)        | 0.810                            |
+| Dynamic (W)              | 18.523                           |
+| Device Static (W)        | 0.600                            |
 | Effective TJA (C/W)      | 4.6                              |
 | Max Ambient (C)          | 0.0                              |
-| Junction Temperature (C) | 123.7                            |
+| Junction Temperature (C) | 112.3                            |
 | Confidence Level         | Low                              |
 | Setting File             | ---                              |
 | Simulation Activity File | ---                              |
@@ -52,18 +52,18 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Slice Logic    |     0.603 |      338 |       --- |             --- |
-|   LUT as Logic |     0.524 |      205 |     63400 |            0.32 |
-|   CARRY4       |     0.061 |       24 |     15850 |            0.15 |
-|   Register     |     0.012 |       51 |    126800 |            0.04 |
+| Slice Logic    |     1.281 |      330 |       --- |             --- |
+|   LUT as Logic |     1.158 |      200 |     63400 |            0.32 |
+|   CARRY4       |     0.087 |       21 |     15850 |            0.13 |
+|   Register     |     0.030 |       50 |    126800 |            0.04 |
 |   BUFG         |     0.006 |        1 |        32 |            3.13 |
 |   Others       |     0.000 |       15 |       --- |             --- |
-| Signals        |     1.630 |      373 |       --- |             --- |
+| Signals        |     2.352 |      366 |       --- |             --- |
 | Block RAM      |     1.918 |       82 |       135 |           60.74 |
-| DSPs           |     0.228 |        1 |       240 |            0.42 |
-| I/O            |    16.432 |       24 |       210 |           11.43 |
-| Static Power   |     0.810 |          |           |                 |
-| Total          |    21.622 |          |           |                 |
+| DSPs           |     0.304 |        1 |       240 |            0.42 |
+| I/O            |    12.668 |       24 |       210 |           11.43 |
+| Static Power   |     0.600 |          |           |                 |
+| Total          |    19.123 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,16 +73,16 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     4.808 |       4.249 |      0.559 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     0.690 |       0.601 |      0.089 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     4.645 |       4.641 |      0.004 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     6.123 |       5.724 |      0.399 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.530 |       0.463 |      0.068 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     3.579 |       3.575 |      0.004 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
-| Vccbram   |       1.000 |     0.209 |       0.167 |      0.041 |       NA    | Unspecified | NA         |
+| Vccbram   |       1.000 |     0.197 |       0.167 |      0.030 |       NA    | Unspecified | NA         |
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vccadc    |       1.800 |     0.020 |       0.000 |      0.020 |       NA    | Unspecified | NA         |
@@ -140,11 +140,11 @@ Table of Contents
 +-----------------+-----------+
 | Name            | Power (W) |
 +-----------------+-----------+
-| VGAController   |    20.812 |
-|   ColorPalette  |     0.146 |
-|   ColorPalette2 |     0.119 |
-|   Display       |     0.730 |
-|   ImageData     |     1.885 |
+| VGAController   |    18.523 |
+|   ColorPalette  |     0.145 |
+|   ColorPalette2 |     0.121 |
+|   Display       |     1.403 |
+|   ImageData     |     1.895 |
 |   ImageData2    |     0.192 |
 +-----------------+-----------+
 

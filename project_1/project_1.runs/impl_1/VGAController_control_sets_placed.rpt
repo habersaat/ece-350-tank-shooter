@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-| Date         : Tue Dec  3 16:33:09 2024
+| Date         : Tue Dec  3 22:02:25 2024
 | Host         : P1-04 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file VGAController_control_sets_placed.rpt
 | Design       : VGAController
@@ -27,7 +27,7 @@ Table of Contents
 |    Minimum number of control sets                        |     5 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    29 |
+| Unused register locations in slices containing registers |    30 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -58,11 +58,11 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              10 |            7 |
+| No           | No                    | No                     |              10 |            6 |
 | No           | No                    | Yes                    |              10 |            5 |
 | No           | Yes                   | No                     |               0 |            0 |
-| Yes          | No                    | No                     |              21 |            8 |
-| Yes          | No                    | Yes                    |              10 |            4 |
+| Yes          | No                    | No                     |              20 |            8 |
+| Yes          | No                    | Yes                    |              10 |            5 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
@@ -70,14 +70,14 @@ Table of Contents
 4. Detailed Control Set Information
 -----------------------------------
 
-+----------------+-------------------+------------------+------------------+----------------+--------------+
-|  Clock Signal  |   Enable Signal   | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
-+----------------+-------------------+------------------+------------------+----------------+--------------+
-|  clk25         |                   | reset_IBUF       |                5 |             10 |         2.00 |
-|  clk25         | Display/vPos      | reset_IBUF       |                4 |             10 |         2.50 |
-|  clk_IBUF_BUFG |                   |                  |                7 |             10 |         1.43 |
-|  Display/CLK   | currX[9]_i_1_n_0  |                  |                4 |             10 |         2.50 |
-|  Display/CLK   | currY[10]_i_1_n_0 |                  |                4 |             11 |         2.75 |
-+----------------+-------------------+------------------+------------------+----------------+--------------+
++----------------+------------------+------------------+------------------+----------------+--------------+
+|  Clock Signal  |   Enable Signal  | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------+------------------+------------------+------------------+----------------+--------------+
+|  clk25         |                  | reset_IBUF       |                5 |             10 |         2.00 |
+|  clk25         | Display/vPos     | reset_IBUF       |                5 |             10 |         2.00 |
+|  clk_IBUF_BUFG |                  |                  |                6 |             10 |         1.67 |
+|  Display/CLK   | currX[9]_i_1_n_0 |                  |                4 |             10 |         2.50 |
+|  Display/CLK   | currY[9]_i_1_n_0 |                  |                4 |             10 |         2.50 |
++----------------+------------------+------------------+------------------+----------------+--------------+
 
 
