@@ -24,9 +24,11 @@
  *
  **/
 
-module Wrapper (clock_100mhz, reset, JD);
-	input clock_100mhz, reset;
-	input [10:1] JD; // Controller input
+module Wrapper (clock_100mhz, reset, JD, hSync, vSync, VGA_R, VGA_G, VGA_B);
+    input clock_100mhz, reset;
+    input [10:1] JD; // Controller input
+    output hSync, vSync; // VGA sync signals
+    output [3:0] VGA_R, VGA_G, VGA_B; // VGA RGB signals
 	
 	wire clock;
 	assign clock = clock_25mhz;
@@ -41,7 +43,7 @@ module Wrapper (clock_100mhz, reset, JD);
       .locked(locked),
      // Clock in ports
       .clk_in1(clock_100mhz)
-     );
+    );
     
 	wire rwe, mwe;
 	wire[4:0] rd, rs1, rs2;
@@ -133,6 +135,27 @@ module Wrapper (clock_100mhz, reset, JD);
         .dataIn(bulletRamDataIn),   // Data to write into BulletRAM
         .dataOut(bulletRamDataOut)  // Data read from BulletRAM
     );
+
+	// VGA Controller
+    VGAController VGAControllerInstance (
+        .clk(clock),
+        .reset(reset),
+        .hSync(hSync),
+        .vSync(vSync),
+        .VGA_R(VGA_R),
+        .VGA_G(VGA_G),
+        .VGA_B(VGA_B),
+        .ps2_clk(),   // Leave unconnected for now
+        .ps2_data(),  // Leave unconnected for now
+        .CPU_RESETN(),// Leave unconnected for now
+        .BTNC(),      // Leave unconnected for now
+        .BTNU(),      // Leave unconnected for now
+        .BTNL(),      // Leave unconnected for now
+        .BTNR(),      // Leave unconnected for now
+        .BTND(),      // Leave unconnected for now
+        .JD(JD)       // Pass controller input to VGA Controller
+    );
+
 
 
 endmodule
