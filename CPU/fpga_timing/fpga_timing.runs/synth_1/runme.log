@@ -1,0 +1,477 @@
+
+*** Running vivado
+    with args -log Wrapper.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source Wrapper.tcl
+
+
+
+****** Vivado v2021.1 (64-bit)
+  **** SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
+  **** IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+    ** Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+
+source Wrapper.tcl -notrace
+Command: synth_design -top Wrapper -part xc7a100tcsg324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 2104
+WARNING: [Synth 8-6901] identifier 'product_66_bit' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/multiplier.v:39]
+WARNING: [Synth 8-6901] identifier 'product_66_bit' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/multiplier.v:40]
+WARNING: [Synth 8-6901] identifier 'product_66_bit' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/multiplier.v:41]
+WARNING: [Synth 8-6901] identifier 'product_66_bit' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/multiplier.v:80]
+WARNING: [Synth 8-992] PC_reg_in is already implicitly declared earlier [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:102]
+WARNING: [Synth 8-992] data_hazard is already implicitly declared earlier [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:130]
+WARNING: [Synth 8-992] stall_pipeline is already implicitly declared earlier [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:325]
+WARNING: [Synth 8-992] branch_taken is already implicitly declared earlier [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:353]
+WARNING: [Synth 8-1935] empty port in module declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:49]
+WARNING: [Synth 8-6901] identifier 'fd_pc_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:87]
+WARNING: [Synth 8-6901] identifier 'fd_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:88]
+WARNING: [Synth 8-6901] identifier 'branch_taken' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:89]
+WARNING: [Synth 8-6901] identifier 'branch_target' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:90]
+WARNING: [Synth 8-6901] identifier 'bypass_from_wx_exception' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:91]
+WARNING: [Synth 8-6901] identifier 'branch_mux_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:99]
+WARNING: [Synth 8-6901] identifier 'branch_target' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:115]
+WARNING: [Synth 8-6901] identifier 'ex_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:118]
+WARNING: [Synth 8-6901] identifier 'xm_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:119]
+WARNING: [Synth 8-6901] identifier 'mw_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:120]
+WARNING: [Synth 8-6901] identifier 'fd_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:123]
+WARNING: [Synth 8-6901] identifier 'fd_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:123]
+WARNING: [Synth 8-6901] identifier 'fd_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:123]
+WARNING: [Synth 8-6901] identifier 'fd_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:124]
+WARNING: [Synth 8-6901] identifier 'fd_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:125]
+WARNING: [Synth 8-6901] identifier 'fd_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:125]
+WARNING: [Synth 8-6901] identifier 'fd_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:126]
+WARNING: [Synth 8-6901] identifier 'fd_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:127]
+WARNING: [Synth 8-6901] identifier 'fd_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:132]
+WARNING: [Synth 8-6901] identifier 'fd_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:133]
+WARNING: [Synth 8-6901] identifier 'fd_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:134]
+WARNING: [Synth 8-6901] identifier 'ex_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:136]
+WARNING: [Synth 8-6901] identifier 'xm_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:137]
+WARNING: [Synth 8-6901] identifier 'ex_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:139]
+WARNING: [Synth 8-6901] identifier 'ex_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:140]
+WARNING: [Synth 8-6901] identifier 'ex_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:141]
+WARNING: [Synth 8-6901] identifier 'ex_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:142]
+WARNING: [Synth 8-6901] identifier 'xm_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:142]
+WARNING: [Synth 8-6901] identifier 'mw_we' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:197]
+WARNING: [Synth 8-6901] identifier 'mw_ctrl_writeReg' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:206]
+WARNING: [Synth 8-6901] identifier 'mw_write_data' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:207]
+WARNING: [Synth 8-6901] identifier 'bypass_from_mw_blt_A' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:246]
+WARNING: [Synth 8-6901] identifier 'xm_o_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:246]
+WARNING: [Synth 8-6901] identifier 'bypass_from_wx_blt_A' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:247]
+WARNING: [Synth 8-6901] identifier 'mw_write_data' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:247]
+WARNING: [Synth 8-6901] identifier 'bypass_from_mw_A' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:248]
+WARNING: [Synth 8-6901] identifier 'xm_o_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:248]
+WARNING: [Synth 8-6901] identifier 'bypass_from_wx_A' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:249]
+WARNING: [Synth 8-6901] identifier 'mw_write_data' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:249]
+WARNING: [Synth 8-6901] identifier 'bypass_from_mw_exception_A' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:250]
+WARNING: [Synth 8-6901] identifier 'xm_o_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:250]
+WARNING: [Synth 8-6901] identifier 'bypass_from_mw_blt_B' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:259]
+WARNING: [Synth 8-6901] identifier 'xm_o_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:259]
+WARNING: [Synth 8-6901] identifier 'bypass_from_wx_blt_B' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:260]
+WARNING: [Synth 8-6901] identifier 'mw_write_data' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:260]
+WARNING: [Synth 8-6901] identifier 'bypass_from_mw_B' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:261]
+WARNING: [Synth 8-6901] identifier 'xm_o_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:261]
+WARNING: [Synth 8-6901] identifier 'bypass_from_wx_B' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:262]
+WARNING: [Synth 8-6901] identifier 'mw_write_data' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:262]
+WARNING: [Synth 8-6901] identifier 'bypass_from_mw_exception_B' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:263]
+WARNING: [Synth 8-6901] identifier 'xm_o_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:263]
+WARNING: [Synth 8-6901] identifier 'prev_stall' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:305]
+WARNING: [Synth 8-6901] identifier 'prev_stall' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:306]
+WARNING: [Synth 8-6901] identifier 'xm_R_type' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:383]
+WARNING: [Synth 8-6901] identifier 'xm_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:383]
+WARNING: [Synth 8-6901] identifier 'xm_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:383]
+WARNING: [Synth 8-6901] identifier 'xm_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:383]
+WARNING: [Synth 8-6901] identifier 'xm_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:383]
+WARNING: [Synth 8-6901] identifier 'xm_R_type' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:384]
+WARNING: [Synth 8-6901] identifier 'xm_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:384]
+WARNING: [Synth 8-6901] identifier 'xm_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:384]
+WARNING: [Synth 8-6901] identifier 'xm_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:384]
+WARNING: [Synth 8-6901] identifier 'xm_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:384]
+WARNING: [Synth 8-6901] identifier 'xm_exception' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:386]
+WARNING: [Synth 8-6901] identifier 'xm_exception' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:387]
+WARNING: [Synth 8-6901] identifier 'xm_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:389]
+WARNING: [Synth 8-6901] identifier 'xm_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:389]
+WARNING: [Synth 8-6901] identifier 'xm_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:389]
+WARNING: [Synth 8-6901] identifier 'xm_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:390]
+WARNING: [Synth 8-6901] identifier 'xm_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:390]
+WARNING: [Synth 8-6901] identifier 'xm_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:390]
+WARNING: [Synth 8-6901] identifier 'mw_ctrl_writeReg' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:393]
+WARNING: [Synth 8-6901] identifier 'mw_R_type' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:393]
+WARNING: [Synth 8-6901] identifier 'mw_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:393]
+WARNING: [Synth 8-6901] identifier 'mw_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:393]
+WARNING: [Synth 8-6901] identifier 'mw_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:393]
+WARNING: [Synth 8-6901] identifier 'mw_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:393]
+WARNING: [Synth 8-6901] identifier 'mw_ctrl_writeReg' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:394]
+WARNING: [Synth 8-6901] identifier 'mw_R_type' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:394]
+WARNING: [Synth 8-6901] identifier 'mw_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:394]
+WARNING: [Synth 8-6901] identifier 'mw_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:394]
+WARNING: [Synth 8-6901] identifier 'mw_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:394]
+WARNING: [Synth 8-6901] identifier 'mw_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:394]
+WARNING: [Synth 8-6901] identifier 'mw_ctrl_writeReg' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:396]
+WARNING: [Synth 8-6901] identifier 'mw_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:396]
+WARNING: [Synth 8-6901] identifier 'mw_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:396]
+WARNING: [Synth 8-6901] identifier 'mw_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:396]
+WARNING: [Synth 8-6901] identifier 'mw_ctrl_writeReg' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:397]
+WARNING: [Synth 8-6901] identifier 'mw_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:397]
+WARNING: [Synth 8-6901] identifier 'mw_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:397]
+WARNING: [Synth 8-6901] identifier 'mw_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:397]
+WARNING: [Synth 8-6901] identifier 'mw_ctrl_writeReg' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:399]
+WARNING: [Synth 8-6901] identifier 'mw_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:399]
+WARNING: [Synth 8-6901] identifier 'mw_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:399]
+WARNING: [Synth 8-6901] identifier 'mw_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:399]
+WARNING: [Synth 8-6901] identifier 'mw_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:399]
+INFO: [Common 17-14] Message 'Synth 8-6901' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1328.793 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'Wrapper' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/fpga_timing_files/Wrapper_timing.v:27]
+INFO: [Synth 8-6157] synthesizing module 'processor' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:20]
+INFO: [Synth 8-6157] synthesizing module 'register_32' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/register_32.v:1]
+INFO: [Synth 8-6157] synthesizing module 'dffe_ref' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/dffe_ref.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'dffe_ref' (1#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/dffe_ref.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'register_32' (2#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/register_32.v:1]
+INFO: [Synth 8-6157] synthesizing module 'add' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/add.v:1]
+INFO: [Synth 8-6157] synthesizing module 'cla_block' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/cla_block.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'cla_block' (3#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/cla_block.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'add' (4#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/add.v:1]
+INFO: [Synth 8-6157] synthesizing module 'register_64_f' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/register_64_f.v:1]
+INFO: [Synth 8-6157] synthesizing module 'dffe_ref_negedge' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/dffe_ref_negedge.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'dffe_ref_negedge' (5#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/dffe_ref_negedge.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'register_64_f' (6#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/register_64_f.v:1]
+INFO: [Synth 8-6157] synthesizing module 'register_128_f' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/register_128_f.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'register_128_f' (7#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/register_128_f.v:1]
+INFO: [Synth 8-6157] synthesizing module 'alu' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/alu.v:1]
+INFO: [Synth 8-6157] synthesizing module 'bitwise_and' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/bitwise_and.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'bitwise_and' (8#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/bitwise_and.v:1]
+INFO: [Synth 8-6157] synthesizing module 'bitwise_or' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/bitwise_or.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'bitwise_or' (9#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/bitwise_or.v:1]
+INFO: [Synth 8-6157] synthesizing module 'sll' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/sll.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mux_2_single' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/mux_2_to_1_single.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'mux_2_single' (10#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/mux_2_to_1_single.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'sll' (11#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/sll.v:1]
+INFO: [Synth 8-6157] synthesizing module 'sra' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/sra.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'sra' (12#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/sra.v:1]
+WARNING: [Synth 8-7071] port 'carry_out' of module 'add' is unconnected for instance 'adder' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/alu.v:22]
+WARNING: [Synth 8-7023] instance 'adder' of module 'add' has 6 connections declared, but only 5 given [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/alu.v:22]
+INFO: [Synth 8-6157] synthesizing module 'sub' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/sub.v:1]
+INFO: [Synth 8-6157] synthesizing module 'bitwise_not' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/bitwise_not.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'bitwise_not' (13#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/bitwise_not.v:1]
+WARNING: [Synth 8-7071] port 'carry_out' of module 'add' is unconnected for instance 'adder' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/sub.v:13]
+WARNING: [Synth 8-7023] instance 'adder' of module 'add' has 6 connections declared, but only 5 given [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/sub.v:13]
+INFO: [Synth 8-6155] done synthesizing module 'sub' (14#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/sub.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mux_8' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/mux_8_to_1.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mux_4' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/mux_4_to_1.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mux_2' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/mux_2_to_1.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'mux_2' (15#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/mux_2_to_1.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'mux_4' (16#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/mux_4_to_1.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'mux_8' (17#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/mux_8_to_1.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mux_4_single' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/mux_4_to_1_single.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'mux_4_single' (18#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/mux_4_to_1_single.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'alu' (19#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/alu.v:1]
+INFO: [Synth 8-6157] synthesizing module 'multdiv' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/multdiv.v:1]
+INFO: [Synth 8-6157] synthesizing module 'register' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/register.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'register' (20#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/register.v:1]
+INFO: [Synth 8-6157] synthesizing module 'register_1bit' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/register_1bit.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'register_1bit' (21#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/register_1bit.v:1]
+INFO: [Synth 8-6157] synthesizing module 'multiplier' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/multiplier.v:1]
+INFO: [Synth 8-6157] synthesizing module 'counter' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/counter.v:1]
+INFO: [Synth 8-6157] synthesizing module 't_flip_flop' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/t_flip_flop.v:1]
+INFO: [Synth 8-6155] done synthesizing module 't_flip_flop' (22#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/t_flip_flop.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'counter' (23#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/counter.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mux_8_33bit' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/mux_8_33bit.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mux_4_33bit' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/mux_4_33bit.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mux_2_33bit' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/mux_2_33bit.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'mux_2_33bit' (24#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/mux_2_33bit.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'mux_4_33bit' (25#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/mux_4_33bit.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'mux_8_33bit' (26#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/mux_8_33bit.v:1]
+INFO: [Synth 8-6157] synthesizing module 'register_66' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/register_66.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'register_66' (27#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/register_66.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'multiplier' (28#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/multiplier.v:1]
+INFO: [Synth 8-6157] synthesizing module 'divider' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/divider.v:1]
+INFO: [Synth 8-6157] synthesizing module 'inverter' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/inverter.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'inverter' (29#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/inverter.v:1]
+INFO: [Synth 8-6157] synthesizing module 'register_64' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/register_64.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'register_64' (30#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/register_64.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'divider' (31#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/divider.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'multdiv' (32#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/multdiv.v:1]
+INFO: [Synth 8-6157] synthesizing module 'register_96_f' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/register_96_f.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'register_96_f' (33#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/register_96_f.v:1]
+INFO: [Synth 8-6157] synthesizing module 'register_1bit_f' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/register_1bit_f.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'register_1bit_f' (34#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/register_1bit_f.v:1]
+WARNING: [Synth 8-308] ignoring empty port [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:50]
+INFO: [Synth 8-6155] done synthesizing module 'processor' (35#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:20]
+WARNING: [Synth 8-7071] port 'pc_counter_debug' of module 'processor' is unconnected for instance 'CPU' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/fpga_timing_files/Wrapper_timing.v:63]
+WARNING: [Synth 8-7071] port 'pc_instruction_debug' of module 'processor' is unconnected for instance 'CPU' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/fpga_timing_files/Wrapper_timing.v:63]
+WARNING: [Synth 8-7071] port 'branch_taken_debug' of module 'processor' is unconnected for instance 'CPU' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/fpga_timing_files/Wrapper_timing.v:63]
+WARNING: [Synth 8-7071] port 'branch_target_debug' of module 'processor' is unconnected for instance 'CPU' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/fpga_timing_files/Wrapper_timing.v:63]
+WARNING: [Synth 8-7071] port 'opA_debug' of module 'processor' is unconnected for instance 'CPU' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/fpga_timing_files/Wrapper_timing.v:63]
+WARNING: [Synth 8-7023] instance 'CPU' of module 'processor' has 21 connections declared, but only 15 given [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/fpga_timing_files/Wrapper_timing.v:63]
+INFO: [Synth 8-6157] synthesizing module 'ROM' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/ROM.v:2]
+	Parameter MEMFILE bound to: 80'b01110100011010010110110101101001011011100110011100101110011011010110010101101101 
+INFO: [Synth 8-3876] $readmem data file 'timing.mem' is read successfully [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/ROM.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'ROM' (36#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/ROM.v:2]
+INFO: [Synth 8-6157] synthesizing module 'regfile' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/regfile.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'regfile' (37#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/regfile.v:1]
+INFO: [Synth 8-6157] synthesizing module 'RAM' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/RAM.v:2]
+INFO: [Synth 8-6155] done synthesizing module 'RAM' (38#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/RAM.v:2]
+INFO: [Synth 8-6155] done synthesizing module 'Wrapper' (39#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/fpga_timing_files/Wrapper_timing.v:27]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1328.793 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1328.793 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1328.793 ; gain = 0.000
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.111 . Memory (MB): peak = 1328.793 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/fpga_timing_files/Nexys-A7-100T-Master.xdc]
+WARNING: [Vivado 12-584] No ports matched 'clk_100mhz'. [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/fpga_timing_files/Nexys-A7-100T-Master.xdc:7]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/fpga_timing_files/Nexys-A7-100T-Master.xdc:7]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+Finished Parsing XDC File [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/fpga_timing_files/Nexys-A7-100T-Master.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/fpga_timing_files/Nexys-A7-100T-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Wrapper_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/Wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 1383.754 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.022 . Memory (MB): peak = 1383.754 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1383.754 ; gain = 54.961
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1383.754 ; gain = 54.961
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1383.754 ; gain = 54.961
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1383.754 ; gain = 54.961
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input     32 Bit         XORs := 1     
+	   3 Input      1 Bit         XORs := 321   
+	   2 Input      1 Bit         XORs := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	               17 Bit    Registers := 1     
+	               16 Bit    Registers := 3     
+	                1 Bit    Registers := 1685  
++---RAMs : 
+	             128K Bit	(4096 X 32 bit)          RAMs := 1     
++---ROMs : 
+	                    ROMs := 1     
++---Muxes : 
+	   2 Input   64 Bit        Muxes := 1     
+	   2 Input   33 Bit        Muxes := 8     
+	   2 Input   32 Bit        Muxes := 38    
+	   3 Input   32 Bit        Muxes := 1     
+	   2 Input    5 Bit        Muxes := 7     
+	   3 Input    5 Bit        Muxes := 1     
+	   6 Input    3 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 656   
+	   7 Input    1 Bit        Muxes := 1     
+	   3 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1383.754 ; gain = 54.961
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+ROM: Preliminary Mapping Report
++------------+---------------------+---------------+----------------+
+|Module Name | RTL Object          | Depth x Width | Implemented As | 
++------------+---------------------+---------------+----------------+
+|Wrapper     | InstMem/dataOut_reg | 4096x17       | Block RAM      | 
++------------+---------------------+---------------+----------------+
+
+
+Block RAM: Preliminary Mapping Report (see note below)
++------------+-------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name | RTL Object              | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------+-------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Wrapper     | ProcMem/MemoryArray_reg | 4 K x 32(NO_CHANGE)    | W | R |                        |   |   | Port A           | 0      | 4      | 
++------------+-------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 1383.754 ; gain = 54.961
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:40 ; elapsed = 00:00:40 . Memory (MB): peak = 1541.473 ; gain = 212.680
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping Report
++------------+-------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name | RTL Object              | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------+-------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Wrapper     | ProcMem/MemoryArray_reg | 4 K x 32(NO_CHANGE)    | W | R |                        |   |   | Port A           | 0      | 4      | 
++------------+-------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance ProcMem/MemoryArray_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance ProcMem/MemoryArray_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance ProcMem/MemoryArray_reg_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance ProcMem/MemoryArray_reg_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance InstMem/dataOut_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance InstMem/dataOut_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:41 ; elapsed = 00:00:42 . Memory (MB): peak = 1562.941 ; gain = 234.148
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:43 ; elapsed = 00:00:44 . Memory (MB): peak = 1578.414 ; gain = 249.621
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:43 ; elapsed = 00:00:44 . Memory (MB): peak = 1578.414 ; gain = 249.621
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:44 ; elapsed = 00:00:44 . Memory (MB): peak = 1578.414 ; gain = 249.621
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:44 ; elapsed = 00:00:45 . Memory (MB): peak = 1578.414 ; gain = 249.621
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:44 ; elapsed = 00:00:45 . Memory (MB): peak = 1578.414 ; gain = 249.621
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:44 ; elapsed = 00:00:45 . Memory (MB): peak = 1578.414 ; gain = 249.621
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BUFG     |     1|
+|2     |LUT1     |     4|
+|3     |LUT2     |   307|
+|4     |LUT3     |   211|
+|5     |LUT4     |   414|
+|6     |LUT5     |   335|
+|7     |LUT6     |  1778|
+|8     |RAMB36E1 |     6|
+|11    |FDCE     |  1556|
+|12    |FDRE     |   113|
+|13    |IBUF     |    18|
+|14    |OBUF     |    16|
++------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:44 ; elapsed = 00:00:45 . Memory (MB): peak = 1578.414 ; gain = 249.621
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:37 ; elapsed = 00:00:42 . Memory (MB): peak = 1578.414 ; gain = 194.660
+Synthesis Optimization Complete : Time (s): cpu = 00:00:44 ; elapsed = 00:00:45 . Memory (MB): peak = 1578.414 ; gain = 249.621
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.087 . Memory (MB): peak = 1590.434 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 6 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1594.137 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete, checksum: f04a93ba
+INFO: [Common 17-83] Releasing license: Synthesis
+101 Infos, 117 Warnings, 1 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:48 ; elapsed = 00:00:50 . Memory (MB): peak = 1594.137 ; gain = 265.344
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+INFO: [Common 17-1381] The checkpoint 'C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/fpga_timing/fpga_timing.runs/synth_1/Wrapper.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file Wrapper_utilization_synth.rpt -pb Wrapper_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Dec  4 03:02:15 2024...

@@ -25,12 +25,12 @@
  **/
 
 module Wrapper (
-    input clk_100mhz,
+    input clk_25mhz,
     input BTNU, 
     input [15:0] SW,
     output reg [15:0] LED);
     wire clock, reset;
-    assign clock = clk_100mhz;
+    assign clock = clk_25mhz;
     assign reset = BTNU; 
 	wire rwe, mwe;
 	wire[4:0] rd, rs1, rs2;
