@@ -16,73 +16,11 @@ module VGAController(
 	localparam MEM_FILES_PATH = "C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/";
 	
 	reg [9:0] currX;
-	reg [10:0] currY;
+	reg [9:0] currY;
 	
 	// Boolan for whether x,y in square:
 	wire isInSquare;
 	assign isInSquare = (x >= currX && x < currX + SPRITE_SIZE) && (y >= currY && y < currY + SPRITE_SIZE);
-
-	// Boolean for whether x,y in bullet:
-	reg isBulletActive;
-	integer i;
-
-	// Boolean for whether x,y in any bullet
-    reg isBulletActive;
-    integer i;
-
-    always @(*) begin
-        isBulletActive = 0;
-        for (i = 0; i < MAX_BULLETS; i = i + 1) begin
-            if (bulletManager.active[i] && 
-                (x >= bulletManager.x_positions[i] && x < bulletManager.x_positions[i] + BULLET_SIZE) &&
-                (y >= bulletManager.y_positions[i] && y < bulletManager.y_positions[i] + BULLET_SIZE)) begin
-                isBulletActive = 1;
-            end
-        end
-    end
-
-	// BulletRAM for managing bullet data
-    wire [31:0] ram_data_in;
-    wire [31:0] ram_data_out;
-    wire [7:0] ram_address;
-    wire ram_write_enable;
-    wire ram_read_enable = 1'b1; // Always enable reading
-
-    BulletRAM #(
-        .DATA_WIDTH(32),
-        .ADDRESS_WIDTH(8),
-        .DEPTH(MAX_BULLETS)
-    ) BulletRAMInstance (
-        .clk(clk),
-        .wEn(ram_write_enable),
-        .readEn(ram_read_enable),
-        .addr(ram_address),
-        .dataIn(ram_data_out),
-        .dataOut(ram_data_in)
-    );
-
-    // BULLET LOGIC
-    wire [8:0] bullet_x_position = currX + (SPRITE_SIZE / 2);
-    wire [10:0] bullet_y_position = currY + (SPRITE_SIZE / 2);
-    wire [4:0] bullet_TTL = 5'd20; // Lifespan of 20 frames
-    wire [2:0] bullet_direction = 3'b100; // Example: Down
-
-    wire SHOOT = BTNC; // Button C to shoot
-
-    bullet_manager bulletManager (
-        .clk(clk),
-        .reset(reset),
-        .spawn_bullet(SHOOT),
-        .new_x_position(bullet_x_position),
-        .new_y_position(bullet_y_position),
-        .new_TTL(bullet_TTL),
-        .new_direction(bullet_direction),
-        .base_address(8'h00),
-        .ram_data_in(ram_data_in),
-        .ram_data_out(ram_data_out),
-        .ram_address(ram_address),
-        .ram_write_enable(ram_write_enable)
-    );
 	
 	// Always loop to update on active
 	always @ (posedge screenEnd) begin
@@ -126,7 +64,7 @@ module VGAController(
 
 	wire active, screenEnd;
 	wire[9:0] x;
-	wire[10:0] y;
+	wire[9:0] y;
 	
 	VGATimingGenerator #(
 		.HEIGHT(VIDEO_HEIGHT), // Use the standard VGA Values
@@ -221,10 +159,92 @@ module VGAController(
 		.wEn(1'b0)); 						       // We're always reading
 	
 
+
+	// BULLET LOGIC for drawing bullets
+
+	// Register to track the current bullet being processed
+	reg [7:0] current_bullet_index;  // 8-bit index to match RAM address width
+
+	// Register to store bullet data during iteration
+	reg [31:0] bullet_data;
+
+	// Extracted bullet parameters
+	reg [8:0] bullet_x_position;
+	reg [10:0] bullet_y_position;
+	reg bullet_is_active;
+
+	// Bullet logic to check each frame
+	always @(posedge screenEnd or posedge reset) begin
+		if (reset) begin
+			current_bullet_index <= 0;
+			isBulletActive <= 0;
+		end else begin
+			isBulletActive <= 0; // Reset active flag
+			for (current_bullet_index = 0; current_bullet_index < MAX_BULLETS; current_bullet_index = current_bullet_index + 1) begin
+				// Read bullet data from RAM
+				bullet_ram_address <= current_bullet_index;
+				bullet_data <= bullet_ram_data_out;
+
+				// Unpack bullet data
+				bullet_x_position <= bullet_data[31:23];
+				bullet_y_position <= bullet_data[22:14];
+				bullet_is_active <= bullet_data[5];
+
+				// Check if bullet is active and overlaps the current pixel
+				if (bullet_is_active &&
+					x >= bullet_x_position && x < bullet_x_position + BULLET_SIZE &&
+					y >= bullet_y_position && y < bullet_y_position + BULLET_SIZE) begin
+					isBulletActive <= 1; // Set active flag if a match is found
+				end
+			end
+		end
+	end
+
+	// BulletRAM for managing bullet data
+	wire [31:0] bullet_ram_data_out;
+	reg [7:0] bullet_ram_address; // Made reg to allow sequential access
+
+	BulletRAM #(
+		.DATA_WIDTH(32),
+		.ADDRESS_WIDTH(8),
+		.DEPTH(MAX_BULLETS)
+	) BulletRAMInstance (
+		.clk(clk),
+		.wEn(1'b0), // Write disable for rendering
+		.readEn(1'b1), // Always enable reading
+		.addr(bullet_ram_address),
+		.dataOut(bullet_ram_data_out)
+	);
+
+    // // BULLET LOGIC for spawning bullets
+    // wire [8:0] bullet_x_position = currX + (SPRITE_SIZE / 2);
+    // wire [10:0] bullet_y_position = currY + (SPRITE_SIZE / 2);
+    // wire [4:0] bullet_TTL = 5'd20; // Lifespan of 20 frames
+    // wire [2:0] bullet_direction = 3'b100; // Example: Down
+
+    // wire SHOOT = BTNC; // Button C to shoot
+
+    // bullet_manager bulletManager (
+    //     .clk(clk),
+    //     .reset(reset),
+    //     .spawn_bullet(SHOOT),
+    //     .new_x_position(bullet_x_position),
+    //     .new_y_position(bullet_y_position),
+    //     .new_TTL(bullet_TTL),
+    //     .new_direction(bullet_direction),
+    //     .base_address(8'h00),
+    //     .ram_data_in(ram_data_in),
+    //     .ram_data_out(ram_data_out),
+    //     .ram_address(ram_address),
+    //     .ram_write_enable(ram_write_enable)
+    // );
+
+
+
 	// Assign to output color from register if active
 	wire[BITS_PER_COLOR-1:0] colorOut; 			  // Output color 
 	wire [11:0] bulletColorData = 12'hF00; // Red color for bullets
-	
+
 	assign colorOut = active ? 
     	(isInSquare ? spriteColorData : 
      	(isBulletActive ? bulletColorData : colorData)) : 
