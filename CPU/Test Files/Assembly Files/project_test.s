@@ -24,10 +24,9 @@ check_controller2:
     add $r6, $r2, $r4          # $r6 = MMIO address of controller 2
     lw $r7, 0($r6)             # Load value of controller 2 signals into $r7
 
-    # Check if any directional input from controller 2 is active
-    addi $r8, $r0, 15          # $r8 = 0b1111 (mask for directional bits)
-    and $r9, $r7, $r8          # Mask the lower 4 bits of $r7
-    beq $r9, $r0, check_controller2 # If no bits are active, loop back and check again
+    # Check if controller_2_DOWN is active
+    addi $r8, $r0, 15                   # $r8 = 15
+    bne $r7, $r8, check_controller2     # If != 15, loop back and check again
 
     #############################
     # Step 3: Create Bullet in BulletRAM
