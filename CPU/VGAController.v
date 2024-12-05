@@ -65,12 +65,12 @@ module VGAController(
 		VIDEO_WIDTH = 640,  // Standard VGA Width
 		VIDEO_HEIGHT = 480, // Standard VGA Height
 		SPRITE_SIZE = 64,   // Size of the sprite
-		BULLET_SIZE = 8,	// Size of the bullet
+		BULLET_SIZE = 12,	// Size of the bullet
         MAX_BULLETS = 64;	// Maximum number of bullets
 
 	wire active, screenEnd;
 	wire[9:0] x;
-	wire[9:0] y;
+	wire[8:0] y;
 	
 	VGATimingGenerator #(
 		.HEIGHT(VIDEO_HEIGHT), // Use the standard VGA Values
@@ -105,7 +105,7 @@ module VGAController(
 		SPRITE_PIXEL_ADDRESS_WIDTH = $clog2(SPRITE_PIXEL_COUNT) + 1;     // Use built in log2 command
 	
     wire [9:0] sprite_x = x - currX;
-    wire [10:0] sprite_y = y - currY;
+    wire [8:0] sprite_y = y - currY;
     
     wire [SPRITE_PIXEL_ADDRESS_WIDTH-1:0] spriteAddress = sprite_x + (SPRITE_SIZE * sprite_y);				 // Address calculated active
     wire [PALETTE_ADDRESS_WIDTH-1:0] spriteColorAddr;

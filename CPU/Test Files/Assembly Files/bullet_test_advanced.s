@@ -18,7 +18,7 @@ write_bullets:
     # Pack bullet data into $r4
     sll $r4, $r3, 9             # Shift x left by 9 bits
     or $r4, $r4, $r3            # Combine x and y
-    sll $r4, $r4, 5             # Shift left by 5 bits for TTL
+    sll $r4, $r4, 6             # Shift left by 6 bits for TTL
     addi $r9, $r0, 20           # TTL = 20
     or $r4, $r4, $r9            # Combine TTL
     sll $r4, $r4, 3             # Shift left by 3 bits for direction
@@ -26,7 +26,7 @@ write_bullets:
     or $r4, $r4, $r9            # Combine direction
     sll $r4, $r4, 1             # Shift left by 1 bit for active
     or $r4, $r4, $r6            # Combine active
-    sll $r4, $r4, 5             # Add 5 bits of padding
+    sll $r4, $r4, 3             # Add 3 bits of padding
 
     # Write the packed bullet data to BulletRAM
     sw $r4, 0($r2)              # Store to BulletRAM[$r7]
@@ -49,19 +49,20 @@ read_bullets:
     lw $r4, 0($r2)              # Load from BulletRAM[$r7]
     addi $r2, $r2, 4            # Increment address to the next BulletRAM entry
 
-    # Extract x-coordinate (bits 31:23) and aggregate into $r10
-    sra $r5, $r4, 23            # Align x-coordinate to the least significant bits
-    addi $r6, $r0, 511          # Mask for 9 bits (511 = 0b111111111)
+    # Extract x-coordinate (bits 31:22) and aggregate into $r10
+    sra $r5, $r4, 22            # Align x-coordinate to the least significant bits
+    addi $r6, $r0, 1023         # Mask for 10 bits (1023 = 0b1111111111)
     and $r5, $r5, $r6           # Isolate x-coordinate
     add $r10, $r10, $r5         # Aggregate x-coordinate into $r10
 
-    # Extract y-coordinate (bits 22:14) and aggregate into $r11
-    sra $r5, $r4, 14            # Align y-coordinate to the least significant bits
+    # Extract y-coordinate (bits 21:13) and aggregate into $r11
+    sra $r5, $r4, 13            # Align y-coordinate to the least significant bits
+    addi $r6, $r0, 511          # Mask for 9 bits (511 = 0b111111111)
     and $r5, $r5, $r6           # Isolate y-coordinate
     add $r11, $r11, $r5         # Aggregate y-coordinate into $r11
 
-    # Extract active (bit 5) and aggregate into $r12
-    sra $r5, $r4, 5             # Align active bit to the least significant bit
+    # Extract active (bit 3) and aggregate into $r12
+    sra $r5, $r4, 3             # Align active bit to the least significant bit
     addi $r6, $r0, 1            # Mask for 1 bit (1 = 0b1)
     and $r5, $r5, $r6           # Isolate active bit
     add $r12, $r12, $r5         # Aggregate active count into $r12

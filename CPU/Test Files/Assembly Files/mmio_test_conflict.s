@@ -17,7 +17,7 @@ _start:
     sll $r3, $r3, 9             # Shift left by 9 bits for y position
     addi $r4, $r0, 200          # Load y=200 into $r4
     or $r3, $r3, $r4            # Combine x and y into $r3
-    sll $r3, $r3, 5             # Shift left by 5 bits for TTL
+    sll $r3, $r3, 6             # Shift left by 6 bits for TTL
     addi $r4, $r0, 20           # Load TTL=20 into $r4
     or $r3, $r3, $r4            # Combine TTL with x and y in $r3
     sll $r3, $r3, 3             # Shift left by 3 bits for direction
@@ -26,7 +26,7 @@ _start:
     sll $r3, $r3, 1             # Shift left by 1 bit for active bit
     addi $r4, $r0, 1            # Load active=1 into $r4
     or $r3, $r3, $r4            # Combine active bit with the rest into $r3
-    sll $r3, $r3, 5             # Add 5 bits of padding
+    sll $r3, $r3, 3             # Add 3 bits of padding
     sw $r3, 0($r2)              # Write bullet data into BulletRAM[0]
 
     # Zero out temporary registers
@@ -65,6 +65,9 @@ _mmio_fail:
     addi $r10, $r0, 1           # Load failure (1) into $r10
 
 _end:
+    # Zero out $r8
+    addi $r8, $r0, 0            # Zero out $r8
+
     # End of program
     nop
     nop
