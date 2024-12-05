@@ -7,8 +7,8 @@ _start:
     addi $r3, $r0, 16384       # Load 16384 (0x4000) into $r3
     sll $r3, $r3, 16           # Shift left to set high bits (0x40000000)
 
-    # Load MMIO offset for controller 2 down signal into $r4
-    addi $r4, $r0, 4           # Offset for JD[4] (controller 2 down signal)
+    # Load MMIO offset for controller 1 down signal into $r4
+    addi $r4, $r0, 4           # Offset for JD[4] (controller 1 down signal)
 
     # Load BulletRAM offset for first bullet into $r5
     addi $r5, $r0, 0           # First bullet index (0 offset)
@@ -39,7 +39,7 @@ check_down:
     # Set active to 1
     addi $r13, $r0, 1          # $r13 = active (1)
 
-   # Pack bullet data into $r14
+    # Pack bullet data into $r14
     sll $r14, $r9, 9           # Shift x-coordinate left by 9 bits
     or $r14, $r14, $r10        # Combine x and y
     sll $r14, $r14, 5          # Shift left by 5 bits for TTL
