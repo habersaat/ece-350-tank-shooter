@@ -69,7 +69,7 @@ module Wrapper (clk_100mhz, reset, JD, hSync, vSync, VGA_R, VGA_G, VGA_B);
     wire [2047:0] allBulletContents;
 
 	// ADD YOUR MEMORY FILE HERE
-	localparam INSTR_FILE = "C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Test Files/Memory Files/project_test";
+	localparam INSTR_FILE = "C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Test Files/Memory Files/bullet_test_advanced";
 	
 	// Main Processing Unit
 	processor CPU(.clock(clock), .reset(reset), 
@@ -140,7 +140,7 @@ module Wrapper (clk_100mhz, reset, JD, hSync, vSync, VGA_R, VGA_G, VGA_B);
 
 	// VGA Controller
     VGAController VGAControllerInstance (
-        .clk(clk_100mhz),
+        .clk(clk_25mhz),
         .reset(reset),
         .hSync(hSync),
         .vSync(vSync),

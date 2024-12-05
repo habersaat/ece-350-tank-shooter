@@ -51,14 +51,14 @@ module VGAController(
     wire LEFT = JD[9];
     wire UP = JD[8];
 	
-	// Clock divider 100 MHz -> 25 MHz
-	wire clk25; // 25MHz clock
+//	// Clock divider 100 MHz -> 25 MHz
+//	wire clk25; // 25MHz clock
 
-	reg[1:0] pixCounter = 0;      // Pixel counter to divide the clock
-    assign clk25 = pixCounter[1]; // Set the clock high whenever the second bit (2) is high
-	always @(posedge clk) begin
-		pixCounter <= pixCounter + 1; // Since the reg is only 3 bits, it will reset every 8 cycles
-	end
+//	reg[1:0] pixCounter = 0;      // Pixel counter to divide the clock
+//    assign clk25 = pixCounter[1]; // Set the clock high whenever the second bit (2) is high
+//	always @(posedge clk) begin
+//		pixCounter <= pixCounter + 1; // Since the reg is only 3 bits, it will reset every 8 cycles
+//	end
 
 	// VGA Timing Generation for a Standard VGA Screen
 	localparam 
@@ -76,7 +76,7 @@ module VGAController(
 		.HEIGHT(VIDEO_HEIGHT), // Use the standard VGA Values
 		.WIDTH(VIDEO_WIDTH))
 	Display( 
-		.clk25(clk25),  	   // 25MHz Pixel Clock
+		.clk25(clk),  	   // 25MHz Pixel Clock
 		.reset(reset),		   // Reset Signal
 		.screenEnd(screenEnd), // High for one cycle when between two frames
 		.active(active),	   // High when drawing pixels
@@ -174,9 +174,10 @@ module VGAController(
 	reg activeFlag;
 	reg isBulletActive;
 
+    integer i;
 	always @(*) begin
 		isBulletActive = 0; // Default: no overlap
-		for (integer i = 0; i < MAX_BULLETS; i = i + 1) begin
+		for (i = 0; i < MAX_BULLETS; i = i + 1) begin
 			// Extract bullet data
 			bulletData = allBulletContents[(i*32) +: 32]; // Extract 32 bits for each bullet
 			bulletX = bulletData[31:23];

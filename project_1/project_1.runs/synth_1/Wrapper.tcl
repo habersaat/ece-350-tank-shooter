@@ -96,15 +96,16 @@ read_mem {
   C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/p1Tankcolors.mem
   C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/p1Tankimage.mem
   {C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Test Files/Memory Files/project_test.mem}
+  {C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Test Files/Memory Files/bullet_test_advanced.mem}
 }
 read_verilog -library xil_defaultlib {
-  C:/Users/hah50/Downloads/ece-350-tank-shooter/BulletRAM.v
+  C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/BulletRAM.v
   C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/MMIO.v
   C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/RAM.v
   C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/ROM.v
-  C:/Users/hah50/Downloads/ece-350-tank-shooter/VGAController.v
-  C:/Users/hah50/Downloads/ece-350-tank-shooter/VGATimingGenerator.v
-  C:/Users/hah50/Downloads/ece-350-tank-shooter/VRAM.v
+  C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v
+  C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGATimingGenerator.v
+  C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v
   C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/add.v
   C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/alu.v
   C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/bitwise_and.v
