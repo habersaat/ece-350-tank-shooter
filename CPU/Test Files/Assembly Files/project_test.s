@@ -7,8 +7,8 @@ _start:
     addi $r3, $r0, 16384       # Load 16384 (0x4000) into $r3
     sll $r3, $r3, 16           # Shift left to set high bits (0x40000000)
 
-    # Load MMIO offset for controller 1 down signal into $r4
-    addi $r4, $r0, 4           # Offset for JD[4] (controller 1 down signal)
+    # Load MMIO offset for controller 2 down signal into $r4
+    addi $r4, $r0, 0           # Offset for JD[4] (controller 2 down signal)
 
     # Load BulletRAM offset for first bullet into $r5
     addi $r5, $r0, 0           # First bullet index (0 offset)
@@ -40,16 +40,20 @@ check_down:
     addi $r13, $r0, 1          # $r13 = active (1)
 
     # Pack bullet data into $r14
-    sll $r14, $r9, 23          # Shift x-coordinate left by 23 bits
-    sll $r15, $r10, 14         # Shift y-coordinate left by 14 bits
-    or $r14, $r14, $r15        # Combine x and y
-    sll $r14, $r14, 5          # Shift left by 5 bits for TTL
-    or $r14, $r14, $r11        # Combine TTL
-    sll $r14, $r14, 3          # Shift left by 3 bits for direction
-    or $r14, $r14, $r12        # Combine direction
-    sll $r14, $r14, 1          # Shift left by 1 bit for active
-    or $r14, $r14, $r13        # Combine active
-    sll $r14, $r14, 5          # Add 5 bits of padding
+    addi $r3, $r0, 200          # Load x=200 (low 9 bits) into $r3
+    sll $r3, $r3, 9             # Shift left by 9 bits to make space for y
+    addi $r4, $r0, 200          # Load y=200 (low 9 bits) into $r4
+    or $r3, $r3, $r4            # Combine x and y into $r3
+    sll $r3, $r3, 5             # Shift left by 5 bits to make space for TTL
+    addi $r4, $r0, 20           # Load TTL=20 into $r4
+    or $r3, $r3, $r4            # Combine TTL with x and y in $r3
+    sll $r3, $r3, 3             # Shift left by 3 bits to make space for direction
+    addi $r4, $r0, 3            # Load direction=3 into $r4
+    or $r3, $r3, $r4            # Combine direction with the rest into $r3
+    sll $r3, $r3, 1             # Shift left by 1 bit to make space for active bit
+    addi $r4, $r0, 1            # Load active=1 into $r4
+    or $r3, $r3, $r4            # Combine active bit with the rest into $r3
+    sll $r3, $r3, 5             # Add 5 bits of padding at the least significant end
 
     # Store packed bullet data into BulletRAM
     add $r15, $r3, $r5         # Calculate BulletRAM[0] address
