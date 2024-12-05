@@ -69,7 +69,7 @@ module Wrapper (clk_100mhz, reset, JD, hSync, vSync, VGA_R, VGA_G, VGA_B);
     wire [2047:0] allBulletContents;
 
 	// ADD YOUR MEMORY FILE HERE
-	localparam INSTR_FILE = "C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Test Files/Memory Files/bullet_test_advanced";
+	localparam INSTR_FILE = "C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Test Files/Memory Files/project_test";
 	
 	// Main Processing Unit
 	processor CPU(.clock(clock), .reset(reset), 

@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-| Date         : Wed Dec  4 22:15:58 2024
+| Date         : Thu Dec  5 00:02:58 2024
 | Host         : P1-04 running 64-bit major release  (build 9200)
 | Command      : report_methodology -file Wrapper_methodology_drc_routed.rpt -pb Wrapper_methodology_drc_routed.pb -rpx Wrapper_methodology_drc_routed.rpx
 | Design       : Wrapper
@@ -147,7 +147,7 @@ Related violations: <none>
 
 LUTAR-1#1 Warning
 LUT drives async reset alert  
-LUT cell CPU/D_X_reg/reg_loop[6].dff/q_i_2__102, with 2 or more inputs, drives asynchronous preset/clear pin(s) CPU/multdiv_unit/div_unit/state_counter/tff0/dff/q_reg/CLR,
+LUT cell CPU/D_X_reg/reg_loop[3].dff/q_i_2__128, with 2 or more inputs, drives asynchronous preset/clear pin(s) CPU/multdiv_unit/div_unit/state_counter/tff0/dff/q_reg/CLR,
 CPU/multdiv_unit/div_unit/state_counter/tff1/dff/q_reg/CLR,
 CPU/multdiv_unit/div_unit/state_counter/tff2/dff/q_reg/CLR,
 CPU/multdiv_unit/div_unit/state_counter/tff3/dff/q_reg/CLR,

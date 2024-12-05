@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-| Date         : Wed Dec  4 22:15:08 2024
+| Date         : Thu Dec  5 00:02:04 2024
 | Host         : P1-04 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file Wrapper_control_sets_placed.rpt
 | Design       : Wrapper
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |   111 |
-|    Minimum number of control sets                        |   111 |
+| Total control sets                                       |   110 |
+|    Minimum number of control sets                        |   110 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    66 |
+| Unused register locations in slices containing registers |    53 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |   111 |
+| Total control sets |   110 |
 | >= 0 to < 4        |     1 |
-| >= 4 to < 6        |     2 |
+| >= 4 to < 6        |     1 |
 | >= 6 to < 8        |     0 |
-| >= 8 to < 10       |     0 |
-| >= 10 to < 12      |     4 |
-| >= 12 to < 14      |     1 |
+| >= 8 to < 10       |     1 |
+| >= 10 to < 12      |     3 |
+| >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
-| >= 16              |   103 |
+| >= 16              |   104 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              11 |            7 |
-| No           | No                    | Yes                    |             159 |           79 |
+| No           | No                    | No                     |               8 |            4 |
+| No           | No                    | Yes                    |             159 |           78 |
 | No           | Yes                   | No                     |               0 |            0 |
-| Yes          | No                    | No                     |            2160 |         1289 |
-| Yes          | No                    | Yes                    |            1423 |          789 |
-| Yes          | Yes                   | No                     |               5 |            2 |
+| Yes          | No                    | No                     |            2165 |         1261 |
+| Yes          | No                    | Yes                    |            1487 |          726 |
+| Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -73,117 +73,116 @@ Table of Contents
 +------------------------------------+-------------------------------------------------------------+---------------------------------------------+------------------+----------------+--------------+
 |            Clock Signal            |                        Enable Signal                        |               Set/Reset Signal              | Slice Load Count | Bel Load Count | Bels / Slice |
 +------------------------------------+-------------------------------------------------------------+---------------------------------------------+------------------+----------------+--------------+
-|  pll/inst/clk_out1                 | CPU/D_X_reg/reg_loop[6].dff/reset_state                     | CPU/multdiv_unit/ready_flag_reg/dff/q_reg_0 |                1 |              1 |         1.00 |
+|  pll/inst/clk_out1                 | CPU/D_X_reg/reg_loop[3].dff/reset_state                     | CPU/multdiv_unit/ready_flag_reg/dff/q_reg_0 |                1 |              1 |         1.00 |
 |  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[90].dff/q_reg_1[0]                     | reset_IBUF                                  |                2 |              4 |         2.00 |
-|  pll/inst/clk_out1                 | CPU/D_X_reg/reg_loop[6].dff/reset_state                     | CPU/D_X_reg/reg_loop[30].dff/q_reg_33       |                2 |              5 |         2.50 |
+|  pll/inst/clk_out1                 |                                                             |                                             |                4 |              8 |         2.00 |
 |  VGAControllerInstance/Display/CLK | VGAControllerInstance/currY[9]_i_1_n_0                      |                                             |                4 |             10 |         2.50 |
 |  VGAControllerInstance/Display/CLK | VGAControllerInstance/currX[9]_i_1_n_0                      |                                             |                4 |             10 |         2.50 |
 |  pll/inst/clk_out1                 | VGAControllerInstance/Display/vPos                          | reset_IBUF                                  |                4 |             10 |         2.50 |
-|  pll/inst/clk_out1                 |                                                             |                                             |                7 |             11 |         1.57 |
-|  pll/inst/clk_out1                 | CPU/D_X_reg/reg_loop[30].dff/in_enable0                     | reset_IBUF                                  |                8 |             12 |         1.50 |
 |  pll/inst/clk_out1                 |                                                             | reset_IBUF                                  |               10 |             19 |         1.90 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[88].dff/q_reg_2[0]                     |                                             |               19 |             32 |         1.68 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_4                        | reset_IBUF                                  |               19 |             32 |         1.68 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_32                       | reset_IBUF                                  |               20 |             32 |         1.60 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_18                       | reset_IBUF                                  |               16 |             32 |         2.00 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_13                       | reset_IBUF                                  |               18 |             32 |         1.78 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_23                       | reset_IBUF                                  |               22 |             32 |         1.45 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_8                        | reset_IBUF                                  |               15 |             32 |         2.13 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_9                        | reset_IBUF                                  |               14 |             32 |         2.29 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_33                       | reset_IBUF                                  |               17 |             32 |         1.88 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_17                       | reset_IBUF                                  |               21 |             32 |         1.52 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_24                       | reset_IBUF                                  |               16 |             32 |         2.00 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_12                       | reset_IBUF                                  |               30 |             32 |         1.07 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_19                       | reset_IBUF                                  |               17 |             32 |         1.88 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_22                       | reset_IBUF                                  |               15 |             32 |         2.13 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_27                       | reset_IBUF                                  |               20 |             32 |         1.60 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_3                        | reset_IBUF                                  |               18 |             32 |         1.78 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_31                       | reset_IBUF                                  |               23 |             32 |         1.39 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_30                       | reset_IBUF                                  |               21 |             32 |         1.52 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_5                        | reset_IBUF                                  |               17 |             32 |         1.88 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_6                        | reset_IBUF                                  |               19 |             32 |         1.68 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_7                        | reset_IBUF                                  |               16 |             32 |         2.00 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_25                       | reset_IBUF                                  |               13 |             32 |         2.46 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_14                       | reset_IBUF                                  |               18 |             32 |         1.78 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_21                       | reset_IBUF                                  |               16 |             32 |         2.00 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_11                       | reset_IBUF                                  |               18 |             32 |         1.78 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_26                       | reset_IBUF                                  |               25 |             32 |         1.28 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_20                       | reset_IBUF                                  |               21 |             32 |         1.52 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_10                       | reset_IBUF                                  |               16 |             32 |         2.00 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_16                       | reset_IBUF                                  |               13 |             32 |         2.46 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_15                       | reset_IBUF                                  |               27 |             32 |         1.19 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_28                       | reset_IBUF                                  |               17 |             32 |         1.88 |
-|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[30].dff/q_reg_29                       | reset_IBUF                                  |               29 |             32 |         1.10 |
-|  pll/inst/clk_out1                 | CPU/multdiv_unit/div_unit/state_counter/tff1/dff/q_reg_4    | CPU/D_X_reg/reg_loop[6].dff/reset_state     |               15 |             32 |         2.13 |
-|  pll/inst/clk_out1                 | CPU/multdiv_unit/mult_unit/state_counter/tff3/dff/mult_done | CPU/D_X_reg/reg_loop[6].dff/reset_state     |               11 |             32 |         2.91 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_51[0]                    |                                             |               18 |             32 |         1.78 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_55[0]                    |                                             |               20 |             32 |         1.60 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_56[0]                    |                                             |               21 |             32 |         1.52 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_57[0]                    |                                             |               21 |             32 |         1.52 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_35[0]                    |                                             |               20 |             32 |         1.60 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/E[0]                           |                                             |               19 |             32 |         1.68 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_33[0]                    |                                             |               17 |             32 |         1.88 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_28[0]                    |                                             |               22 |             32 |         1.45 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_30[0]                    |                                             |               17 |             32 |         1.88 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_39[0]                    |                                             |               20 |             32 |         1.60 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_41[0]                    |                                             |               20 |             32 |         1.60 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_42[0]                    |                                             |               21 |             32 |         1.52 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_43[0]                    |                                             |               21 |             32 |         1.52 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_45[0]                    |                                             |               17 |             32 |         1.88 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_49[0]                    |                                             |               15 |             32 |         2.13 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_50[0]                    |                                             |               17 |             32 |         1.88 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_40[0]                    |                                             |               24 |             32 |         1.33 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_38[0]                    |                                             |               23 |             32 |         1.39 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_31[0]                    |                                             |               18 |             32 |         1.78 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_44[0]                    |                                             |               19 |             32 |         1.68 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_46[0]                    |                                             |               17 |             32 |         1.88 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_54[0]                    |                                             |               17 |             32 |         1.88 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_29[0]                    |                                             |               22 |             32 |         1.45 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_32[0]                    |                                             |               19 |             32 |         1.68 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_52[0]                    |                                             |               19 |             32 |         1.68 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_37[0]                    |                                             |               19 |             32 |         1.68 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_36[0]                    |                                             |               18 |             32 |         1.78 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_47[0]                    |                                             |               15 |             32 |         2.13 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_53[0]                    |                                             |               21 |             32 |         1.52 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_34[0]                    |                                             |               22 |             32 |         1.45 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_48[0]                    |                                             |               18 |             32 |         1.78 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_70[0]                    |                                             |               16 |             32 |         2.00 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_69[0]                    |                                             |               19 |             32 |         1.68 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_rep_9[0]                 |                                             |               17 |             32 |         1.88 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_71[0]                    |                                             |               19 |             32 |         1.68 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_59[0]                    |                                             |               16 |             32 |         2.00 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_58[0]                    |                                             |               20 |             32 |         1.60 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_66[0]                    |                                             |               18 |             32 |         1.78 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_rep_8[0]                 |                                             |               22 |             32 |         1.45 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_rep_1[0]                 |                                             |               19 |             32 |         1.68 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_64[0]                    |                                             |               19 |             32 |         1.68 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_rep_0[0]                 |                                             |               22 |             32 |         1.45 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_rep_4[0]                 |                                             |               13 |             32 |         2.46 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_rep_18[0]                |                                             |               19 |             32 |         1.68 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_60[0]                    |                                             |               19 |             32 |         1.68 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_rep_17[0]                |                                             |               20 |             32 |         1.60 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_rep_5[0]                 |                                             |               21 |             32 |         1.52 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_67[0]                    |                                             |               19 |             32 |         1.68 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_rep_7[0]                 |                                             |               23 |             32 |         1.39 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_63[0]                    |                                             |               21 |             32 |         1.52 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_rep_16[0]                |                                             |               19 |             32 |         1.68 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_rep_12[0]                |                                             |               24 |             32 |         1.33 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_61[0]                    |                                             |               19 |             32 |         1.68 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_rep_15[0]                |                                             |               18 |             32 |         1.78 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_62[0]                    |                                             |               18 |             32 |         1.78 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_rep_6[0]                 |                                             |               18 |             32 |         1.78 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_rep_3[0]                 |                                             |               23 |             32 |         1.39 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_rep_13[0]                |                                             |               18 |             32 |         1.78 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_68[0]                    |                                             |               19 |             32 |         1.68 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_rep_10[0]                |                                             |               17 |             32 |         1.88 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_rep_11[0]                |                                             |               21 |             32 |         1.52 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_rep_2[0]                 |                                             |               21 |             32 |         1.52 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_rep_14[0]                |                                             |               16 |             32 |         2.00 |
-|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[28].dff/q_reg_65[0]                    |                                             |               21 |             32 |         1.52 |
-| ~pll/inst/clk_out1                 | CPU/D_X_reg/reg_loop[30].dff/in_enable0                     | reset_IBUF                                  |               13 |             41 |         3.15 |
-|  pll/inst/clk_out1                 | CPU/D_X_reg/reg_loop[6].dff/reset_state                     |                                             |               31 |             60 |         1.94 |
-|  pll/inst/clk_out1                 |                                                             | CPU/D_X_reg/reg_loop[6].dff/reset_state     |               69 |            140 |         2.03 |
-| ~pll/inst/clk_out1                 | CPU/D_X_reg/reg_loop[30].dff/q_reg_1                        | reset_IBUF                                  |              148 |            299 |         2.02 |
+|  pll/inst/clk_out1                 | RegisterFile/q_i_1__9_n_0                                   | reset_IBUF                                  |               23 |             32 |         1.39 |
+|  pll/inst/clk_out1                 | CPU/D_X_reg/reg_loop[18].dff/in_enable0                     | reset_IBUF                                  |               23 |             32 |         1.39 |
+|  pll/inst/clk_out1                 | CPU/multdiv_unit/mult_unit/state_counter/tff3/dff/mult_done | CPU/D_X_reg/reg_loop[3].dff/reset_state     |                9 |             32 |         3.56 |
+|  pll/inst/clk_out1                 | CPU/multdiv_unit/div_unit/state_counter/tff1/dff/q_reg_4    | CPU/D_X_reg/reg_loop[3].dff/reset_state     |               16 |             32 |         2.00 |
+|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[31].dff/q_reg_36                       | reset_IBUF                                  |               19 |             32 |         1.68 |
+|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[31].dff/q_reg_41                       | reset_IBUF                                  |               20 |             32 |         1.60 |
+|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[31].dff/q_reg_35                       | reset_IBUF                                  |                9 |             32 |         3.56 |
+|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[31].dff/q_reg_44                       | reset_IBUF                                  |               13 |             32 |         2.46 |
+|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[31].dff/q_reg_42                       | reset_IBUF                                  |               13 |             32 |         2.46 |
+|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[31].dff/q_reg_46                       | reset_IBUF                                  |               12 |             32 |         2.67 |
+|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[31].dff/q_reg_48                       | reset_IBUF                                  |               20 |             32 |         1.60 |
+|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[31].dff/q_reg_43                       | reset_IBUF                                  |               16 |             32 |         2.00 |
+|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[31].dff/q_reg_45                       | reset_IBUF                                  |               25 |             32 |         1.28 |
+|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[31].dff/q_reg_47                       | reset_IBUF                                  |               11 |             32 |         2.91 |
+|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[31].dff/q_reg_38                       | reset_IBUF                                  |               17 |             32 |         1.88 |
+|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[31].dff/q_reg_37                       | reset_IBUF                                  |               11 |             32 |         2.91 |
+|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[31].dff/q_reg_39                       | reset_IBUF                                  |               30 |             32 |         1.07 |
+|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[31].dff/q_reg_40                       | reset_IBUF                                  |               13 |             32 |         2.46 |
+|  pll/inst/clk_out1                 | CPU/M_W_reg/reg_loop[31].dff/q_reg_34                       | reset_IBUF                                  |               13 |             32 |         2.46 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[88].dff/q_reg_1[0]                     |                                             |               25 |             32 |         1.28 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/E[0]                           |                                             |               21 |             32 |         1.52 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_13[0]                    |                                             |               19 |             32 |         1.68 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_48[0]                    |                                             |               19 |             32 |         1.68 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_19[0]                    |                                             |               24 |             32 |         1.33 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_rep_5[0]                 |                                             |               17 |             32 |         1.88 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_40[0]                    |                                             |               15 |             32 |         2.13 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_46[0]                    |                                             |               18 |             32 |         1.78 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_29[0]                    |                                             |               19 |             32 |         1.68 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_rep_6[0]                 |                                             |               19 |             32 |         1.68 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_rep_7[0]                 |                                             |               20 |             32 |         1.60 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_12[0]                    |                                             |               21 |             32 |         1.52 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_44[0]                    |                                             |               17 |             32 |         1.88 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_36[0]                    |                                             |               12 |             32 |         2.67 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_15[0]                    |                                             |               21 |             32 |         1.52 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_49[0]                    |                                             |               18 |             32 |         1.78 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_9[0]                     |                                             |               22 |             32 |         1.45 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_rep_13[0]                |                                             |               20 |             32 |         1.60 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_10[0]                    |                                             |               23 |             32 |         1.39 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_rep_2[0]                 |                                             |               23 |             32 |         1.39 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_18[0]                    |                                             |               20 |             32 |         1.60 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_27[0]                    |                                             |               18 |             32 |         1.78 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_16[0]                    |                                             |               23 |             32 |         1.39 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_25[0]                    |                                             |               15 |             32 |         2.13 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_35[0]                    |                                             |               18 |             32 |         1.78 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_20[0]                    |                                             |               19 |             32 |         1.68 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_47[0]                    |                                             |               21 |             32 |         1.52 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_6[0]                     |                                             |               18 |             32 |         1.78 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_38[0]                    |                                             |               17 |             32 |         1.88 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_33[0]                    |                                             |               21 |             32 |         1.52 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_22[0]                    |                                             |               21 |             32 |         1.52 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_11[0]                    |                                             |               16 |             32 |         2.00 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_39[0]                    |                                             |               15 |             32 |         2.13 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_rep[0]                   |                                             |               17 |             32 |         1.88 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_rep_0[0]                 |                                             |               21 |             32 |         1.52 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_rep_10[0]                |                                             |               16 |             32 |         2.00 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_23[0]                    |                                             |               19 |             32 |         1.68 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_34[0]                    |                                             |               18 |             32 |         1.78 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_21[0]                    |                                             |               16 |             32 |         2.00 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_28[0]                    |                                             |               21 |             32 |         1.52 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_rep_11[0]                |                                             |               18 |             32 |         1.78 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_rep_12[0]                |                                             |               18 |             32 |         1.78 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_42[0]                    |                                             |               17 |             32 |         1.88 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_41[0]                    |                                             |               17 |             32 |         1.88 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_rep_15[0]                |                                             |               21 |             32 |         1.52 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_rep_16[0]                |                                             |               21 |             32 |         1.52 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_45[0]                    |                                             |               23 |             32 |         1.39 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_30[0]                    |                                             |               17 |             32 |         1.88 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_17[0]                    |                                             |               18 |             32 |         1.78 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_31[0]                    |                                             |               20 |             32 |         1.60 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_rep_14[0]                |                                             |               19 |             32 |         1.68 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_8[0]                     |                                             |               21 |             32 |         1.52 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_14[0]                    |                                             |               21 |             32 |         1.52 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_26[0]                    |                                             |               16 |             32 |         2.00 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_24[0]                    |                                             |               18 |             32 |         1.78 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_32[0]                    |                                             |               16 |             32 |         2.00 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_43[0]                    |                                             |               24 |             32 |         1.33 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_7[0]                     |                                             |               21 |             32 |         1.52 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_rep_1[0]                 |                                             |               19 |             32 |         1.68 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_rep_17[0]                |                                             |               20 |             32 |         1.60 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_rep_3[0]                 |                                             |               16 |             32 |         2.00 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_rep_4[0]                 |                                             |               14 |             32 |         2.29 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_37[0]                    |                                             |               16 |             32 |         2.00 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_rep_9[0]                 |                                             |               15 |             32 |         2.13 |
+|  pll/inst/clk_out1                 | CPU/X_M_reg/reg_loop[31].dff/q_reg_rep_8[0]                 |                                             |               20 |             32 |         1.60 |
+|  pll/inst/clk_out1                 | RegisterFile/q_i_1_n_0                                      | reset_IBUF                                  |               12 |             32 |         2.67 |
+|  pll/inst/clk_out1                 | RegisterFile/q_i_1__8_n_0                                   | reset_IBUF                                  |               11 |             32 |         2.91 |
+|  pll/inst/clk_out1                 | RegisterFile/q_i_1__10_n_0                                  | reset_IBUF                                  |               13 |             32 |         2.46 |
+|  pll/inst/clk_out1                 | RegisterFile/q_i_1__14_n_0                                  | reset_IBUF                                  |               13 |             32 |         2.46 |
+|  pll/inst/clk_out1                 | RegisterFile/q_i_1__4_n_0                                   | reset_IBUF                                  |               11 |             32 |         2.91 |
+|  pll/inst/clk_out1                 | RegisterFile/q_i_1__13_n_0                                  | reset_IBUF                                  |               12 |             32 |         2.67 |
+|  pll/inst/clk_out1                 | RegisterFile/q_i_1__0_n_0                                   | reset_IBUF                                  |               25 |             32 |         1.28 |
+|  pll/inst/clk_out1                 | RegisterFile/q_i_1__12_n_0                                  | reset_IBUF                                  |               31 |             32 |         1.03 |
+|  pll/inst/clk_out1                 | RegisterFile/q_i_1__6_n_0                                   | reset_IBUF                                  |               21 |             32 |         1.52 |
+|  pll/inst/clk_out1                 | RegisterFile/q_i_1__1_n_0                                   | reset_IBUF                                  |               12 |             32 |         2.67 |
+|  pll/inst/clk_out1                 | RegisterFile/q_i_1__3_n_0                                   | reset_IBUF                                  |               15 |             32 |         2.13 |
+|  pll/inst/clk_out1                 | RegisterFile/q_i_1__11_n_0                                  | reset_IBUF                                  |                7 |             32 |         4.57 |
+|  pll/inst/clk_out1                 | RegisterFile/q_i_1__5_n_0                                   | reset_IBUF                                  |               11 |             32 |         2.91 |
+|  pll/inst/clk_out1                 | RegisterFile/q_i_1__2_n_0                                   | reset_IBUF                                  |               11 |             32 |         2.91 |
+|  pll/inst/clk_out1                 | RegisterFile/q_i_1__7_n_0                                   | reset_IBUF                                  |               18 |             32 |         1.78 |
+| ~pll/inst/clk_out1                 | CPU/D_X_reg/reg_loop[18].dff/in_enable0                     | reset_IBUF                                  |               25 |             62 |         2.48 |
+|  pll/inst/clk_out1                 | CPU/D_X_reg/reg_loop[3].dff/reset_state                     |                                             |               24 |             65 |         2.71 |
+|  pll/inst/clk_out1                 |                                                             | CPU/D_X_reg/reg_loop[3].dff/reset_state     |               68 |            140 |         2.06 |
+| ~pll/inst/clk_out1                 | CPU/multdiv_unit/op_in_progress_reg/dff/q_reg_0             | reset_IBUF                                  |              158 |            322 |         2.04 |
 +------------------------------------+-------------------------------------------------------------+---------------------------------------------+------------------+----------------+--------------+
 
 
