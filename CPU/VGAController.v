@@ -65,7 +65,7 @@ module VGAController(
 		VIDEO_WIDTH = 640,  // Standard VGA Width
 		VIDEO_HEIGHT = 480, // Standard VGA Height
 		SPRITE_SIZE = 64,   // Size of the sprite
-		BULLET_SIZE = 12,	// Size of the bullet
+		BULLET_SIZE = 8,	// Size of the bullet
         MAX_BULLETS = 64;	// Maximum number of bullets
 
 	wire active, screenEnd;
