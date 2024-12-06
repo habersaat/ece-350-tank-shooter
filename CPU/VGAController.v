@@ -17,36 +17,58 @@ module VGAController(
 	// Lab Memory Files Location
 	localparam MEM_FILES_PATH = "C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/";
 	
-	reg [9:0] currX;
-	reg [9:0] currY;
+	reg [9:0] currX1;
+	reg [8:0] currY1;
+	
+	reg [8:0] currX2;
+	reg [9:0] currY2;
 	
 	// Boolan for whether x,y in square:
-	wire isInSquare;
-	assign isInSquare = (x >= currX && x < currX + SPRITE_SIZE) && (y >= currY && y < currY + SPRITE_SIZE);
+	wire p1isInSquare;
+	assign p1isInSquare = (x >= currX1 && x < currX1 + SPRITE_SIZE) && (y >= currY1 && y < currY1 + SPRITE_SIZE);
+	
+    wire p2isInSquare;
+    assign p2isInSquare = (x >= currX2 && x < currX2 + SPRITE_SIZE) && (y >= currY2 && y < currY2 + SPRITE_SIZE);
 	
 	// Always loop to update on active
 	always @ (posedge screenEnd) begin
-	   if (RIGHT || BTNR)
-	       if (currX + SPRITE_SIZE + 3 < VIDEO_WIDTH)
-	           currX <= currX + 3;
-	   if (LEFT || BTNL)
-	       if (currX-3 > 1)
-	           currX <= currX - 3;
+	   if (P1RIGHT || BTNR)
+	       if (currX1 + SPRITE_SIZE + 3 < VIDEO_WIDTH)
+	           currX1 <= currX1 + 3;
+	   if (P1LEFT || BTNL)
+	       if (currX1-3 > 1)
+	           currX1 <= currX1 - 3;
 	end
 	always @ (posedge screenEnd) begin
-	   if (DOWN || BTND)
-	       if (currY + SPRITE_SIZE + 3 < VIDEO_HEIGHT)
-	           currY <= currY + 3;
-	   if (UP || BTNU)
-	       if (currY - 3 > 0)
-	           currY <= currY - 3;   
+	   if (P1DOWN || BTND)
+	       if (currY1 + SPRITE_SIZE + 3 < VIDEO_HEIGHT)
+	           currY1 <= currY1 + 3;
+	   if (P1UP || BTNU)
+	       if (currY1 - 3 > 0)
+	           currY1 <= currY1 - 3;   
+	end
+	always @ (posedge screenEnd) begin
+	   if (P2RIGHT || BTNR)
+	       if (currX2 + SPRITE_SIZE + 3 < VIDEO_WIDTH)
+	           currX2 <= currX2 + 3;
+	   if (P2LEFT || BTNL)
+	       if (currX2-3 > 1)
+	           currX2 <= currX2 - 3;
+	end
+	always @ (posedge screenEnd) begin
+	   if (P2DOWN || BTND)
+	       if (currY2 + SPRITE_SIZE + 3 < VIDEO_HEIGHT)
+	           currY2 <= currY2 + 3;
+	   if (P2UP || BTNU)
+	       if (currY2 - 3 > 0)
+	           currY2 <= currY2 - 3;   
 	end
 	   
     // P1 LEFT
-//    wire DOWN = JD[7];
-//    wire RIGHT = JD[10];
-//    wire LEFT = JD[9];
-//    wire UP = JD[8];
+    wire P1DOWN = JD[7];
+    wire P1RIGHT = JD[10];
+    wire P1LEFT = JD[9];
+    wire P1UP = JD[8];
 
 	       
 	// P1 RIGHT
@@ -56,17 +78,24 @@ module VGAController(
 //	wire UP = JD[1];
 
     // P2 LEFT 
-//    wire DOWN = JC[10];
-//    wire RIGHT = JC[8];
-//    wire LEFT = JC[7];
-//    wire UP = JC[9];
+    wire P2DOWN = JC[10];
+    wire P2RIGHT = JC[8];
+    wire P2LEFT = JC[7];
+    wire P2UP = JC[9];
     
     
-//    // P2 RIGHT
-    wire DOWN = JC[1];
-    wire RIGHT = JC[2];
-    wire LEFT = JC[3];
-    wire UP = JC[4];
+    // P2 RIGHT
+//    wire DOWN = JC[1];
+//    wire RIGHT = JC[2];
+//    wire LEFT = JC[3];
+//    wire UP = JC[4];
+
+    // DEBUG JOYSTICKS
+//    wire DOWN = JD[7] || JD[4] || JC[10] || JC[1];
+//    wire RIGHT = JD[10] || JD[3] || JC[8] || JC[2];
+//    wire LEFT = JD[9] || JD[2] || JC[7] || JC[3];
+//    wire UP = JD[8] || JD[1] || JC[9] || JC[4];
+    
 	
 //	// Clock divider 100 MHz -> 25 MHz
 //	wire clk25; // 25MHz clock
@@ -87,7 +116,7 @@ module VGAController(
 
 	wire active, screenEnd;
 	wire[9:0] x;
-	wire[9:0] y;
+	wire[8:0] y;
 	
 	VGATimingGenerator #(
 		.HEIGHT(VIDEO_HEIGHT), // Use the standard VGA Values
@@ -121,11 +150,11 @@ module VGAController(
 		SPRITE_PIXEL_COUNT =  SPRITE_SIZE * SPRITE_SIZE, 	             // Number of pixels on the screen
 		SPRITE_PIXEL_ADDRESS_WIDTH = $clog2(SPRITE_PIXEL_COUNT) + 1;     // Use built in log2 command
 	
-    wire [9:0] sprite_x = x - currX;
-    wire [10:0] sprite_y = y - currY;
+    wire [9:0] sprite1_x = x - currX1;
+    wire [10:0] sprite1_y = y - currY1;
     
-    wire [SPRITE_PIXEL_ADDRESS_WIDTH-1:0] spriteAddress = sprite_x + (SPRITE_SIZE * sprite_y);				 // Address calculated active
-    wire [PALETTE_ADDRESS_WIDTH-1:0] spriteColorAddr;
+    wire [SPRITE_PIXEL_ADDRESS_WIDTH-1:0] spriteAddress1 = sprite1_x + (SPRITE_SIZE * sprite1_y);				 // Address calculated active
+    wire [PALETTE_ADDRESS_WIDTH-1:0] sprite1ColorAddr;
 	
 	VRAM #(		
 		.DEPTH(SPRITE_PIXEL_COUNT), 		            // Set RAM depth to contain every pixel
@@ -134,12 +163,12 @@ module VGAController(
 		.MEMFILE({MEM_FILES_PATH, "p1Tankimage.mem"}))            // Memory initialization
 	ImageData2(
 		.clk(clk), 						         // Falling edge of the 100 MHz clk
-		.addr(spriteAddress),					 // Image data address
-		.dataOut(spriteColorAddr),				 // Color palette address
+		.addr(spriteAddress1),					 // Image data address
+		.dataOut(sprite1ColorAddr),				 // Color palette address
 		.wEn(1'b0)); 						     // We're always reading
 	
 	// Color Palette to Map Color Address to 12-Bit Color
-	wire[BITS_PER_COLOR-1:0] spriteColorData; // 12-bit color data at current pixel
+	wire[BITS_PER_COLOR-1:0] sprite1ColorData; // 12-bit color data at current pixel
 	
 	VRAM #(
 		.DEPTH(PALETTE_COLOR_COUNT), 		       // Set depth to contain every color		
@@ -148,8 +177,42 @@ module VGAController(
 		.MEMFILE({MEM_FILES_PATH, "p1Tankcolors.mem"}))  // Memory initialization
 	ColorPalette2(
 		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
-		.addr(spriteColorAddr),					   // Address from the ImageData RAM
-		.dataOut(spriteColorData),				   // Color at current pixel
+		.addr(sprite1ColorAddr),					   // Address from the ImageData RAM
+		.dataOut(sprite1ColorData),				   // Color at current pixel
+		.wEn(1'b0)); 						       // We're always reading
+		
+		
+		
+		
+	wire [9:0] sprite2_x = x - currX2;
+    wire [10:0] sprite2_y = y - currY2;
+    
+    wire [SPRITE_PIXEL_ADDRESS_WIDTH-1:0] spriteAddress2 = sprite2_x + (SPRITE_SIZE * sprite2_y);				 // Address calculated active
+    wire [PALETTE_ADDRESS_WIDTH-1:0] sprite2ColorAddr;
+	
+	VRAM #(		
+		.DEPTH(SPRITE_PIXEL_COUNT), 		            // Set RAM depth to contain every pixel
+		.DATA_WIDTH(PALETTE_ADDRESS_WIDTH),             // Set data width according to the color palette
+		.ADDRESS_WIDTH(SPRITE_PIXEL_ADDRESS_WIDTH),     // Set address with according to the pixel count
+		.MEMFILE({MEM_FILES_PATH, "p2Tankimage.mem"}))            // Memory initialization
+	ImageData3(
+		.clk(clk), 						         // Falling edge of the 100 MHz clk
+		.addr(spriteAddress2),					 // Image data address
+		.dataOut(sprite2ColorAddr),				 // Color palette address
+		.wEn(1'b0)); 						     // We're always reading
+	
+	// Color Palette to Map Color Address to 12-Bit Color
+	wire[BITS_PER_COLOR-1:0] sprite2ColorData; // 12-bit color data at current pixel
+	
+	VRAM #(
+		.DEPTH(PALETTE_COLOR_COUNT), 		       // Set depth to contain every color		
+		.DATA_WIDTH(BITS_PER_COLOR), 		       // Set data width according to the bits per color
+		.ADDRESS_WIDTH(PALETTE_ADDRESS_WIDTH),     // Set address width according to the color count
+		.MEMFILE({MEM_FILES_PATH, "p2Tankcolors.mem"}))  // Memory initialization
+	ColorPalette3(
+		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
+		.addr(sprite2ColorAddr),					   // Address from the ImageData RAM
+		.dataOut(sprite2ColorData),				   // Color at current pixel
 		.wEn(1'b0)); 						       // We're always reading
 	
 	
@@ -220,8 +283,9 @@ module VGAController(
 	wire [11:0] bulletColorData = 12'hF00; // Red color for bullets
 
 	assign colorOut = active ? 
-    	(isInSquare ? spriteColorData : 
-     	(isBulletActive ? bulletColorData : colorData)) : 
+    	(p1isInSquare ? sprite1ColorData : 
+    	p2isInSquare ? sprite2ColorData :
+     	isBulletActive ? bulletColorData : colorData) : 
     	12'd0; // Black when not active
 
 	// Quickly assign the output colors to their channels using concatenation
