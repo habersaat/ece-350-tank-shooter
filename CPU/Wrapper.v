@@ -118,10 +118,11 @@ module Wrapper (clk_100mhz, reset, JD, JC, hSync, vSync, VGA_R, VGA_G, VGA_B);
     MMIO mmio_unit (
         .clk(clock),
         .reset(reset),
-        .address(memAddr),        // Full 32-bit address from the processor
-        .readEn(~mwe && mmioAccess), // MMIO read enable
-        .readData(mmioDataOut),   // Data read from MMIO
-        .JD(JD)                   // Controller input
+        .address(memAddr),              // Full 32-bit address from the processor
+        .readEn(~mwe && mmioAccess),    // MMIO read enable
+        .readData(mmioDataOut),         // Data read from MMIO
+        .JD(JD),                        // Controller input JD
+        .JC(JC)                         // Controller input JC
     );
 
 	// BulletRAM Module
