@@ -24,9 +24,10 @@
  *
  **/
 
-module Wrapper (clk_100mhz, reset, JD, hSync, vSync, VGA_R, VGA_G, VGA_B);
+module Wrapper (clk_100mhz, reset, JD, JC, hSync, vSync, VGA_R, VGA_G, VGA_B);
     input clk_100mhz, reset;
     input [10:1] JD; // Controller input
+    input [10:1] JC; 
     output hSync, vSync; // VGA sync signals
     output [3:0] VGA_R, VGA_G, VGA_B; // VGA RGB signals
 	
@@ -156,6 +157,7 @@ module Wrapper (clk_100mhz, reset, JD, hSync, vSync, VGA_R, VGA_G, VGA_B);
         .BTNR(),      // Leave unconnected for now
         .BTND(),      // Leave unconnected for now
         .JD(JD),       // Pass controller input to VGA Controller
+        .JC(JC),
 		.allBulletContents(allBulletContents) // Pass all bullet contents to VGA Controller
     );
 

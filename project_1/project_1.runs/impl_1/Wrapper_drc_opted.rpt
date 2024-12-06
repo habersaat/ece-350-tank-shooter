@@ -1,8 +1,8 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-| Date         : Thu Dec  5 00:01:46 2024
-| Host         : P1-04 running 64-bit major release  (build 9200)
+| Date         : Fri Dec  6 15:56:00 2024
+| Host         : P1-02 running 64-bit major release  (build 9200)
 | Command      : report_drc -file Wrapper_drc_opted.rpt -pb Wrapper_drc_opted.pb -rpx Wrapper_drc_opted.rpx
 | Design       : Wrapper
 | Device       : xc7a100tcsg324-1
@@ -24,7 +24,7 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 28
+             Violations found: 29
 +-------------+----------+-------------------------------------------------------------+------------+
 | Rule        | Severity | Description                                                 | Violations |
 +-------------+----------+-------------------------------------------------------------+------------+
@@ -34,7 +34,7 @@ Table of Contents
 | DPOP-1      | Warning  | PREG Output pipelining                                      | 1          |
 | DPOP-2      | Warning  | MREG Output pipelining                                      | 1          |
 | PLHOLDVIO-2 | Warning  | Non-Optimal connections which could lead to hold violations | 1          |
-| PLIO-3      | Warning  | Placement Constraints Check for IO constraints              | 1          |
+| PLIO-3      | Warning  | Placement Constraints Check for IO constraints              | 2          |
 | REQP-1839   | Warning  | RAMB36 async control check                                  | 20         |
 +-------------+----------+-------------------------------------------------------------+------------+
 
@@ -92,6 +92,11 @@ VGAControllerInstance/currY_reg[4] (the first 15 of 20 listed)
 Related violations: <none>
 
 PLIO-3#1 Warning
+Placement Constraints Check for IO constraints  
+Partially locked IO Bus is found. Following components of the IO Bus JC[10:1] are not locked:  JC[6] JC[5]
+Related violations: <none>
+
+PLIO-3#2 Warning
 Placement Constraints Check for IO constraints  
 Partially locked IO Bus is found. Following components of the IO Bus JD[10:1] are not locked:  JD[6] JD[5]
 Related violations: <none>

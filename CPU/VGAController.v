@@ -11,6 +11,7 @@ module VGAController(
 	inout ps2_data,
 	input CPU_RESETN, BTNC, BTNU, BTNL, BTNR, BTND,
 	input [10:1] JD,
+	input [10:1] JC,
 	input [2047:0] allBulletContents);
 	
 	// Lab Memory Files Location
@@ -40,16 +41,32 @@ module VGAController(
 	       if (currY - 3 > 0)
 	           currY <= currY - 3;   
 	end
+	   
+    // P1 LEFT
+//    wire DOWN = JD[7];
+//    wire RIGHT = JD[10];
+//    wire LEFT = JD[9];
+//    wire UP = JD[8];
+
 	       
+	// P1 RIGHT
 //	wire DOWN = JD[4];
 //	wire RIGHT = JD[3];
 //	wire LEFT = JD[2];
 //	wire UP = JD[1];
 
-    wire DOWN = JD[7];
-    wire RIGHT = JD[10];
-    wire LEFT = JD[9];
-    wire UP = JD[8];
+    // P2 LEFT 
+//    wire DOWN = JC[10];
+//    wire RIGHT = JC[8];
+//    wire LEFT = JC[7];
+//    wire UP = JC[9];
+    
+    
+//    // P2 RIGHT
+    wire DOWN = JC[1];
+    wire RIGHT = JC[2];
+    wire LEFT = JC[3];
+    wire UP = JC[4];
 	
 //	// Clock divider 100 MHz -> 25 MHz
 //	wire clk25; // 25MHz clock
@@ -65,7 +82,7 @@ module VGAController(
 		VIDEO_WIDTH = 640,  // Standard VGA Width
 		VIDEO_HEIGHT = 480, // Standard VGA Height
 		SPRITE_SIZE = 64,   // Size of the sprite
-		BULLET_SIZE = 8,	// Size of the bullet
+		BULLET_SIZE = 12,	// Size of the bullet
         MAX_BULLETS = 64;	// Maximum number of bullets
 
 	wire active, screenEnd;
