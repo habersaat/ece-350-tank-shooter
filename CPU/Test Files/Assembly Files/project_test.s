@@ -8,7 +8,7 @@ _start:
     sll $r3, $r3, 16           # Shift left to set high bits (0x40000000)
 
     # Load MMIO offset for controller 1 down signal into $r4
-    addi $r4, $r0, 8           # Offset for JD[4] (controller 1 down signal)
+    addi $r4, $r0, 0           # Offset for JD[4] (controller 1 down signal)
 
     # Load BulletRAM offset for first bullet into $r5
     addi $r5, $r0, 0           # First bullet index (0 offset)
