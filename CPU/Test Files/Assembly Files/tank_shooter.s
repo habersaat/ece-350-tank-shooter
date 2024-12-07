@@ -502,14 +502,31 @@ process_active_bullet:
     addi $r16, $r0, 15
     and $r13, $r13, $16        # Mask direction (4 bits)
 
-    ##########################
-    # Update TTL and Check if Bullet Should Be Deactivated
-    ##########################
-    addi $r12, $r12, -1                 # Decrement TTL
-    blt $r0, $r12, skip_deactivate_bullet    # If TTL < 0, deactivate bullet
-    addi $r9, $r0, 0
+    # Load the counter from memory address 800 (this is for TTL decrement logic)
+    addi $r15, $r0, 800       # Address for counter
+    lw $r16, 0($r15)          # Load counter into $r16
+
+    # Check if the counter is 20
+    addi $r17, $r0, 20        # Load 20 into $r17
+    bne $r16, $r17, skip_ttl_update # If counter != 20, skip TTL update
+
+    # Decrement TTL
+    addi $r12, $r12, -1       # Decrement TTL
+    blt $r0, $r12, skip_deactivate_bullet # If TTL < 0, deactivate bullet
+    addi $r9, $r0, 0          # deactive bullet
 
 skip_deactivate_bullet:
+    # Reset counter to 0 after TTL update
+    addi $r16, $r0, 0         # Reset counter
+    sw $r16, 0($r15)          # Store updated counter back to memory
+    j update_coordinates      # Skip to coordinate update
+
+skip_ttl_update:
+    # Increment counter if TTL is not updated
+    addi $r16, $r16, 1        # Increment counter
+    sw $r16, 0($r15)          # Store updated counter back to memory
+
+update_coordinates:
 
     ##########################
     # Update Coordinates Based on Direction
