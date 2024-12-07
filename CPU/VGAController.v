@@ -21,8 +21,8 @@ module VGAController(
 	reg [9:0] currX1;
 	reg [8:0] currY1;
 	
-	reg [8:0] currX2;
-	reg [9:0] currY2;
+	reg [9:0] currX2;
+	reg [8:0] currY2;
 
 	// Read in current x and y positions of the sprites
 	integer i;
