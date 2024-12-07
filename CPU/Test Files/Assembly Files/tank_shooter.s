@@ -1,5 +1,4 @@
 # tank_shooter.s
-# This program initializes two sprites in sprite memory and updates their positions based on controller input.
 
 _start:
     ##########################
@@ -8,6 +7,10 @@ _start:
     # Initialize Sprite Memory Base Address in $r1 (0x50000000)
     addi $r1, $r0, 20480       # Load 20480 (0x5000) into $r1
     sll $r1, $r1, 16           # Shift left to set high bits (0x50000000)
+
+    # Initialize Bullet Memory Base Address in $r3 (0x40000000)
+    addi $r3, $r0, 16384       # Load 16384 (0x4000) into $r3
+    sll $r3, $r3, 16           # Shift left to set high bits (0x40000000)
 
     # Initialize sprite1_x = 150
     addi $r2, $r0, 150         # Load 150 into $r2
@@ -28,11 +31,18 @@ _start:
     #########################
     # Step 2: Main Loop     #
     #########################
-    # Initialize MMIO Base Address in $r3 (0xFFFF0000)
-    addi $r3, $r0, 65535       # Load 65535 (0xFFFF) into $r3
-    sll $r3, $r3, 16           # Shift left to set high bits (0xFFFF0000)
+    # Initialize MMIO Base Address in $r4 (0xFFFF0000)
+    addi $r4, $r0, 65535       # Load 65535 (0xFFFF) into $r4
+    sll $r4, $r4, 16           # Shift left to set high bits (0xFFFF0000)
+
+    # Initialize BulletRAM index in $r5
+    addi $r5, $r0, 0           # $r5 tracks the current index in BulletRAM
 
 loop:
+    #########################
+    # Movement Processing   #
+    #########################
+
     # Check Player 1 Controller Inputs (P1_CONTROLLER1)
 
 check_p1_controller1_up:
@@ -77,8 +87,23 @@ check_p2_controller1_right:
     lw $r4, 36($r3)            # Load P2_CONTROLLER1_RIGHT into $r4
     bne $r4, $r0, p2_move_right # If P2_CONTROLLER1_RIGHT is active, move sprite2 right
 
-temp_label:
+process_shooting:
 
+    #########################
+    # Shooting Processing   #
+    #########################
+
+check_p1_shooting:
+    # Player 1 Shooting (P1_CONTROLLER2)
+    lw $r6, 16($r4)            # Load P1_CONTROLLER2_DOWN into $r6
+    bne $r6, $r0, p1_shoot     # If active, branch to Player 1 shooting
+
+check_p2_shooting:
+    # Player 2 Shooting (P2_CONTROLLER2)
+    lw $r6, 48($r4)            # Load P2_CONTROLLER2_DOWN into $r6
+    bne $r6, $r0, p2_shoot     # If active, branch to Player 2 shooting
+
+temp_label:
     # Sleep to slow down execution
     j sleep                    # Jump to sleep before looping back
 
@@ -185,12 +210,84 @@ p2_move_right:
     addi $r6, $r0, 575
     blt $r6, $r5, fix_p2_move_right_bounds
     sw $r5, 8($r1)             # Store updated x back to SpriteMem[2]
-    j temp_label
+    j process_shooting
 
 fix_p2_move_right_bounds:
     addi $r5, $r6, 0
     sw $r5, 8($r1)             # Store updated x back to SpriteMem[2]
-    j temp_label
+    j process_shooting
+
+#############################
+# Player 1 Shooting Handler
+#############################
+p1_shoot:
+    # Load sprite1_x and sprite1_y into $r9 and $r10
+    lw $r9, 0($r1)             # sprite1_x
+    lw $r10, 4($r1)            # sprite1_y
+
+    # Set TTL = 64
+    addi $r11, $r0, 64         # $r11 = TTL
+
+    # Set direction (Assume direction is always up for simplicity)
+    addi $r12, $r0, 0          # $r12 = direction (000 = up)
+
+    # Set active bit
+    addi $r13, $r0, 1          # $r13 = active
+
+    # Pack bullet data into $r14
+    sll $r14, $r9, 9           # Shift x-coordinate left by 9 bits
+    or $r14, $r14, $r10        # Combine x and y
+    sll $r14, $r14, 6          # Shift left by 6 bits for TTL
+    or $r14, $r14, $r11        # Combine TTL
+    sll $r14, $r14, 3          # Shift left by 3 bits for direction
+    or $r14, $r14, $r12        # Combine direction
+    sll $r14, $r14, 1          # Shift left by 1 bit for active
+    or $r14, $r14, $r13        # Combine active
+    sll $r14, $r14, 3          # Add 3 bits of padding at the least significant end
+
+    # Store packed bullet data into BulletRAM
+    sw $r14, 0($r3)            # Store bullet at BulletRAM[$r5]
+
+    # Increment bullet index
+    addi $r5, $r5, 4           # Move to the next bullet index
+
+    j check_p2_shooting        # Move to p2 shooting
+
+#############################
+# Player 2 Shooting Handler
+#############################
+p2_shoot:
+    # Load sprite2_x and sprite2_y into $r9 and $r10
+    lw $r9, 8($r1)             # sprite2_x
+    lw $r10, 12($r1)           # sprite2_y
+
+    # Set TTL = 64
+    addi $r11, $r0, 64         # $r11 = TTL
+
+    # Set direction (Assume direction is always up for simplicity)
+    addi $r12, $r0, 0          # $r12 = direction (000 = up)
+
+    # Set active bit
+    addi $r13, $r0, 1          # $r13 = active
+
+    # Pack bullet data into $r14
+    sll $r14, $r9, 9           # Shift x-coordinate left by 9 bits
+    or $r14, $r14, $r10        # Combine x and y
+    sll $r14, $r14, 6          # Shift left by 6 bits for TTL
+    or $r14, $r14, $r11        # Combine TTL
+    sll $r14, $r14, 3          # Shift left by 3 bits for direction
+    or $r14, $r14, $r12        # Combine direction
+    sll $r14, $r14, 1          # Shift left by 1 bit for active
+    or $r14, $r14, $r13        # Combine active
+    sll $r14, $r14, 3          # Add 3 bits of padding at the least significant end
+
+    # Store packed bullet data into BulletRAM
+    sw $r14, 0($r3)            # Store bullet at BulletRAM[$r5]
+
+    # Increment bullet index
+    addi $r5, $r5, 4           # Move to the next bullet index
+
+    j temp_label               # Move to next label
 
 
     #############################
