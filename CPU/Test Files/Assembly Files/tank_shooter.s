@@ -47,45 +47,45 @@ loop:
 
 check_p1_controller1_up:
     # P1_CONTROLLER1_UP
-    lw $r4, 12($r3)            # Load P1_CONTROLLER1_UP into $r4
-    bne $r4, $r0, p1_move_up   # If P1_CONTROLLER1_UP is active, move sprite1 up
+    lw $r6, 12($r4)            # Load P1_CONTROLLER1_UP into $r6
+    bne $r6, $r0, p1_move_up   # If P1_CONTROLLER1_UP is active, move sprite1 up
 
 check_p1_controller1_down:
     # P1_CONTROLLER1_DOWN
-    lw $r4, 0($r3)             # Load P1_CONTROLLER1_DOWN into $r4
-    bne $r4, $r0, p1_move_down # If P1_CONTROLLER1_DOWN is active, move sprite1 down
+    lw $r6, 0($r4)             # Load P1_CONTROLLER1_DOWN into $r6
+    bne $r6, $r0, p1_move_down # If P1_CONTROLLER1_DOWN is active, move sprite1 down
 
 check_p1_controller1_left:
     # P1_CONTROLLER1_LEFT
-    lw $r4, 8($r3)             # Load P1_CONTROLLER1_LEFT into $r4
-    bne $r4, $r0, p1_move_left # If P1_CONTROLLER1_LEFT is active, move sprite1 left
+    lw $r6, 8($r4)             # Load P1_CONTROLLER1_LEFT into $r6
+    bne $r6, $r0, p1_move_left # If P1_CONTROLLER1_LEFT is active, move sprite1 left
 
 check_p1_controller1_right:
     # P1_CONTROLLER1_RIGHT
-    lw $r4, 4($r3)             # Load P1_CONTROLLER1_RIGHT into $r4
-    bne $r4, $r0, p1_move_right # If P1_CONTROLLER1_RIGHT is active, move sprite1 right
+    lw $r6, 4($r4)             # Load P1_CONTROLLER1_RIGHT into $r6
+    bne $r6, $r0, p1_move_right # If P1_CONTROLLER1_RIGHT is active, move sprite1 right
 
     # Check Player 2 Controller Inputs (P2_CONTROLLER1)
 
 check_p2_controller1_up:
     # P2_CONTROLLER1_UP
-    lw $r4, 44($r3)            # Load P2_CONTROLLER1_UP into $r4
-    bne $r4, $r0, p2_move_up   # If P2_CONTROLLER1_UP is active, move sprite2 up
+    lw $r6, 44($r4)            # Load P2_CONTROLLER1_UP into $r6
+    bne $r6, $r0, p2_move_up   # If P2_CONTROLLER1_UP is active, move sprite2 up
 
 check_p2_controller1_down:
     # P2_CONTROLLER1_DOWN
-    lw $r4, 32($r3)            # Load P2_CONTROLLER1_DOWN into $r4
-    bne $r4, $r0, p2_move_down # If P2_CONTROLLER1_DOWN is active, move sprite2 down
+    lw $r6, 32($r4)            # Load P2_CONTROLLER1_DOWN into $r6
+    bne $r6, $r0, p2_move_down # If P2_CONTROLLER1_DOWN is active, move sprite2 down
 
 check_p2_controller1_left:
     # P2_CONTROLLER1_LEFT
-    lw $r4, 40($r3)            # Load P2_CONTROLLER1_LEFT into $r4
-    bne $r4, $r0, p2_move_left # If P2_CONTROLLER1_LEFT is active, move sprite2 left
+    lw $r6, 40($r4)            # Load P2_CONTROLLER1_LEFT into $r6
+    bne $r6, $r0, p2_move_left # If P2_CONTROLLER1_LEFT is active, move sprite2 left
 
 check_p2_controller1_right:
     # P2_CONTROLLER1_RIGHT
-    lw $r4, 36($r3)            # Load P2_CONTROLLER1_RIGHT into $r4
-    bne $r4, $r0, p2_move_right # If P2_CONTROLLER1_RIGHT is active, move sprite2 right
+    lw $r6, 36($r4)            # Load P2_CONTROLLER1_RIGHT into $r6
+    bne $r6, $r0, p2_move_right # If P2_CONTROLLER1_RIGHT is active, move sprite2 right
 
 process_shooting:
 
@@ -111,110 +111,110 @@ temp_label:
     # Player 1 Movement Handlers
     #############################
 p1_move_up:
-    lw $r5, 4($r1)             # Load sprite1_y into $r5
-    addi $r5, $r5, -2          # Decrement y-coordinate by 2
-    addi $r6, $r0, 6           # Lowest possible y-coordinate is 6
-    blt $r5, $r6, fix_p1_move_up_bounds
-    sw $r5, 4($r1)             # Store updated y back to SpriteMem[1]
+    lw $r6, 4($r1)             # Load sprite1_y into $r6
+    addi $r6, $r6, -2          # Decrement y-coordinate by 2
+    addi $r7, $r0, 6           # Lowest possible y-coordinate is 6
+    blt $r6, $r7, fix_p1_move_up_bounds
+    sw $r6, 4($r1)             # Store updated y back to SpriteMem[1]
     j check_p1_controller1_down
 
 fix_p1_move_up_bounds:
-    addi $r5, $r6, 0              
-    sw $r5, 4($r1)             # Store updated y back to SpriteMem[1]
+    addi $r6, $r7, 0              
+    sw $r6, 4($r1)             # Store updated y back to SpriteMem[1]
     j check_p1_controller1_down
 
 p1_move_down:
-    lw $r5, 4($r1)             # Load sprite1_y into $r5
-    addi $r5, $r5, 2           # Increment y-coordinate by 2
-    addi $r6, $r0, 415         # Highest possible y-coordinate is 415
-    blt $r6, $r5, fix_p1_move_down_bounds
-    sw $r5, 4($r1)             # Store updated y back to SpriteMem[1]
+    lw $r6, 4($r1)             # Load sprite1_y into $r6
+    addi $r6, $r6, 2           # Increment y-coordinate by 2
+    addi $r7, $r0, 415         # Highest possible y-coordinate is 415
+    blt $r7, $r6, fix_p1_move_down_bounds
+    sw $r6, 4($r1)             # Store updated y back to SpriteMem[1]
     j check_p1_controller1_left
 
 fix_p1_move_down_bounds:
-    addi $r5, $r6, 0
-    sw $r5, 4($r1)             # Store updated y back to SpriteMem[1]
+    addi $r6, $r7, 0
+    sw $r6, 4($r1)             # Store updated y back to SpriteMem[1]
     j check_p1_controller1_left
 
 p1_move_left:
-    lw $r5, 0($r1)             # Load sprite1_x into $r5
-    addi $r5, $r5, -2          # Decrement x-coordinate by 2
-    addi $r6, $r0, 1           # Lowest possible x-coordinate is 1
-    blt $r5, $r6, fix_p1_move_left_bounds
-    sw $r5, 0($r1)             # Store updated x back to SpriteMem[0]
+    lw $r6, 0($r1)             # Load sprite1_x into $r6
+    addi $r6, $r6, -2          # Decrement x-coordinate by 2
+    addi $r7, $r0, 1           # Lowest possible x-coordinate is 1
+    blt $r6, $r7, fix_p1_move_left_bounds
+    sw $r6, 0($r1)             # Store updated x back to SpriteMem[0]
     j check_p1_controller1_right
 
 fix_p1_move_left_bounds:
-    addi $r5, $r6, 0
-    sw $r5, 0($r1)             # Store updated x back to SpriteMem[0]
+    addi $r6, $r7, 0
+    sw $r6, 0($r1)             # Store updated x back to SpriteMem[0]
     j check_p1_controller1_right
 
 p1_move_right:
-    lw $r5, 0($r1)             # Load sprite1_x into $r5
-    addi $r5, $r5, 2           # Increment x-coordinate by 2
-    addi $r6, $r0, 575
-    blt $r6, $r5, fix_p1_move_right_bounds
-    sw $r5, 0($r1)             # Store updated x back to SpriteMem[0]
+    lw $r6, 0($r1)             # Load sprite1_x into $r6
+    addi $r6, $r6, 2           # Increment x-coordinate by 2
+    addi $r7, $r0, 575
+    blt $r7, $r6, fix_p1_move_right_bounds
+    sw $r6, 0($r1)             # Store updated x back to SpriteMem[0]
     j check_p2_controller1_up
 
 fix_p1_move_right_bounds:
-    addi $r5, $r6, 0
-    sw $r5, 0($r1)             # Store updated x back to SpriteMem[0]
+    addi $r6, $r7, 0
+    sw $r6, 0($r1)             # Store updated x back to SpriteMem[0]
     j check_p2_controller1_up
 
     #############################
     # Player 2 Movement Handlers
     #############################
 p2_move_up:
-    lw $r5, 12($r1)            # Load sprite2_y into $r5
-    addi $r5, $r5, -2          # Decrement y-coordinate by 2
-    addi $r6, $r0, 6           # Lowest possible y-coordinate is 6
-    blt $r5, $r6, fix_p2_move_up_bounds
-    sw $r5, 12($r1)            # Store updated y back to SpriteMem[3]
+    lw $r6, 12($r1)            # Load sprite2_y into $r6
+    addi $r6, $r6, -2          # Decrement y-coordinate by 2
+    addi $r7, $r0, 6           # Lowest possible y-coordinate is 6
+    blt $r6, $r7, fix_p2_move_up_bounds
+    sw $r6, 12($r1)            # Store updated y back to SpriteMem[3]
     j check_p2_controller1_down
 
 fix_p2_move_up_bounds:
-    addi $r5, $r6, 0  
-    sw $r5, 12($r1)            # Store updated y back to SpriteMem[3]
+    addi $r6, $r7, 0  
+    sw $r6, 12($r1)            # Store updated y back to SpriteMem[3]
     j check_p2_controller1_down
 
 p2_move_down:
-    lw $r5, 12($r1)            # Load sprite2_y into $r5
-    addi $r5, $r5, 2           # Increment y-coordinate by 2
-    addi $r6, $r0, 415         # Highest possible y-coordinate is 415
-    blt $r6, $r5, fix_p2_move_down_bounds
-    sw $r5, 12($r1)            # Store updated y back to SpriteMem[3]
+    lw $r6, 12($r1)            # Load sprite2_y into $r6
+    addi $r6, $r6, 2           # Increment y-coordinate by 2
+    addi $r7, $r0, 415         # Highest possible y-coordinate is 415
+    blt $r7, $r6, fix_p2_move_down_bounds
+    sw $r6, 12($r1)            # Store updated y back to SpriteMem[3]
     j check_p2_controller1_left
 
 fix_p2_move_down_bounds:
-    addi $r5, $r6, 0
-    sw $r5, 12($r1)            # Store updated y back to SpriteMem[3]
+    addi $r6, $r7, 0
+    sw $r6, 12($r1)            # Store updated y back to SpriteMem[3]
     j check_p2_controller1_left
 
 p2_move_left:
-    lw $r5, 8($r1)             # Load sprite2_x into $r5
-    addi $r5, $r5, -2          # Decrement x-coordinate by 2
-    addi $r6, $r0, 1           # Lowest possible x-coordinate is 1
-    blt $r5, $r6, fix_p2_move_left_bounds
-    sw $r5, 8($r1)             # Store updated x back to SpriteMem[2]
+    lw $r6, 8($r1)             # Load sprite2_x into $r6
+    addi $r6, $r6, -2          # Decrement x-coordinate by 2
+    addi $r7, $r0, 1           # Lowest possible x-coordinate is 1
+    blt $r6, $r7, fix_p2_move_left_bounds
+    sw $r6, 8($r1)             # Store updated x back to SpriteMem[2]
     j check_p2_controller1_right
 
 fix_p2_move_left_bounds:
-    addi $r5, $r6, 0
-    sw $r5, 8($r1)             # Store updated x back to SpriteMem[2]
+    addi $r6, $r7, 0
+    sw $r6, 8($r1)             # Store updated x back to SpriteMem[2]
     j check_p2_controller1_right
 
 p2_move_right:
-    lw $r5, 8($r1)             # Load sprite2_x into $r5
-    addi $r5, $r5, 2           # Increment x-coordinate by 2
-    addi $r6, $r0, 575
-    blt $r6, $r5, fix_p2_move_right_bounds
-    sw $r5, 8($r1)             # Store updated x back to SpriteMem[2]
+    lw $r6, 8($r1)             # Load sprite2_x into $r6
+    addi $r6, $r6, 2           # Increment x-coordinate by 2
+    addi $r7, $r0, 575
+    blt $r7, $r6, fix_p2_move_right_bounds
+    sw $r6, 8($r1)             # Store updated x back to SpriteMem[2]
     j process_shooting
 
 fix_p2_move_right_bounds:
-    addi $r5, $r6, 0
-    sw $r5, 8($r1)             # Store updated x back to SpriteMem[2]
+    addi $r6, $r7, 0
+    sw $r6, 8($r1)             # Store updated x back to SpriteMem[2]
     j process_shooting
 
 #############################
@@ -246,10 +246,11 @@ p1_shoot:
     sll $r14, $r14, 3          # Add 3 bits of padding at the least significant end
 
     # Store packed bullet data into BulletRAM
-    sw $r14, 0($r3)            # Store bullet at BulletRAM[$r5]
+    add $r15, $r3, $r5         # Calculate address for BulletRAM[$r5]
+    sw $r14, 0($r15)           # Store bullet at BulletRAM[$r5]
 
     # Increment bullet index
-    addi $r5, $r5, 4           # Move to the next bullet index
+    addi $r5, $r5, 1           # Move to the next bullet index
 
     j check_p2_shooting        # Move to p2 shooting
 
@@ -282,10 +283,11 @@ p2_shoot:
     sll $r14, $r14, 3          # Add 3 bits of padding at the least significant end
 
     # Store packed bullet data into BulletRAM
-    sw $r14, 0($r3)            # Store bullet at BulletRAM[$r5]
+    add $r15, $r3, $r5         # Calculate address for BulletRAM[$r5]
+    sw $r14, 0($r15)           # Store bullet at BulletRAM[$r5]
 
     # Increment bullet index
-    addi $r5, $r5, 4           # Move to the next bullet index
+    addi $r5, $r5, 1           # Move to the next bullet index
 
     j temp_label               # Move to next label
 
