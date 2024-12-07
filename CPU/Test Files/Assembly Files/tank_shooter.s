@@ -297,8 +297,8 @@ p1_shoot:
     lw $r9, 0($r1)             # sprite1_x
     lw $r10, 4($r1)            # sprite1_y
 
-    # Set TTL = 64
-    addi $r11, $r0, 64         # $r11 = TTL
+    # Set TTL = 63
+    addi $r11, $r0, 63         # $r11 = TTL
 
     # Initialize direction to 0
     addi $r12, $r0, 0       # $r12 holds the direction (4 bits)
@@ -395,8 +395,8 @@ p2_shoot:
     lw $r9, 8($r1)             # sprite2_x
     lw $r10, 12($r1)           # sprite2_y
 
-    # Set TTL = 64
-    addi $r11, $r0, 64         # $r11 = TTL
+    # Set TTL = 63
+    addi $r11, $r0, 63         # $r11 = TTL
 
     # Initialize direction to 0
     addi $r12, $r0, 0       # $r12 holds the direction (4 bits)
