@@ -129,8 +129,10 @@ p2_move_right:
     #############################
 sleep:
     addi $r6, $r0, 0           # Initialize counter in $r6
+    addi $r7, $r0, 1           # Load dely value into $r7 (pre-shift)
+    sll $r7, $r7, 21           # Shift left to set delay to 2^21 cycles
+
 sleep_loop:
     addi $r6, $r6, 1           # Increment counter
-    addi $r7, $r0, 1000000     # Load delay value into $r7
-    bne $r6, $r7, sleep_loop   # Loop until counter reaches 1,000,000
+    bne $r6, $r7, sleep_loop   # Loop until counter reaches delay
     j loop                     # Return to main loop
