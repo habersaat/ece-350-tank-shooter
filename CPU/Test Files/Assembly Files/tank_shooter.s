@@ -130,7 +130,7 @@ p2_move_right:
 sleep:
     addi $r6, $r0, 0           # Initialize counter in $r6
     addi $r7, $r0, 1           # Load dely value into $r7 (pre-shift)
-    sll $r7, $r7, 21           # Shift left to set delay to 2^21 cycles
+    sll $r7, $r7, 25           # Shift left to set delay to 2^25 cycles
 
 sleep_loop:
     addi $r6, $r6, 1           # Increment counter
