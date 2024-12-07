@@ -141,7 +141,7 @@ p2_move_right:
     #############################
 sleep:
     addi $r6, $r0, 0           # Initialize counter in $r6
-    addi $r7, $r0, 16384       # Load dely value into $r7
+    addi $r7, $r0, 65536       # Load dely value into $r7
 
 sleep_loop:
     addi $r6, $r6, 1           # Increment counter
