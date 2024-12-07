@@ -689,7 +689,6 @@ skip_ttl_update:
     sw $r16, 0($r15)          # Store updated counter back to memory
 
 update_coordinates:
-    j pack_bullet # TEMP. TODO. THIS IS ONLY HERE SO I CAN MAKE BULLETS STATIC TEMPORARILY
 
     ##########################
     # Update Coordinates Based on Direction
