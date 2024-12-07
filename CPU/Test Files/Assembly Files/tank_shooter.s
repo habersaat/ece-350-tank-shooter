@@ -39,6 +39,37 @@ _start:
     addi $r5, $r0, 0           # $r5 tracks the current index in BulletRAM
 
 loop:
+
+    ########################
+    #  Update Cooldowns    #
+    ########################
+
+update_cooldowns:
+    # Decrement Player 1 Cooldown
+    addi $r18, $r0, 2001      # Load address of Player 1 cooldown
+    lw $r20, 0($r18)          # Load Player 1 cooldown into $r20
+    bne $r20, $r0, p1_decrement_cooldown # If cooldown > 0, decrement
+    j update_p2_cooldown      # Skip to Player 2 if cooldown is 0
+
+p1_decrement_cooldown:
+    addi $r20, $r20, -1       # Decrement Player 1 cooldown
+    sw $r20, 0($r18)          # Store updated cooldown back to RAM
+
+update_p2_cooldown:
+    # Decrement Player 2 Cooldown
+    addi $r18, $r0, 2002      # Load address of Player 2 cooldown
+    lw $r20, 0($r18)          # Load Player 2 cooldown into $r20
+    bne $r20, $r0, p2_decrement_cooldown # If cooldown > 0, decrement
+    j check_p1_controller1_up # Skip to next processing step
+
+p2_decrement_cooldown:
+    addi $r20, $r20, -1       # Decrement Player 2 cooldown
+    sw $r20, 0($r18)          # Store updated cooldown back to RAM
+    j check_p1_controller1_up
+
+
+
+
     #########################
     # Movement Processing   #
     #########################
@@ -95,6 +126,10 @@ process_shooting:
 
 check_p1_shooting:
     # Player 1 Shooting (P1_CONTROLLER2)
+    addi $r19, $r0, 2001             # Load address of Player 1 cooldown
+    lw $r20, 0($r19)                 # Load Player 1 cooldown into $r20
+    bne $r20, $r0, check_p2_shooting # Skip if cooldown > 0
+
     lw $r6, 16($r4)            # Load P1_CONTROLLER2_DOWN into $r6
     bne $r6, $r0, p1_shoot     # If active, branch to Player 1 shooting
     lw $r6, 20($r4)            # Load P1_CONTROLLER2_LEFT into $r6
@@ -106,6 +141,10 @@ check_p1_shooting:
 
 check_p2_shooting:
     # Player 2 Shooting (P2_CONTROLLER2)
+    addi $r19, $r0, 2002                # Load address of Player 2 cooldown
+    lw $r20, 0($r19)                    # Load Player 2 cooldown into $r20
+    bne $r20, $r0, bullet_state_updates # Skip if cooldown > 0
+
     lw $r6, 48($r4)            # Load P2_CONTROLLER2_DOWN into $r6
     bne $r6, $r0, p2_shoot     # If active, branch to Player 2 shooting
     lw $r6, 52($r4)            # Load P2_CONTROLLER2_LEFT into $r6
@@ -240,6 +279,11 @@ fix_p2_move_right_bounds:
     # Player 1 Shooting Handler
     #############################
 p1_shoot:
+    # Reset Player 1 Cooldown
+    addi $r19, $r0, 2001       # Address for Player 1 cooldown
+    addi $r20, $r0, 100        # Set cooldown to 100 frames
+    sw $r20, 0($r19)           # Store cooldown back to RAM
+
     # Load sprite1_x and sprite1_y into $r9 and $r10
     lw $r9, 0($r1)             # sprite1_x
     lw $r10, 4($r1)            # sprite1_y
@@ -321,21 +365,17 @@ p1_finalize_direction:
     # Increment bullet index
     addi $r5, $r5, 1           # Move to the next bullet index
 
-sleep2:
-    addi $r6, $r0, 0           # Initialize counter in $r6
-    addi $r7, $r0, 32768       # Load dely value into $r7
-
-sleep_loop2:
-    addi $r6, $r6, 1           # Increment counter
-    bne $r6, $r7, sleep_loop2   # Loop until counter reaches delay
-    # DONE
-
     j check_p2_shooting        # Move to p2 shooting
 
     #############################
     # Player 2 Shooting Handler
     #############################
 p2_shoot:
+    # Reset Player 2 Cooldown
+    addi $r19, $r0, 2002       # Address for Player 2 cooldown
+    addi $r20, $r0, 100        # Set cooldown to 100 frames
+    sw $r20, 0($r19)           # Store cooldown back to RAM
+
     # Load sprite2_x and sprite2_y into $r9 and $r10
     lw $r9, 8($r1)             # sprite2_x
     lw $r10, 12($r1)           # sprite2_y
