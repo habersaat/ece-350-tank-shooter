@@ -46,40 +46,6 @@ module VGAController(
 	
     wire p2isInSquare;
     assign p2isInSquare = (x >= currX2 && x < currX2 + SPRITE_SIZE) && (y >= currY2 && y < currY2 + SPRITE_SIZE);
-	
-	// Always loop to update on active
-	// always @ (posedge screenEnd) begin
-	//    if (P1RIGHT || BTNR)
-	//        if (currX1 + SPRITE_SIZE + 3 < VIDEO_WIDTH)
-	//            currX1 <= currX1 + 3;
-	//    if (P1LEFT || BTNL)
-	//        if (currX1-3 > 1)
-	//            currX1 <= currX1 - 3;
-	// end
-	// always @ (posedge screenEnd) begin
-	//    if (P1DOWN || BTND)
-	//        if (currY1 + SPRITE_SIZE + 3 < VIDEO_HEIGHT)
-	//            currY1 <= currY1 + 3;
-	//    if (P1UP || BTNU)
-	//        if (currY1 - 3 > 0)
-	//            currY1 <= currY1 - 3;   
-	// end
-	// always @ (posedge screenEnd) begin
-	//    if (P2RIGHT || BTNR)
-	//        if (currX2 + SPRITE_SIZE + 3 < VIDEO_WIDTH)
-	//            currX2 <= currX2 + 3;
-	//    if (P2LEFT || BTNL)
-	//        if (currX2-3 > 1)
-	//            currX2 <= currX2 - 3;
-	// end
-	// always @ (posedge screenEnd) begin
-	//    if (P2DOWN || BTND)
-	//        if (currY2 + SPRITE_SIZE + 3 < VIDEO_HEIGHT)
-	//            currY2 <= currY2 + 3;
-	//    if (P2UP || BTNU)
-	//        if (currY2 - 3 > 0)
-	//            currY2 <= currY2 - 3;   
-	// end
 	   
     // P1 LEFT
     wire P1DOWN = JD[7];
@@ -112,16 +78,6 @@ module VGAController(
 //    wire RIGHT = JD[10] || JD[3] || JC[8] || JC[2];
 //    wire LEFT = JD[9] || JD[2] || JC[7] || JC[3];
 //    wire UP = JD[8] || JD[1] || JC[9] || JC[4];
-    
-	
-//	// Clock divider 100 MHz -> 25 MHz
-//	wire clk25; // 25MHz clock
-
-//	reg[1:0] pixCounter = 0;      // Pixel counter to divide the clock
-//    assign clk25 = pixCounter[1]; // Set the clock high whenever the second bit (2) is high
-//	always @(posedge clk) begin
-//		pixCounter <= pixCounter + 1; // Since the reg is only 3 bits, it will reset every 8 cycles
-//	end
 
 	// VGA Timing Generation for a Standard VGA Screen
 	localparam 
@@ -279,7 +235,7 @@ module VGAController(
 			bulletData = allBulletContents[(j*32) +: 32]; // Extract 32 bits for each bullet
 			bulletX = bulletData[31:22];
 			bulletY = bulletData[21:13];
-			activeFlag = bulletData[3];
+			activeFlag = bulletData[2];
 
 			// Check if current pixel overlaps with this bullet
 			if (activeFlag &&
