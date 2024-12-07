@@ -42,13 +42,13 @@ check_down:
     # Pack bullet data into $r14
     sll $r14, $r9, 9           # Shift x-coordinate left by 9 bits
     or $r14, $r14, $r10        # Combine x and y
-    sll $r14, $r14, 5          # Shift left by 5 bits for TTL
+    sll $r14, $r14, 6          # Shift left by 6 bits for TTL
     or $r14, $r14, $r11        # Combine TTL
     sll $r14, $r14, 3          # Shift left by 3 bits for direction
     or $r14, $r14, $r12        # Combine direction
     sll $r14, $r14, 1          # Shift left by 1 bit for active
     or $r14, $r14, $r13        # Combine active
-    sll $r14, $r14, 5          # Add 5 bits of padding at the least significant end
+    sll $r14, $r14, 3          # Add 3 bits of padding at the least significant end
 
     # Store packed bullet data into BulletRAM
     add $r15, $r3, $r5         # Calculate BulletRAM[0] address

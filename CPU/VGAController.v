@@ -260,9 +260,9 @@ module VGAController(
 		for (i = 0; i < MAX_BULLETS; i = i + 1) begin
 			// Extract bullet data
 			bulletData = allBulletContents[(i*32) +: 32]; // Extract 32 bits for each bullet
-			bulletX = bulletData[31:23];
-			bulletY = bulletData[22:14];
-			activeFlag = bulletData[5];
+			bulletX = bulletData[31:22];
+			bulletY = bulletData[21:13];
+			activeFlag = bulletData[3];
 
 			// Check if current pixel overlaps with this bullet
 			if (activeFlag &&
