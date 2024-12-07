@@ -506,9 +506,9 @@ process_active_bullet:
     addi $r15, $r0, 800       # Address for counter
     lw $r16, 0($r15)          # Load counter into $r16
 
-    # Check if the counter is 20
-    addi $r17, $r0, 20        # Load 20 into $r17
-    bne $r16, $r17, skip_ttl_update # If counter != 20, skip TTL update
+    # Check if the counter is 8
+    addi $r17, $r0, 8        # Load 8 into $r17
+    bne $r16, $r17, skip_ttl_update # If counter != 8, skip TTL update
 
     # Decrement TTL
     addi $r12, $r12, -1       # Decrement TTL
