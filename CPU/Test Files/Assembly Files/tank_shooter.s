@@ -12,6 +12,10 @@ _start:
     addi $r3, $r0, 16384       # Load 16384 (0x4000) into $r3
     sll $r3, $r3, 16           # Shift left to set high bits (0x40000000)
 
+    # Initialize Health Memory Base Address in $r30 (0x60000000)
+    addi $r30, $r0, 24576       # Load 24576 (0x6000) into $r30
+    sll $r30, $r30, 16           # Shift left to set high bits (0x60000000)
+
     # Initialize sprite1_x = 150
     addi $r2, $r0, 150         # Load 150 into $r2
     sw $r2, 0($r1)             # Store sprite1_x at SpriteMem[0]
@@ -30,8 +34,8 @@ _start:
 
     # Initialize player health in HealthRAM
     addi $r2, $r0, 0         # Load 100 (initial health value) into $r2
-    sw $r2, 0($r5)             # Store Player 1 health at HealthRAM[0]
-    sw $r2, 4($r5)             # Store Player 2 health at HealthRAM[1]
+    sw $r2, 0($r30)             # Store Player 1 health at HealthRAM[0]
+    sw $r2, 4($r30)             # Store Player 2 health at HealthRAM[1]
 
     #########################
     # Step 2: Main Loop     #
@@ -130,6 +134,13 @@ process_shooting:
 
 check_p1_shooting:
     # Player 1 Shooting (P1_CONTROLLER2)
+
+    # Check Player 1 health
+    lw $r19, 0($r30)           # Load Player 1 health into $r19
+    addi $r20, $r0, 1          # Set $r20 to 1
+    blt $r19, $r20, check_p2_shooting # Branch if $r19 < 1 (health <= 0)
+
+    # Check Player 1 cooldown
     addi $r19, $r0, 2001             # Load address of Player 1 cooldown
     lw $r20, 0($r19)                 # Load Player 1 cooldown into $r20
     bne $r20, $r0, check_p2_shooting # Skip if cooldown > 0
@@ -145,6 +156,14 @@ check_p1_shooting:
 
 check_p2_shooting:
     # Player 2 Shooting (P2_CONTROLLER2)
+
+    # Check Player 2 health
+    lw $r19, 4($r30)           # Load Player 2 health into $r19
+    addi $r20, $r0, 1          # Set $r20 to 1
+    blt $r19, $r20, bullet_state_updates # Skip to bullet processing if $r19 < 1 (health <= 0)
+
+
+    # Check Player 2 cooldown
     addi $r19, $r0, 2002                # Load address of Player 2 cooldown
     lw $r20, 0($r19)                    # Load Player 2 cooldown into $r20
     bne $r20, $r0, bullet_state_updates # Skip if cooldown > 0
