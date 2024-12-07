@@ -100,6 +100,13 @@ fix_p1_move_up_bounds:
 p1_move_down:
     lw $r5, 4($r1)             # Load sprite1_y into $r5
     addi $r5, $r5, 2           # Increment y-coordinate by 2
+    addi $r6, $r0, 415         # Lowest possible y-coordinate is 415
+    blt $r6, $r5, fix_p1_move_down_bounds
+    sw $r5, 4($r1)             # Store updated y back to SpriteMem[1]
+    j check_p1_controller1_left
+
+fix_p1_move_down_bounds:
+    addi $r5, $r6, 0
     sw $r5, 4($r1)             # Store updated y back to SpriteMem[1]
     j check_p1_controller1_left
 
