@@ -229,9 +229,9 @@ fix_p2_move_right_bounds:
     sw $r6, 8($r1)             # Store updated x back to SpriteMem[2]
     j process_shooting
 
-#############################
-# Player 1 Shooting Handler
-#############################
+    #############################
+    # Player 1 Shooting Handler
+    #############################
 p1_shoot:
     # Load sprite1_x and sprite1_y into $r9 and $r10
     lw $r9, 0($r1)             # sprite1_x
@@ -240,8 +240,125 @@ p1_shoot:
     # Set TTL = 64
     addi $r11, $r0, 64         # $r11 = TTL
 
-    # Set direction (Assume direction is always up for simplicity)
-    addi $r12, $r0, 0          # $r12 = direction (000 = up)
+    # Initialize direction encoding to 0 (no direction)
+    addi $r12, $r0, 0  # $r12 holds the direction encoding for the bullet
+
+    #############################
+    # Check Up & Right (001)
+    #############################
+    lw $r6, 12($r4)    # Load P1_CONTROLLER2_UP into $r6
+    bne $r6, $r0, check_right  # If UP is active, check RIGHT
+    j check_up_left            # Otherwise, skip to next check
+
+check_right:
+    lw $r6, 4($r4)     # Load P1_CONTROLLER2_RIGHT into $r6
+    bne $r6, $r0, set_up_right # If RIGHT is active, set direction
+    j check_up_left            # Otherwise, skip to next check
+
+set_up_right:
+    addi $r12, $r0, 1  # Encoding for "Up & Right" = 001
+    j done_direction    # Jump to the end after assigning
+
+    #############################
+    # Check Up & Left (111)
+    #############################
+check_up_left:
+    lw $r6, 12($r4)    # Reload P1_CONTROLLER2_UP into $r6
+    bne $r6, $r0, check_down_right  # If UP is not active, skip to next section
+    lw $r6, 8($r4)     # Load P1_CONTROLLER2_LEFT into $r6
+    bne $r6, $r0, set_up_left       # If LEFT is active, set direction
+    j check_down_right              # Otherwise, skip to next section
+
+set_up_left:
+    addi $r12, $r0, 7  # Encoding for "Up & Left" = 111
+    j done_direction    # Jump to the end after assigning
+
+    #############################
+    # Check Down & Right (011)
+    #############################
+check_down_right:
+    lw $r6, 0($r4)     # Load P1_CONTROLLER2_DOWN into $r6
+    bne $r6, $r0, check_down_left   # If DOWN is active, check RIGHT
+    j check_down_left               # Otherwise, skip to next check
+
+check_down_right_final:
+    lw $r6, 4($r4)     # Load P1_CONTROLLER2_RIGHT into $r6
+    bne $r6, $r0, set_down_right    # If RIGHT is active, set direction
+    j check_down_left               # Otherwise, skip to next check
+
+set_down_right:
+    addi $r12, $r0, 3  # Encoding for "Down & Right" = 011
+    j done_direction    # Jump to the end after assigning
+
+    #############################
+    # Check Down & Left (101)
+    #############################
+check_down_left:
+    lw $r6, 0($r4)     # Reload P1_CONTROLLER2_DOWN into $r6
+    bne $r6, $r0, check_left        # If DOWN is active, check LEFT
+    j check_left                   # Otherwise, skip to next check
+
+check_down_left_final:
+    lw $r6, 8($r4)     # Load P1_CONTROLLER2_LEFT into $r6
+    bne $r6, $r0, set_down_left     # If LEFT is active, set direction
+    j check_left                   # Otherwise, skip to next check
+
+set_down_left:
+    addi $r12, $r0, 5  # Encoding for "Down & Left" = 101
+    j done_direction    # Jump to the end after assigning
+
+    #############################
+    # Check Up (000)
+    #############################
+check_up:
+    lw $r6, 12($r4)    # Reload P1_CONTROLLER2_UP into $r6
+    bne $r6, $r0, set_up # If UP is active, set direction
+    j check_down         # Otherwise, skip to next check
+
+set_up:
+    addi $r12, $r0, 0  # Encoding for "Up" = 000
+    j done_direction    # Jump to the end after assigning
+
+    #############################
+    # Check Down (100)
+    #############################
+check_down:
+    lw $r6, 0($r4)     # Reload P1_CONTROLLER2_DOWN into $r6
+    bne $r6, $r0, set_down # If DOWN is active, set direction
+    j check_left         # Otherwise, skip to next check
+
+set_down:
+    addi $r12, $r0, 4  # Encoding for "Down" = 100
+    j done_direction    # Jump to the end after assigning
+
+    #############################
+    # Check Left (110)
+    #############################
+check_left:
+    lw $r6, 8($r4)     # Reload P1_CONTROLLER2_LEFT into $r6
+    bne $r6, $r0, set_left # If LEFT is active, set direction
+    j check_right       # Otherwise, skip to next check
+
+set_left:
+    addi $r12, $r0, 6  # Encoding for "Left" = 110
+    j done_direction    # Jump to the end after assigning
+
+    #############################
+    # Check Right (010)
+    #############################
+check_right_final:
+    lw $r6, 4($r4)     # Reload P1_CONTROLLER2_RIGHT into $r6
+    bne $r6, $r0, set_right # If RIGHT is active, set direction
+    j done_direction       # Otherwise, skip to the end
+
+set_right:
+    addi $r12, $r0, 2  # Encoding for "Right" = 010
+    j done_direction    # Jump to the end after assigning
+
+    #############################
+    # Done Determining Direction
+    #############################
+done_direction:
 
     # Set active bit
     addi $r13, $r0, 1          # $r13 = active
@@ -266,9 +383,9 @@ p1_shoot:
 
     j check_p2_shooting        # Move to p2 shooting
 
-#############################
-# Player 2 Shooting Handler
-#############################
+    #############################
+    # Player 2 Shooting Handler
+    #############################
 p2_shoot:
     # Load sprite2_x and sprite2_y into $r9 and $r10
     lw $r9, 8($r1)             # sprite2_x
