@@ -506,6 +506,17 @@ process_active_bullet:
     ##########################
     # Update TTL and Check if Bullet Should Be Deactivated
     ##########################
+
+sleep2:
+    addi $r26, $r0, 0           # Initialize counter in $r6
+    addi $r27, $r0, 32768       # Load dely value into $r7
+
+sleep_loop2:
+    addi $r26, $r26, 1           # Increment counter
+    bne $r26, $r27, sleep_loop2   # Loop until counter reaches delay
+
+
+
     addi $r12, $r12, -1                 # Decrement TTL
     blt $r12, $r0, deactivate_bullet    # If TTL < 0, deactivate bullet
 
