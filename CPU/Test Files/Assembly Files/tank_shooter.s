@@ -88,7 +88,7 @@ temp_label:
 p1_move_up:
     lw $r5, 4($r1)             # Load sprite1_y into $r5
     addi $r5, $r5, -2          # Decrement y-coordinate by 2
-    addi $r6, $r0, 3           # Lowest possible y-coordinate is 3
+    addi $r6, $r0, 4           # Lowest possible y-coordinate is 4
     blt $r5, $r6, fix_p1_move_up_bounds
     sw $r5, 4($r1)             # Store updated y back to SpriteMem[1]
     j check_p1_controller1_down
@@ -143,26 +143,55 @@ fix_p1_move_right_bounds:
 p2_move_up:
     lw $r5, 12($r1)            # Load sprite2_y into $r5
     addi $r5, $r5, -2          # Decrement y-coordinate by 2
+    addi $r6, $r0, 4           # Lowest possible y-coordinate is 4
+    blt $r5, $r6, fix_p2_move_up_bounds
+    sw $r5, 12($r1)            # Store updated y back to SpriteMem[3]
+    j check_p2_controller1_down
+
+fix_p2_move_up_bounds:
+    addi $r5, $r6, 0  
     sw $r5, 12($r1)            # Store updated y back to SpriteMem[3]
     j check_p2_controller1_down
 
 p2_move_down:
     lw $r5, 12($r1)            # Load sprite2_y into $r5
     addi $r5, $r5, 2           # Increment y-coordinate by 2
+    addi $r6, $r0, 415         # Highest possible y-coordinate is 415
+    blt $r6, $r5, fix_p2_move_down_bounds
+    sw $r5, 12($r1)            # Store updated y back to SpriteMem[3]
+    j check_p2_controller1_left
+
+fix_p2_move_down_bounds:
+    addi $r5, $r6, 0
     sw $r5, 12($r1)            # Store updated y back to SpriteMem[3]
     j check_p2_controller1_left
 
 p2_move_left:
     lw $r5, 8($r1)             # Load sprite2_x into $r5
     addi $r5, $r5, -2          # Decrement x-coordinate by 2
+    addi $r6, $r0, 1           # Lowest possible x-coordinate is 1
+    blt $r5, $r6, fix_p2_move_left_bounds
+    sw $r5, 8($r1)             # Store updated x back to SpriteMem[2]
+    j check_p2_controller1_right
+
+fix_p2_move_left_bounds:
+    addi $r5, $r6, 0
     sw $r5, 8($r1)             # Store updated x back to SpriteMem[2]
     j check_p2_controller1_right
 
 p2_move_right:
     lw $r5, 8($r1)             # Load sprite2_x into $r5
     addi $r5, $r5, 2           # Increment x-coordinate by 2
+    addi $r6, $r0, 575
+    blt $r6, $r5, fix_p2_move_right_bounds
     sw $r5, 8($r1)             # Store updated x back to SpriteMem[2]
     j temp_label
+
+fix_p2_move_right_bounds:
+    addi $r5, $r6, 0
+    sw $r5, 8($r1)             # Store updated x back to SpriteMem[2]
+    j temp_label
+    
 
     #############################
     # Sleep Section
