@@ -78,6 +78,16 @@ module Wrapper (clk_100mhz, reset, JD, JC, hSync, vSync, VGA_R, VGA_G, VGA_B);
     wire [1:0] spriteRamAddress = memAddr[3:2]; // Use bits [3:2] for 4 entries
     wire [127:0] allSpriteContents;
 
+    // HealthRAM Signals
+    wire [31:0] healthRamDataOut;
+    wire healthRamAccess = (memAddr[31:16] == 16'h6000); // HealthRAM range: 0x6000_0000 - 0x6000_00FF
+    wire [31:0] healthRamDataIn = memDataIn;
+    wire healthRamWriteEnable = mwe && healthRamAccess;
+    wire healthRamReadEnable = ~mwe && healthRamAccess;
+    wire [0:0] healthRamAddress = memAddr[2]; // Use bit [2] for 2 entries
+    wire [63:0] allHealthContents;
+
+
 	// ADD YOUR MEMORY FILE HERE
 	localparam INSTR_FILE = "C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Test Files/Memory Files/tank_shooter";
 	
@@ -98,8 +108,9 @@ module Wrapper (clk_100mhz, reset, JD, JC, hSync, vSync, VGA_R, VGA_G, VGA_B);
 		.data(memDataIn), 
 		.q_dmem(mmioAccess ? mmioDataOut : 
                 bulletRamAccess ? bulletRamDataOut : 
-                spriteRamAccess ? spriteRamDataOut: 
-                ramDataOut) // Select data from MMIO, BulletRAM, or RAM
+                spriteRamAccess ? spriteRamDataOut :
+                healthRamAccess ? healthRamDataOut :
+                ramDataOut) // Select data from MMIO, BulletRAM, SpriteRAM, HealthRAM, or RAM
     );
 	
 	// Instruction Memory (ROM)
@@ -166,6 +177,21 @@ module Wrapper (clk_100mhz, reset, JD, JC, hSync, vSync, VGA_R, VGA_G, VGA_B);
         .allContents(allBulletContents)    // 2048-bit output with all contents
     );
 
+    // HealthRAM Module
+    HealthRAM #(
+        .DATA_WIDTH(32),
+        .ADDRESS_WIDTH(1),
+        .DEPTH(2)
+    ) HealthRAMInstance (
+        .clk(clock),
+        .wEn(healthRamWriteEnable), // Write enable for HealthRAM
+        .readEn(healthRamReadEnable), // Read enable for HealthRAM
+        .addr(healthRamAddress),    // Address for HealthRAM
+        .dataIn(healthRamDataIn),   // Data to write into HealthRAM
+        .dataOut(healthRamDataOut), // Data read from HealthRAM
+        .allContents(allHealthContents) // 64-bit output with all contents
+    );
+
 	// VGA Controller
     VGAController VGAControllerInstance (
         .clk(clk_25mhz),
@@ -186,7 +212,8 @@ module Wrapper (clk_100mhz, reset, JD, JC, hSync, vSync, VGA_R, VGA_G, VGA_B);
         .JD(JD),       // Pass controller input to VGA Controller
         .JC(JC),
 		.allBulletContents(allBulletContents), // Pass all bullet contents to VGA Controller
-        .allSpriteContents(allSpriteContents)  // Pass all sprite contents to VGA Controller
+        .allSpriteContents(allSpriteContents),  // Pass all sprite contents to VGA Controller
+        .allHealthContents(allHealthContents)   // Pass all health contents to VGA Controller
     );
 
 

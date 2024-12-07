@@ -99,12 +99,15 @@ module Wrapper_tb #(parameter FILE = "bullet_test_advanced");
         .data_writeReg(rData), .data_readRegA(regA), .data_readRegB(regB),
                                     
         // RAM
-        .wren(mwe), .address_dmem(memAddr), 
-        .data(memDataIn), .q_dmem(mmioAccess ? mmioDataOut : 
-                                  bulletRamAccess ? bulletRamDataOut :
-                                  spriteRamAccess ? spriteRamDataOut :
-                                  ramDataOut),
-                                  
+		.wren(mwe), 
+		.address_dmem(memAddr), 
+		.data(memDataIn), 
+		.q_dmem(mmioAccess ? mmioDataOut : 
+                bulletRamAccess ? bulletRamDataOut : 
+                spriteRamAccess ? spriteRamDataOut :
+                healthRamAccess ? healthRamDataOut :
+                ramDataOut), // Select data from MMIO, BulletRAM, SpriteRAM, HealthRAM, or RAM
+                
         // Debug ports connected
         .pc_counter_debug(pc_counter_debug),
         .pc_instruction_debug(pc_instruction_debug),
@@ -137,6 +140,15 @@ module Wrapper_tb #(parameter FILE = "bullet_test_advanced");
     wire spriteRamReadEnable = ~mwe && spriteRamAccess;
     wire [1:0] spriteRamAddress = memAddr[3:2]; // Use bits [3:2] for 4 entries
     wire [127:0] allSpriteContents;
+
+    // HealthRAM Signals
+    wire [31:0] healthRamDataOut;
+    wire healthRamAccess = (memAddr[31:16] == 16'h6000); // HealthRAM range: 0x6000_0000 - 0x6000_00FF
+    wire [31:0] healthRamDataIn = memDataIn;
+    wire healthRamWriteEnable = mwe && healthRamAccess;
+    wire healthRamReadEnable = ~mwe && healthRamAccess;
+    wire [0:0] healthRamAddress = memAddr[2]; // Use bit [2] for 2 entries
+    wire [63:0] allHealthContents;
     
     // Instruction Memory (ROM)
     ROM #(.MEMFILE({DIR, MEM_DIR, FILE, ".mem"}))
@@ -204,6 +216,21 @@ module Wrapper_tb #(parameter FILE = "bullet_test_advanced");
         .allContents(allSpriteContents) // 128-bit output with all contents
     );
 
+    // HealthRAM Module
+    HealthRAM #(
+        .DATA_WIDTH(32),
+        .ADDRESS_WIDTH(1),
+        .DEPTH(2)
+    ) HealthRAMInstance (
+        .clk(clock),
+        .wEn(healthRamWriteEnable), // Write enable for HealthRAM
+        .readEn(healthRamReadEnable), // Read enable for HealthRAM
+        .addr(healthRamAddress),    // Address for HealthRAM
+        .dataIn(healthRamDataIn),   // Data to write into HealthRAM
+        .dataOut(healthRamDataOut), // Data read from HealthRAM
+        .allContents(allHealthContents) // 64-bit output with all contents
+    );
+
     // VGA Controller
     VGAController VGAControllerInstance (
         .clk(clock),
@@ -222,7 +249,9 @@ module Wrapper_tb #(parameter FILE = "bullet_test_advanced");
         .BTNR(),      // Leave unconnected for now
         .BTND(),      // Leave unconnected for now
         .JD(JD),       // Pass controller input to VGA Controller
-        .allBulletContents(allBulletContents) // Pass all bullet contents to VGA Controller
+        .allBulletContents(allBulletContents), // Pass all bullet contents to VGA Controller
+        .allSpriteContents(allSpriteContents),  // Pass all sprite contents to VGA Controller
+        .allHealthContents(allHealthContents)   // Pass all health contents to VGA Controller
     );
 
 

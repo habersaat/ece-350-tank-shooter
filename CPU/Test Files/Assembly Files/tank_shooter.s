@@ -28,6 +28,11 @@ _start:
     addi $r2, $r0, 200         # Load 200 into $r2
     sw $r2, 12($r1)            # Store sprite2_y at SpriteMem[3]
 
+    # Initialize player health in HealthRAM
+    addi $r2, $r0, 0         # Load 100 (initial health value) into $r2
+    sw $r2, 0($r5)             # Store Player 1 health at HealthRAM[0]
+    sw $r2, 4($r5)             # Store Player 2 health at HealthRAM[1]
+
     #########################
     # Step 2: Main Loop     #
     #########################

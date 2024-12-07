@@ -13,7 +13,8 @@ module VGAController(
 	input [10:1] JD,
 	input [10:1] JC,
 	input [2047:0] allBulletContents,
-	input [127:0] allSpriteContents);
+	input [127:0] allSpriteContents,
+	input [63:0] allHealthContents);
 	
 	// Lab Memory Files Location
 	localparam MEM_FILES_PATH = "C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/";
@@ -38,14 +39,20 @@ module VGAController(
 		end
 	end
 
+	// Read in current health for each player
+	reg [31:0] p1Health;
+	reg [31:0] p2Health;
+	always @(*) begin
+		p1Health = allHealthContents[31:0]; // Extract 32 bits for p1 health
+		p2Health = allHealthContents[63:32]; // Extract 32 bits for p2 health
+	end
 
-	
 	// Boolan for whether x,y in square:
 	wire p1isInSquare;
-	assign p1isInSquare = (x >= currX1 && x < currX1 + SPRITE_SIZE) && (y >= currY1 && y < currY1 + SPRITE_SIZE);
+	assign p1isInSquare = (x >= currX1 && x < currX1 + SPRITE_SIZE) && (y >= currY1 && y < currY1 + SPRITE_SIZE) && p1Health > 0;
 	
     wire p2isInSquare;
-    assign p2isInSquare = (x >= currX2 && x < currX2 + SPRITE_SIZE) && (y >= currY2 && y < currY2 + SPRITE_SIZE);
+    assign p2isInSquare = (x >= currX2 && x < currX2 + SPRITE_SIZE) && (y >= currY2 && y < currY2 + SPRITE_SIZE) && p2Health > 0;
 	   
     // P1 LEFT
     wire P1DOWN = JD[7];
