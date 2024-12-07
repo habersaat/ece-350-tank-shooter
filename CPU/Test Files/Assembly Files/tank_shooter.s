@@ -506,7 +506,7 @@ process_active_bullet:
     # Update TTL and Check if Bullet Should Be Deactivated
     ##########################
     addi $r12, $r12, -1                 # Decrement TTL
-    blt $r12, $r0, skip_deactivate_bullet    # If TTL < 0, deactivate bullet
+    blt $r0, $r12, skip_deactivate_bullet    # If TTL < 0, deactivate bullet
     addi $r9, $r0, 0
 
 skip_deactivate_bullet:
@@ -567,6 +567,7 @@ pack_bullet:
     # Store updated bullet data
     sw $r8, 0($r7)
     j next_bullet
+
 
 next_bullet:
     addi $r6, $r6, 1           # Increment bullet index
