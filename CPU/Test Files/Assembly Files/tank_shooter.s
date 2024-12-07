@@ -240,8 +240,58 @@ p1_shoot:
     # Set TTL = 64
     addi $r11, $r0, 64         # $r11 = TTL
 
-    # Set direction (Assume direction is always up for simplicity)
-    addi $r12, $r0, 0          # $r12 = direction (000 = up)
+    # Initialize direction to 0
+    addi $r12, $r0, 0       # $r12 holds the direction (4 bits)
+
+    #############################
+    # Check Controller Inputs
+    #############################
+
+    # Check DOWN (1st bit)
+    lw $r6, 0($r4)          # Load P1_CONTROLLER2_DOWN into $r6
+    bne $r6, $r0, p1_set_down_bit
+    j p1_check_right_bit        # Skip if not DOWN
+p1_set_down_bit:
+    addi $r12, $r12, 1       # Set 1st bit (binary: 0001)
+
+    # Check RIGHT (2nd bit)
+p1_check_right_bit:
+    lw $r6, 4($r4)          # Load P1_CONTROLLER2_RIGHT into $r6
+    bne $r6, $r0, p1_set_right_bit
+    j p1_check_left_bit         # Skip if not RIGHT
+p1_set_right_bit:
+    addi $r12, $r12, 2       # Set 2nd bit (binary: 0010)
+
+    # Check LEFT (3rd bit)
+p1_check_left_bit:
+    lw $r6, 8($r4)          # Load P1_CONTROLLER2_LEFT into $r6
+    bne $r6, $r0, p1_set_left_bit
+    j p1_check_up_bit           # Skip if not LEFT
+p1_set_left_bit:
+    addi $r12, $r12, 4       # Set 3rd bit (binary: 0100)
+
+    # Check UP (4th bit)
+p1_check_up_bit:
+    lw $r6, 12($r4)         # Load P1_CONTROLLER2_UP into $r6
+    bne $r6, $r0, p1_set_up_bit
+    j p1_finalize_direction     # Skip if not UP
+p1_set_up_bit:
+    addi $r12, $r12, 8       # Set 4th bit (binary: 1000)
+
+    #############################
+    # Finalize Direction
+    #############################
+
+p1_finalize_direction:
+    # $r12 now contains the direction with the 4 bits set as:
+    # 0001 = DOWN
+    # 0010 = RIGHT
+    # 0100 = LEFT
+    # 1000 = UP
+    # 1100 = UP + LEFT
+    # 1010 = UP + RIGHT
+    # 0101 = DOWN + LEFT
+    # 0011 = DOWN + RIGHT
 
     # Set active bit
     addi $r13, $r0, 1          # $r13 = active
