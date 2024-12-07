@@ -88,7 +88,7 @@ temp_label:
 p1_move_up:
     lw $r5, 4($r1)             # Load sprite1_y into $r5
     addi $r5, $r5, -2          # Decrement y-coordinate by 2
-    addi $r6, $r0, 1           # Lowest possible y-coordinate is 1
+    addi $r6, $r0, 3           # Lowest possible y-coordinate is 3
     blt $r5, $r6, fix_p1_move_up_bounds
     sw $r5, 4($r1)             # Store updated y back to SpriteMem[1]
     j check_p1_controller1_down
@@ -127,6 +127,13 @@ fix_p1_move_left_bounds:
 p1_move_right:
     lw $r5, 0($r1)             # Load sprite1_x into $r5
     addi $r5, $r5, 2           # Increment x-coordinate by 2
+    addi $r6, $r0, 575
+    blt $r6, $r5, fix_p1_move_right_bounds
+    sw $r5, 0($r1)             # Store updated x back to SpriteMem[0]
+    j check_p2_controller1_up
+
+fix_p1_move_right_bounds:
+    addi $r5, $r6, 0
     sw $r5, 0($r1)             # Store updated x back to SpriteMem[0]
     j check_p2_controller1_up
 
