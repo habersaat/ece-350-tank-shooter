@@ -365,6 +365,12 @@ p1_finalize_direction:
     # Increment bullet index
     addi $r5, $r5, 1           # Move to the next bullet index
 
+    # Check if $r5 >= 64
+    addi $r6, $r0, 64          # Load 64 into $r6
+    blt $r5, $r6,  skip_reset     # If $r5 < 64, skip reset
+    addi $r5, $r0, 0           # Reset $r5 to 0 if it reaches 64
+
+skip_reset:
     j check_p2_shooting        # Move to p2 shooting
 
     #############################
