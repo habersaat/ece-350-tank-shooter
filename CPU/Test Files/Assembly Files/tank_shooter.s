@@ -404,10 +404,36 @@ p1_skip_up_right_adjustment:
     j p1_direction_finalized
 
 p1_skip_up_left_adjustment:
+    # If direction is DOWN (x+26, y+66)
+    addi $r6, $r0, 1
+    bne $r12, $r6, p1_skip_down_adjustment
+    addi $r9, $r9, 26           # Increment x by 26
+    addi $r10, $r10, 66         # Increment y by 66
+    j p1_direction_finalized
 
+p1_skip_down_adjustment:
+    # If direction is UP (x+26, y-14)
+    addi $r6, $r0, 8
+    bne $r12, $r6, p1_skip_up_adjustment
+    addi $r9, $r9, 26           # Increment x by 26
+    addi $r10, $r10, -14        # Decrement y by 14
+    j p1_direction_finalized
 
+p1_skip_up_adjustment:
+    # If direction is RIGHT (x+66, y-26)
+    addi $r6, $r0, 2
+    bne $r12, $r6, p1_skip_right_adjustment
+    addi $r9, $r9, 66           # Increment x by 66
+    addi $r10, $r10, -26        # Decrement y by 26
+    j p1_direction_finalized
 
-
+p1_skip_right_adjustment:
+    # If direction is LEFT (x-14, y-26)
+    addi $r6, $r0, 4
+    bne $r12, $r6, p1_direction_finalized
+    addi $r9, $r9, -14          # Decrement x by 14
+    addi $r10, $r10, -26        # Decrement y by 26
+    j p1_direction_finalized
 
 
 
