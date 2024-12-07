@@ -750,7 +750,7 @@ handle_p1_collision:
 
     # Decrement Player 1 health
     lw $r17, 0($r30)           # Load Player 1 health
-    addi $r17, $r17, -100      # Decrement health by 100
+    addi $r17, $r17, -5      # Decrement health by 5
     sw $r17, 0($r30)           # Store updated health back in HealthRAM
     j pack_bullet              # Skip further checks and pack bullet
 
