@@ -131,6 +131,6 @@ sleep:
     addi $r6, $r0, 0           # Initialize counter in $r6
 sleep_loop:
     addi $r6, $r6, 1           # Increment counter
-    addi $r7, $r0, 1000        # Load delay value into $r7
-    bne $r6, $r7, sleep_loop   # Loop until counter reaches 1000
+    addi $r7, $r0, 1000000     # Load delay value into $r7
+    bne $r6, $r7, sleep_loop   # Loop until counter reaches 1,000,000
     j loop                     # Return to main loop
