@@ -124,7 +124,7 @@ module VGAController(
 		SPRITE_PIXEL_ADDRESS_WIDTH = $clog2(SPRITE_PIXEL_COUNT) + 1;     // Use built in log2 command
 	
     wire [9:0] sprite1_x = x - currX1;
-    wire [10:0] sprite1_y = y - currY1;
+    wire [8:0] sprite1_y = y - currY1;
     
     wire [SPRITE_PIXEL_ADDRESS_WIDTH-1:0] spriteAddress1 = sprite1_x + (SPRITE_SIZE * sprite1_y);				 // Address calculated active
     wire [PALETTE_ADDRESS_WIDTH-1:0] sprite1ColorAddr;
@@ -158,7 +158,7 @@ module VGAController(
 		
 		
 	wire [9:0] sprite2_x = x - currX2;
-    wire [10:0] sprite2_y = y - currY2;
+    wire [8:0] sprite2_y = y - currY2;
     
     wire [SPRITE_PIXEL_ADDRESS_WIDTH-1:0] spriteAddress2 = sprite2_x + (SPRITE_SIZE * sprite2_y);				 // Address calculated active
     wire [PALETTE_ADDRESS_WIDTH-1:0] sprite2ColorAddr;
@@ -222,7 +222,7 @@ module VGAController(
 
 	// Iterate over all bullets
     reg [31:0] bulletData;
-	reg [8:0] bulletX;
+	reg [9:0] bulletX;
 	reg [8:0] bulletY;
 	reg activeFlag;
 	reg isBulletActive;
