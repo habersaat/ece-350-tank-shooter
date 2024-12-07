@@ -436,9 +436,6 @@ p1_skip_right_adjustment:
     j p1_direction_finalized
 
 
-
-
-
 p1_direction_finalized:
     # Set active bit
     addi $r13, $r0, 1          # $r13 = active
@@ -538,6 +535,74 @@ p2_finalize_direction:
     # 0101 = DOWN + LEFT
     # 0011 = DOWN + RIGHT
 
+    #####################################
+    # Finalize (x,y) based on direction #
+    #####################################
+
+    # If direction is DOWN + RIGHT, (x+66, y+66)
+    addi $r6, $r0, 3
+    bne $r12, $r6, p2_skip_down_right_adjustment
+    addi $r9, $r9, 66           # Increment x by 66
+    addi $r10, $r10, 66         # Increment y by 66
+    j p2_direction_finalized
+
+p2_skip_down_right_adjustment:
+    # If direction is DOWN + LEFT, (x-14, y+66)
+    addi $r6, $r0, 5
+    bne $r12, $r6, p2_skip_down_left_adjustment
+    addi $r9, $r9, -14          # Decrement x by 14
+    addi $r10, $r10, 66         # Increment y by 66
+    j p2_direction_finalized
+
+p2_skip_down_left_adjustment:
+    # If direction is UP + RIGHT (x+66, y-14)
+    addi $r6, $r0, 10
+    bne $r12, $r6, p2_skip_up_right_adjustment
+    addi $r9, $r9, 66           # Increment x by 66
+    addi $r10, $r10, -14        # Decrement y by 14
+    j p2_direction_finalized
+
+p2_skip_up_right_adjustment:
+    # If direction is UP + LEFT (x-14, y-14)
+    addi $r6, $r0, 12
+    bne $r12, $r6, p2_skip_up_left_adjustment
+    addi $r9, $r9, -14          # Decrement x by 14
+    addi $r10, $r10, -14        # Decrement y by 14
+    j p2_direction_finalized
+
+p2_skip_up_left_adjustment:
+    # If direction is DOWN (x+26, y+66)
+    addi $r6, $r0, 1
+    bne $r12, $r6, p2_skip_down_adjustment
+    addi $r9, $r9, 26           # Increment x by 26
+    addi $r10, $r10, 66         # Increment y by 66
+    j p2_direction_finalized
+
+p2_skip_down_adjustment:
+    # If direction is UP (x+26, y-14)
+    addi $r6, $r0, 8
+    bne $r12, $r6, p2_skip_up_adjustment
+    addi $r9, $r9, 26           # Increment x by 26
+    addi $r10, $r10, -14        # Decrement y by 14
+    j p2_direction_finalized
+
+p2_skip_up_adjustment:
+    # If direction is RIGHT (x+66, y+26)
+    addi $r6, $r0, 2
+    bne $r12, $r6, p2_skip_right_adjustment
+    addi $r9, $r9, 66           # Increment x by 66
+    addi $r10, $r10, 26         # Increment y by 26
+    j p2_direction_finalized
+
+p2_skip_right_adjustment:
+    # If direction is LEFT (x-14, y+26)
+    addi $r6, $r0, 4
+    bne $r12, $r6, p2_direction_finalized
+    addi $r9, $r9, -14          # Decrement x by 14
+    addi $r10, $r10, 26         # Increment y by 26
+    j p2_direction_finalized
+
+p2_direction_finalized:
     # Set active bit
     addi $r13, $r0, 1          # $r13 = active
 
