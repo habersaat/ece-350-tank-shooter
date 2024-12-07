@@ -506,7 +506,10 @@ process_active_bullet:
     # Update TTL and Check if Bullet Should Be Deactivated
     ##########################
     addi $r12, $r12, -1                 # Decrement TTL
-    blt $r12, $r0, deactivate_bullet    # If TTL < 0, deactivate bullet
+    blt $r12, $r0, skip_deactivate_bullet    # If TTL < 0, deactivate bullet
+    addi $r9, $r0, 0
+
+skip_deactivate_bullet:
 
     ##########################
     # Update Coordinates Based on Direction
@@ -564,11 +567,6 @@ pack_bullet:
     # Store updated bullet data
     sw $r8, 0($r7)
     j next_bullet
-
-deactivate_bullet:
-    # Write all 0s to deactivate the bullet
-    sw $r0, 0($r7)             # Store 0 to clear the bullet entry
-    j next_bullet              # Move to the next bullet
 
 next_bullet:
     addi $r6, $r6, 1           # Increment bullet index
