@@ -451,8 +451,8 @@ process_active_bullet:
     ##########################
     # Update TTL and Check if Bullet Should Be Deactivated
     ##########################
-    addi $r12, $r12, 0        # Decrement TTL TODO TODO TODO TODO TODO TODO TODO
-    # blt $r12, $r0, deactivate_bullet # If TTL < 0, deactivate bullet
+    addi $r12, $r12, -1        # Decrement TTL
+    blt $r12, $r0, deactivate_bullet # If TTL < 0, deactivate bullet
 
     ##########################
     # Update Coordinates Based on Direction
