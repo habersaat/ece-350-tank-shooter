@@ -45,8 +45,8 @@ loop:
     addi $r18, $r0, 1000      # Load game time address
     lw $r20, 0($r18)          # Load game time into $r20
     addi $r20, $r20, 1        # Increment game time by 1
-    addi $r19, $r0, 1001      # Load the reset threshold (1001)
-    blt $r20, $r19, skip_gametime_reset # If game time < 1001, skip reset
+    addi $r19, $r0, 11      # Load the reset threshold (11)
+    blt $r20, $r19, skip_gametime_reset # If game time < 11, skip reset
     addi $r20, $r0, 0         # Reset game time to 0
 
 skip_gametime_reset:
@@ -516,16 +516,16 @@ process_active_bullet:
     and $r13, $r13, $16        # Mask direction (4 bits)
 
     ##########################
-    # Update TTL Every 1000 Game Ticks
+    # Update TTL Every 10 Game Ticks
     ##########################
     
     # Load the game time
-    addi $r18, $r0, 1000      # Game time memory address
+    addi $r18, $r0, 10      # Game time memory address
     lw $r20, 0($r18)          # Load game time into $r20
     
-    # Check if game time is 1000
-    addi $r19, $r0, 1000      # Compare against 1000
-    bne $r20, $r19, skip_ttl_update # If game time != 1000, skip TTL update
+    # Check if game time is 10
+    addi $r19, $r0, 10      # Compare against 10
+    bne $r20, $r19, skip_ttl_update # If game time != 10, skip TTL update
     
     ##########################
     # Update TTL and Check if Bullet Should Be Deactivated
