@@ -97,10 +97,22 @@ check_p1_shooting:
     # Player 1 Shooting (P1_CONTROLLER2)
     lw $r6, 16($r4)            # Load P1_CONTROLLER2_DOWN into $r6
     bne $r6, $r0, p1_shoot     # If active, branch to Player 1 shooting
+    lw $r6, 20($r4)            # Load P1_CONTROLLER2_LEFT into $r6
+    bne $r6, $r0, p1_shoot     # If active, branch to Player 1 shooting
+    lw $r6, 24($r4)            # Load P1_CONTROLLER2_RIGHT into $r6
+    bne $r6, $r0, p1_shoot     # If active, branch to Player 1 shooting
+    lw $r6, 28($r4)            # Load P1_CONTROLLER2_UP into $r6
+    bne $r6, $r0, p1_shoot     # If active, branch to Player 1 shooting
 
 check_p2_shooting:
     # Player 2 Shooting (P2_CONTROLLER2)
     lw $r6, 48($r4)            # Load P2_CONTROLLER2_DOWN into $r6
+    bne $r6, $r0, p2_shoot     # If active, branch to Player 2 shooting
+    lw $r6, 52($r4)            # Load P2_CONTROLLER2_LEFT into $r6
+    bne $r6, $r0, p2_shoot     # If active, branch to Player 2 shooting
+    lw $r6, 56($r4)            # Load P2_CONTROLLER2_RIGHT into $r6
+    bne $r6, $r0, p2_shoot     # If active, branch to Player 2 shooting
+    lw $r6, 60($r4)            # Load P2_CONTROLLER2_UP into $r6
     bne $r6, $r0, p2_shoot     # If active, branch to Player 2 shooting
 
 temp_label:
