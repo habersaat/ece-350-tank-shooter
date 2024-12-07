@@ -307,7 +307,8 @@ p1_shoot:
     addi $r20, $r0, 100        # Set cooldown to 100 frames
     sw $r20, 0($r19)           # Store cooldown back to RAM
 
-    # Load sprite1_x and sprite1_y into $r9 and $r10
+    # Load sprite1_x and sprite1_y into $r9 and $r10. 
+    # This (x,y) is not final. Will change based on direction
     lw $r9, 0($r1)             # sprite1_x
     lw $r10, 4($r1)            # sprite1_y
 
@@ -367,6 +368,21 @@ p1_finalize_direction:
     # 0101 = DOWN + LEFT
     # 0011 = DOWN + RIGHT
 
+    #####################################
+    # Finalize (x,y) based on direction #
+    #####################################
+
+    # If direction is DOWN + RIGHT, (x+66, y+66)
+    addi $r6, $r0, 3
+    bne $r12, $r6, p1_skip_down_right_adjustment
+    addi $r9, $r9, 66           # Increment x by 66
+    addi $r10, $r10, 66         # Increment y by 66
+    j p1_direction_finalized
+
+p1_skip_down_right_adjustment:
+
+
+p1_direction_finalized:
     # Set active bit
     addi $r13, $r0, 1          # $r13 = active
 
