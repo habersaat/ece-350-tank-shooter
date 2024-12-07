@@ -34,38 +34,50 @@ _start:
 
 loop:
     # Check Player 1 Controller Inputs (P1_CONTROLLER1)
+
+check_p1_controller1_up:
     # P1_CONTROLLER1_UP
     lw $r4, 12($r3)            # Load P1_CONTROLLER1_UP into $r4
     bne $r4, $r0, p1_move_up   # If P1_CONTROLLER1_UP is active, move sprite1 up
 
+check_p1_controller1_down:
     # P1_CONTROLLER1_DOWN
     lw $r4, 0($r3)             # Load P1_CONTROLLER1_DOWN into $r4
     bne $r4, $r0, p1_move_down # If P1_CONTROLLER1_DOWN is active, move sprite1 down
 
+check_p1_controller1_left:
     # P1_CONTROLLER1_LEFT
     lw $r4, 8($r3)             # Load P1_CONTROLLER1_LEFT into $r4
     bne $r4, $r0, p1_move_left # If P1_CONTROLLER1_LEFT is active, move sprite1 left
 
+check_p1_controller1_right:
     # P1_CONTROLLER1_RIGHT
     lw $r4, 4($r3)             # Load P1_CONTROLLER1_RIGHT into $r4
     bne $r4, $r0, p1_move_right # If P1_CONTROLLER1_RIGHT is active, move sprite1 right
 
     # Check Player 2 Controller Inputs (P2_CONTROLLER1)
+
+check_p2_controller1_up:
     # P2_CONTROLLER1_UP
     lw $r4, 44($r3)            # Load P2_CONTROLLER1_UP into $r4
     bne $r4, $r0, p2_move_up   # If P2_CONTROLLER1_UP is active, move sprite2 up
 
+check_p2_controller1_down:
     # P2_CONTROLLER1_DOWN
     lw $r4, 32($r3)            # Load P2_CONTROLLER1_DOWN into $r4
     bne $r4, $r0, p2_move_down # If P2_CONTROLLER1_DOWN is active, move sprite2 down
 
+check_p2_controller1_left:
     # P2_CONTROLLER1_LEFT
     lw $r4, 40($r3)            # Load P2_CONTROLLER1_LEFT into $r4
     bne $r4, $r0, p2_move_left # If P2_CONTROLLER1_LEFT is active, move sprite2 left
 
+check_p2_controller1_right:
     # P2_CONTROLLER1_RIGHT
     lw $r4, 36($r3)            # Load P2_CONTROLLER1_RIGHT into $r4
     bne $r4, $r0, p2_move_right # If P2_CONTROLLER1_RIGHT is active, move sprite2 right
+
+temp_label:
 
     # Sleep to slow down execution
     j sleep                    # Jump to sleep before looping back
@@ -77,25 +89,25 @@ p1_move_up:
     lw $r5, 4($r1)             # Load sprite1_y into $r5
     addi $r5, $r5, -1          # Decrement y-coordinate
     sw $r5, 4($r1)             # Store updated y back to SpriteMem[1]
-    j loop
+    j check_p1_controller1_down
 
 p1_move_down:
     lw $r5, 4($r1)             # Load sprite1_y into $r5
     addi $r5, $r5, 1           # Increment y-coordinate
     sw $r5, 4($r1)             # Store updated y back to SpriteMem[1]
-    j loop
+    j check_p1_controller1_left
 
 p1_move_left:
     lw $r5, 0($r1)             # Load sprite1_x into $r5
     addi $r5, $r5, -1          # Decrement x-coordinate
     sw $r5, 0($r1)             # Store updated x back to SpriteMem[0]
-    j loop
+    j check_p1_controller1_right
 
 p1_move_right:
     lw $r5, 0($r1)             # Load sprite1_x into $r5
     addi $r5, $r5, 1           # Increment x-coordinate
     sw $r5, 0($r1)             # Store updated x back to SpriteMem[0]
-    j loop
+    j check_p2_controller1_up
 
     #############################
     # Player 2 Movement Handlers
@@ -104,25 +116,25 @@ p2_move_up:
     lw $r5, 12($r1)            # Load sprite2_y into $r5
     addi $r5, $r5, -1          # Decrement y-coordinate
     sw $r5, 12($r1)            # Store updated y back to SpriteMem[3]
-    j loop
+    j check_p2_controller1_down
 
 p2_move_down:
     lw $r5, 12($r1)            # Load sprite2_y into $r5
     addi $r5, $r5, 1           # Increment y-coordinate
     sw $r5, 12($r1)            # Store updated y back to SpriteMem[3]
-    j loop
+    j check_p2_controller1_left
 
 p2_move_left:
     lw $r5, 8($r1)             # Load sprite2_x into $r5
     addi $r5, $r5, -1          # Decrement x-coordinate
     sw $r5, 8($r1)             # Store updated x back to SpriteMem[2]
-    j loop
+    j check_p2_controller1_right
 
 p2_move_right:
     lw $r5, 8($r1)             # Load sprite2_x into $r5
     addi $r5, $r5, 1           # Increment x-coordinate
     sw $r5, 8($r1)             # Store updated x back to SpriteMem[2]
-    j loop
+    j temp_label
 
     #############################
     # Sleep Section
@@ -130,7 +142,7 @@ p2_move_right:
 sleep:
     addi $r6, $r0, 0           # Initialize counter in $r6
     addi $r7, $r0, 1           # Load dely value into $r7 (pre-shift)
-    sll $r7, $r7, 25           # Shift left to set delay to 2^25 cycles
+    sll $r7, $r7, 20           # Shift left to set delay to 2^20 cycles
 
 sleep_loop:
     addi $r6, $r6, 1           # Increment counter
