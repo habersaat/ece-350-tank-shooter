@@ -12,7 +12,8 @@ module VGAController(
 	input CPU_RESETN, BTNC, BTNU, BTNL, BTNR, BTND,
 	input [10:1] JD,
 	input [10:1] JC,
-	input [2047:0] allBulletContents);
+	input [2047:0] allBulletContents,
+	input [127:0] allSpriteContents);
 	
 	// Lab Memory Files Location
 	localparam MEM_FILES_PATH = "C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/";
@@ -22,6 +23,22 @@ module VGAController(
 	
 	reg [8:0] currX2;
 	reg [9:0] currY2;
+
+	// Read in current x and y positions of the sprites
+	integer i;
+	always @(*) begin
+		for (i = 0; i < 4; i = i + 1) begin
+			// Extract 32 bits for each sprite
+			case (i)
+				0: currX1 = allSpriteContents[(i*32) +: 10]; // Extract 10 bits for x1
+				1: currY1 = allSpriteContents[(i*32) +: 9];  // Extract 9 bits for y1
+				2: currX2 = allSpriteContents[(i*32) +: 10]; // Extract 10 bits for x2
+				3: currY2 = allSpriteContents[(i*32) +: 9];  // Extract 9 bits for y2
+			endcase
+		end
+	end
+
+
 	
 	// Boolan for whether x,y in square:
 	wire p1isInSquare;
@@ -31,38 +48,38 @@ module VGAController(
     assign p2isInSquare = (x >= currX2 && x < currX2 + SPRITE_SIZE) && (y >= currY2 && y < currY2 + SPRITE_SIZE);
 	
 	// Always loop to update on active
-	always @ (posedge screenEnd) begin
-	   if (P1RIGHT || BTNR)
-	       if (currX1 + SPRITE_SIZE + 3 < VIDEO_WIDTH)
-	           currX1 <= currX1 + 3;
-	   if (P1LEFT || BTNL)
-	       if (currX1-3 > 1)
-	           currX1 <= currX1 - 3;
-	end
-	always @ (posedge screenEnd) begin
-	   if (P1DOWN || BTND)
-	       if (currY1 + SPRITE_SIZE + 3 < VIDEO_HEIGHT)
-	           currY1 <= currY1 + 3;
-	   if (P1UP || BTNU)
-	       if (currY1 - 3 > 0)
-	           currY1 <= currY1 - 3;   
-	end
-	always @ (posedge screenEnd) begin
-	   if (P2RIGHT || BTNR)
-	       if (currX2 + SPRITE_SIZE + 3 < VIDEO_WIDTH)
-	           currX2 <= currX2 + 3;
-	   if (P2LEFT || BTNL)
-	       if (currX2-3 > 1)
-	           currX2 <= currX2 - 3;
-	end
-	always @ (posedge screenEnd) begin
-	   if (P2DOWN || BTND)
-	       if (currY2 + SPRITE_SIZE + 3 < VIDEO_HEIGHT)
-	           currY2 <= currY2 + 3;
-	   if (P2UP || BTNU)
-	       if (currY2 - 3 > 0)
-	           currY2 <= currY2 - 3;   
-	end
+	// always @ (posedge screenEnd) begin
+	//    if (P1RIGHT || BTNR)
+	//        if (currX1 + SPRITE_SIZE + 3 < VIDEO_WIDTH)
+	//            currX1 <= currX1 + 3;
+	//    if (P1LEFT || BTNL)
+	//        if (currX1-3 > 1)
+	//            currX1 <= currX1 - 3;
+	// end
+	// always @ (posedge screenEnd) begin
+	//    if (P1DOWN || BTND)
+	//        if (currY1 + SPRITE_SIZE + 3 < VIDEO_HEIGHT)
+	//            currY1 <= currY1 + 3;
+	//    if (P1UP || BTNU)
+	//        if (currY1 - 3 > 0)
+	//            currY1 <= currY1 - 3;   
+	// end
+	// always @ (posedge screenEnd) begin
+	//    if (P2RIGHT || BTNR)
+	//        if (currX2 + SPRITE_SIZE + 3 < VIDEO_WIDTH)
+	//            currX2 <= currX2 + 3;
+	//    if (P2LEFT || BTNL)
+	//        if (currX2-3 > 1)
+	//            currX2 <= currX2 - 3;
+	// end
+	// always @ (posedge screenEnd) begin
+	//    if (P2DOWN || BTND)
+	//        if (currY2 + SPRITE_SIZE + 3 < VIDEO_HEIGHT)
+	//            currY2 <= currY2 + 3;
+	//    if (P2UP || BTNU)
+	//        if (currY2 - 3 > 0)
+	//            currY2 <= currY2 - 3;   
+	// end
 	   
     // P1 LEFT
     wire P1DOWN = JD[7];
@@ -254,12 +271,12 @@ module VGAController(
 	reg activeFlag;
 	reg isBulletActive;
 
-    integer i;
+    integer j;
 	always @(*) begin
 		isBulletActive = 0; // Default: no overlap
-		for (i = 0; i < MAX_BULLETS; i = i + 1) begin
+		for (j = 0; j < MAX_BULLETS; j = j + 1) begin
 			// Extract bullet data
-			bulletData = allBulletContents[(i*32) +: 32]; // Extract 32 bits for each bullet
+			bulletData = allBulletContents[(j*32) +: 32]; // Extract 32 bits for each bullet
 			bulletX = bulletData[31:22];
 			bulletY = bulletData[21:13];
 			activeFlag = bulletData[3];

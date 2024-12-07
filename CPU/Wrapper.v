@@ -79,7 +79,7 @@ module Wrapper (clk_100mhz, reset, JD, JC, hSync, vSync, VGA_R, VGA_G, VGA_B);
     wire [127:0] allSpriteContents;
 
 	// ADD YOUR MEMORY FILE HERE
-	localparam INSTR_FILE = "C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Test Files/Memory Files/project_test";
+	localparam INSTR_FILE = "C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Test Files/Memory Files/tank_shooter";
 	
 	// Main Processing Unit
 	processor CPU(.clock(clock), .reset(reset), 
@@ -185,7 +185,8 @@ module Wrapper (clk_100mhz, reset, JD, JC, hSync, vSync, VGA_R, VGA_G, VGA_B);
         .BTND(),      // Leave unconnected for now
         .JD(JD),       // Pass controller input to VGA Controller
         .JC(JC),
-		.allBulletContents(allBulletContents) // Pass all bullet contents to VGA Controller
+		.allBulletContents(allBulletContents), // Pass all bullet contents to VGA Controller
+        .allSpriteContents(allSpriteContents)  // Pass all sprite contents to VGA Controller
     );
 
 
