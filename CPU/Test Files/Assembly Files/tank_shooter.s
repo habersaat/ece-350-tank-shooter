@@ -720,14 +720,67 @@ bullet_update_y:
     addi $r16, $r0, 8
     and $r14, $r13, $r16        # Check UP bit (4th bit)
     bne $r14, $r0, bullet_move_up
-    j pack_bullet              # Skip to packing
+    j bullet_collsion_check              # Skip to collision check
 
 bullet_move_down:
     addi $r11, $r11, 1         # Increment y-coordinate
-    j pack_bullet
+    j bullet_collsion_check
 
 bullet_move_up:
     addi $r11, $r11, -1        # Decrement y-coordinate
+
+bullet_collsion_check:
+    # Check collision with Player 1
+    lw $r17, 0($r1)            # Load Player 1 x-coordinate
+    addi $r18, $r17, 64        # Calculate Player 1 x+64
+    blt $r10, $r17, check_p2_collision # If bullet x < sprite1_x, skip to Player 2 check
+    blt $r18, $r10, check_p2_collision # If bullet x > sprite1_x+64, skip to Player 2 check
+
+    lw $r17, 4($r1)            # Load Player 1 y-coordinate
+    addi $r18, $r17, 64        # Calculate Player 1 y+64
+    blt $r11, $r17, check_p2_collision # If bullet y < sprite1_y, skip to Player 2 check
+    blt $r18, $r11, check_p2_collision # If bullet y > sprite1_y+64, skip to Player 2 check
+
+    j handle_p1_collision      # If all conditions pass, handle Player 1 collision
+
+# Handle collision with Player 1
+handle_p1_collision:
+    # Deactivate bullet
+    addi $r9, $r0, 0           # Set active bit to 0
+
+    # Decrement Player 1 health
+    lw $r17, 0($r30)           # Load Player 1 health
+    addi $r17, $r17, -100      # Decrement health by 100
+    sw $r17, 0($r30)           # Store updated health back in HealthRAM
+    j pack_bullet              # Skip further checks and pack bullet
+
+# Check collision with Player 2
+check_p2_collision:
+    lw $r17, 8($r1)            # Load Player 2 x-coordinate
+    addi $r18, $r17, 64        # Calculate Player 2 x+64
+    blt $r10, $r17, skip_collision_checks # If bullet x < sprite2_x, skip collision checks
+    blt $r18, $r10, skip_collision_checks # If bullet x > sprite2_x+64, skip collision checks
+
+    lw $r17, 12($r1)           # Load Player 2 y-coordinate
+    addi $r18, $r17, 64        # Calculate Player 2 y+64
+    blt $r11, $r17, skip_collision_checks # If bullet y < sprite2_y, skip collision checks
+    blt $r18, $r11, skip_collision_checks # If bullet y > sprite2_y+64, skip collision checks
+
+    j handle_p2_collision      # If all conditions pass, handle Player 2 collision
+
+# Handle collision with Player 2
+handle_p2_collision:
+    # Deactivate bullet
+    addi $r9, $r0, 0           # Set active bit to 0
+
+    # Decrement Player 2 health
+    lw $r17, 4($r30)           # Load Player 2 health
+    addi $r17, $r17, -100      # Decrement health by 100
+    sw $r17, 4($r30)           # Store updated health back in HealthRAM
+    j pack_bullet              # Skip further checks and pack bullet
+
+# Skip collision checks if no match
+skip_collision_checks:
 
 pack_bullet:
     ##########################
