@@ -95,27 +95,25 @@ process_shooting:
 
 check_p1_shooting:
     # Player 1 Shooting (P1_CONTROLLER2)
-    lw $r20, 16($r4)            # Load P1_CONTROLLER2_DOWN into $r20
-    lw $r21, 20($r4)            # Load P1_CONTROLLER2_LEFT into $r21
-    lw $r22, 24($r4)            # Load P1_CONTROLLER2_RIGHT into $r22
-    lw $r23, 28($r4)            # Load P1_CONTROLLER2_UP into $r23
-
+    lw $r6, 16($r4)            # Load P1_CONTROLLER2_DOWN into $r6
     bne $r6, $r0, p1_shoot     # If active, branch to Player 1 shooting
+    lw $r6, 20($r4)            # Load P1_CONTROLLER2_LEFT into $r6
     bne $r6, $r0, p1_shoot     # If active, branch to Player 1 shooting
+    lw $r6, 24($r4)            # Load P1_CONTROLLER2_RIGHT into $r6
     bne $r6, $r0, p1_shoot     # If active, branch to Player 1 shooting
+    lw $r6, 28($r4)            # Load P1_CONTROLLER2_UP into $r6
     bne $r6, $r0, p1_shoot     # If active, branch to Player 1 shooting
 
 check_p2_shooting:
     # Player 2 Shooting (P2_CONTROLLER2)
-    lw $r20, 48($r4)            # Load P2_CONTROLLER2_DOWN into $r20
-    lw $r21, 52($r4)            # Load P2_CONTROLLER2_LEFT into $r21
-    lw $r22, 56($r4)            # Load P2_CONTROLLER2_RIGHT into $r22
-    lw $r23, 60($r4)            # Load P2_CONTROLLER2_UP into $r23
-
-    bne $r20, $r0, p2_shoot     # If active, branch to Player 2 shooting
-    bne $r21, $r0, p2_shoot     # If active, branch to Player 2 shooting
-    bne $r22, $r0, p2_shoot     # If active, branch to Player 2 shooting
-    bne $r23, $r0, p2_shoot     # If active, branch to Player 2 shooting
+    lw $r6, 48($r4)            # Load P2_CONTROLLER2_DOWN into $r6
+    bne $r6, $r0, p2_shoot     # If active, branch to Player 2 shooting
+    lw $r6, 52($r4)            # Load P2_CONTROLLER2_LEFT into $r6
+    bne $r6, $r0, p2_shoot     # If active, branch to Player 2 shooting
+    lw $r6, 56($r4)            # Load P2_CONTROLLER2_RIGHT into $r6
+    bne $r6, $r0, p2_shoot     # If active, branch to Player 2 shooting
+    lw $r6, 60($r4)            # Load P2_CONTROLLER2_UP into $r6
+    bne $r6, $r0, p2_shoot     # If active, branch to Player 2 shooting
 
     #########################
     # Bullet State Processing
@@ -257,28 +255,32 @@ p1_shoot:
     #############################
 
     # Check DOWN (1st bit)
-    bne $r20, $r0, p1_set_down_bit
+    lw $r6, 16($r4)          # Load P1_CONTROLLER2_DOWN into $r6
+    bne $r6, $r0, p1_set_down_bit
     j p1_check_right_bit        # Skip if not DOWN
 p1_set_down_bit:
     addi $r12, $r12, 1       # Set 1st bit (binary: 0001)
 
     # Check RIGHT (2nd bit)
 p1_check_right_bit:
-    bne $r21, $r0, p1_set_right_bit
+    lw $r6, 20($r4)          # Load P1_CONTROLLER2_RIGHT into $r6
+    bne $r6, $r0, p1_set_right_bit
     j p1_check_left_bit         # Skip if not RIGHT
 p1_set_right_bit:
     addi $r12, $r12, 2       # Set 2nd bit (binary: 0010)
 
     # Check LEFT (3rd bit)
 p1_check_left_bit:
-    bne $r22, $r0, p1_set_left_bit
+    lw $r6, 24($r4)          # Load P1_CONTROLLER2_LEFT into $r6
+    bne $r6, $r0, p1_set_left_bit
     j p1_check_up_bit           # Skip if not LEFT
 p1_set_left_bit:
     addi $r12, $r12, 4       # Set 3rd bit (binary: 0100)
 
     # Check UP (4th bit)
 p1_check_up_bit:
-    bne $r23, $r0, p1_set_up_bit
+    lw $r6, 28($r4)         # Load P1_CONTROLLER2_UP into $r6
+    bne $r6, $r0, p1_set_up_bit
     j p1_finalize_direction     # Skip if not UP
 p1_set_up_bit:
     addi $r12, $r12, 8       # Set 4th bit (binary: 1000)
@@ -340,28 +342,32 @@ p2_shoot:
     #############################
 
     # Check DOWN (1st bit)
-    bne $r20, $r0, p2_set_down_bit
+    lw $r6, 48($r4)          # Load P2_CONTROLLER2_DOWN into $r6
+    bne $r6, $r0, p2_set_down_bit
     j p2_check_right_bit        # Skip if not DOWN
 p2_set_down_bit:
     addi $r12, $r12, 1       # Set 1st bit (binary: 0001)
 
     # Check RIGHT (2nd bit)
 p2_check_right_bit:
-    bne $r21, $r0, p2_set_right_bit
+    lw $r6, 52($r4)          # Load P2_CONTROLLER2_RIGHT into $r6
+    bne $r6, $r0, p2_set_right_bit
     j p2_check_left_bit         # Skip if not RIGHT
 p2_set_right_bit:
     addi $r12, $r12, 2       # Set 2nd bit (binary: 0010)
 
     # Check LEFT (3rd bit)
 p2_check_left_bit:
-    bne $r22, $r0, p2_set_left_bit
+    lw $r6, 56($r4)          # Load P2_CONTROLLER2_LEFT into $r6
+    bne $r6, $r0, p2_set_left_bit
     j p2_check_up_bit           # Skip if not LEFT
 p2_set_left_bit:
     addi $r12, $r12, 4       # Set 3rd bit (binary: 0100)
 
     # Check UP (4th bit)
 p2_check_up_bit:
-    bne $r23, $r0, p2_set_up_bit
+    lw $r6, 60($r4)         # Load P2_CONTROLLER2_UP into $r6
+    bne $r6, $r0, p2_set_up_bit
     j p2_finalize_direction     # Skip if not UP
 p2_set_up_bit:
     addi $r12, $r12, 8       # Set 4th bit (binary: 1000)
