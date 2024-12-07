@@ -240,125 +240,8 @@ p1_shoot:
     # Set TTL = 64
     addi $r11, $r0, 64         # $r11 = TTL
 
-    # Initialize direction encoding to 0 (no direction)
-    addi $r12, $r0, 0  # $r12 holds the direction encoding for the bullet
-
-    #############################
-    # Check Up & Right (001)
-    #############################
-    lw $r6, 12($r4)    # Load P1_CONTROLLER2_UP into $r6
-    bne $r6, $r0, check_right  # If UP is active, check RIGHT
-    j check_up_left            # Otherwise, skip to next check
-
-check_right:
-    lw $r6, 4($r4)     # Load P1_CONTROLLER2_RIGHT into $r6
-    bne $r6, $r0, set_up_right # If RIGHT is active, set direction
-    j check_up_left            # Otherwise, skip to next check
-
-set_up_right:
-    addi $r12, $r0, 1  # Encoding for "Up & Right" = 001
-    j done_direction    # Jump to the end after assigning
-
-    #############################
-    # Check Up & Left (111)
-    #############################
-check_up_left:
-    lw $r6, 12($r4)    # Reload P1_CONTROLLER2_UP into $r6
-    bne $r6, $r0, check_down_right  # If UP is not active, skip to next section
-    lw $r6, 8($r4)     # Load P1_CONTROLLER2_LEFT into $r6
-    bne $r6, $r0, set_up_left       # If LEFT is active, set direction
-    j check_down_right              # Otherwise, skip to next section
-
-set_up_left:
-    addi $r12, $r0, 7  # Encoding for "Up & Left" = 111
-    j done_direction    # Jump to the end after assigning
-
-    #############################
-    # Check Down & Right (011)
-    #############################
-check_down_right:
-    lw $r6, 0($r4)     # Load P1_CONTROLLER2_DOWN into $r6
-    bne $r6, $r0, check_down_left   # If DOWN is active, check RIGHT
-    j check_down_left               # Otherwise, skip to next check
-
-check_down_right_final:
-    lw $r6, 4($r4)     # Load P1_CONTROLLER2_RIGHT into $r6
-    bne $r6, $r0, set_down_right    # If RIGHT is active, set direction
-    j check_down_left               # Otherwise, skip to next check
-
-set_down_right:
-    addi $r12, $r0, 3  # Encoding for "Down & Right" = 011
-    j done_direction    # Jump to the end after assigning
-
-    #############################
-    # Check Down & Left (101)
-    #############################
-check_down_left:
-    lw $r6, 0($r4)     # Reload P1_CONTROLLER2_DOWN into $r6
-    bne $r6, $r0, check_left        # If DOWN is active, check LEFT
-    j check_left                   # Otherwise, skip to next check
-
-check_down_left_final:
-    lw $r6, 8($r4)     # Load P1_CONTROLLER2_LEFT into $r6
-    bne $r6, $r0, set_down_left     # If LEFT is active, set direction
-    j check_left                   # Otherwise, skip to next check
-
-set_down_left:
-    addi $r12, $r0, 5  # Encoding for "Down & Left" = 101
-    j done_direction    # Jump to the end after assigning
-
-    #############################
-    # Check Up (000)
-    #############################
-check_up:
-    lw $r6, 12($r4)    # Reload P1_CONTROLLER2_UP into $r6
-    bne $r6, $r0, set_up # If UP is active, set direction
-    j check_down         # Otherwise, skip to next check
-
-set_up:
-    addi $r12, $r0, 0  # Encoding for "Up" = 000
-    j done_direction    # Jump to the end after assigning
-
-    #############################
-    # Check Down (100)
-    #############################
-check_down:
-    lw $r6, 0($r4)     # Reload P1_CONTROLLER2_DOWN into $r6
-    bne $r6, $r0, set_down # If DOWN is active, set direction
-    j check_left         # Otherwise, skip to next check
-
-set_down:
-    addi $r12, $r0, 4  # Encoding for "Down" = 100
-    j done_direction    # Jump to the end after assigning
-
-    #############################
-    # Check Left (110)
-    #############################
-check_left:
-    lw $r6, 8($r4)     # Reload P1_CONTROLLER2_LEFT into $r6
-    bne $r6, $r0, set_left # If LEFT is active, set direction
-    j check_right       # Otherwise, skip to next check
-
-set_left:
-    addi $r12, $r0, 6  # Encoding for "Left" = 110
-    j done_direction    # Jump to the end after assigning
-
-    #############################
-    # Check Right (010)
-    #############################
-check_right_final:
-    lw $r6, 4($r4)     # Reload P1_CONTROLLER2_RIGHT into $r6
-    bne $r6, $r0, set_right # If RIGHT is active, set direction
-    j done_direction       # Otherwise, skip to the end
-
-set_right:
-    addi $r12, $r0, 2  # Encoding for "Right" = 010
-    j done_direction    # Jump to the end after assigning
-
-    #############################
-    # Done Determining Direction
-    #############################
-done_direction:
+    # Set direction (Assume direction is always up for simplicity)
+    addi $r12, $r0, 0          # $r12 = direction (000 = up)
 
     # Set active bit
     addi $r13, $r0, 1          # $r13 = active
@@ -368,11 +251,11 @@ done_direction:
     or $r14, $r14, $r10        # Combine x and y
     sll $r14, $r14, 6          # Shift left by 6 bits for TTL
     or $r14, $r14, $r11        # Combine TTL
-    sll $r14, $r14, 3          # Shift left by 3 bits for direction
+    sll $r14, $r14, 4          # Shift left by 4 bits for direction
     or $r14, $r14, $r12        # Combine direction
     sll $r14, $r14, 1          # Shift left by 1 bit for active
     or $r14, $r14, $r13        # Combine active
-    sll $r14, $r14, 3          # Add 3 bits of padding at the least significant end
+    sll $r14, $r14, 2          # Add 2 bits of padding at the least significant end
 
     # Store packed bullet data into BulletRAM
     add $r15, $r3, $r5         # Calculate address for BulletRAM[$r5]
@@ -405,11 +288,11 @@ p2_shoot:
     or $r14, $r14, $r10        # Combine x and y
     sll $r14, $r14, 6          # Shift left by 6 bits for TTL
     or $r14, $r14, $r11        # Combine TTL
-    sll $r14, $r14, 3          # Shift left by 3 bits for direction
+    sll $r14, $r14, 4          # Shift left by 4 bits for direction
     or $r14, $r14, $r12        # Combine direction
     sll $r14, $r14, 1          # Shift left by 1 bit for active
     or $r14, $r14, $r13        # Combine active
-    sll $r14, $r14, 3          # Add 3 bits of padding at the least significant end
+    sll $r14, $r14, 2          # Add 2 bits of padding at the least significant end
 
     # Store packed bullet data into BulletRAM
     add $r15, $r3, $r5         # Calculate address for BulletRAM[$r5]
