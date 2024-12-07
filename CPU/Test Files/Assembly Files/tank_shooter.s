@@ -115,6 +115,13 @@ check_p2_shooting:
     lw $r6, 60($r4)            # Load P2_CONTROLLER2_UP into $r6
     bne $r6, $r0, p2_shoot     # If active, branch to Player 2 shooting
 
+    #########################
+    # Bullet State Processing
+    #########################
+
+bullet_state_updates:
+    j process_bullets
+
 temp_label:
     # Sleep to slow down execution
     j sleep                    # Jump to sleep before looping back
@@ -401,7 +408,123 @@ p2_finalize_direction:
     # Increment bullet index
     addi $r5, $r5, 1           # Move to the next bullet index
 
-    j temp_label               # Move to next label
+    j bullet_state_updates     # Move to next label
+
+process_bullets:
+    addi $r6, $r0, 0           # Initialize bullet index in $r6
+
+bullet_loop:
+    # Calculate current bullet address
+    add $r7, $r3, $r6          # $r7 = BulletRAM[$r6]
+
+    # Load bullet data
+    lw $r8, 0($r7)             # Load bullet data into $r8
+
+    # Check if bullet is active
+    sra $r9, $r8, 2            # Shift right to isolate the active bit (3rd LSB)
+    addi $r16, $r0, 1
+    and $r9, $r9, $16          # Isolate the active bit
+    bne $r9, $r0, process_active_bullet # Process if active
+    j next_bullet              # Skip processing if inactive
+
+process_active_bullet:
+    # Extract x-coordinate (10 bits)
+    sra $r10, $r8, 22          # Shift right to isolate x-coordinate
+    addi $r16, $r0, 1023
+    and $r10, $r10, $r16       # Mask x-coordinate (10 bits)
+
+    # Extract y-coordinate (9 bits)
+    sra $r11, $r8, 13          # Shift right to isolate y-coordinate
+    addi $r16, $r0, 511
+    and $r11, $r11, $r16       # Mask y-coordinate (9 bits)
+
+    # Extract TTL (6 bits)
+    sra $r12, $r8, 7           # Shift right to isolate TTL
+    addi $r16, $r0, 63
+    and $r12, $r12, $r16       # Mask TTL (6 bits)
+
+    # Extract direction (4 bits)
+    sra $r13, $r8, 3           # Shift right to isolate direction
+    addi $r16, $r0, 15
+    and $r13, $r13, $16        # Mask direction (4 bits)
+
+    ##########################
+    # Update TTL and Check if Bullet Should Be Deactivated
+    ##########################
+    addi $r12, $r12, 0        # Decrement TTL TODO TODO TODO TODO TODO TODO TODO
+    # blt $r12, $r0, deactivate_bullet # If TTL < 0, deactivate bullet
+
+    ##########################
+    # Update Coordinates Based on Direction
+    ##########################
+
+    # Update x-coordinate
+    addi $r16, $r0, 2
+    and $r14, $r13, $r16       # Check RIGHT bit (2nd bit)
+    bne $r14, $r0, bullet_move_right
+
+    addi $r16, $r0, 4
+    and $r14, $r13, $r16        # Check LEFT bit (3rd bit)
+    bne $r14, $r0, bullet_move_left
+    j bullet_update_y                 # Skip to y-coordinate update
+
+bullet_move_right:
+    addi $r10, $r10, 1         # Increment x-coordinate
+    j bullet_update_y
+
+bullet_move_left:
+    addi $r10, $r10, -1        # Decrement x-coordinate
+
+bullet_update_y:
+    # Update y-coordinate
+    addi $r16, $r0, 1
+    and $r14, $r13, $r16       # Check DOWN bit (1st bit)
+    bne $r14, $r0, bullet_move_down
+
+    addi $r16, $r0, 8
+    and $r14, $r13, $r16        # Check UP bit (4th bit)
+    bne $r14, $r0, bullet_move_up
+    j pack_bullet              # Skip to packing
+
+bullet_move_down:
+    addi $r11, $r11, 1         # Increment y-coordinate
+    j pack_bullet
+
+bullet_move_up:
+    addi $r11, $r11, -1        # Decrement y-coordinate
+
+pack_bullet:
+    ##########################
+    # Repack Bullet Data
+    ##########################
+    sll $r8, $r10, 9           # Shift x-coordinate 9 bits for y-coordinate
+    or $r8, $r8, $r11          # Combine with y-coordinate
+    sll $r8, $r8, 6            # Shift left 6 bits for TTL
+    or $r8, $r8, $r12          # Combine with TTL
+    sll $r8, $r8, 4            # Shift left for direction
+    or $r8, $r8, $r13          # Combine with direction
+    sll $r8, $r8, 1            # Shift left for active bit
+    or $r8, $r8, $r9           # Combine active bit
+    sll $r8, $r8, 2            # Add 2 bits of padding at the least significant end
+
+    # Store updated bullet data
+    sw $r8, 0($r7)
+    j next_bullet
+
+deactivate_bullet:
+    # Write all 0s to deactivate the bullet
+    sw $r0, 0($r7)             # Store 0 to clear the bullet entry
+    j next_bullet              # Move to the next bullet
+
+next_bullet:
+    addi $r6, $r6, 1           # Increment bullet index
+    addi $r14, $r0, 64         # Max number of bullets
+    blt $r6, $r14, bullet_loop # Loop until all bullets processed
+
+    # Return to main loop
+    j temp_label
+
+
 
 
     #############################
