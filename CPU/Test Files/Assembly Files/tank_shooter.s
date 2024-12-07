@@ -39,6 +39,18 @@ _start:
     addi $r5, $r0, 0           # $r5 tracks the current index in BulletRAM
 
 loop:
+    ########################
+    #  Update Game Time    #
+    ########################
+    addi $r18, $r0, 1000      # Load game time address
+    lw $r20, 0($r18)          # Load game time into $r20
+    addi $r20, $r20, 1        # Increment game time by 1
+    addi $r19, $r0, 1001      # Load the reset threshold (1001)
+    blt $r20, $r19, skip_gametime_reset # If game time < 1001, skip reset
+    addi $r20, $r0, 0         # Reset game time to 0
+
+skip_gametime_reset:
+    sw $r20, 0($r18)          # Save updated game time back to memory
 
     ########################
     #  Update Cooldowns    #
@@ -504,21 +516,24 @@ process_active_bullet:
     and $r13, $r13, $16        # Mask direction (4 bits)
 
     ##########################
+    # Update TTL Every 1000 Game Ticks
+    ##########################
+    
+    # Load the game time
+    addi $r18, $r0, 1000      # Game time memory address
+    lw $r20, 0($r18)          # Load game time into $r20
+    
+    # Check if game time is 1000
+    addi $r19, $r0, 1000      # Compare against 1000
+    bne $r20, $r19, skip_ttl_update # If game time != 1000, skip TTL update
+    
+    ##########################
     # Update TTL and Check if Bullet Should Be Deactivated
     ##########################
-
-sleep2:
-    addi $r26, $r0, 0           # Initialize counter in $r6
-    addi $r27, $r0, 32768       # Load dely value into $r7
-
-sleep_loop2:
-    addi $r26, $r26, 1           # Increment counter
-    bne $r26, $r27, sleep_loop2   # Loop until counter reaches delay
-
-
-
     addi $r12, $r12, -1                 # Decrement TTL
     blt $r12, $r0, deactivate_bullet    # If TTL < 0, deactivate bullet
+
+skip_ttl_update:
 
     ##########################
     # Update Coordinates Based on Direction
