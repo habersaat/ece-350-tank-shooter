@@ -69,6 +69,15 @@ module Wrapper (clk_100mhz, reset, JD, JC, hSync, vSync, VGA_R, VGA_G, VGA_B);
     wire [5:0] bulletRamAddress = memAddr[7:2]; // Use bits [7:2] for 64 entries
     wire [2047:0] allBulletContents;
 
+    // SpriteRAM Signals
+    wire [31:0] spriteRamDataOut;
+    wire spriteRamAccess = (memAddr[31:16] == 16'h5000); // SpriteRAM range: 0x5000_0000 - 0x5000_00FF
+    wire [31:0] spriteRamDataIn = memDataIn;
+    wire spriteRamWriteEnable = mwe && spriteRamAccess;
+    wire spriteRamReadEnable = ~mwe && spriteRamAccess;
+    wire [1:0] spriteRamAddress = memAddr[3:2]; // Use bits [3:2] for 4 entries
+    wire [127:0] allSpriteContents;
+
 	// ADD YOUR MEMORY FILE HERE
 	localparam INSTR_FILE = "C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Test Files/Memory Files/project_test";
 	
@@ -88,7 +97,9 @@ module Wrapper (clk_100mhz, reset, JD, JC, hSync, vSync, VGA_R, VGA_G, VGA_B);
 		.address_dmem(memAddr), 
 		.data(memDataIn), 
 		.q_dmem(mmioAccess ? mmioDataOut : 
-                (bulletRamAccess ? bulletRamDataOut : ramDataOut)) // Select data from MMIO, BulletRAM, or RAM
+                bulletRamAccess ? bulletRamDataOut : 
+                spriteRamAccess ? spriteRamDataOut: 
+                ramDataOut) // Select data from MMIO, BulletRAM, or RAM
     );
 	
 	// Instruction Memory (ROM)
@@ -123,6 +134,21 @@ module Wrapper (clk_100mhz, reset, JD, JC, hSync, vSync, VGA_R, VGA_G, VGA_B);
         .readData(mmioDataOut),         // Data read from MMIO
         .JD(JD),                        // Controller input JD
         .JC(JC)                         // Controller input JC
+    );
+
+    // SpriteRAM Module
+    SpriteRAM #(
+        .DATA_WIDTH(32),
+        .ADDRESS_WIDTH(2),
+        .DEPTH(4)
+    ) SpriteRAMInstance (
+        .clk(clock),
+        .wEn(spriteRamWriteEnable), // Write enable for SpriteRAM
+        .readEn(spriteRamReadEnable), // Read enable for SpriteRAM
+        .addr(spriteRamAddress),    // Address for SpriteRAM
+        .dataIn(spriteRamDataIn),   // Data to write into SpriteRAM
+        .dataOut(spriteRamDataOut), // Data read from SpriteRAM
+        .allContents(allSpriteContents) // 128-bit output with all contents
     );
 
 	// BulletRAM Module

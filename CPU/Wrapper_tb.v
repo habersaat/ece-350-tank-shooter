@@ -101,8 +101,10 @@ module Wrapper_tb #(parameter FILE = "bullet_test_advanced");
         // RAM
         .wren(mwe), .address_dmem(memAddr), 
         .data(memDataIn), .q_dmem(mmioAccess ? mmioDataOut : 
-                (bulletRamAccess ? bulletRamDataOut : ramDataOut)),
-
+                                  bulletRamAccess ? bulletRamDataOut :
+                                  spriteRamAccess ? spriteRamDataOut :
+                                  ramDataOut),
+                                  
         // Debug ports connected
         .pc_counter_debug(pc_counter_debug),
         .pc_instruction_debug(pc_instruction_debug),
@@ -126,6 +128,15 @@ module Wrapper_tb #(parameter FILE = "bullet_test_advanced");
     wire bulletRamWriteEnable = mwe && bulletRamAccess;
     wire bulletRamReadEnable = ~mwe && bulletRamAccess;
     wire [5:0] bulletRamAddress = memAddr[7:2]; // Use bits [7:2] for 64 entries
+
+    // SpriteRAM Signals
+    wire [31:0] spriteRamDataOut;
+    wire spriteRamAccess = (memAddr[31:16] == 16'h5000); // SpriteRAM range: 0x5000_0000 - 0x5000_00FF
+    wire [31:0] spriteRamDataIn = memDataIn;
+    wire spriteRamWriteEnable = mwe && spriteRamAccess;
+    wire spriteRamReadEnable = ~mwe && spriteRamAccess;
+    wire [1:0] spriteRamAddress = memAddr[3:2]; // Use bits [3:2] for 4 entries
+    wire [127:0] allSpriteContents;
     
     // Instruction Memory (ROM)
     ROM #(.MEMFILE({DIR, MEM_DIR, FILE, ".mem"}))
@@ -176,6 +187,21 @@ module Wrapper_tb #(parameter FILE = "bullet_test_advanced");
         .dataIn(bulletRamDataIn),   // Data to write into BulletRAM
         .dataOut(bulletRamDataOut),  // Data read from BulletRAM
         .allContents(allBulletContents)    // 2048-bit output with all contents
+    );
+
+    // SpriteRAM Module
+    SpriteRAM #(
+        .DATA_WIDTH(32),
+        .ADDRESS_WIDTH(2),
+        .DEPTH(4)
+    ) SpriteRAMInstance (
+        .clk(clock),
+        .wEn(spriteRamWriteEnable), // Write enable for SpriteRAM
+        .readEn(spriteRamReadEnable), // Read enable for SpriteRAM
+        .addr(spriteRamAddress),    // Address for SpriteRAM
+        .dataIn(spriteRamDataIn),   // Data to write into SpriteRAM
+        .dataOut(spriteRamDataOut), // Data read from SpriteRAM
+        .allContents(allSpriteContents) // 128-bit output with all contents
     );
 
     // VGA Controller

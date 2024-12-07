@@ -49,3 +49,4 @@ BulletRAM.v
 VGAController.v
 VGATimingGenerator.v
 VRAM.v
+SpriteRAM.v
