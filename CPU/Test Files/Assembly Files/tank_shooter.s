@@ -67,7 +67,8 @@ loop:
     lw $r4, 36($r3)            # Load P2_CONTROLLER1_RIGHT into $r4
     bne $r4, $r0, p2_move_right # If P2_CONTROLLER1_RIGHT is active, move sprite2 right
 
-    j loop                     # Loop back to check inputs again
+    # Sleep to slow down execution
+    j sleep                    # Jump to sleep before looping back
 
     #############################
     # Player 1 Movement Handlers
@@ -122,3 +123,14 @@ p2_move_right:
     addi $r5, $r5, 1           # Increment x-coordinate
     sw $r5, 8($r1)             # Store updated x back to SpriteMem[2]
     j loop
+
+    #############################
+    # Sleep Section
+    #############################
+sleep:
+    addi $r6, $r0, 0           # Initialize counter in $r6
+sleep_loop:
+    addi $r6, $r6, 1           # Increment counter
+    addi $r7, $r0, 1000        # Load delay value into $r7
+    bne $r6, $r7, sleep_loop   # Loop until counter reaches 1000
+    j loop                     # Return to main loop
