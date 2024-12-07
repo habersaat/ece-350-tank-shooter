@@ -39,16 +39,6 @@ _start:
     addi $r5, $r0, 0           # $r5 tracks the current index in BulletRAM
 
 loop:
-
-    ########################
-    # Update Game Time     #
-    ########################
-
-    addi $r18, $r0, 1000          # Address for game time
-    lw $r20, 0($r18)              # Load game time into $r20
-    addi $r20, $r20, 1            # Increment game time by 1
-    sw $r20, 0($r18)              # Save updated game time back to memory``
-
     ########################
     #  Update Cooldowns    #
     ########################
@@ -513,24 +503,10 @@ process_active_bullet:
     and $r13, $r13, $16        # Mask direction (4 bits)
 
     ##########################
-    # Update TTL Every 10 Frames
-    ##########################
-
-    # Check if game time is a multiple of 10
-    addi $r18, $r0, 1000          # Address for game time
-    lw $r20, 0($r18)              # Load game time into $r20
-    div $r22, $r20, 10            # Divide game time by 10 to get the quotient
-    mul $r22, $r22, 10            # Multiply quotient back by 10 to calculate `game_time // 10 * 10`
-    sub $r22, $r20, $r22          # Subtract to get the remainder (game_time % 10)
-    bne $r22, $r0, skip_ttl_update # If remainder is not 0, skip TTL update
-
-    ##########################
     # Update TTL and Check if Bullet Should Be Deactivated
     ##########################
     addi $r12, $r12, -1                 # Decrement TTL
     blt $r12, $r0, deactivate_bullet    # If TTL < 0, deactivate bullet
-
-skip_ttl_update:
 
     ##########################
     # Update Coordinates Based on Direction
