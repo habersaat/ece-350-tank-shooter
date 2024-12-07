@@ -380,6 +380,15 @@ p1_finalize_direction:
     j p1_direction_finalized
 
 p1_skip_down_right_adjustment:
+    # If direction is DOWN + LEFT, (x-14, y+66)
+    addi $r6, $r0, 5
+    bne $r12, $r6, p1_skip_down_left_adjustment
+    addi $r9, $r9, -14          # Decrement x by 14
+    addi $r10, $r10, 66         # Increment y by 66
+    j p1_direction_finalized
+
+p1_skip_down_left_adjustment:
+
 
 
 p1_direction_finalized:
