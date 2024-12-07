@@ -321,6 +321,15 @@ p1_finalize_direction:
     # Increment bullet index
     addi $r5, $r5, 1           # Move to the next bullet index
 
+sleep2:
+    addi $r6, $r0, 0           # Initialize counter in $r6
+    addi $r7, $r0, 32768       # Load dely value into $r7
+
+sleep_loop2:
+    addi $r6, $r6, 1           # Increment counter
+    bne $r6, $r7, sleep_loop2   # Loop until counter reaches delay
+    # DONE
+
     j check_p2_shooting        # Move to p2 shooting
 
     #############################
