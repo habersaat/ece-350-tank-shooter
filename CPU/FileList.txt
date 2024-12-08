@@ -51,3 +51,4 @@ VGATimingGenerator.v
 VRAM.v
 SpriteRAM.v
 HealthRAM.v
+ArenaRAM.v

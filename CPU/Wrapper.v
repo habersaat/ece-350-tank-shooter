@@ -87,6 +87,14 @@ module Wrapper (clk_100mhz, reset, JD, JC, hSync, vSync, VGA_R, VGA_G, VGA_B);
     wire [0:0] healthRamAddress = memAddr[2]; // Use bit [2] for 2 entries
     wire [63:0] allHealthContents;
 
+    // ArenaRAM Signals
+    wire [31:0] arenaRamDataOut;
+    wire arenaRamAccess = (memAddr[31:16] == 16'h7000); // ArenaRAM range: 0x7000_0000 - 0x7000_03FF
+    wire [31:0] arenaRamDataIn = memDataIn;
+    wire arenaRamWriteEnable = mwe && arenaRamAccess;
+    wire arenaRamReadEnable = ~mwe && arenaRamAccess;
+    wire [9:0] arenaRamAddress = memAddr[11:2]; // Use bits [11:2] for 1024 entries
+
 
 	// ADD YOUR MEMORY FILE HERE
 	localparam INSTR_FILE = "C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Test Files/Memory Files/tank_shooter";
@@ -107,10 +115,11 @@ module Wrapper (clk_100mhz, reset, JD, JC, hSync, vSync, VGA_R, VGA_G, VGA_B);
 		.address_dmem(memAddr), 
 		.data(memDataIn), 
 		.q_dmem(mmioAccess ? mmioDataOut : 
-                bulletRamAccess ? bulletRamDataOut : 
-                spriteRamAccess ? spriteRamDataOut :
-                healthRamAccess ? healthRamDataOut :
-                ramDataOut) // Select data from MMIO, BulletRAM, SpriteRAM, HealthRAM, or RAM
+            bulletRamAccess ? bulletRamDataOut : 
+            spriteRamAccess ? spriteRamDataOut :
+            healthRamAccess ? healthRamDataOut :
+            arenaRamAccess ? arenaRamDataOut :
+            ramDataOut) // Select data from MMIO, BulletRAM, SpriteRAM, HealthRAM, ArenaRAM, or RAM
     );
 	
 	// Instruction Memory (ROM)
@@ -190,6 +199,20 @@ module Wrapper (clk_100mhz, reset, JD, JC, hSync, vSync, VGA_R, VGA_G, VGA_B);
         .dataIn(healthRamDataIn),   // Data to write into HealthRAM
         .dataOut(healthRamDataOut), // Data read from HealthRAM
         .allContents(allHealthContents) // 64-bit output with all contents
+    );
+
+    // ArenaRAM Module
+    ArenaRAM #(
+        .DATA_WIDTH(32),
+        .ADDRESS_WIDTH(10),
+        .DEPTH(1024)
+    ) ArenaRAMInstance (
+        .clk(clock),
+        .wEn(arenaRamWriteEnable),    // Write enable for ArenaRAM
+        .readEn(arenaRamReadEnable),  // Read enable for ArenaRAM
+        .addr(arenaRamAddress),       // Address for ArenaRAM
+        .dataIn(arenaRamDataIn),      // Data to write into ArenaRAM
+        .dataOut(arenaRamDataOut)     // Data read from ArenaRAM
     );
 
 	// VGA Controller

@@ -106,7 +106,8 @@ module Wrapper_tb #(parameter FILE = "bullet_test_advanced");
                 bulletRamAccess ? bulletRamDataOut : 
                 spriteRamAccess ? spriteRamDataOut :
                 healthRamAccess ? healthRamDataOut :
-                ramDataOut), // Select data from MMIO, BulletRAM, SpriteRAM, HealthRAM, or RAM
+                arenaRamAccess ? arenaRamDataOut :
+                ramDataOut), // Select data from MMIO, BulletRAM, SpriteRAM, HealthRAM, ArenaRAM, or RAM
                 
         // Debug ports connected
         .pc_counter_debug(pc_counter_debug),
@@ -149,6 +150,14 @@ module Wrapper_tb #(parameter FILE = "bullet_test_advanced");
     wire healthRamReadEnable = ~mwe && healthRamAccess;
     wire [0:0] healthRamAddress = memAddr[2]; // Use bit [2] for 2 entries
     wire [63:0] allHealthContents;
+
+    // ArenaRAM Signals
+    wire [31:0] arenaRamDataOut;
+    wire arenaRamAccess = (memAddr[31:16] == 16'h7000); // ArenaRAM range: 0x7000_0000 - 0x7000_03FF
+    wire [31:0] arenaRamDataIn = memDataIn;
+    wire arenaRamWriteEnable = mwe && arenaRamAccess;
+    wire arenaRamReadEnable = ~mwe && arenaRamAccess;
+    wire [9:0] arenaRamAddress = memAddr[11:2]; // Use bits [11:2] for 1024 entries
     
     // Instruction Memory (ROM)
     ROM #(.MEMFILE({DIR, MEM_DIR, FILE, ".mem"}))
@@ -229,6 +238,20 @@ module Wrapper_tb #(parameter FILE = "bullet_test_advanced");
         .dataIn(healthRamDataIn),   // Data to write into HealthRAM
         .dataOut(healthRamDataOut), // Data read from HealthRAM
         .allContents(allHealthContents) // 64-bit output with all contents
+    );
+
+    // ArenaRAM Module
+    ArenaRAM #(
+        .DATA_WIDTH(32),
+        .ADDRESS_WIDTH(10),
+        .DEPTH(1024)
+    ) ArenaRAMInstance (
+        .clk(clock),
+        .wEn(arenaRamWriteEnable),    // Write enable for ArenaRAM
+        .readEn(arenaRamReadEnable),  // Read enable for ArenaRAM
+        .addr(arenaRamAddress),       // Address for ArenaRAM
+        .dataIn(arenaRamDataIn),      // Data to write into ArenaRAM
+        .dataOut(arenaRamDataOut)     // Data read from ArenaRAM
     );
 
     // VGA Controller
