@@ -1030,7 +1030,7 @@ arena_collision_check:
     addi $r17, $r28, 0         # ArenaRAM base address (stored in $r28)
 
 collision_loop:
-    addi $r18, $r0, 5              # Total number of ArenaRAM entries
+    addi $r18, $r0, 1250              # Total number of ArenaRAM entries
     blt $r16, $r18, load_arena_pixel  # Continue loop if index < 1250
     j arena_collisions_handled        # Exit loop if no collision
 
@@ -1043,38 +1043,28 @@ load_arena_pixel:
     and $r22, $r19, $r21       # Extract y-coordinate
 
     # Check for x-axis overlap
-    addi $r23, $r10, 12        # Bullet's x-coordinate + width (12)
-    blt $r23, $r20, check_y_collision  # Bullet is left of pixel
-    blt $r20, $r10, check_y_collision  # Bullet is right of pixel
+    addi $r23, $r10, 12                 # Bullet's x-coordinate + width (12)
+    blt $r23, $r20, make_bullet_hidden  # Bullet is left of pixel
+    blt $r20, $r10, make_bullet_hidden  # Bullet is right of pixel
 
-    # Reflect in the horizontal direction
-    j reflect_horizontal
-
-check_y_collision:
     # Check for y-axis overlap
-    addi $r23, $r11, 12        # Bullet's y-coordinate + height (12)
-    blt $r23, $r22, finalize_reflection  # Bullet is above pixel
-    blt $r22, $r11, finalize_reflection  # Bullet is below pixel
+    addi $r23, $r11, 12                  # Bullet's y-coordinate + height (12)
+    blt $r23, $r22, make_bullet_hidden  # Bullet is above pixel
+    blt $r22, $r11, make_bullet_hidden  # Bullet is below pixel
 
-    # Reflect in the vertical direction
-    j reflect_vertical
+    j increment_arena_pixel
 
-reflect_horizontal:
+make_bullet_hidden:
     addi $r9, $r0, 0
-    j check_y_collision        # Continue to check vertical collision
+    j arena_collisions_handled
 
-reflect_vertical:
-    addi $r9, $r0, 0
-    j finalize_reflection
-
-finalize_reflection:
+increment_arena_pixel:
     # Increment ArenaRAM index and continue checking
     addi $r16, $r16, 1         # Increment ArenaRAM index
     addi $r17, $r17, 4         # Move to next ArenaRAM entry
     j collision_loop           # Continue checking for collisions
 
 arena_collisions_handled:
-
 
 
 
