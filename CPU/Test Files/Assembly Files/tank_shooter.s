@@ -1011,11 +1011,11 @@ bullet_update_y:
     addi $r16, $r0, 8
     and $r14, $r13, $r16        # Check UP bit (4th bit)
     bne $r14, $r0, bullet_move_up
-    j bullet_collsion_check              # Skip to collision check
+    j arena_collision_check              # Skip to arena collision check
 
 bullet_move_down:
     addi $r11, $r11, 1         # Increment y-coordinate
-    j bullet_collsion_check
+    j arena_collision_check
 
 bullet_move_up:
     addi $r11, $r11, -1        # Decrement y-coordinate
@@ -1024,7 +1024,7 @@ bullet_move_up:
 
 
 
-bullet_collision_check:
+arena_collision_check:
     # Initialize ArenaRAM index and base address
     addi $r16, $r0, 0          # ArenaRAM index
     addi $r17, $r28, 0         # ArenaRAM base address (stored in $r28)
