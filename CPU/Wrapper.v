@@ -94,7 +94,6 @@ module Wrapper (clk_100mhz, reset, JD, JC, hSync, vSync, VGA_R, VGA_G, VGA_B);
     wire arenaRamWriteEnable = mwe && arenaRamAccess;
     wire arenaRamReadEnable = ~mwe && arenaRamAccess;
     wire [9:0] arenaRamAddress = memAddr[11:2]; // Use bits [11:2] for 1024 entries
-    wire [32767:0] allArenaContents;
 
 
 	// ADD YOUR MEMORY FILE HERE
@@ -214,8 +213,7 @@ module Wrapper (clk_100mhz, reset, JD, JC, hSync, vSync, VGA_R, VGA_G, VGA_B);
         .readEn(arenaRamReadEnable), // Read enable for ArenaRAM
         .addr(arenaRamAddress),     // Address for ArenaRAM
         .dataIn(arenaRamDataIn),    // Data to write into ArenaRAM
-        .dataOut(arenaRamDataOut),   // Data read from ArenaRAM
-        .allContents(allArenaContents) // 32768-bit output with all contents
+        .dataOut(arenaRamDataOut)   // Data read from ArenaRAM
     );
 
 	// VGA Controller
@@ -239,8 +237,7 @@ module Wrapper (clk_100mhz, reset, JD, JC, hSync, vSync, VGA_R, VGA_G, VGA_B);
         .JC(JC),
 		.allBulletContents(allBulletContents), // Pass all bullet contents to VGA Controller
         .allSpriteContents(allSpriteContents),  // Pass all sprite contents to VGA Controller
-        .allHealthContents(allHealthContents),   // Pass all health contents to VGA Controller
-        .allArenaContents(allArenaContents)     // Pass all arena contents to VGA Controller
+        .allHealthContents(allHealthContents)   // Pass all health contents to VGA Controller
     );
 
 

@@ -10,8 +10,7 @@ module ArenaRAM #(
     input wire                     readEn,
     input wire [ADDRESS_WIDTH-1:0] addr,
     input wire [DATA_WIDTH-1:0]    dataIn,
-    output reg [DATA_WIDTH-1:0]    dataOut,
-    output wire [DATA_WIDTH*DEPTH-1:0] allContents // Wire for all memory contents
+    output reg [DATA_WIDTH-1:0]    dataOut
 );
     // Define the memory array
     reg [DATA_WIDTH-1:0] MemoryArray[0:DEPTH-1];
@@ -32,12 +31,4 @@ module ArenaRAM #(
             dataOut <= MemoryArray[addr]; // Read data from memory
         end
     end
-
-    // Concatenate all memory contents into the allContents wire
-    generate
-        genvar i;
-        for (i = 0; i < DEPTH; i = i + 1) begin
-            assign allContents[(i+1)*DATA_WIDTH-1:i*DATA_WIDTH] = MemoryArray[i];
-        end
-    endgenerate
 endmodule
