@@ -1035,25 +1035,10 @@ collision_loop:
 load_arena_pixel:
     lw $r19, 0($r17)           # Load ArenaRAM[$r16] into $r19
 
-    # Extract x and y coordinates of the arena pixel
-    sra $r20, $r19, 9          # Extract x-coordinate (upper 23 bits)
-    addi $r21, $r0, 511        # Mask for y-coordinate (lower 9 bits)
-    and $r22, $r19, $r21       # Extract y-coordinate
-
-    # Check for x-axis overlap
-    addi $r23, $r10, 12                    # Bullet's x-coordinate + width (12)
-    blt $r23, $r20, increment_arena_pixel  # Bullet is left of pixel
-    blt $r20, $r10, increment_arena_pixel  # Bullet is right of pixel
-
-    # Check for y-axis overlap
-    addi $r23, $r11, 12                    # Bullet's y-coordinate + height (12)
-    blt $r23, $r22, increment_arena_pixel  # Bullet is above pixel
-    blt $r22, $r11, increment_arena_pixel  # Bullet is below pixel
-
-    j make_bullet_hidden
+    j increment_arena_pixel     # Continue to next pixel
 
 make_bullet_hidden:
-    # addi $r9, $r0, 0          # deactivate bullet
+    addi $r9, $r0, 0          # deactivate bullet
     j pack_bullet 
 
 increment_arena_pixel:
