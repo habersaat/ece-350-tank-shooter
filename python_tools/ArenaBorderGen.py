@@ -17,7 +17,7 @@ def generate_arena_ram_mem(image_path, mem_output_path, image_output_path):
     for y in range(height):
         for x in range(width):
             r, g, b = img.getpixel((x, y))
-            if r > 200 and g < 15 and b < 15:  # Check if the pixel is red (ff0000)
+            if r == 255 and g == 255 and b == 255:  # Check if the pixel is red (ff0000)
                 red_pixel_count += 1
 
                 # Encode the (x, y) position into a 32-bit value
@@ -25,7 +25,7 @@ def generate_arena_ram_mem(image_path, mem_output_path, image_output_path):
                 mem_contents.append(value)
 
                 # Mark the red pixel in the output image
-                output_pixels[x, y] = (255, 255, 255, 255)  # Highlight white red in the new image
+                output_pixels[x, y] = (255, 255, 255)  # Highlight white red in the new image
 
                 # make the opaqueness of the red pixel 50%
 
@@ -43,7 +43,7 @@ def generate_arena_ram_mem(image_path, mem_output_path, image_output_path):
 
 if __name__ == "__main__":
     # Replace these paths with your own
-    image_path = "../png_files/redPent.jpg"
+    image_path = "../png_files/whitePent.jpg"
     mem_output_path = "../CPU/arena_ram_init.mem"
     image_output_path = "../png_files/red_pixels_marked.jpg"
     
