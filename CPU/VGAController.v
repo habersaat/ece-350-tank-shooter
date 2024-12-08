@@ -30,14 +30,15 @@ module VGAController(
 	reg isArenaBorderPixel;
 
 	integer k;
-	reg [9:0] px;
-	reg [8:0] py;
+	reg [9:0] px; // Temporary register for x-coordinate
+	reg [8:0] py; // Temporary register for y-coordinate
 
 	always @(*) begin
 		isArenaBorderPixel = 0; // Default: not a border pixel
-		for (k = 0; k < 32768; k = k + 1) begin
-			px = allArenaContents[(k*32) +: 10]; // Extract 10 bits for x
-			py = allArenaContents[(k*32) + 10 +: 9]; // Extract 9 bits for y
+		for (k = 0; k < 1024; k = k + 1) begin
+			// Extract x and y coordinates from each 32-bit entry
+			px = allArenaContents[(k*32) + 19 +: 10]; // Extract 10 bits for x (bits [19:10])
+			py = allArenaContents[(k*32) + 9 +: 9];  // Extract 9 bits for y (bits [9:1])
 			if (x == px && y == py) begin
 				isArenaBorderPixel = 1; // Set flag if this pixel is a border pixel
 			end
