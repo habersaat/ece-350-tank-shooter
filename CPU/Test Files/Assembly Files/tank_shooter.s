@@ -749,10 +749,12 @@ handle_p1_collision:
     addi $r9, $r0, 0           # Set active bit to 0
 
     # Decrement Player 1 health
-    lw $r17, 0($r30)           # Load Player 1 health
-    addi $r17, $r17, -5      # Decrement health by 5
-    sw $r17, 0($r30)           # Store updated health back in HealthRAM
-    j pack_bullet              # Skip further checks and pack bullet
+    lw $r17, 0($r30)            # Load Player 1 health
+    addi $r29, $r0, 1           # Load in 1 to r29
+    blt $r17, $r29, pack_bullet # If player health is already 0, don't decrement
+    addi $r17, $r17, -5         # Decrement health by 5
+    sw $r17, 0($r30)            # Store updated health back in HealthRAM
+    j pack_bullet               # Skip further checks and pack bullet
 
 # Check collision with Player 2
 check_p2_collision:
@@ -775,7 +777,9 @@ handle_p2_collision:
 
     # Decrement Player 2 health
     lw $r17, 4($r30)           # Load Player 2 health
-    addi $r17, $r17, -100      # Decrement health by 100
+    addi $r29, $r0, 1           # Load in 1 to r29
+    blt $r17, $r29, pack_bullet # If player health is already 0, don't decrement
+    addi $r17, $r17, -5        # Decrement health by 5
     sw $r17, 4($r30)           # Store updated health back in HealthRAM
     j pack_bullet              # Skip further checks and pack bullet
 
