@@ -16,20 +16,20 @@ _start:
     addi $r30, $r0, 24576       # Load 24576 (0x6000) into $r30
     sll $r30, $r30, 16           # Shift left to set high bits (0x60000000)
 
-    # Initialize sprite1_x = 150
-    addi $r2, $r0, 150         # Load 150 into $r2
+    # Initialize sprite1_x = 220
+    addi $r2, $r0, 220         # Load 220 into $r2
     sw $r2, 0($r1)             # Store sprite1_x at SpriteMem[0]
 
-    # Initialize sprite1_y = 200
-    addi $r2, $r0, 200         # Load 200 into $r2
+    # Initialize sprite1_y = 208
+    addi $r2, $r0, 208         # Load 208 into $r2
     sw $r2, 4($r1)             # Store sprite1_y at SpriteMem[1]
 
-    # Initialize sprite2_x = 350
-    addi $r2, $r0, 350         # Load 350 into $r2
+    # Initialize sprite2_x = 420
+    addi $r2, $r0, 420         # Load 420 into $r2
     sw $r2, 8($r1)             # Store sprite2_x at SpriteMem[2]
 
-    # Initialize sprite2_y = 200
-    addi $r2, $r0, 200         # Load 200 into $r2
+    # Initialize sprite2_y = 208
+    addi $r2, $r0, 208         # Load 208 into $r2
     sw $r2, 12($r1)            # Store sprite2_y at SpriteMem[3]
 
     # Initialize player health in HealthRAM
@@ -198,7 +198,6 @@ temp_label:
 p1_move_up:
     lw $r6, 4($r1)             # Load sprite1_y into $r6
     addi $r6, $r6, -1          # Calculate potential new y-coordinate
-    addi $r7, $r0, 6           # Lowest possible y-coordinate is 6
 
     # Check for collision with ArenaRAM
     addi $r16, $r0, 0          # Initialize ArenaRAM index ($r16)
@@ -245,13 +244,9 @@ store_p1_up:
     sw $r6, 4($r1)             # Store updated y back to SpriteMem[1]
     j check_p1_controller1_down # Continue to next movement check
 
-
-
-
 p1_move_down:
     lw $r6, 4($r1)             # Load sprite1_y into $r6
     addi $r6, $r6, 1           # Calculate potential new y-coordinate
-    addi $r7, $r0, 415         # Highest possible y-coordinate is 415
 
     # Check for collision with ArenaRAM
     addi $r16, $r0, 0          # Initialize ArenaRAM index ($r16)
@@ -298,17 +293,9 @@ store_p1_down:
     sw $r6, 4($r1)             # Store updated y back to SpriteMem[1]
     j check_p1_controller1_left # Continue to next movement check
 
-
-
-
-
-
-
-
 p1_move_left:
     lw $r6, 0($r1)             # Load sprite1_x into $r6
     addi $r6, $r6, -1          # Calculate potential new x-coordinate
-    addi $r7, $r0, 1           # Lowest possible x-coordinate is 1
 
     # Check for collision with ArenaRAM
     addi $r16, $r0, 0          # Initialize ArenaRAM index ($r16)
@@ -355,16 +342,9 @@ store_p1_left:
     sw $r6, 0($r1)             # Store updated x back to SpriteMem[0]
     j check_p1_controller1_right # Continue to next movement check
 
-
-
-
-
-
-
 p1_move_right:
     lw $r6, 0($r1)             # Load sprite1_x into $r6
     addi $r6, $r6, 1           # Calculate potential new x-coordinate
-    addi $r7, $r0, 575         # Highest possible x-coordinate is 575
 
     # Check for collision with ArenaRAM
     addi $r16, $r0, 0          # Initialize ArenaRAM index ($r16)
@@ -409,10 +389,6 @@ collision_detected_p1_right:
 store_p1_right:
     sw $r6, 0($r1)             # Store updated x back to SpriteMem[0]
     j check_p2_controller1_up  # Continue to next movement check
-
-
-
-
 
     #############################
     # Player 2 Movement Handlers
