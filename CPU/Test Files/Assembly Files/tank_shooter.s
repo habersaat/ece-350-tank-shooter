@@ -217,7 +217,7 @@ load_arena_ram_p1_up:
     and $r21, $r18, $r20       # Extract y-coordinate (lower 9 bits)
 
     # Check overlap in y-coordinates
-    lw $r22, 4($r1)            # Load current sprite1_y into $r22
+    addi $r22, $r6, 0          # Use y-coordinate we are attempting to reach
     addi $r23, $r22, 64        # Calculate sprite1_y + 64 (bottom of the sprite)
 
     blt $r21, $r22, increment_index_p1_up # If pixel_y < sprite1_y, skip to next
