@@ -960,7 +960,7 @@ process_active_bullet:
     lw $r16, 0($r15)          # Load counter into $r16
 
     # Check if the counter is 8
-    addi $r17, $r0, 8        # Load 8 into $r17
+    addi $r17, $r0, 16        # Load 16 into $r17
     bne $r16, $r17, skip_ttl_update # If counter != 8, skip TTL update
 
     # Decrement TTL
@@ -1019,6 +1019,100 @@ bullet_move_down:
 
 bullet_move_up:
     addi $r11, $r11, -1        # Decrement y-coordinate
+
+
+
+
+
+bullet_collision_check:
+    # Initialize ArenaRAM index and base address
+    addi $r16, $r0, 0          # ArenaRAM index
+    addi $r17, $r28, 0         # ArenaRAM base address (stored in $r28)
+
+collision_loop:
+    addi $r18, $r0, 1250              # Total number of ArenaRAM entries
+    blt $r16, $r18, load_arena_pixel  # Continue loop if index < 1250
+    j arena_collisions_handled        # Exit loop if no collision
+
+load_arena_pixel:
+    lw $r19, 0($r17)           # Load ArenaRAM[$r16] into $r19
+
+    # Extract x and y coordinates of the arena pixel
+    sra $r20, $r19, 9          # Extract x-coordinate (upper 23 bits)
+    addi $r21, $r0, 511        # Mask for y-coordinate (lower 9 bits)
+    and $r22, $r19, $r21       # Extract y-coordinate
+
+    # Check for x-axis overlap
+    addi $r23, $r10, 12        # Bullet's x-coordinate + width (12)
+    blt $r23, $r20, check_y_collision  # Bullet is left of pixel
+    blt $r20, $r10, check_y_collision  # Bullet is right of pixel
+
+    # Reflect in the horizontal direction
+    j reflect_horizontal
+
+check_y_collision:
+    # Check for y-axis overlap
+    addi $r23, $r11, 12        # Bullet's y-coordinate + height (12)
+    blt $r23, $r22, finalize_reflection  # Bullet is above pixel
+    blt $r22, $r11, finalize_reflection  # Bullet is below pixel
+
+    # Reflect in the vertical direction
+    j reflect_vertical
+
+reflect_horizontal:
+    # Check for horizontal reflection: RIGHT or LEFT
+    addi $r24, $r0, 2          # RIGHT bit
+    and $r25, $r13, $r24       # Check if bullet was moving right
+    bne $r25, $r0, undo_right_move
+
+    addi $r24, $r0, 4          # LEFT bit
+    and $r25, $r13, $r24       # Check if bullet was moving left
+    bne $r25, $r0, undo_left_move
+
+undo_right_move:
+    addi $r10, $r10, -1        # Undo rightward movement
+    addi $r13, $r13, -2        # Clear RIGHT bit
+    addi $r13, $r13, 4         # Set LEFT bit
+    j check_y_collision        # Continue to check vertical collision
+
+undo_left_move:
+    addi $r10, $r10, 1         # Undo leftward movement
+    addi $r13, $r13, -4        # Clear LEFT bit
+    addi $r13, $r13, 2         # Set RIGHT bit
+    j check_y_collision        # Continue to check vertical collision
+
+reflect_vertical:
+    # Check for vertical reflection: UP or DOWN
+    addi $r24, $r0, 1          # DOWN bit
+    and $r25, $r13, $r24       # Check if bullet was moving down
+    bne $r25, $r0, undo_down_move
+
+    addi $r24, $r0, 8          # UP bit
+    and $r25, $r13, $r24       # Check if bullet was moving up
+    bne $r25, $r0, undo_up_move
+
+undo_down_move:
+    addi $r11, $r11, -1        # Undo downward movement
+    addi $r13, $r13, -1        # Clear DOWN bit
+    addi $r13, $r13, 8         # Set UP bit
+    j finalize_reflection
+
+undo_up_move:
+    addi $r11, $r11, 1         # Undo upward movement
+    addi $r13, $r13, -8        # Clear UP bit
+    addi $r13, $r13, 1         # Set DOWN bit
+    j finalize_reflection
+
+finalize_reflection:
+    # Increment ArenaRAM index and continue checking
+    addi $r16, $r16, 1         # Increment ArenaRAM index
+    addi $r17, $r17, 4         # Move to next ArenaRAM entry
+    j collision_loop           # Continue checking for collisions
+
+arena_collisions_handled:
+
+
+
 
 bullet_collsion_check:
     # Check collision with Player 1
@@ -1103,8 +1197,6 @@ next_bullet:
 
     # Return to main loop
     j temp_label
-
-
 
 
     #############################
