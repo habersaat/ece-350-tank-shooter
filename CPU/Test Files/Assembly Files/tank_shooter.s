@@ -16,16 +16,16 @@ _start:
     addi $r30, $r0, 24576       # Load 24576 (0x6000) into $r30
     sll $r30, $r30, 16           # Shift left to set high bits (0x60000000)
 
-    # Initialize sprite1_x = 220
-    addi $r2, $r0, 220         # Load 220 into $r2
+    # Initialize sprite1_x = 180
+    addi $r2, $r0, 180         # Load 180 into $r2
     sw $r2, 0($r1)             # Store sprite1_x at SpriteMem[0]
 
     # Initialize sprite1_y = 208
     addi $r2, $r0, 208         # Load 208 into $r2
     sw $r2, 4($r1)             # Store sprite1_y at SpriteMem[1]
 
-    # Initialize sprite2_x = 420
-    addi $r2, $r0, 420         # Load 420 into $r2
+    # Initialize sprite2_x = 400
+    addi $r2, $r0, 400         # Load 400 into $r2
     sw $r2, 8($r1)             # Store sprite2_x at SpriteMem[2]
 
     # Initialize sprite2_y = 208
