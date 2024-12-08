@@ -960,7 +960,7 @@ process_active_bullet:
     lw $r16, 0($r15)          # Load counter into $r16
 
     # Check if the counter is 8
-    addi $r17, $r0, 16        # Load 16 into $r17
+    addi $r17, $r0, 8        # Load 8 into $r17
     bne $r16, $r17, skip_ttl_update # If counter != 8, skip TTL update
 
     # Decrement TTL
@@ -1021,6 +1021,7 @@ bullet_move_up:
     addi $r11, $r11, -1        # Decrement y-coordinate
 
 
+j arena_collisions_handled # TEsting smth
 
 
 
