@@ -204,12 +204,12 @@ p1_move_up:
     addi $r16, $r0, 0          # Initialize ArenaRAM index ($r16)
     addi $r17, $r28, 0         # Initialize ArenaRAM base address in $r17 (track offsets)
 
-collision_check_up:
+collision_check_p1_up:
     addi $r8, $r0, 1024        # Load 1024 (max ArenaRAM entries) into $r8
-    blt $r16, $r8, load_arena_ram # If index < 1024, continue checking
+    blt $r16, $r8, load_arena_ram_p1_up # If index < 1024, continue checking
     j store_p1_up              # No collision detected, allow movement
 
-load_arena_ram:
+load_arena_ram_p1_up:
     lw $r18, 0($r17)           # Load ArenaRAM[$r16] using $r17
 
     # Extract x and y from ArenaRAM[$r16]
@@ -221,68 +221,198 @@ load_arena_ram:
     lw $r22, 4($r1)            # Load current sprite1_y into $r22
     addi $r23, $r22, 64        # Calculate sprite1_y + 64 (bottom of the sprite)
 
-    blt $r21, $r22, increment_index_up # If pixel_y < sprite1_y, skip to next
-    blt $r23, $r21, increment_index_up # If pixel_y > sprite1_y + 64, skip
+    blt $r21, $r22, increment_index_p1_up # If pixel_y < sprite1_y, skip to next
+    blt $r23, $r21, increment_index_p1_up # If pixel_y > sprite1_y + 64, skip
 
     # Check overlap in x-coordinates
     lw $r22, 0($r1)            # Load current sprite1_x into $r22
     addi $r23, $r22, 64        # Calculate sprite1_x + 64 (right side of the sprite)
 
-    blt $r19, $r22, increment_index_up # If pixel_x < sprite1_x, skip to next
-    blt $r23, $r19, increment_index_up # If pixel_x > sprite1_x + 64, skip
+    blt $r19, $r22, increment_index_p1_up # If pixel_x < sprite1_x, skip to next
+    blt $r23, $r19, increment_index_p1_up # If pixel_x > sprite1_x + 64, skip
 
-    j collision_detected_up    # If both x and y overlap, collision detected
+    j collision_detected_p1_up    # If both x and y overlap, collision detected
 
-increment_index_up:
+increment_index_p1_up:
     addi $r16, $r16, 1         # Increment ArenaRAM index
     addi $r17, $r17, 4         # Increment address offset by 4 bytes
-    j collision_check_up        # Continue checking
+    j collision_check_p1_up        # Continue checking
 
-collision_detected_up:
+collision_detected_p1_up:
     j check_p1_controller1_down # Skip movement if collision detected
 
 store_p1_up:
     sw $r6, 4($r1)             # Store updated y back to SpriteMem[1]
     j check_p1_controller1_down # Continue to next movement check
 
+
+
+
 p1_move_down:
     lw $r6, 4($r1)             # Load sprite1_y into $r6
-    addi $r6, $r6, 1           # Increment y-coordinate
+    addi $r6, $r6, 1           # Calculate potential new y-coordinate
     addi $r7, $r0, 415         # Highest possible y-coordinate is 415
-    blt $r7, $r6, fix_p1_move_down_bounds
-    sw $r6, 4($r1)             # Store updated y back to SpriteMem[1]
-    j check_p1_controller1_left
 
-fix_p1_move_down_bounds:
-    addi $r6, $r7, 0
+    # Check for collision with ArenaRAM
+    addi $r16, $r0, 0          # Initialize ArenaRAM index ($r16)
+    addi $r17, $r28, 0         # Initialize ArenaRAM base address in $r17 (track offsets)
+
+collision_check_p1_down:
+    addi $r8, $r0, 1024        # Load 1024 (max ArenaRAM entries) into $r8
+    blt $r16, $r8, load_arena_ram_p1_down # If index < 1024, continue checking
+    j store_p1_down            # No collision detected, allow movement
+
+load_arena_ram_p1_down:
+    lw $r18, 0($r17)           # Load ArenaRAM[$r16] using $r17
+
+    # Extract x and y from ArenaRAM[$r16]
+    sra $r19, $r18, 9          # Extract x-coordinate (upper 23 bits)
+    addi $r20, $r0, 511        # Mask for 9-bit y-coordinate
+    and $r21, $r18, $r20       # Extract y-coordinate (lower 9 bits)
+
+    # Check overlap in y-coordinates
+    lw $r22, 4($r1)            # Load current sprite1_y into $r22
+    addi $r23, $r6, 64         # Calculate sprite1_y + 64 (bottom of the sprite)
+
+    blt $r21, $r22, increment_index_p1_down # If pixel_y < sprite1_y, skip to next
+    blt $r23, $r21, increment_index_p1_down # If pixel_y > sprite1_y + 64, skip
+
+    # Check overlap in x-coordinates
+    lw $r22, 0($r1)            # Load current sprite1_x into $r22
+    addi $r23, $r22, 64        # Calculate sprite1_x + 64 (right side of the sprite)
+
+    blt $r19, $r22, increment_index_p1_down # If pixel_x < sprite1_x, skip to next
+    blt $r23, $r19, increment_index_p1_down # If pixel_x > sprite1_x + 64, skip
+
+    j collision_detected_p1_down    # If both x and y overlap, collision detected
+
+increment_index_p1_down:
+    addi $r16, $r16, 1         # Increment ArenaRAM index
+    addi $r17, $r17, 4         # Increment address offset by 4 bytes
+    j collision_check_p1_down        # Continue checking
+
+collision_detected_p1_down:
+    j check_p1_controller1_left # Skip movement if collision detected
+
+store_p1_down:
     sw $r6, 4($r1)             # Store updated y back to SpriteMem[1]
-    j check_p1_controller1_left
+    j check_p1_controller1_left # Continue to next movement check
+
+
+
+
+
+
+
 
 p1_move_left:
     lw $r6, 0($r1)             # Load sprite1_x into $r6
-    addi $r6, $r6, -1          # Decrement x-coordinate by 1
+    addi $r6, $r6, -1          # Calculate potential new x-coordinate
     addi $r7, $r0, 1           # Lowest possible x-coordinate is 1
-    blt $r6, $r7, fix_p1_move_left_bounds
-    sw $r6, 0($r1)             # Store updated x back to SpriteMem[0]
-    j check_p1_controller1_right
 
-fix_p1_move_left_bounds:
-    addi $r6, $r7, 0
+    # Check for collision with ArenaRAM
+    addi $r16, $r0, 0          # Initialize ArenaRAM index ($r16)
+    addi $r17, $r28, 0         # Initialize ArenaRAM base address in $r17 (track offsets)
+
+collision_check_p1_left:
+    addi $r8, $r0, 1024        # Load 1024 (max ArenaRAM entries) into $r8
+    blt $r16, $r8, load_arena_ram_p1_left # If index < 1024, continue checking
+    j store_p1_left            # No collision detected, allow movement
+
+load_arena_ram_p1_left:
+    lw $r18, 0($r17)           # Load ArenaRAM[$r16] using $r17
+
+    # Extract x and y from ArenaRAM[$r16]
+    sra $r19, $r18, 9          # Extract x-coordinate (upper 23 bits)
+    addi $r20, $r0, 511        # Mask for 9-bit y-coordinate
+    and $r21, $r18, $r20       # Extract y-coordinate (lower 9 bits)
+
+    # Check overlap in x-coordinates
+    lw $r22, 0($r1)            # Load current sprite1_x into $r22
+    addi $r23, $r6, 64         # Calculate sprite1_x + 64 (right of the sprite)
+
+    blt $r19, $r22, increment_index_p1_left # If pixel_x < sprite1_x, skip to next
+    blt $r23, $r19, increment_index_p1_left # If pixel_x > sprite1_x + 64, skip
+
+    # Check overlap in y-coordinates
+    lw $r22, 4($r1)            # Load current sprite1_y into $r22
+    addi $r23, $r22, 64        # Calculate sprite1_y + 64 (bottom of the sprite)
+
+    blt $r21, $r22, increment_index_p1_left # If pixel_y < sprite1_y, skip to next
+    blt $r23, $r21, increment_index_p1_left # If pixel_y > sprite1_y + 64, skip
+
+    j collision_detected_p1_left # If both x and y overlap, collision detected
+
+increment_index_p1_left:
+    addi $r16, $r16, 1         # Increment ArenaRAM index
+    addi $r17, $r17, 4         # Increment address offset by 4 bytes
+    j collision_check_p1_left       # Continue checking
+
+collision_detected_p1_left:
+    j check_p1_controller1_right # Skip movement if collision detected
+
+store_p1_left:
     sw $r6, 0($r1)             # Store updated x back to SpriteMem[0]
-    j check_p1_controller1_right
+    j check_p1_controller1_right # Continue to next movement check
+
+
+
+
+
+
 
 p1_move_right:
     lw $r6, 0($r1)             # Load sprite1_x into $r6
-    addi $r6, $r6, 1           # Increment x-coordinate by 1
-    addi $r7, $r0, 575
-    blt $r7, $r6, fix_p1_move_right_bounds
-    sw $r6, 0($r1)             # Store updated x back to SpriteMem[0]
-    j check_p2_controller1_up
+    addi $r6, $r6, 1           # Calculate potential new x-coordinate
+    addi $r7, $r0, 575         # Highest possible x-coordinate is 575
 
-fix_p1_move_right_bounds:
-    addi $r6, $r7, 0
+    # Check for collision with ArenaRAM
+    addi $r16, $r0, 0          # Initialize ArenaRAM index ($r16)
+    addi $r17, $r28, 0         # Initialize ArenaRAM base address in $r17 (track offsets)
+
+collision_check_p1_right:
+    addi $r8, $r0, 1024        # Load 1024 (max ArenaRAM entries) into $r8
+    blt $r16, $r8, load_arena_ram_p1_right # If index < 1024, continue checking
+    j store_p1_right           # No collision detected, allow movement
+
+load_arena_ram_p1_right:
+    lw $r18, 0($r17)           # Load ArenaRAM[$r16] using $r17
+
+    # Extract x and y from ArenaRAM[$r16]
+    sra $r19, $r18, 9          # Extract x-coordinate (upper 23 bits)
+    addi $r20, $r0, 511        # Mask for 9-bit y-coordinate
+    and $r21, $r18, $r20       # Extract y-coordinate (lower 9 bits)
+
+    # Check overlap in y-coordinates
+    lw $r22, 4($r1)            # Load current sprite1_y into $r22
+    addi $r23, $r22, 64        # Calculate sprite1_y + 64 (bottom of the sprite)
+
+    blt $r21, $r22, increment_index_p1_right # If pixel_y < sprite1_y, skip to next
+    blt $r23, $r21, increment_index_p1_right # If pixel_y > sprite1_y + 64, skip
+
+    # Check overlap in x-coordinates
+    addi $r22, $r6, 64         # Calculate potential sprite1_x + 64 (right side of the sprite)
+
+    blt $r19, $r6, increment_index_p1_right  # If pixel_x < potential sprite1_x, skip
+    blt $r22, $r19, increment_index_p1_right # If pixel_x > potential sprite1_x + 64, skip
+
+    j collision_detected_p1_right # If both x and y overlap, collision detected
+
+increment_index_p1_right:
+    addi $r16, $r16, 1         # Increment ArenaRAM index
+    addi $r17, $r17, 4         # Increment address offset by 4 bytes
+    j collision_check_p1_right # Continue checking
+
+collision_detected_p1_right:
+    j check_p2_controller1_up  # Skip movement if collision detected
+
+store_p1_right:
     sw $r6, 0($r1)             # Store updated x back to SpriteMem[0]
-    j check_p2_controller1_up
+    j check_p2_controller1_up  # Continue to next movement check
+
+
+
+
 
     #############################
     # Player 2 Movement Handlers
