@@ -1060,47 +1060,11 @@ check_y_collision:
     j reflect_vertical
 
 reflect_horizontal:
-    # Check for horizontal reflection: RIGHT or LEFT
-    addi $r24, $r0, 2          # RIGHT bit
-    and $r25, $r13, $r24       # Check if bullet was moving right
-    bne $r25, $r0, undo_right_move
-
-    addi $r24, $r0, 4          # LEFT bit
-    and $r25, $r13, $r24       # Check if bullet was moving left
-    bne $r25, $r0, undo_left_move
-
-undo_right_move:
-    addi $r10, $r10, -1        # Undo rightward movement
-    addi $r13, $r13, -2        # Clear RIGHT bit
-    addi $r13, $r13, 4         # Set LEFT bit
-    j check_y_collision        # Continue to check vertical collision
-
-undo_left_move:
-    addi $r10, $r10, 1         # Undo leftward movement
-    addi $r13, $r13, -4        # Clear LEFT bit
-    addi $r13, $r13, 2         # Set RIGHT bit
+    addi $r9, $r0, 0
     j check_y_collision        # Continue to check vertical collision
 
 reflect_vertical:
-    # Check for vertical reflection: UP or DOWN
-    addi $r24, $r0, 1          # DOWN bit
-    and $r25, $r13, $r24       # Check if bullet was moving down
-    bne $r25, $r0, undo_down_move
-
-    addi $r24, $r0, 8          # UP bit
-    and $r25, $r13, $r24       # Check if bullet was moving up
-    bne $r25, $r0, undo_up_move
-
-undo_down_move:
-    addi $r11, $r11, -1        # Undo downward movement
-    addi $r13, $r13, -1        # Clear DOWN bit
-    addi $r13, $r13, 8         # Set UP bit
-    j finalize_reflection
-
-undo_up_move:
-    addi $r11, $r11, 1         # Undo upward movement
-    addi $r13, $r13, -8        # Clear UP bit
-    addi $r13, $r13, 1         # Set DOWN bit
+    addi $r9, $r0, 0
     j finalize_reflection
 
 finalize_reflection:
