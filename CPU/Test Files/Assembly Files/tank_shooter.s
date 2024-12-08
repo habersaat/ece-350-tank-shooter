@@ -1053,8 +1053,8 @@ load_arena_pixel:
     j make_bullet_hidden
 
 make_bullet_hidden:
-    addi $r9, $r0, 0
-    j arena_collisions_handled
+    addi $r9, $r0, 0          # deactivate bullet
+    j pack_bullet 
 
 increment_arena_pixel:
     # Increment ArenaRAM index and continue checking
