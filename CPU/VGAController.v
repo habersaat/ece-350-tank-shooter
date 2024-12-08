@@ -25,46 +25,6 @@ module VGAController(
 	reg [9:0] currX2;
 	reg [8:0] currY2;
 
-	// Read in each pixel in the arena.
-	reg [9:0] arenaAddr;          // Address to index into ArenaRAM
-	wire [31:0] arenaData;        // Data read from ArenaRAM
-	reg isArenaBorderPixel;       // Flag to indicate border pixel
-
-	// Instantiate ArenaRAM
-	ArenaRAM #(
-		.DATA_WIDTH(32),
-		.ADDRESS_WIDTH(10),
-		.DEPTH(1024),
-		.MEMFILE("arena_ram_init.mem")
-	) ArenaRAM_inst (
-		.clk(clk),
-		.wEn(1'b0),                // Disable write
-		.readEn(1'b1),             // Enable read
-		.addr(arenaAddr),          // Address input
-		.dataIn(32'b0),            // Data input (unused)
-		.dataOut(arenaData)        // Data output
-	);
-
-	// Iterate through ArenaRAM to check for border pixel
-	integer k;
-	reg [9:0] px; // Extracted x-coordinate
-	reg [8:0] py; // Extracted y-coordinate
-
-	always @(*) begin
-		isArenaBorderPixel = 0;   // Default: not a border pixel
-		for (k = 0; k < 1024; k = k + 1) begin
-			arenaAddr = k;        // Set the address
-			#1;                   // Small delay to allow data read
-			px = arenaData[18:9]; // Extract x-coordinate (bits [18:9])
-			py = arenaData[8:0];  // Extract y-coordinate (bits [8:0])
-			if (x == px && y == py) begin
-				isArenaBorderPixel = 1; // Border pixel found
-			end
-		end
-	end
-
-
-
 	// Read in current x and y positions of the sprites
 	integer i;
 	always @(*) begin
@@ -299,15 +259,13 @@ module VGAController(
 
 
 	// Assign to output color from register if active
-	wire [BITS_PER_COLOR-1:0] colorOut; 			  // Output color 
+	wire[BITS_PER_COLOR-1:0] colorOut; 			  // Output color 
 	wire [11:0] bulletColorData = 12'hF00; // Red color for bullets
 
 	assign colorOut = active ? 
     	(p1isInSquare ? sprite1ColorData : 
     	p2isInSquare ? sprite2ColorData :
-     	isBulletActive ? bulletColorData :
-		isArenaBorderPixel ? 12'hF0F :
-		colorData) : 
+     	isBulletActive ? bulletColorData : colorData) : 
     	12'd0; // Black when not active
 
 	// Quickly assign the output colors to their channels using concatenation

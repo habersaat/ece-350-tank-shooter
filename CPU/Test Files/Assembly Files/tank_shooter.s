@@ -204,8 +204,8 @@ p1_move_up:
     addi $r17, $r28, 0         # Initialize ArenaRAM base address in $r17 (track offsets)
 
 collision_check_p1_up:
-    addi $r8, $r0, 1024        # Load 1024 (max ArenaRAM entries) into $r8
-    blt $r16, $r8, load_arena_ram_p1_up # If index < 1024, continue checking
+    addi $r8, $r0, 1250        # Load 1250 (max ArenaRAM entries) into $r8
+    blt $r16, $r8, load_arena_ram_p1_up # If index < 1250, continue checking
     j store_p1_up              # No collision detected, allow movement
 
 load_arena_ram_p1_up:
@@ -253,8 +253,8 @@ p1_move_down:
     addi $r17, $r28, 0         # Initialize ArenaRAM base address in $r17 (track offsets)
 
 collision_check_p1_down:
-    addi $r8, $r0, 1024        # Load 1024 (max ArenaRAM entries) into $r8
-    blt $r16, $r8, load_arena_ram_p1_down # If index < 1024, continue checking
+    addi $r8, $r0, 1250        # Load 1250 (max ArenaRAM entries) into $r8
+    blt $r16, $r8, load_arena_ram_p1_down # If index < 1250, continue checking
     j store_p1_down            # No collision detected, allow movement
 
 load_arena_ram_p1_down:
@@ -302,8 +302,8 @@ p1_move_left:
     addi $r17, $r28, 0         # Initialize ArenaRAM base address in $r17 (track offsets)
 
 collision_check_p1_left:
-    addi $r8, $r0, 1024        # Load 1024 (max ArenaRAM entries) into $r8
-    blt $r16, $r8, load_arena_ram_p1_left # If index < 1024, continue checking
+    addi $r8, $r0, 1250        # Load 1250 (max ArenaRAM entries) into $r8
+    blt $r16, $r8, load_arena_ram_p1_left # If index < 1250, continue checking
     j store_p1_left            # No collision detected, allow movement
 
 load_arena_ram_p1_left:
@@ -351,8 +351,8 @@ p1_move_right:
     addi $r17, $r28, 0         # Initialize ArenaRAM base address in $r17 (track offsets)
 
 collision_check_p1_right:
-    addi $r8, $r0, 1024        # Load 1024 (max ArenaRAM entries) into $r8
-    blt $r16, $r8, load_arena_ram_p1_right # If index < 1024, continue checking
+    addi $r8, $r0, 1250        # Load 1250 (max ArenaRAM entries) into $r8
+    blt $r16, $r8, load_arena_ram_p1_right # If index < 1250, continue checking
     j store_p1_right           # No collision detected, allow movement
 
 load_arena_ram_p1_right:

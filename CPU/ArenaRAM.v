@@ -1,8 +1,8 @@
 `timescale 1ns / 1ps
 module ArenaRAM #( 
     parameter DATA_WIDTH = 32,      // Width for each border pixel location
-    parameter ADDRESS_WIDTH = 10,   // 1024 locations max (2^10)
-    parameter DEPTH = 1024,         // Number of border pixel locations
+    parameter ADDRESS_WIDTH = 11,   // 1250 locations max (ceil(log2(1250)) = 11 bits)
+    parameter DEPTH = 1250,         // Number of border pixel locations
     parameter MEMFILE = ""
 ) (
     input wire                     clk,

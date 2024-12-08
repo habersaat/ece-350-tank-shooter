@@ -157,7 +157,7 @@ module Wrapper_tb #(parameter FILE = "bullet_test_advanced");
     wire [31:0] arenaRamDataIn = memDataIn;
     wire arenaRamWriteEnable = mwe && arenaRamAccess;
     wire arenaRamReadEnable = ~mwe && arenaRamAccess;
-    wire [9:0] arenaRamAddress = memAddr[11:2]; // Use bits [11:2] for 1024 entries
+    wire [10:0] arenaRamAddress = memAddr[12:2]; // Use bits [12:2] for 1250 entries (11-bit addressing)
     
     // Instruction Memory (ROM)
     ROM #(.MEMFILE({DIR, MEM_DIR, FILE, ".mem"}))
@@ -243,8 +243,8 @@ module Wrapper_tb #(parameter FILE = "bullet_test_advanced");
     // ArenaRAM Module
     ArenaRAM #(
         .DATA_WIDTH(32),
-        .ADDRESS_WIDTH(10),
-        .DEPTH(1024),
+        .ADDRESS_WIDTH(11),
+        .DEPTH(1250),
         .MEMFILE("arena_ram_init.mem")
     ) ArenaRAMInstance (
         .clk(clock),
