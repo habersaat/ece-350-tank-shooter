@@ -16,7 +16,7 @@ module ArenaRAM #(
     reg [DATA_WIDTH-1:0] MemoryArray[0:DEPTH-1];
     
     // Initialize the memory array
-    initial begin
+    initial begin : MEMORY_INIT
         if (MEMFILE > 0) begin
             $readmemh(MEMFILE, MemoryArray);
         end

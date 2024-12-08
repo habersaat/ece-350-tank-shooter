@@ -205,14 +205,15 @@ module Wrapper (clk_100mhz, reset, JD, JC, hSync, vSync, VGA_R, VGA_G, VGA_B);
     ArenaRAM #(
         .DATA_WIDTH(32),
         .ADDRESS_WIDTH(10),
-        .DEPTH(1024)
+        .DEPTH(1024),
+        .MEMFILE("arena_ram_init.mem")
     ) ArenaRAMInstance (
         .clk(clock),
-        .wEn(arenaRamWriteEnable),    // Write enable for ArenaRAM
-        .readEn(arenaRamReadEnable),  // Read enable for ArenaRAM
-        .addr(arenaRamAddress),       // Address for ArenaRAM
-        .dataIn(arenaRamDataIn),      // Data to write into ArenaRAM
-        .dataOut(arenaRamDataOut)     // Data read from ArenaRAM
+        .wEn(arenaRamWriteEnable),  // Write enable for ArenaRAM
+        .readEn(arenaRamReadEnable), // Read enable for ArenaRAM
+        .addr(arenaRamAddress),     // Address for ArenaRAM
+        .dataIn(arenaRamDataIn),    // Data to write into ArenaRAM
+        .dataOut(arenaRamDataOut)   // Data read from ArenaRAM
     );
 
 	// VGA Controller
