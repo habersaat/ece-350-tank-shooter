@@ -1043,16 +1043,16 @@ load_arena_pixel:
     and $r22, $r19, $r21       # Extract y-coordinate
 
     # Check for x-axis overlap
-    addi $r23, $r10, 12                 # Bullet's x-coordinate + width (12)
-    blt $r23, $r20, make_bullet_hidden  # Bullet is left of pixel
-    blt $r20, $r10, make_bullet_hidden  # Bullet is right of pixel
+    addi $r23, $r10, 12                    # Bullet's x-coordinate + width (12)
+    blt $r23, $r20, increment_arena_pixel  # Bullet is left of pixel
+    blt $r20, $r10, increment_arena_pixel  # Bullet is right of pixel
 
     # Check for y-axis overlap
-    addi $r23, $r11, 12                  # Bullet's y-coordinate + height (12)
-    blt $r23, $r22, make_bullet_hidden  # Bullet is above pixel
-    blt $r22, $r11, make_bullet_hidden  # Bullet is below pixel
+    addi $r23, $r11, 12                    # Bullet's y-coordinate + height (12)
+    blt $r23, $r22, increment_arena_pixel  # Bullet is above pixel
+    blt $r22, $r11, increment_arena_pixel  # Bullet is below pixel
 
-    j increment_arena_pixel
+    j make_bullet_hidden
 
 make_bullet_hidden:
     addi $r9, $r0, 0
