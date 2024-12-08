@@ -14,7 +14,8 @@ module VGAController(
 	input [10:1] JC,
 	input [2047:0] allBulletContents,
 	input [127:0] allSpriteContents,
-	input [63:0] allHealthContents);
+	input [63:0] allHealthContents,
+	input [32767:0] allArenaContents);
 	
 	// Lab Memory Files Location
 	localparam MEM_FILES_PATH = "C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/";
@@ -24,6 +25,24 @@ module VGAController(
 	
 	reg [9:0] currX2;
 	reg [8:0] currY2;
+
+	// Read in each pixel in the arena. They are stored as 32-bit values of the form [13 bits of padding][10 bits of x][9 bits of y].
+	reg isArenaBorderPixel;
+
+	integer k;
+	reg [9:0] px;
+	reg [8:0] py;
+
+	always @(*) begin
+		isArenaBorderPixel = 0; // Default: not a border pixel
+		for (k = 0; k < 32768; k = k + 1) begin
+			px = allArenaContents[(k*32) +: 10]; // Extract 10 bits for x
+			py = allArenaContents[(k*32) + 10 +: 9]; // Extract 9 bits for y
+			if (x == px && y == py) begin
+				isArenaBorderPixel = 1; // Set flag if this pixel is a border pixel
+			end
+		end
+	end
 
 	// Read in current x and y positions of the sprites
 	integer i;
@@ -259,13 +278,15 @@ module VGAController(
 
 
 	// Assign to output color from register if active
-	wire[BITS_PER_COLOR-1:0] colorOut; 			  // Output color 
+	wire [BITS_PER_COLOR-1:0] colorOut; 			  // Output color 
 	wire [11:0] bulletColorData = 12'hF00; // Red color for bullets
 
 	assign colorOut = active ? 
     	(p1isInSquare ? sprite1ColorData : 
     	p2isInSquare ? sprite2ColorData :
-     	isBulletActive ? bulletColorData : colorData) : 
+     	isBulletActive ? bulletColorData :
+		isArenaBorderPixel ? 12'hF0F :
+		colorData) : 
     	12'd0; // Black when not active
 
 	// Quickly assign the output colors to their channels using concatenation
