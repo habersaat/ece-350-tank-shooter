@@ -41,7 +41,7 @@ def find_red_pixels(image_path, output_path):
                 # Write the value of $r10 to the memory location offset
                 instruction5 = "sw $r10, " + str(offset) + "($r28)"
                 instructions.append(instruction5)
-                offset += 4
+                offset += 1
 
     # Write the instructions to a file
     with open("instructions.txt", "w") as f:
