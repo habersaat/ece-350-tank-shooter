@@ -4000,5 +4000,1570 @@ initialize_arena_ram:
     addi $r11, $r0, 419
     or $r10, $r10, $r11
     sw $r10, 2524($r28)
+    addi $r10, $r0, 171
+    sll $r10, $r10, 9
+    addi $r11, $r0, 421
+    or $r10, $r10, $r11
+    sw $r10, 2528($r28)
+    addi $r10, $r0, 468
+    sll $r10, $r10, 9
+    addi $r11, $r0, 421
+    or $r10, $r10, $r11
+    sw $r10, 2532($r28)
+    addi $r10, $r0, 468
+    sll $r10, $r10, 9
+    addi $r11, $r0, 422
+    or $r10, $r10, $r11
+    sw $r10, 2536($r28)
+    addi $r10, $r0, 172
+    sll $r10, $r10, 9
+    addi $r11, $r0, 424
+    or $r10, $r10, $r11
+    sw $r10, 2540($r28)
+    addi $r10, $r0, 467
+    sll $r10, $r10, 9
+    addi $r11, $r0, 424
+    or $r10, $r10, $r11
+    sw $r10, 2544($r28)
+    addi $r10, $r0, 172
+    sll $r10, $r10, 9
+    addi $r11, $r0, 425
+    or $r10, $r10, $r11
+    sw $r10, 2548($r28)
+    addi $r10, $r0, 467
+    sll $r10, $r10, 9
+    addi $r11, $r0, 425
+    or $r10, $r10, $r11
+    sw $r10, 2552($r28)
+    addi $r10, $r0, 173
+    sll $r10, $r10, 9
+    addi $r11, $r0, 427
+    or $r10, $r10, $r11
+    sw $r10, 2556($r28)
+    addi $r10, $r0, 466
+    sll $r10, $r10, 9
+    addi $r11, $r0, 427
+    or $r10, $r10, $r11
+    sw $r10, 2560($r28)
+    addi $r10, $r0, 173
+    sll $r10, $r10, 9
+    addi $r11, $r0, 428
+    or $r10, $r10, $r11
+    sw $r10, 2564($r28)
+    addi $r10, $r0, 466
+    sll $r10, $r10, 9
+    addi $r11, $r0, 428
+    or $r10, $r10, $r11
+    sw $r10, 2568($r28)
+    addi $r10, $r0, 174
+    sll $r10, $r10, 9
+    addi $r11, $r0, 430
+    or $r10, $r10, $r11
+    sw $r10, 2572($r28)
+    addi $r10, $r0, 465
+    sll $r10, $r10, 9
+    addi $r11, $r0, 430
+    or $r10, $r10, $r11
+    sw $r10, 2576($r28)
+    addi $r10, $r0, 174
+    sll $r10, $r10, 9
+    addi $r11, $r0, 431
+    or $r10, $r10, $r11
+    sw $r10, 2580($r28)
+    addi $r10, $r0, 465
+    sll $r10, $r10, 9
+    addi $r11, $r0, 431
+    or $r10, $r10, $r11
+    sw $r10, 2584($r28)
+    addi $r10, $r0, 175
+    sll $r10, $r10, 9
+    addi $r11, $r0, 433
+    or $r10, $r10, $r11
+    sw $r10, 2588($r28)
+    addi $r10, $r0, 464
+    sll $r10, $r10, 9
+    addi $r11, $r0, 433
+    or $r10, $r10, $r11
+    sw $r10, 2592($r28)
+    addi $r10, $r0, 175
+    sll $r10, $r10, 9
+    addi $r11, $r0, 434
+    or $r10, $r10, $r11
+    sw $r10, 2596($r28)
+    addi $r10, $r0, 464
+    sll $r10, $r10, 9
+    addi $r11, $r0, 434
+    or $r10, $r10, $r11
+    sw $r10, 2600($r28)
+    addi $r10, $r0, 176
+    sll $r10, $r10, 9
+    addi $r11, $r0, 436
+    or $r10, $r10, $r11
+    sw $r10, 2604($r28)
+    addi $r10, $r0, 463
+    sll $r10, $r10, 9
+    addi $r11, $r0, 436
+    or $r10, $r10, $r11
+    sw $r10, 2608($r28)
+    addi $r10, $r0, 176
+    sll $r10, $r10, 9
+    addi $r11, $r0, 437
+    or $r10, $r10, $r11
+    sw $r10, 2612($r28)
+    addi $r10, $r0, 463
+    sll $r10, $r10, 9
+    addi $r11, $r0, 437
+    or $r10, $r10, $r11
+    sw $r10, 2616($r28)
+    addi $r10, $r0, 177
+    sll $r10, $r10, 9
+    addi $r11, $r0, 439
+    or $r10, $r10, $r11
+    sw $r10, 2620($r28)
+    addi $r10, $r0, 462
+    sll $r10, $r10, 9
+    addi $r11, $r0, 439
+    or $r10, $r10, $r11
+    sw $r10, 2624($r28)
+    addi $r10, $r0, 177
+    sll $r10, $r10, 9
+    addi $r11, $r0, 440
+    or $r10, $r10, $r11
+    sw $r10, 2628($r28)
+    addi $r10, $r0, 462
+    sll $r10, $r10, 9
+    addi $r11, $r0, 440
+    or $r10, $r10, $r11
+    sw $r10, 2632($r28)
+    addi $r10, $r0, 178
+    sll $r10, $r10, 9
+    addi $r11, $r0, 442
+    or $r10, $r10, $r11
+    sw $r10, 2636($r28)
+    addi $r10, $r0, 461
+    sll $r10, $r10, 9
+    addi $r11, $r0, 442
+    or $r10, $r10, $r11
+    sw $r10, 2640($r28)
+    addi $r10, $r0, 178
+    sll $r10, $r10, 9
+    addi $r11, $r0, 443
+    or $r10, $r10, $r11
+    sw $r10, 2644($r28)
+    addi $r10, $r0, 461
+    sll $r10, $r10, 9
+    addi $r11, $r0, 443
+    or $r10, $r10, $r11
+    sw $r10, 2648($r28)
+    addi $r10, $r0, 179
+    sll $r10, $r10, 9
+    addi $r11, $r0, 446
+    or $r10, $r10, $r11
+    sw $r10, 2652($r28)
+    addi $r10, $r0, 460
+    sll $r10, $r10, 9
+    addi $r11, $r0, 446
+    or $r10, $r10, $r11
+    sw $r10, 2656($r28)
+    addi $r10, $r0, 180
+    sll $r10, $r10, 9
+    addi $r11, $r0, 449
+    or $r10, $r10, $r11
+    sw $r10, 2660($r28)
+    addi $r10, $r0, 459
+    sll $r10, $r10, 9
+    addi $r11, $r0, 449
+    or $r10, $r10, $r11
+    sw $r10, 2664($r28)
+    addi $r10, $r0, 181
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2668($r28)
+    addi $r10, $r0, 182
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2672($r28)
+    addi $r10, $r0, 183
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2676($r28)
+    addi $r10, $r0, 184
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2680($r28)
+    addi $r10, $r0, 185
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2684($r28)
+    addi $r10, $r0, 186
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2688($r28)
+    addi $r10, $r0, 187
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2692($r28)
+    addi $r10, $r0, 188
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2696($r28)
+    addi $r10, $r0, 189
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2700($r28)
+    addi $r10, $r0, 190
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2704($r28)
+    addi $r10, $r0, 191
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2708($r28)
+    addi $r10, $r0, 192
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2712($r28)
+    addi $r10, $r0, 193
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2716($r28)
+    addi $r10, $r0, 194
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2720($r28)
+    addi $r10, $r0, 195
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2724($r28)
+    addi $r10, $r0, 196
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2728($r28)
+    addi $r10, $r0, 197
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2732($r28)
+    addi $r10, $r0, 198
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2736($r28)
+    addi $r10, $r0, 199
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2740($r28)
+    addi $r10, $r0, 200
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2744($r28)
+    addi $r10, $r0, 201
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2748($r28)
+    addi $r10, $r0, 202
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2752($r28)
+    addi $r10, $r0, 203
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2756($r28)
+    addi $r10, $r0, 204
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2760($r28)
+    addi $r10, $r0, 205
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2764($r28)
+    addi $r10, $r0, 206
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2768($r28)
+    addi $r10, $r0, 207
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2772($r28)
+    addi $r10, $r0, 208
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2776($r28)
+    addi $r10, $r0, 209
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2780($r28)
+    addi $r10, $r0, 210
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2784($r28)
+    addi $r10, $r0, 211
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2788($r28)
+    addi $r10, $r0, 212
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2792($r28)
+    addi $r10, $r0, 213
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2796($r28)
+    addi $r10, $r0, 214
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2800($r28)
+    addi $r10, $r0, 215
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2804($r28)
+    addi $r10, $r0, 216
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2808($r28)
+    addi $r10, $r0, 217
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2812($r28)
+    addi $r10, $r0, 218
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2816($r28)
+    addi $r10, $r0, 219
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2820($r28)
+    addi $r10, $r0, 220
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2824($r28)
+    addi $r10, $r0, 221
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2828($r28)
+    addi $r10, $r0, 222
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2832($r28)
+    addi $r10, $r0, 223
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2836($r28)
+    addi $r10, $r0, 224
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2840($r28)
+    addi $r10, $r0, 225
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2844($r28)
+    addi $r10, $r0, 226
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2848($r28)
+    addi $r10, $r0, 227
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2852($r28)
+    addi $r10, $r0, 228
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2856($r28)
+    addi $r10, $r0, 229
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2860($r28)
+    addi $r10, $r0, 230
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2864($r28)
+    addi $r10, $r0, 231
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2868($r28)
+    addi $r10, $r0, 232
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2872($r28)
+    addi $r10, $r0, 233
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2876($r28)
+    addi $r10, $r0, 234
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2880($r28)
+    addi $r10, $r0, 235
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2884($r28)
+    addi $r10, $r0, 236
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2888($r28)
+    addi $r10, $r0, 237
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2892($r28)
+    addi $r10, $r0, 238
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2896($r28)
+    addi $r10, $r0, 239
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2900($r28)
+    addi $r10, $r0, 240
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2904($r28)
+    addi $r10, $r0, 241
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2908($r28)
+    addi $r10, $r0, 242
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2912($r28)
+    addi $r10, $r0, 243
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2916($r28)
+    addi $r10, $r0, 244
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2920($r28)
+    addi $r10, $r0, 245
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2924($r28)
+    addi $r10, $r0, 246
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2928($r28)
+    addi $r10, $r0, 247
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2932($r28)
+    addi $r10, $r0, 248
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2936($r28)
+    addi $r10, $r0, 249
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2940($r28)
+    addi $r10, $r0, 250
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2944($r28)
+    addi $r10, $r0, 251
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2948($r28)
+    addi $r10, $r0, 252
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2952($r28)
+    addi $r10, $r0, 253
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2956($r28)
+    addi $r10, $r0, 254
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2960($r28)
+    addi $r10, $r0, 255
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2964($r28)
+    addi $r10, $r0, 256
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2968($r28)
+    addi $r10, $r0, 257
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2972($r28)
+    addi $r10, $r0, 258
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2976($r28)
+    addi $r10, $r0, 259
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2980($r28)
+    addi $r10, $r0, 260
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2984($r28)
+    addi $r10, $r0, 261
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2988($r28)
+    addi $r10, $r0, 262
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2992($r28)
+    addi $r10, $r0, 263
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 2996($r28)
+    addi $r10, $r0, 264
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3000($r28)
+    addi $r10, $r0, 265
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3004($r28)
+    addi $r10, $r0, 266
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3008($r28)
+    addi $r10, $r0, 267
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3012($r28)
+    addi $r10, $r0, 268
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3016($r28)
+    addi $r10, $r0, 269
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3020($r28)
+    addi $r10, $r0, 270
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3024($r28)
+    addi $r10, $r0, 271
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3028($r28)
+    addi $r10, $r0, 272
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3032($r28)
+    addi $r10, $r0, 273
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3036($r28)
+    addi $r10, $r0, 274
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3040($r28)
+    addi $r10, $r0, 275
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3044($r28)
+    addi $r10, $r0, 276
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3048($r28)
+    addi $r10, $r0, 277
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3052($r28)
+    addi $r10, $r0, 278
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3056($r28)
+    addi $r10, $r0, 279
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3060($r28)
+    addi $r10, $r0, 280
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3064($r28)
+    addi $r10, $r0, 281
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3068($r28)
+    addi $r10, $r0, 282
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3072($r28)
+    addi $r10, $r0, 283
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3076($r28)
+    addi $r10, $r0, 284
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3080($r28)
+    addi $r10, $r0, 285
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3084($r28)
+    addi $r10, $r0, 286
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3088($r28)
+    addi $r10, $r0, 287
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3092($r28)
+    addi $r10, $r0, 288
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3096($r28)
+    addi $r10, $r0, 289
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3100($r28)
+    addi $r10, $r0, 290
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3104($r28)
+    addi $r10, $r0, 291
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3108($r28)
+    addi $r10, $r0, 292
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3112($r28)
+    addi $r10, $r0, 293
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3116($r28)
+    addi $r10, $r0, 294
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3120($r28)
+    addi $r10, $r0, 295
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3124($r28)
+    addi $r10, $r0, 296
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3128($r28)
+    addi $r10, $r0, 297
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3132($r28)
+    addi $r10, $r0, 298
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3136($r28)
+    addi $r10, $r0, 299
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3140($r28)
+    addi $r10, $r0, 300
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3144($r28)
+    addi $r10, $r0, 301
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3148($r28)
+    addi $r10, $r0, 302
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3152($r28)
+    addi $r10, $r0, 303
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3156($r28)
+    addi $r10, $r0, 304
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3160($r28)
+    addi $r10, $r0, 305
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3164($r28)
+    addi $r10, $r0, 306
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3168($r28)
+    addi $r10, $r0, 307
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3172($r28)
+    addi $r10, $r0, 308
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3176($r28)
+    addi $r10, $r0, 309
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3180($r28)
+    addi $r10, $r0, 310
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3184($r28)
+    addi $r10, $r0, 311
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3188($r28)
+    addi $r10, $r0, 312
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3192($r28)
+    addi $r10, $r0, 313
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3196($r28)
+    addi $r10, $r0, 314
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3200($r28)
+    addi $r10, $r0, 315
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3204($r28)
+    addi $r10, $r0, 316
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3208($r28)
+    addi $r10, $r0, 317
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3212($r28)
+    addi $r10, $r0, 318
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3216($r28)
+    addi $r10, $r0, 319
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3220($r28)
+    addi $r10, $r0, 320
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3224($r28)
+    addi $r10, $r0, 321
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3228($r28)
+    addi $r10, $r0, 322
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3232($r28)
+    addi $r10, $r0, 323
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3236($r28)
+    addi $r10, $r0, 324
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3240($r28)
+    addi $r10, $r0, 325
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3244($r28)
+    addi $r10, $r0, 326
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3248($r28)
+    addi $r10, $r0, 327
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3252($r28)
+    addi $r10, $r0, 328
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3256($r28)
+    addi $r10, $r0, 329
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3260($r28)
+    addi $r10, $r0, 330
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3264($r28)
+    addi $r10, $r0, 331
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3268($r28)
+    addi $r10, $r0, 332
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3272($r28)
+    addi $r10, $r0, 333
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3276($r28)
+    addi $r10, $r0, 334
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3280($r28)
+    addi $r10, $r0, 335
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3284($r28)
+    addi $r10, $r0, 336
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3288($r28)
+    addi $r10, $r0, 337
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3292($r28)
+    addi $r10, $r0, 338
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3296($r28)
+    addi $r10, $r0, 339
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3300($r28)
+    addi $r10, $r0, 340
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3304($r28)
+    addi $r10, $r0, 341
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3308($r28)
+    addi $r10, $r0, 342
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3312($r28)
+    addi $r10, $r0, 343
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3316($r28)
+    addi $r10, $r0, 344
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3320($r28)
+    addi $r10, $r0, 345
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3324($r28)
+    addi $r10, $r0, 346
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3328($r28)
+    addi $r10, $r0, 347
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3332($r28)
+    addi $r10, $r0, 348
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3336($r28)
+    addi $r10, $r0, 349
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3340($r28)
+    addi $r10, $r0, 350
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3344($r28)
+    addi $r10, $r0, 351
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3348($r28)
+    addi $r10, $r0, 352
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3352($r28)
+    addi $r10, $r0, 353
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3356($r28)
+    addi $r10, $r0, 354
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3360($r28)
+    addi $r10, $r0, 355
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3364($r28)
+    addi $r10, $r0, 356
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3368($r28)
+    addi $r10, $r0, 357
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3372($r28)
+    addi $r10, $r0, 358
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3376($r28)
+    addi $r10, $r0, 359
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3380($r28)
+    addi $r10, $r0, 360
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3384($r28)
+    addi $r10, $r0, 361
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3388($r28)
+    addi $r10, $r0, 362
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3392($r28)
+    addi $r10, $r0, 363
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3396($r28)
+    addi $r10, $r0, 364
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3400($r28)
+    addi $r10, $r0, 365
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3404($r28)
+    addi $r10, $r0, 366
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3408($r28)
+    addi $r10, $r0, 367
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3412($r28)
+    addi $r10, $r0, 368
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3416($r28)
+    addi $r10, $r0, 369
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3420($r28)
+    addi $r10, $r0, 370
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3424($r28)
+    addi $r10, $r0, 371
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3428($r28)
+    addi $r10, $r0, 372
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3432($r28)
+    addi $r10, $r0, 373
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3436($r28)
+    addi $r10, $r0, 374
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3440($r28)
+    addi $r10, $r0, 375
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3444($r28)
+    addi $r10, $r0, 376
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3448($r28)
+    addi $r10, $r0, 377
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3452($r28)
+    addi $r10, $r0, 378
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3456($r28)
+    addi $r10, $r0, 379
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3460($r28)
+    addi $r10, $r0, 380
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3464($r28)
+    addi $r10, $r0, 381
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3468($r28)
+    addi $r10, $r0, 382
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3472($r28)
+    addi $r10, $r0, 383
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3476($r28)
+    addi $r10, $r0, 384
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3480($r28)
+    addi $r10, $r0, 385
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3484($r28)
+    addi $r10, $r0, 386
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3488($r28)
+    addi $r10, $r0, 387
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3492($r28)
+    addi $r10, $r0, 388
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3496($r28)
+    addi $r10, $r0, 389
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3500($r28)
+    addi $r10, $r0, 390
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3504($r28)
+    addi $r10, $r0, 391
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3508($r28)
+    addi $r10, $r0, 392
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3512($r28)
+    addi $r10, $r0, 393
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3516($r28)
+    addi $r10, $r0, 394
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3520($r28)
+    addi $r10, $r0, 395
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3524($r28)
+    addi $r10, $r0, 396
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3528($r28)
+    addi $r10, $r0, 397
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3532($r28)
+    addi $r10, $r0, 398
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3536($r28)
+    addi $r10, $r0, 399
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3540($r28)
+    addi $r10, $r0, 400
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3544($r28)
+    addi $r10, $r0, 401
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3548($r28)
+    addi $r10, $r0, 402
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3552($r28)
+    addi $r10, $r0, 403
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3556($r28)
+    addi $r10, $r0, 404
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3560($r28)
+    addi $r10, $r0, 405
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3564($r28)
+    addi $r10, $r0, 406
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3568($r28)
+    addi $r10, $r0, 407
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3572($r28)
+    addi $r10, $r0, 408
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3576($r28)
+    addi $r10, $r0, 409
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3580($r28)
+    addi $r10, $r0, 410
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3584($r28)
+    addi $r10, $r0, 411
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3588($r28)
+    addi $r10, $r0, 412
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3592($r28)
+    addi $r10, $r0, 413
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3596($r28)
+    addi $r10, $r0, 414
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3600($r28)
+    addi $r10, $r0, 415
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3604($r28)
+    addi $r10, $r0, 416
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3608($r28)
+    addi $r10, $r0, 417
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3612($r28)
+    addi $r10, $r0, 418
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3616($r28)
+    addi $r10, $r0, 419
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3620($r28)
+    addi $r10, $r0, 420
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3624($r28)
+    addi $r10, $r0, 421
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3628($r28)
+    addi $r10, $r0, 422
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3632($r28)
+    addi $r10, $r0, 423
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3636($r28)
+    addi $r10, $r0, 424
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3640($r28)
+    addi $r10, $r0, 425
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3644($r28)
+    addi $r10, $r0, 426
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3648($r28)
+    addi $r10, $r0, 427
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3652($r28)
+    addi $r10, $r0, 428
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3656($r28)
+    addi $r10, $r0, 429
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3660($r28)
+    addi $r10, $r0, 430
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3664($r28)
+    addi $r10, $r0, 431
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3668($r28)
+    addi $r10, $r0, 432
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3672($r28)
+    addi $r10, $r0, 433
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3676($r28)
+    addi $r10, $r0, 434
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3680($r28)
+    addi $r10, $r0, 435
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3684($r28)
+    addi $r10, $r0, 436
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3688($r28)
+    addi $r10, $r0, 437
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3692($r28)
+    addi $r10, $r0, 438
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3696($r28)
+    addi $r10, $r0, 439
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3700($r28)
+    addi $r10, $r0, 440
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3704($r28)
+    addi $r10, $r0, 441
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3708($r28)
+    addi $r10, $r0, 442
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3712($r28)
+    addi $r10, $r0, 443
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3716($r28)
+    addi $r10, $r0, 444
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3720($r28)
+    addi $r10, $r0, 445
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3724($r28)
+    addi $r10, $r0, 446
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3728($r28)
+    addi $r10, $r0, 447
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3732($r28)
+    addi $r10, $r0, 448
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3736($r28)
+    addi $r10, $r0, 449
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3740($r28)
+    addi $r10, $r0, 450
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3744($r28)
+    addi $r10, $r0, 451
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3748($r28)
+    addi $r10, $r0, 452
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3752($r28)
+    addi $r10, $r0, 453
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3756($r28)
+    addi $r10, $r0, 454
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3760($r28)
+    addi $r10, $r0, 455
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3764($r28)
+    addi $r10, $r0, 456
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3768($r28)
+    addi $r10, $r0, 457
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3772($r28)
+    addi $r10, $r0, 458
+    sll $r10, $r10, 9
+    addi $r11, $r0, 452
+    or $r10, $r10, $r11
+    sw $r10, 3776($r28)
 
     j loop
