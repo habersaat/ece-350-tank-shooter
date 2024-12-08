@@ -1030,7 +1030,7 @@ arena_collision_check:
     addi $r17, $r28, 0         # ArenaRAM base address (stored in $r28)
 
 collision_loop:
-    addi $r18, $r0, 1250              # Total number of ArenaRAM entries
+    addi $r18, $r0, 5              # Total number of ArenaRAM entries
     blt $r16, $r18, load_arena_pixel  # Continue loop if index < 1250
     j arena_collisions_handled        # Exit loop if no collision
 
