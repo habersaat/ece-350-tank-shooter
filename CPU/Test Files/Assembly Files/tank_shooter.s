@@ -930,7 +930,7 @@ bullet_loop:
     # Check if bullet is active
     sra $r9, $r8, 2            # Shift right to isolate the active bit (3rd LSB)
     addi $r16, $r0, 1
-    and $r9, $r9, $16          # Isolate the active bit
+    and $r9, $r9, $r16          # Isolate the active bit
     bne $r9, $r0, process_active_bullet # Process if active
     j next_bullet              # Skip processing if inactive
 
@@ -953,7 +953,7 @@ process_active_bullet:
     # Extract direction (4 bits)
     sra $r13, $r8, 3           # Shift right to isolate direction
     addi $r16, $r0, 15
-    and $r13, $r13, $16        # Mask direction (4 bits)
+    and $r13, $r13, $r16        # Mask direction (4 bits)
 
     # Load the counter from memory address 800 (this is for TTL decrement logic)
     addi $r15, $r0, 800       # Address for counter
