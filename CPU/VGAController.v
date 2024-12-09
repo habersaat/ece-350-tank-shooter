@@ -54,6 +54,9 @@ module VGAController(
     wire p2isInSquare;
     assign p2isInSquare = (x >= currX2 && x < currX2 + SPRITE_SIZE) && (y >= currY2 && y < currY2 + SPRITE_SIZE) && p2Health > 0;
 	   
+	wire isInP1Health;
+	assign isInP1Health = (x >= 10 && x < 10 + HEALTH_WIDTH) && (y >= 10 && y < 10 + HEALTH_HEIGHT);
+
     // P1 LEFT
     wire P1DOWN = JD[7];
     wire P1RIGHT = JD[10];
@@ -92,7 +95,9 @@ module VGAController(
 		VIDEO_HEIGHT = 480, // Standard VGA Height
 		SPRITE_SIZE = 64,   // Size of the sprite
 		BULLET_SIZE = 12,	// Size of the bullet
-        MAX_BULLETS = 64;	// Maximum number of bullets
+        MAX_BULLETS = 64,	// Maximum number of bullets
+		HEALTH_WIDTH = 100, // Width of the health bar
+		HEALTH_HEIGHT = 50; // Height of the health bar
 
 	wire active, screenEnd;
 	wire[9:0] x;
@@ -144,7 +149,8 @@ module VGAController(
 	ImageData2(
 		.clk(clk), 						         // Falling edge of the 100 MHz clk
 		.addr(spriteAddress1),					 // Image data address
-		.dataOut(sprite1ColorAddr)); 						  
+		.dataOut(sprite1ColorAddr),
+		.wEn(1'b0)); 						  
 	
 	// Color Palette to Map Color Address to 12-Bit Color
 	wire[BITS_PER_COLOR-1:0] sprite1ColorData; // 12-bit color data at current pixel
@@ -157,7 +163,8 @@ module VGAController(
 	ColorPalette2(
 		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
 		.addr(sprite1ColorAddr),					   // Address from the ImageData RAM
-		.dataOut(sprite1ColorData)); 						     
+		.dataOut(sprite1ColorData),
+		.wEn(1'b0)); 						     
 		
 		
 		
@@ -176,7 +183,8 @@ module VGAController(
 	ImageData3(
 		.clk(clk), 						         // Falling edge of the 100 MHz clk
 		.addr(spriteAddress2),					 // Image data address
-		.dataOut(sprite2ColorAddr)); 						     // We're always reading
+		.dataOut(sprite2ColorAddr),
+		.wEn(1'b0)); 						     // We're always reading
 	
 	// Color Palette to Map Color Address to 12-Bit Color
 	wire[BITS_PER_COLOR-1:0] sprite2ColorData; // 12-bit color data at current pixel
@@ -189,7 +197,8 @@ module VGAController(
 	ColorPalette3(
 		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
 		.addr(sprite2ColorAddr),					   // Address from the ImageData RAM
-		.dataOut(sprite2ColorData)); 						       // We're always reading
+		.dataOut(sprite2ColorData),
+		.wEn(1'b0)); 						       // We're always reading
 	
 	
 	
@@ -203,7 +212,8 @@ module VGAController(
 	ImageData (
 		.clk(clk), 						 // Falling edge of the 100 MHz clk
 		.addr(imgAddress),					 // Image data address
-		.dataOut(colorAddr)); 						 // We're always reading
+		.dataOut(colorAddr),
+		.wEn(1'b0)); 						 // We're always reading
 
 	// Color Palette to Map Color Address to 12-Bit Color
 	wire[BITS_PER_COLOR-1:0] colorData; // 12-bit color data at current pixel
@@ -216,33 +226,34 @@ module VGAController(
 	ColorPalette (
 		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
 		.addr(colorAddr),					       // Address from the ImageData RAM
-		.dataOut(colorData)); 						       // We're always reading
+		.dataOut(colorData),
+		.wEn(1'b0)); 						       // We're always reading
 
 	// Start Screen Image 1
-	VRAM #(		
-		.DEPTH(PIXEL_COUNT), 				     // Set RAM depth to contain every pixel
-		.DATA_WIDTH(PALETTE_ADDRESS_WIDTH),      // Set data width according to the color palette
-		.ADDRESS_WIDTH(PIXEL_ADDRESS_WIDTH),     // Set address with according to the pixel count
-		.MEMFILE({MEM_FILES_PATH, "startScreen1image.mem"})) // Memory initialization
-	ImageData4 (
-		.clk(clk), 						 // Falling edge of the 100 MHz clk
-		.addr(startScreen1imgAddress),					 // Image data address
-		.dataOut(startScreen1colorAddr));				 // Color palette address); 		
+	// VRAM #(		
+	// 	.DEPTH(PIXEL_COUNT), 				     // Set RAM depth to contain every pixel
+	// 	.DATA_WIDTH(PALETTE_ADDRESS_WIDTH),      // Set data width according to the color palette
+	// 	.ADDRESS_WIDTH(PIXEL_ADDRESS_WIDTH),     // Set address with according to the pixel count
+	// 	.MEMFILE({MEM_FILES_PATH, "startScreen1image.mem"})) // Memory initialization
+	// ImageData4 (
+	// 	.clk(clk), 						 // Falling edge of the 100 MHz clk
+	// 	.addr(startScreen1imgAddress),					 // Image data address
+	// 	.dataOut(startScreen1colorAddr));				 // Color palette address); 		
 
-	wire[BITS_PER_COLOR-1:0] startScreen1colorData; // 12-bit color data at current pixel
-	wire[PIXEL_ADDRESS_WIDTH-1:0] startScreen1imgAddress;  	 // Image address for the image data
-	wire[PALETTE_ADDRESS_WIDTH-1:0] startScreen1colorAddr; 	 // Color address for the color palette
-	assign startScreen1imgAddress = x + 640*y;				 // Address calculated coordinate
+	// wire[BITS_PER_COLOR-1:0] startScreen1colorData; // 12-bit color data at current pixel
+	// wire[PIXEL_ADDRESS_WIDTH-1:0] startScreen1imgAddress;  	 // Image address for the image data
+	// wire[PALETTE_ADDRESS_WIDTH-1:0] startScreen1colorAddr; 	 // Color address for the color palette
+	// assign startScreen1imgAddress = x + 640*y;				 // Address calculated coordinate
 
-	VRAM #(
-		.DEPTH(PALETTE_COLOR_COUNT), 		       // Set depth to contain every color		
-		.DATA_WIDTH(BITS_PER_COLOR), 		       // Set data width according to the bits per color
-		.ADDRESS_WIDTH(PALETTE_ADDRESS_WIDTH),     // Set address width according to the color count
-		.MEMFILE({MEM_FILES_PATH, "startScreen1colors.mem"}))  // Memory initialization
-	ColorPalette4 (
-		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
-		.addr(startScreen1colorAddr),					       // Address from the ImageData RAM
-		.dataOut(startScreen1colorData)); 						      
+	// VRAM #(
+	// 	.DEPTH(PALETTE_COLOR_COUNT), 		       // Set depth to contain every color		
+	// 	.DATA_WIDTH(BITS_PER_COLOR), 		       // Set data width according to the bits per color
+	// 	.ADDRESS_WIDTH(PALETTE_ADDRESS_WIDTH),     // Set address width according to the color count
+	// 	.MEMFILE({MEM_FILES_PATH, "startScreen1colors.mem"}))  // Memory initialization
+	// ColorPalette4 (
+	// 	.clk(clk), 							   	   // Rising edge of the 100 MHz clk
+	// 	.addr(startScreen1colorAddr),					       // Address from the ImageData RAM
+	// 	.dataOut(startScreen1colorData)); 						      
 
 	
 
@@ -279,6 +290,53 @@ module VGAController(
 
 
 
+	// Image Data to Map Pixel Location to Color Address
+	localparam 
+		HEALTH_PIXEL_COUNT =  100 * 50, 	             // Number of pixels on the screen
+		HEALTH_PIXEL_ADDRESS_WIDTH = $clog2(HEALTH_PIXEL_COUNT) + 1;     // Use built in log2 command
+	
+    wire [9:0] health1_x = x - 10;
+    wire [8:0] health1_y = y - 10;
+
+	wire[HEALTH_PIXEL_ADDRESS_WIDTH-1:0] health1imgAddress;  	 // Image address for the image data
+	wire[PALETTE_ADDRESS_WIDTH-1:0] health1colorAddr; 	 // Color address for the color palette
+	assign health1imgAddress = health1_x + HEALTH_WIDTH*health1_y;				 // Address calculated coordinate
+	
+	VRAM #(		
+		.DEPTH(HEALTH_PIXEL_COUNT), 		            // Set RAM depth to contain every pixel
+		.DATA_WIDTH(PALETTE_ADDRESS_WIDTH),             // Set data width according to the color palette
+		.ADDRESS_WIDTH(HEALTH_PIXEL_ADDRESS_WIDTH),     // Set address with according to the pixel count
+		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health100image.mem"}))            // Memory initialization
+	ImageData10(
+		.clk(clk), 						         // Falling edge of the 100 MHz clk
+		.addr(health1imgAddress),					 // Image data address
+		.dataOut(health1colorAddr),
+		.wEn(1'b0)); 						  
+	
+	// Color Palette to Map Color Address to 12-Bit Color
+	wire[BITS_PER_COLOR-1:0] health1ColorData; // 12-bit color data at current pixel
+	
+	VRAM #(
+		.DEPTH(PALETTE_COLOR_COUNT), 		       // Set depth to contain every color		
+		.DATA_WIDTH(BITS_PER_COLOR), 		       // Set data width according to the bits per color
+		.ADDRESS_WIDTH(PALETTE_ADDRESS_WIDTH),     // Set address width according to the color count
+		.MEMFILE({MEM_FILES_PATH, "health100colors.mem"}))  // Memory initialization
+	ColorPalette10(
+		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
+		.addr(health1colorAddr),					   // Address from the ImageData RAM
+		.dataOut(health1ColorData),
+		.wEn(1'b0)); 						     
+
+
+
+
+
+
+
+
+
+
+
 	// Assign to output color from register if active
 	wire[BITS_PER_COLOR-1:0] colorOut; 			  // Output color 
 	wire [11:0] bulletColorData = 12'hF00; // Red color for bullets
@@ -287,7 +345,8 @@ module VGAController(
     	(p1isInSquare ? sprite1ColorData : 
     	p2isInSquare ? sprite2ColorData :
      	isBulletActive ? bulletColorData : 
-		(p1Health == 0) ? startScreen1colorData : 
+		isInP1Health ? health1ColorData :
+		// (p1Health == 0) ? startScreen1colorData : 
 		colorData) : 
     	12'd0; // Black when not active
 
