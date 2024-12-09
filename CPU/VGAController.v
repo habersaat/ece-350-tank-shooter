@@ -320,7 +320,7 @@ module VGAController(
 		.DEPTH(PALETTE_COLOR_COUNT), 		       // Set depth to contain every color		
 		.DATA_WIDTH(BITS_PER_COLOR), 		       // Set data width according to the bits per color
 		.ADDRESS_WIDTH(PALETTE_ADDRESS_WIDTH),     // Set address width according to the color count
-		.MEMFILE({MEM_FILES_PATH, "health100colors.mem"}))  // Memory initialization
+		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health100colors.mem"}))  // Memory initialization
 	ColorPalette10(
 		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
 		.addr(health1colorAddr),					   // Address from the ImageData RAM
@@ -345,7 +345,7 @@ module VGAController(
     	(p1isInSquare ? sprite1ColorData : 
     	p2isInSquare ? sprite2ColorData :
      	isBulletActive ? bulletColorData : 
-		isInP1Health ? 12'hF00 :
+		isInP1Health ? health1ColorData :
 		// (p1Health == 0) ? startScreen1colorData : 
 		colorData) : 
     	12'd0; // Black when not active
