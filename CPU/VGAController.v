@@ -55,10 +55,10 @@ module VGAController(
     assign p2isInSquare = (x >= currX2 && x < currX2 + SPRITE_SIZE) && (y >= currY2 && y < currY2 + SPRITE_SIZE) && p2Health > 0;
 	   
 	wire isInP1Health;
-	assign isInP1Health = (x >= 30 && x < 30 + HEALTH_WIDTH) && (y >= 30 && y < 30 + HEALTH_HEIGHT);
+	assign isInP1Health = (x > 30 && x < 30 + HEALTH_WIDTH) && (y >= 30 && y < 30 + HEALTH_HEIGHT);
 
 	wire isInP2Health;
-	assign isInP2Health = (x >= 530 && x < 530 + HEALTH_WIDTH) && (y >= 30 && y < 30 + HEALTH_HEIGHT);
+	assign isInP2Health = (x > 530 && x < 530 + HEALTH_WIDTH) && (y >= 30 && y < 30 + HEALTH_HEIGHT);
 	
 
     // P1 LEFT
