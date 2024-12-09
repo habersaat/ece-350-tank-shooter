@@ -1024,21 +1024,21 @@ bullet_move_up:
 
 arena_collision_check:
     # Initialize ArenaRAM index and base address
-    addi $r16, $r0, 0          # ArenaRAM index
-    addi $r17, $r28, 0         # ArenaRAM base address (stored in $r28)
+    addi $r24, $r0, 0          # ArenaRAM index
+    addi $r25, $r28, 0         # ArenaRAM base address (stored in $r28)
 
 collision_loop:
-    addi $r18, $r0, 1              # Total number of ArenaRAM entries
-    blt $r16, $r18, load_arena_pixel  # Continue loop if index < 1250
+    addi $r26, $r0, 1              # Total number of ArenaRAM entries
+    blt $r24, $r26, load_arena_pixel  # Continue loop if index < 1250
     j arena_collisions_handled        # Exit loop if no collision
 
 load_arena_pixel:
-    lw $r19, 0($r17)           # Load ArenaRAM[$r16] into $r19
+    lw $r27, 0($r25)           # Load ArenaRAM[$r16] into $r27
 
 increment_arena_pixel:
     # Increment ArenaRAM index and continue checking
-    addi $r16, $r16, 1         # Increment ArenaRAM index
-    addi $r17, $r17, 4         # Move to next ArenaRAM entry
+    addi $r24, $r24, 1         # Increment ArenaRAM index
+    addi $r25, $r25, 4         # Move to next ArenaRAM entry
     j collision_loop           # Continue checking for collisions
 
 arena_collisions_handled:
