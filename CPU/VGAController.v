@@ -328,8 +328,6 @@ module VGAController(
 		.wEn(1'b0)); 						     
 
 
-
-
 	wire[PALETTE_ADDRESS_WIDTH-1:0] p1_health95_colorAddr; 	 // Color address for the color palette
 	VRAM #(		
 		.DEPTH(HEALTH_PIXEL_COUNT), 		            // Set RAM depth to contain every pixel
@@ -354,7 +352,252 @@ module VGAController(
 		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
 		.addr(p1_health95_colorAddr),					   // Address from the ImageData RAM
 		.dataOut(p1_health95_ColorData),
-		.wEn(1'b0)); 						     
+		.wEn(1'b0)); 				
+
+
+
+
+
+	wire[PALETTE_ADDRESS_WIDTH-1:0] p1_health90_colorAddr; 	 // Color address for the color palette
+	VRAM #(		
+		.DEPTH(HEALTH_PIXEL_COUNT), 		            // Set RAM depth to contain every pixel
+		.DATA_WIDTH(PALETTE_ADDRESS_WIDTH),             // Set data width according to the color palette
+		.ADDRESS_WIDTH(HEALTH_PIXEL_ADDRESS_WIDTH),     // Set address with according to the pixel count
+		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_90image.mem"}))            // Memory initialization
+	ImageData12(
+		.clk(clk), 						         // Falling edge of the 100 MHz clk
+		.addr(p1_health_imgAddress),					 // Image data address
+		.dataOut(p1_health90_colorAddr),
+		.wEn(1'b0)); 						  
+	
+	// Color Palette to Map Color Address to 12-Bit Color
+	wire[BITS_PER_COLOR-1:0] p1_health90_ColorData; // 12-bit color data at current pixel
+	
+	VRAM #(
+		.DEPTH(PALETTE_COLOR_COUNT), 		       // Set depth to contain every color		
+		.DATA_WIDTH(BITS_PER_COLOR), 		       // Set data width according to the bits per color
+		.ADDRESS_WIDTH(PALETTE_ADDRESS_WIDTH),     // Set address width according to the color count
+		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_90colors.mem"}))  // Memory initialization
+	ColorPalette12(
+		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
+		.addr(p1_health90_colorAddr),					   // Address from the ImageData RAM
+		.dataOut(p1_health90_ColorData),
+		.wEn(1'b0));		     
+
+	
+	wire[PALETTE_ADDRESS_WIDTH-1:0] p1_health85_colorAddr; 	 // Color address for the color palette
+	VRAM #(		
+		.DEPTH(HEALTH_PIXEL_COUNT), 		            // Set RAM depth to contain every pixel
+		.DATA_WIDTH(PALETTE_ADDRESS_WIDTH),             // Set data width according to the color palette
+		.ADDRESS_WIDTH(HEALTH_PIXEL_ADDRESS_WIDTH),     // Set address with according to the pixel count
+		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_85image.mem"}))            // Memory initialization
+	ImageData13(
+		.clk(clk), 						         // Falling edge of the 100 MHz clk
+		.addr(p1_health_imgAddress),					 // Image data address
+		.dataOut(p1_health85_colorAddr),
+		.wEn(1'b0)); 						  
+	
+	// Color Palette to Map Color Address to 12-Bit Color
+	wire[BITS_PER_COLOR-1:0] p1_health85_ColorData; // 12-bit color data at current pixel
+	
+	VRAM #(
+		.DEPTH(PALETTE_COLOR_COUNT), 		       // Set depth to contain every color		
+		.DATA_WIDTH(BITS_PER_COLOR), 		       // Set data width according to the bits per color
+		.ADDRESS_WIDTH(PALETTE_ADDRESS_WIDTH),     // Set address width according to the color count
+		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_85colors.mem"}))  // Memory initialization
+	ColorPalette13(
+		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
+		.addr(p1_health85_colorAddr),					   // Address from the ImageData RAM
+		.dataOut(p1_health85_ColorData),
+		.wEn(1'b0));
+
+	
+	wire[PALETTE_ADDRESS_WIDTH-1:0] p1_health80_colorAddr; 	 // Color address for the color palette
+	VRAM #(		
+		.DEPTH(HEALTH_PIXEL_COUNT), 		            // Set RAM depth to contain every pixel
+		.DATA_WIDTH(PALETTE_ADDRESS_WIDTH),             // Set data width according to the color palette
+		.ADDRESS_WIDTH(HEALTH_PIXEL_ADDRESS_WIDTH),     // Set address with according to the pixel count
+		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_80image.mem"}))            // Memory initialization
+	ImageData14(
+		.clk(clk), 						         // Falling edge of the 100 MHz clk
+		.addr(p1_health_imgAddress),					 // Image data address
+		.dataOut(p1_health80_colorAddr),
+		.wEn(1'b0)); 						  
+	
+	// Color Palette to Map Color Address to 12-Bit Color
+	wire[BITS_PER_COLOR-1:0] p1_health80_ColorData; // 12-bit color data at current pixel
+	
+	VRAM #(
+		.DEPTH(PALETTE_COLOR_COUNT), 		       // Set depth to contain every color		
+		.DATA_WIDTH(BITS_PER_COLOR), 		       // Set data width according to the bits per color
+		.ADDRESS_WIDTH(PALETTE_ADDRESS_WIDTH),     // Set address width according to the color count
+		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_80colors.mem"}))  // Memory initialization
+	ColorPalette14(
+		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
+		.addr(p1_health80_colorAddr),					   // Address from the ImageData RAM
+		.dataOut(p1_health80_ColorData),
+		.wEn(1'b0));
+
+
+	wire[PALETTE_ADDRESS_WIDTH-1:0] p1_health75_colorAddr; 	 // Color address for the color palette
+	VRAM #(		
+		.DEPTH(HEALTH_PIXEL_COUNT), 		            // Set RAM depth to contain every pixel
+		.DATA_WIDTH(PALETTE_ADDRESS_WIDTH),             // Set data width according to the color palette
+		.ADDRESS_WIDTH(HEALTH_PIXEL_ADDRESS_WIDTH),     // Set address with according to the pixel count
+		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_75image.mem"}))            // Memory initialization
+	ImageData15(
+		.clk(clk), 						         // Falling edge of the 100 MHz clk
+		.addr(p1_health_imgAddress),					 // Image data address
+		.dataOut(p1_health75_colorAddr),
+		.wEn(1'b0)); 						  
+	
+	// Color Palette to Map Color Address to 12-Bit Color
+	wire[BITS_PER_COLOR-1:0] p1_health75_ColorData; // 12-bit color data at current pixel
+	
+	VRAM #(
+		.DEPTH(PALETTE_COLOR_COUNT), 		       // Set depth to contain every color		
+		.DATA_WIDTH(BITS_PER_COLOR), 		       // Set data width according to the bits per color
+		.ADDRESS_WIDTH(PALETTE_ADDRESS_WIDTH),     // Set address width according to the color count
+		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_75colors.mem"}))  // Memory initialization
+	ColorPalette15(
+		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
+		.addr(p1_health75_colorAddr),					   // Address from the ImageData RAM
+		.dataOut(p1_health75_ColorData),
+		.wEn(1'b0));
+
+	
+	wire[PALETTE_ADDRESS_WIDTH-1:0] p1_health70_colorAddr; 	 // Color address for the color palette
+	VRAM #(		
+		.DEPTH(HEALTH_PIXEL_COUNT), 		            // Set RAM depth to contain every pixel
+		.DATA_WIDTH(PALETTE_ADDRESS_WIDTH),             // Set data width according to the color palette
+		.ADDRESS_WIDTH(HEALTH_PIXEL_ADDRESS_WIDTH),     // Set address with according to the pixel count
+		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_70image.mem"}))            // Memory initialization
+	ImageData16(
+		.clk(clk), 						         // Falling edge of the 100 MHz clk
+		.addr(p1_health_imgAddress),					 // Image data address
+		.dataOut(p1_health70_colorAddr),
+		.wEn(1'b0)); 						  
+	
+	// Color Palette to Map Color Address to 12-Bit Color
+	wire[BITS_PER_COLOR-1:0] p1_health70_ColorData; // 12-bit color data at current pixel
+	
+	VRAM #(
+		.DEPTH(PALETTE_COLOR_COUNT), 		       // Set depth to contain every color		
+		.DATA_WIDTH(BITS_PER_COLOR), 		       // Set data width according to the bits per color
+		.ADDRESS_WIDTH(PALETTE_ADDRESS_WIDTH),     // Set address width according to the color count
+		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_70colors.mem"}))  // Memory initialization
+	ColorPalette16(
+		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
+		.addr(p1_health70_colorAddr),					   // Address from the ImageData RAM
+		.dataOut(p1_health70_ColorData),
+		.wEn(1'b0));
+
+	
+	wire[PALETTE_ADDRESS_WIDTH-1:0] p1_health65_colorAddr; 	 // Color address for the color palette
+	VRAM #(		
+		.DEPTH(HEALTH_PIXEL_COUNT), 		            // Set RAM depth to contain every pixel
+		.DATA_WIDTH(PALETTE_ADDRESS_WIDTH),             // Set data width according to the color palette
+		.ADDRESS_WIDTH(HEALTH_PIXEL_ADDRESS_WIDTH),     // Set address with according to the pixel count
+		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_65image.mem"}))            // Memory initialization
+	ImageData17(
+		.clk(clk), 						         // Falling edge of the 100 MHz clk
+		.addr(p1_health_imgAddress),					 // Image data address
+		.dataOut(p1_health65_colorAddr),
+		.wEn(1'b0)); 						  
+	
+	// Color Palette to Map Color Address to 12-Bit Color
+	wire[BITS_PER_COLOR-1:0] p1_health65_ColorData; // 12-bit color data at current pixel
+	
+	VRAM #(
+		.DEPTH(PALETTE_COLOR_COUNT), 		       // Set depth to contain every color		
+		.DATA_WIDTH(BITS_PER_COLOR), 		       // Set data width according to the bits per color
+		.ADDRESS_WIDTH(PALETTE_ADDRESS_WIDTH),     // Set address width according to the color count
+		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_65colors.mem"}))  // Memory initialization
+	ColorPalette17(
+		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
+		.addr(p1_health65_colorAddr),					   // Address from the ImageData RAM
+		.dataOut(p1_health65_ColorData),
+		.wEn(1'b0));
+
+
+	wire[PALETTE_ADDRESS_WIDTH-1:0] p1_health60_colorAddr; 	 // Color address for the color palette
+	VRAM #(		
+		.DEPTH(HEALTH_PIXEL_COUNT), 		            // Set RAM depth to contain every pixel
+		.DATA_WIDTH(PALETTE_ADDRESS_WIDTH),             // Set data width according to the color palette
+		.ADDRESS_WIDTH(HEALTH_PIXEL_ADDRESS_WIDTH),     // Set address with according to the pixel count
+		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_60image.mem"}))            // Memory initialization
+	ImageData18(
+		.clk(clk), 						         // Falling edge of the 100 MHz clk
+		.addr(p1_health_imgAddress),					 // Image data address
+		.dataOut(p1_health60_colorAddr),
+		.wEn(1'b0)); 						  
+	
+	// Color Palette to Map Color Address to 12-Bit Color
+	wire[BITS_PER_COLOR-1:0] p1_health60_ColorData; // 12-bit color data at current pixel
+	
+	VRAM #(
+		.DEPTH(PALETTE_COLOR_COUNT), 		       // Set depth to contain every color		
+		.DATA_WIDTH(BITS_PER_COLOR), 		       // Set data width according to the bits per color
+		.ADDRESS_WIDTH(PALETTE_ADDRESS_WIDTH),     // Set address width according to the color count
+		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_60colors.mem"}))  // Memory initialization
+	ColorPalette18(
+		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
+		.addr(p1_health60_colorAddr),					   // Address from the ImageData RAM
+		.dataOut(p1_health60_ColorData),
+		.wEn(1'b0));
+
+	wire[PALETTE_ADDRESS_WIDTH-1:0] p1_health55_colorAddr; 	 // Color address for the color palette
+	VRAM #(		
+		.DEPTH(HEALTH_PIXEL_COUNT), 		            // Set RAM depth to contain every pixel
+		.DATA_WIDTH(PALETTE_ADDRESS_WIDTH),             // Set data width according to the color palette
+		.ADDRESS_WIDTH(HEALTH_PIXEL_ADDRESS_WIDTH),     // Set address with according to the pixel count
+		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_55image.mem"}))            // Memory initialization
+	ImageData19(
+		.clk(clk), 						         // Falling edge of the 100 MHz clk
+		.addr(p1_health_imgAddress),					 // Image data address
+		.dataOut(p1_health55_colorAddr),
+		.wEn(1'b0)); 						  
+	
+	// Color Palette to Map Color Address to 12-Bit Color
+	wire[BITS_PER_COLOR-1:0] p1_health55_ColorData; // 12-bit color data at current pixel
+	
+	VRAM #(
+		.DEPTH(PALETTE_COLOR_COUNT), 		       // Set depth to contain every color		
+		.DATA_WIDTH(BITS_PER_COLOR), 		       // Set data width according to the bits per color
+		.ADDRESS_WIDTH(PALETTE_ADDRESS_WIDTH),     // Set address width according to the color count
+		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_55colors.mem"}))  // Memory initialization
+	ColorPalette19(
+		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
+		.addr(p1_health55_colorAddr),					   // Address from the ImageData RAM
+		.dataOut(p1_health55_ColorData),
+		.wEn(1'b0));
+
+	
+	wire[PALETTE_ADDRESS_WIDTH-1:0] p1_health50_colorAddr; 	 // Color address for the color palette
+	VRAM #(		
+		.DEPTH(HEALTH_PIXEL_COUNT), 		            // Set RAM depth to contain every pixel
+		.DATA_WIDTH(PALETTE_ADDRESS_WIDTH),             // Set data width according to the color palette
+		.ADDRESS_WIDTH(HEALTH_PIXEL_ADDRESS_WIDTH),     // Set address with according to the pixel count
+		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_50image.mem"}))            // Memory initialization
+	ImageData20(
+		.clk(clk), 						         // Falling edge of the 100 MHz clk
+		.addr(p1_health_imgAddress),					 // Image data address
+		.dataOut(p1_health50_colorAddr),
+		.wEn(1'b0)); 						  
+	
+	// Color Palette to Map Color Address to 12-Bit Color
+	wire[BITS_PER_COLOR-1:0] p1_health50_ColorData; // 12-bit color data at current pixel
+	
+	VRAM #(
+		.DEPTH(PALETTE_COLOR_COUNT), 		       // Set depth to contain every color		
+		.DATA_WIDTH(BITS_PER_COLOR), 		       // Set data width according to the bits per color
+		.ADDRESS_WIDTH(PALETTE_ADDRESS_WIDTH),     // Set address width according to the color count
+		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_50colors.mem"}))  // Memory initialization
+	ColorPalette20(
+		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
+		.addr(p1_health50_colorAddr),					   // Address from the ImageData RAM
+		.dataOut(p1_health50_ColorData),
+		.wEn(1'b0));
 
 
 
@@ -376,6 +619,15 @@ module VGAController(
      	isBulletActive ? bulletColorData : 
 		(isInP1Health && p1Health == 100) ? p1_health100_ColorData :
 		(isInP1Health && p1Health == 95) ? p1_health95_ColorData :
+		(isInP1Health && p1Health == 90) ? p1_health90_ColorData :
+		(isInP1Health && p1Health == 85) ? p1_health85_ColorData :
+		(isInP1Health && p1Health == 80) ? p1_health80_ColorData :
+		(isInP1Health && p1Health == 75) ? p1_health75_ColorData :
+		(isInP1Health && p1Health == 70) ? p1_health70_ColorData :
+		(isInP1Health && p1Health == 65) ? p1_health65_ColorData :
+		(isInP1Health && p1Health == 60) ? p1_health60_ColorData :
+		(isInP1Health && p1Health == 55) ? p1_health55_ColorData :
+		(isInP1Health && p1Health == 50) ? p1_health50_ColorData :
 		// (p1Health == 0) ? startScreen1colorData : 
 		colorData) : 
     	12'd0; // Black when not active
