@@ -893,8 +893,8 @@ module VGAController(
 		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_100image.mem"}))            // Memory initialization
 	ImageData31(
 		.clk(clk), 						         // Falling edge of the 100 MHz clk
-		.addr(p1_health_imgAddress),					 // Image data address
-		.dataOut(p1_health100_colorAddr),
+		.addr(p2_health_imgAddress),					 // Image data address
+		.dataOut(p2_health100_colorAddr),
 		.wEn(1'b0)); 						  
 	
 	// Color Palette to Map Color Address to 12-Bit Color
@@ -907,8 +907,8 @@ module VGAController(
 		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_100colors.mem"}))  // Memory initialization
 	ColorPalette31(
 		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
-		.addr(p1_health100_colorAddr),					   // Address from the ImageData RAM
-		.dataOut(p1_health100_ColorData),
+		.addr(p2_health100_colorAddr),					   // Address from the ImageData RAM
+		.dataOut(p2_health100_ColorData),
 		.wEn(1'b0)); 						     
 
 
@@ -920,8 +920,8 @@ module VGAController(
 		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_95image.mem"}))            // Memory initialization
 	ImageData32(
 		.clk(clk), 						         // Falling edge of the 100 MHz clk
-		.addr(p1_health_imgAddress),					 // Image data address
-		.dataOut(p1_health95_colorAddr),
+		.addr(p2_health_imgAddress),					 // Image data address
+		.dataOut(p2_health95_colorAddr),
 		.wEn(1'b0)); 						  
 	
 	// Color Palette to Map Color Address to 12-Bit Color
@@ -934,8 +934,8 @@ module VGAController(
 		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_95colors.mem"}))  // Memory initialization
 	ColorPalette32(
 		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
-		.addr(p1_health95_colorAddr),					   // Address from the ImageData RAM
-		.dataOut(p1_health95_ColorData),
+		.addr(p2_health95_colorAddr),					   // Address from the ImageData RAM
+		.dataOut(p2_health95_ColorData),
 		.wEn(1'b0)); 				
 
 
