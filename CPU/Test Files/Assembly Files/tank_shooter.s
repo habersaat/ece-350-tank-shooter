@@ -1154,6 +1154,10 @@ handle_p1_collision:
     blt $r17, $r29, pack_bullet # If player health is already 0, don't decrement
     addi $r17, $r17, -5         # Decrement health by 5
     sw $r17, 0($r30)            # Store updated health back in HealthRAM
+
+    # If health <= 0, jump to game_reset
+    blt $r17, $r29, game_reset # If player health is 0, reset the game
+
     j pack_bullet               # Skip further checks and pack bullet
 
 # Check collision with Player 2
@@ -1181,6 +1185,10 @@ handle_p2_collision:
     blt $r17, $r29, pack_bullet # If player health is already 0, don't decrement
     addi $r17, $r17, -5        # Decrement health by 5
     sw $r17, 4($r30)           # Store updated health back in HealthRAM
+
+    # If health <= 0, jump to game_reset
+    blt $r17, $r29, game_reset # If player health is 0, reset the game
+
     j pack_bullet              # Skip further checks and pack bullet
 
 # Skip collision checks if no match
@@ -1213,8 +1221,16 @@ next_bullet:
     # Return to main loop
     j temp_label
 
+game_reset:
+    # Sleep for 3 seconds
+    addi $r6, $r0, 0           # Initialize counter in $r6
+    addi $r7, $r0, 32768       # Load dely value into $r7
+    sll $r7, $r7, 8            # Double the delay value
 
-
+game_reset_loop:
+    addi $r6, $r6, 1           # Increment counter
+    bne $r6, $r7, game_reset_loop # Loop until counter reaches delay
+    j _start                 # Return to _start
 
     #############################
     # Sleep Section
