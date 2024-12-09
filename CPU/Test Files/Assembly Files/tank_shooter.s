@@ -1,6 +1,61 @@
 # tank_shooter.s
 
 _start:
+    # Initialize MMIO Base Address in $r4 (0xFFFF0000)
+    addi $r4, $r0, 65535        # Load 65535 (0xFFFF) into $r4
+    sll $r4, $r4, 16            # Shift left to set high bits (0xFFFF0000)
+
+    # Write 1 to ScreenRAM to indicate the start screen
+    addi $r3, $r0, 1            # Value 1 (Start Screen)
+    sw $r3, 400($r0)              # Write to RAM[100]
+
+poll_mmio:
+    # Poll MMIO inputs
+    lw $r5, 0($r4)              # Load input into $r4
+    bne $r5, $r0, transition_to_game # If input is active, transition to game
+    lw $r5, 4($r4)              # Load input into $r5
+    bne $r5, $r0, transition_to_game # If input is active, transition to game
+    lw $r5, 8($r4)              # Load input into $r5
+    bne $r5, $r0, transition_to_game # If input is active, transition to game
+    lw $r5, 12($r4)              # Load input into $r5
+    bne $r5, $r0, transition_to_game # If input is active, transition to game
+    lw $r5, 16($r4)              # Load input into $r5
+    bne $r5, $r0, transition_to_game # If input is active, transition to game
+    lw $r5, 20($r4)              # Load input into $r5
+    bne $r5, $r0, transition_to_game # If input is active, transition to game
+    lw $r5, 24($r4)              # Load input into $r5
+    bne $r5, $r0, transition_to_game # If input is active, transition to game
+    lw $r5, 28($r4)              # Load input into $r5
+    bne $r5, $r0, transition_to_game # If input is active, transition to game
+    lw $r5, 32($r4)              # Load input into $r5
+    bne $r5, $r0, transition_to_game # If input is active, transition to game
+    lw $r5, 36($r4)              # Load input into $r5
+    bne $r5, $r0, transition_to_game # If input is active, transition to game
+    lw $r5, 40($r4)              # Load input into $r5
+    bne $r5, $r0, transition_to_game # If input is active, transition to game
+    lw $r5, 44($r4)              # Load input into $r5
+    bne $r5, $r0, transition_to_game # If input is active, transition to game
+    lw $r5, 48($r4)              # Load input into $r5
+    bne $r5, $r0, transition_to_game # If input is active, transition to game
+    lw $r5, 52($r4)              # Load input into $r5
+    bne $r5, $r0, transition_to_game # If input is active, transition to game
+    lw $r5, 56($r4)              # Load input into $r5
+    bne $r5, $r0, transition_to_game # If input is active, transition to game
+    lw $r5, 60($r4)              # Load input into $r5
+    bne $r5, $r0, transition_to_game # If input is active, transition to game
+
+    # Loop back to polling
+    j poll_mmio
+
+transition_to_game:
+    # Write 2 to ScreenRAM to indicate game screen
+    addi $r3, $r0, 3            # Value 3 (Game Screen)
+    sw $r3, 400($r0)             # Write to RAM[100]
+
+    # Proceed with game initialization (Optional)
+    j game_start
+
+game_start:
     ##########################
     # Step 1: Initialization #
     ##########################

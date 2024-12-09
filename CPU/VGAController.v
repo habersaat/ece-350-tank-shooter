@@ -223,6 +223,35 @@ module VGAController(
 		.addr(colorAddr),					       // Address from the ImageData RAM
 		.dataOut(colorData),				       // Color at current pixel
 		.wEn(1'b0)); 						       // We're always reading
+
+	// Start Screen Image 1
+	VRAM #(		
+		.DEPTH(PIXEL_COUNT), 				     // Set RAM depth to contain every pixel
+		.DATA_WIDTH(PALETTE_ADDRESS_WIDTH),      // Set data width according to the color palette
+		.ADDRESS_WIDTH(PIXEL_ADDRESS_WIDTH),     // Set address with according to the pixel count
+		.MEMFILE({MEM_FILES_PATH, "startScreen1image.mem"})) // Memory initialization
+	ImageData4 (
+		.clk(clk), 						 // Falling edge of the 100 MHz clk
+		.addr(startScreen1imgAddress),					 // Image data address
+		.dataOut(startScreen1colorAddr),				 // Color palette address
+		.wEn(1'b0)); 						 // We're always reading
+
+	wire[BITS_PER_COLOR-1:0] startScreen1colorData; // 12-bit color data at current pixel
+	wire[PIXEL_ADDRESS_WIDTH-1:0] startScreen1imgAddress;  	 // Image address for the image data
+	wire[PALETTE_ADDRESS_WIDTH-1:0] startScreen1colorAddr; 	 // Color address for the color palette
+	assign startScreen1imgAddress = x + 640*y;				 // Address calculated coordinate
+
+	VRAM #(
+		.DEPTH(PALETTE_COLOR_COUNT), 		       // Set depth to contain every color		
+		.DATA_WIDTH(BITS_PER_COLOR), 		       // Set data width according to the bits per color
+		.ADDRESS_WIDTH(PALETTE_ADDRESS_WIDTH),     // Set address width according to the color count
+		.MEMFILE({MEM_FILES_PATH, "startScreen1colors.mem"}))  // Memory initialization
+	ColorPalette4 (
+		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
+		.addr(startScreen1colorAddr),					       // Address from the ImageData RAM
+		.dataOut(startScreen1colorData),				       // Color at current pixel
+		.wEn(1'b0)); 						       // We're always reading
+
 	
 
 
@@ -265,7 +294,9 @@ module VGAController(
 	assign colorOut = active ? 
     	(p1isInSquare ? sprite1ColorData : 
     	p2isInSquare ? sprite2ColorData :
-     	isBulletActive ? bulletColorData : colorData) : 
+     	isBulletActive ? bulletColorData : 
+		(p1Health == 0) ? startScreen1colorData : 
+		colorData) : 
     	12'd0; // Black when not active
 
 	// Quickly assign the output colors to their channels using concatenation
