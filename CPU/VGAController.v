@@ -55,7 +55,7 @@ module VGAController(
     assign p2isInSquare = (x >= currX2 && x < currX2 + SPRITE_SIZE) && (y >= currY2 && y < currY2 + SPRITE_SIZE) && p2Health > 0;
 	   
 	wire isInP1Health;
-	assign isInP1Health = (x >= 10 && x < 10 + HEALTH_WIDTH) && (y >= 10 && y < 10 + HEALTH_HEIGHT);
+	assign isInP1Health = (x >= 30 && x < 30 + HEALTH_WIDTH) && (y >= 30 && y < 30 + HEALTH_HEIGHT);
 
     // P1 LEFT
     wire P1DOWN = JD[7];
@@ -295,12 +295,12 @@ module VGAController(
 		HEALTH_PIXEL_COUNT =  100 * 50, 	             // Number of pixels on the screen
 		HEALTH_PIXEL_ADDRESS_WIDTH = $clog2(HEALTH_PIXEL_COUNT) + 1;     // Use built in log2 command
 	
-    wire [9:0] health1_x = x - 10;
-    wire [8:0] health1_y = y - 10;
+    wire [9:0] p1_health1_x = x - 30;
+    wire [8:0] p1_health1_y = y - 30;
 
-	wire[HEALTH_PIXEL_ADDRESS_WIDTH-1:0] health1imgAddress;  	 // Image address for the image data
-	wire[PALETTE_ADDRESS_WIDTH-1:0] health1colorAddr; 	 // Color address for the color palette
-	assign health1imgAddress = health1_x + HEALTH_WIDTH*health1_y;				 // Address calculated coordinate
+	wire[HEALTH_PIXEL_ADDRESS_WIDTH-1:0] p1_health_imgAddress;  	 // Image address for the image data
+	wire[PALETTE_ADDRESS_WIDTH-1:0] p1_health100_colorAddr; 	 // Color address for the color palette
+	assign p1_health_imgAddress = p1_health1_x + HEALTH_WIDTH*p1_health1_y;				 // Address calculated coordinate
 	
 	VRAM #(		
 		.DEPTH(HEALTH_PIXEL_COUNT), 		            // Set RAM depth to contain every pixel
@@ -309,12 +309,12 @@ module VGAController(
 		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_100image.mem"}))            // Memory initialization
 	ImageData10(
 		.clk(clk), 						         // Falling edge of the 100 MHz clk
-		.addr(health1imgAddress),					 // Image data address
-		.dataOut(health1colorAddr),
+		.addr(p1_health_imgAddress),					 // Image data address
+		.dataOut(p1_health100_colorAddr),
 		.wEn(1'b0)); 						  
 	
 	// Color Palette to Map Color Address to 12-Bit Color
-	wire[BITS_PER_COLOR-1:0] health1ColorData; // 12-bit color data at current pixel
+	wire[BITS_PER_COLOR-1:0] p1_health100_ColorData; // 12-bit color data at current pixel
 	
 	VRAM #(
 		.DEPTH(PALETTE_COLOR_COUNT), 		       // Set depth to contain every color		
@@ -323,8 +323,37 @@ module VGAController(
 		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_100colors.mem"}))  // Memory initialization
 	ColorPalette10(
 		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
-		.addr(health1colorAddr),					   // Address from the ImageData RAM
-		.dataOut(health1ColorData),
+		.addr(p1_health100_colorAddr),					   // Address from the ImageData RAM
+		.dataOut(p1_health100_ColorData),
+		.wEn(1'b0)); 						     
+
+
+
+
+	wire[PALETTE_ADDRESS_WIDTH-1:0] p1_health95_colorAddr; 	 // Color address for the color palette
+	VRAM #(		
+		.DEPTH(HEALTH_PIXEL_COUNT), 		            // Set RAM depth to contain every pixel
+		.DATA_WIDTH(PALETTE_ADDRESS_WIDTH),             // Set data width according to the color palette
+		.ADDRESS_WIDTH(HEALTH_PIXEL_ADDRESS_WIDTH),     // Set address with according to the pixel count
+		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_95image.mem"}))            // Memory initialization
+	ImageData11(
+		.clk(clk), 						         // Falling edge of the 100 MHz clk
+		.addr(p1_health_imgAddress),					 // Image data address
+		.dataOut(p1_health95_colorAddr),
+		.wEn(1'b0)); 						  
+	
+	// Color Palette to Map Color Address to 12-Bit Color
+	wire[BITS_PER_COLOR-1:0] p1_health95_ColorData; // 12-bit color data at current pixel
+	
+	VRAM #(
+		.DEPTH(PALETTE_COLOR_COUNT), 		       // Set depth to contain every color		
+		.DATA_WIDTH(BITS_PER_COLOR), 		       // Set data width according to the bits per color
+		.ADDRESS_WIDTH(PALETTE_ADDRESS_WIDTH),     // Set address width according to the color count
+		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_95colors.mem"}))  // Memory initialization
+	ColorPalette11(
+		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
+		.addr(p1_health95_colorAddr),					   // Address from the ImageData RAM
+		.dataOut(p1_health95_ColorData),
 		.wEn(1'b0)); 						     
 
 
@@ -345,7 +374,8 @@ module VGAController(
     	(p1isInSquare ? sprite1ColorData : 
     	p2isInSquare ? sprite2ColorData :
      	isBulletActive ? bulletColorData : 
-		isInP1Health ? health1ColorData :
+		(isInP1Health && p1Health == 100) ? p1_health100_ColorData :
+		(isInP1Health && p1Health == 95) ? p1_health95_ColorData :
 		// (p1Health == 0) ? startScreen1colorData : 
 		colorData) : 
     	12'd0; // Black when not active
