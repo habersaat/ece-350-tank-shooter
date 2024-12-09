@@ -345,7 +345,7 @@ module VGAController(
     	(p1isInSquare ? sprite1ColorData : 
     	p2isInSquare ? sprite2ColorData :
      	isBulletActive ? bulletColorData : 
-		isInP1Health ? health1ColorData :
+		isInP1Health ? 12'hF00 :
 		// (p1Health == 0) ? startScreen1colorData : 
 		colorData) : 
     	12'd0; // Black when not active
