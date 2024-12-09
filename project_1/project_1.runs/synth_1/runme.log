@@ -17,39 +17,21 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100
 INFO: [Device 21-403] Loading part xc7a100tcsg324-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 5840
-WARNING: [Synth 8-6901] identifier 'x' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:28]
-WARNING: [Synth 8-6901] identifier 'x' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:28]
-WARNING: [Synth 8-6901] identifier 'SPRITE_SIZE' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:28]
-WARNING: [Synth 8-6901] identifier 'y' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:28]
-WARNING: [Synth 8-6901] identifier 'y' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:28]
-WARNING: [Synth 8-6901] identifier 'SPRITE_SIZE' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:28]
-WARNING: [Synth 8-6901] identifier 'x' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:31]
-WARNING: [Synth 8-6901] identifier 'x' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:31]
-WARNING: [Synth 8-6901] identifier 'SPRITE_SIZE' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:31]
-WARNING: [Synth 8-6901] identifier 'y' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:31]
-WARNING: [Synth 8-6901] identifier 'y' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:31]
-WARNING: [Synth 8-6901] identifier 'SPRITE_SIZE' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:31]
-WARNING: [Synth 8-6901] identifier 'screenEnd' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:34]
-WARNING: [Synth 8-6901] identifier 'P1RIGHT' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:35]
-WARNING: [Synth 8-6901] identifier 'SPRITE_SIZE' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:36]
-WARNING: [Synth 8-6901] identifier 'VIDEO_WIDTH' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:36]
-WARNING: [Synth 8-6901] identifier 'P1LEFT' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:38]
-WARNING: [Synth 8-6901] identifier 'screenEnd' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:42]
-WARNING: [Synth 8-6901] identifier 'P1DOWN' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:43]
-WARNING: [Synth 8-6901] identifier 'SPRITE_SIZE' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:44]
-WARNING: [Synth 8-6901] identifier 'VIDEO_HEIGHT' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:44]
-WARNING: [Synth 8-6901] identifier 'P1UP' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:46]
-WARNING: [Synth 8-6901] identifier 'screenEnd' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:50]
-WARNING: [Synth 8-6901] identifier 'P2RIGHT' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:51]
+INFO: [Synth 8-7075] Helper process launched with PID 12284
+WARNING: [Synth 8-992] startScreen1imgAddress is already implicitly declared earlier [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:233]
+WARNING: [Synth 8-992] startScreen1colorAddr is already implicitly declared earlier [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:234]
+WARNING: [Synth 8-6901] identifier 'x' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:52]
+WARNING: [Synth 8-6901] identifier 'x' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:52]
 WARNING: [Synth 8-6901] identifier 'SPRITE_SIZE' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:52]
-WARNING: [Synth 8-6901] identifier 'VIDEO_WIDTH' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:52]
-WARNING: [Synth 8-6901] identifier 'P2LEFT' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:54]
-WARNING: [Synth 8-6901] identifier 'screenEnd' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:58]
-WARNING: [Synth 8-6901] identifier 'P2DOWN' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:59]
-WARNING: [Synth 8-6901] identifier 'SPRITE_SIZE' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:60]
-WARNING: [Synth 8-6901] identifier 'VIDEO_HEIGHT' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:60]
-WARNING: [Synth 8-6901] identifier 'P2UP' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:62]
+WARNING: [Synth 8-6901] identifier 'y' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:52]
+WARNING: [Synth 8-6901] identifier 'y' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:52]
+WARNING: [Synth 8-6901] identifier 'SPRITE_SIZE' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:52]
+WARNING: [Synth 8-6901] identifier 'x' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:55]
+WARNING: [Synth 8-6901] identifier 'x' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:55]
+WARNING: [Synth 8-6901] identifier 'SPRITE_SIZE' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:55]
+WARNING: [Synth 8-6901] identifier 'y' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:55]
+WARNING: [Synth 8-6901] identifier 'y' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:55]
+WARNING: [Synth 8-6901] identifier 'SPRITE_SIZE' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:55]
 WARNING: [Synth 8-6901] identifier 'product_66_bit' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/multiplier.v:39]
 WARNING: [Synth 8-6901] identifier 'product_66_bit' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/multiplier.v:40]
 WARNING: [Synth 8-6901] identifier 'product_66_bit' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/multiplier.v:41]
@@ -123,13 +105,33 @@ WARNING: [Synth 8-6901] identifier 'xm_opcode' is used before its declaration [C
 WARNING: [Synth 8-6901] identifier 'xm_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:384]
 WARNING: [Synth 8-6901] identifier 'xm_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:384]
 WARNING: [Synth 8-6901] identifier 'xm_exception' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:386]
+WARNING: [Synth 8-6901] identifier 'xm_exception' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:387]
+WARNING: [Synth 8-6901] identifier 'xm_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:389]
+WARNING: [Synth 8-6901] identifier 'xm_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:389]
+WARNING: [Synth 8-6901] identifier 'xm_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:389]
+WARNING: [Synth 8-6901] identifier 'xm_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:390]
+WARNING: [Synth 8-6901] identifier 'xm_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:390]
+WARNING: [Synth 8-6901] identifier 'xm_opcode' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:390]
+WARNING: [Synth 8-6901] identifier 'mw_ctrl_writeReg' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:393]
+WARNING: [Synth 8-6901] identifier 'mw_R_type' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:393]
+WARNING: [Synth 8-6901] identifier 'mw_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:393]
+WARNING: [Synth 8-6901] identifier 'mw_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:393]
+WARNING: [Synth 8-6901] identifier 'mw_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:393]
+WARNING: [Synth 8-6901] identifier 'mw_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:393]
+WARNING: [Synth 8-6901] identifier 'mw_ctrl_writeReg' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:394]
+WARNING: [Synth 8-6901] identifier 'mw_R_type' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:394]
+WARNING: [Synth 8-6901] identifier 'mw_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:394]
+WARNING: [Synth 8-6901] identifier 'mw_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:394]
+WARNING: [Synth 8-6901] identifier 'mw_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:394]
+WARNING: [Synth 8-6901] identifier 'mw_inst_out' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:394]
+WARNING: [Synth 8-6901] identifier 'mw_ctrl_writeReg' is used before its declaration [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:396]
 INFO: [Common 17-14] Message 'Synth 8-6901' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1328.629 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1329.445 ; gain = 0.000
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'Wrapper' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Wrapper.v:27]
-INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [C:/Users/hah50/Downloads/ece-350-tank-shooter/project_1/project_1.runs/synth_1/.Xil/Vivado-10836-P1-02/realtime/clk_wiz_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (1#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/project_1/project_1.runs/synth_1/.Xil/Vivado-10836-P1-02/realtime/clk_wiz_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [C:/Users/hah50/Downloads/ece-350-tank-shooter/project_1/project_1.runs/synth_1/.Xil/Vivado-26320-P1-03/realtime/clk_wiz_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (1#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/project_1/project_1.runs/synth_1/.Xil/Vivado-26320-P1-03/realtime/clk_wiz_0_stub.v:5]
 INFO: [Synth 8-6157] synthesizing module 'processor' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:20]
 INFO: [Synth 8-6157] synthesizing module 'register_32' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/register_32.v:1]
 INFO: [Synth 8-6157] synthesizing module 'dffe_ref' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/dffe_ref.v:1]
@@ -205,16 +207,16 @@ INFO: [Synth 8-6157] synthesizing module 'register_1bit_f' [C:/Users/hah50/Downl
 INFO: [Synth 8-6155] done synthesizing module 'register_1bit_f' (35#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/register_1bit_f.v:1]
 WARNING: [Synth 8-308] ignoring empty port [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:50]
 INFO: [Synth 8-6155] done synthesizing module 'processor' (36#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/processor.v:20]
-WARNING: [Synth 8-7071] port 'pc_counter_debug' of module 'processor' is unconnected for instance 'CPU' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Wrapper.v:76]
-WARNING: [Synth 8-7071] port 'pc_instruction_debug' of module 'processor' is unconnected for instance 'CPU' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Wrapper.v:76]
-WARNING: [Synth 8-7071] port 'branch_taken_debug' of module 'processor' is unconnected for instance 'CPU' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Wrapper.v:76]
-WARNING: [Synth 8-7071] port 'branch_target_debug' of module 'processor' is unconnected for instance 'CPU' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Wrapper.v:76]
-WARNING: [Synth 8-7071] port 'opA_debug' of module 'processor' is unconnected for instance 'CPU' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Wrapper.v:76]
-WARNING: [Synth 8-7023] instance 'CPU' of module 'processor' has 21 connections declared, but only 15 given [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Wrapper.v:76]
+WARNING: [Synth 8-7071] port 'pc_counter_debug' of module 'processor' is unconnected for instance 'CPU' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Wrapper.v:103]
+WARNING: [Synth 8-7071] port 'pc_instruction_debug' of module 'processor' is unconnected for instance 'CPU' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Wrapper.v:103]
+WARNING: [Synth 8-7071] port 'branch_taken_debug' of module 'processor' is unconnected for instance 'CPU' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Wrapper.v:103]
+WARNING: [Synth 8-7071] port 'branch_target_debug' of module 'processor' is unconnected for instance 'CPU' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Wrapper.v:103]
+WARNING: [Synth 8-7071] port 'opA_debug' of module 'processor' is unconnected for instance 'CPU' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Wrapper.v:103]
+WARNING: [Synth 8-7023] instance 'CPU' of module 'processor' has 21 connections declared, but only 15 given [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Wrapper.v:103]
 INFO: [Synth 8-6157] synthesizing module 'ROM' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/ROM.v:2]
-	Parameter MEMFILE bound to: 720'b010000110011101000101111010101010111001101100101011100100111001100101111011010000110000101101000001101010011000000101111010001000110111101110111011011100110110001101111011000010110010001110011001011110110010101100011011001010010110100110011001101010011000000101101011101000110000101101110011010110010110101110011011010000110111101101111011101000110010101110010001011110100001101010000010101010010111101010100011001010111001101110100001000000100011001101001011011000110010101110011001011110100110101100101011011010110111101110010011110010010000001000110011010010110110001100101011100110010111101110000011100100110111101101010011001010110001101110100010111110111010001100101011100110111010000101110011011010110010101101101 
-INFO: [Synth 8-3876] $readmem data file 'C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Test Files/Memory Files/project_test.mem' is read successfully [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/ROM.v:11]
-INFO: [Synth 8-251] ROM initialized with file: C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Test Files/Memory Files/project_test.mem [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/ROM.v:12]
+	Parameter MEMFILE bound to: 720'b010000110011101000101111010101010111001101100101011100100111001100101111011010000110000101101000001101010011000000101111010001000110111101110111011011100110110001101111011000010110010001110011001011110110010101100011011001010010110100110011001101010011000000101101011101000110000101101110011010110010110101110011011010000110111101101111011101000110010101110010001011110100001101010000010101010010111101010100011001010111001101110100001000000100011001101001011011000110010101110011001011110100110101100101011011010110111101110010011110010010000001000110011010010110110001100101011100110010111101110100011000010110111001101011010111110111001101101000011011110110111101110100011001010111001000101110011011010110010101101101 
+INFO: [Synth 8-3876] $readmem data file 'C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Test Files/Memory Files/tank_shooter.mem' is read successfully [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/ROM.v:11]
+INFO: [Synth 8-251] ROM initialized with file: C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Test Files/Memory Files/tank_shooter.mem [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/ROM.v:12]
 INFO: [Synth 8-6155] done synthesizing module 'ROM' (37#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/ROM.v:2]
 INFO: [Synth 8-6157] synthesizing module 'regfile' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/regfile.v:1]
 INFO: [Synth 8-6155] done synthesizing module 'regfile' (38#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/regfile.v:1]
@@ -222,85 +224,104 @@ INFO: [Synth 8-6157] synthesizing module 'RAM' [C:/Users/hah50/Downloads/ece-350
 INFO: [Synth 8-6155] done synthesizing module 'RAM' (39#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/RAM.v:2]
 INFO: [Synth 8-6157] synthesizing module 'MMIO' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/MMIO.v:1]
 INFO: [Synth 8-6155] done synthesizing module 'MMIO' (40#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/MMIO.v:1]
+INFO: [Synth 8-6157] synthesizing module 'SpriteRAM' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/SpriteRAM.v:2]
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter ADDRESS_WIDTH bound to: 2 - type: integer 
+	Parameter DEPTH bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'SpriteRAM' (41#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/SpriteRAM.v:2]
 INFO: [Synth 8-6157] synthesizing module 'BulletRAM' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/BulletRAM.v:2]
 	Parameter DATA_WIDTH bound to: 32 - type: integer 
 	Parameter ADDRESS_WIDTH bound to: 6 - type: integer 
 	Parameter DEPTH bound to: 64 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'BulletRAM' (41#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/BulletRAM.v:2]
+INFO: [Synth 8-6155] done synthesizing module 'BulletRAM' (42#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/BulletRAM.v:2]
+INFO: [Synth 8-6157] synthesizing module 'HealthRAM' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/HealthRAM.v:2]
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter ADDRESS_WIDTH bound to: 1 - type: integer 
+	Parameter DEPTH bound to: 2 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'HealthRAM' (43#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/HealthRAM.v:2]
+INFO: [Synth 8-6157] synthesizing module 'ArenaRAM' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/ArenaRAM.v:2]
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter ADDRESS_WIDTH bound to: 11 - type: integer 
+	Parameter DEPTH bound to: 1250 - type: integer 
+	Parameter MEMFILE bound to: arena_ram_init.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'arena_ram_init.mem' is read successfully [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/ArenaRAM.v:21]
+INFO: [Synth 8-6155] done synthesizing module 'ArenaRAM' (44#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/ArenaRAM.v:2]
 INFO: [Synth 8-6157] synthesizing module 'VGAController' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:2]
 INFO: [Synth 8-6157] synthesizing module 'VGATimingGenerator' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGATimingGenerator.v:2]
 	Parameter HEIGHT bound to: 480 - type: integer 
 	Parameter WIDTH bound to: 640 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'VGATimingGenerator' (42#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGATimingGenerator.v:2]
+INFO: [Synth 8-6155] done synthesizing module 'VGATimingGenerator' (45#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGATimingGenerator.v:2]
 INFO: [Synth 8-6157] synthesizing module 'VRAM' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:2]
 	Parameter DATA_WIDTH bound to: 9 - type: integer 
 	Parameter ADDRESS_WIDTH bound to: 13 - type: integer 
 	Parameter DEPTH bound to: 4096 - type: integer 
 	Parameter MEMFILE bound to: 568'b0100001100111010001011110101010101110011011001010111001001110011001011110110100001100001011010000011010100110000001011110100010001101111011101110110111001101100011011110110000101100100011100110010111101100101011000110110010100101101001100110011010100110000001011010111010001100001011011100110101100101101011100110110100001101111011011110111010001100101011100100010111101101101011001010110110101011111011001100110100101101100011001010111001100101111011100000011000101010100011000010110111001101011011010010110110101100001011001110110010100101110011011010110010101101101 
-INFO: [Synth 8-3876] $readmem data file 'C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/p1Tankimage.mem' is read successfully [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:13]
-INFO: [Synth 8-6155] done synthesizing module 'VRAM' (43#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:2]
-WARNING: [Synth 8-7071] port 'dataIn' of module 'VRAM' is unconnected for instance 'ImageData2' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:164]
-WARNING: [Synth 8-7023] instance 'ImageData2' of module 'VRAM' has 5 connections declared, but only 4 given [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:164]
+INFO: [Synth 8-3876] $readmem data file 'C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/p1Tankimage.mem' is read successfully [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'VRAM' (46#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:2]
 INFO: [Synth 8-6157] synthesizing module 'VRAM__parameterized0' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:2]
 	Parameter DATA_WIDTH bound to: 12 - type: integer 
 	Parameter ADDRESS_WIDTH bound to: 9 - type: integer 
 	Parameter DEPTH bound to: 256 - type: integer 
 	Parameter MEMFILE bound to: 576'b010000110011101000101111010101010111001101100101011100100111001100101111011010000110000101101000001101010011000000101111010001000110111101110111011011100110110001101111011000010110010001110011001011110110010101100011011001010010110100110011001101010011000000101101011101000110000101101110011010110010110101110011011010000110111101101111011101000110010101110010001011110110110101100101011011010101111101100110011010010110110001100101011100110010111101110000001100010101010001100001011011100110101101100011011011110110110001101111011100100111001100101110011011010110010101101101 
-INFO: [Synth 8-3876] $readmem data file 'C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/p1Tankcolors.mem' is read successfully [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:13]
-INFO: [Synth 8-6155] done synthesizing module 'VRAM__parameterized0' (43#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:2]
-WARNING: [Synth 8-7071] port 'dataIn' of module 'VRAM' is unconnected for instance 'ColorPalette2' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:178]
-WARNING: [Synth 8-7023] instance 'ColorPalette2' of module 'VRAM' has 5 connections declared, but only 4 given [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:178]
+INFO: [Synth 8-3876] $readmem data file 'C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/p1Tankcolors.mem' is read successfully [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'VRAM__parameterized0' (46#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:2]
 INFO: [Synth 8-6157] synthesizing module 'VRAM__parameterized1' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:2]
 	Parameter DATA_WIDTH bound to: 9 - type: integer 
 	Parameter ADDRESS_WIDTH bound to: 13 - type: integer 
 	Parameter DEPTH bound to: 4096 - type: integer 
 	Parameter MEMFILE bound to: 568'b0100001100111010001011110101010101110011011001010111001001110011001011110110100001100001011010000011010100110000001011110100010001101111011101110110111001101100011011110110000101100100011100110010111101100101011000110110010100101101001100110011010100110000001011010111010001100001011011100110101100101101011100110110100001101111011011110111010001100101011100100010111101101101011001010110110101011111011001100110100101101100011001010111001100101111011100000011001001010100011000010110111001101011011010010110110101100001011001110110010100101110011011010110010101101101 
-INFO: [Synth 8-3876] $readmem data file 'C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/p2Tankimage.mem' is read successfully [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:13]
-INFO: [Synth 8-6155] done synthesizing module 'VRAM__parameterized1' (43#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:2]
-WARNING: [Synth 8-7071] port 'dataIn' of module 'VRAM' is unconnected for instance 'ImageData3' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:198]
-WARNING: [Synth 8-7023] instance 'ImageData3' of module 'VRAM' has 5 connections declared, but only 4 given [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:198]
+INFO: [Synth 8-3876] $readmem data file 'C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/p2Tankimage.mem' is read successfully [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'VRAM__parameterized1' (46#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:2]
 INFO: [Synth 8-6157] synthesizing module 'VRAM__parameterized2' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:2]
 	Parameter DATA_WIDTH bound to: 12 - type: integer 
 	Parameter ADDRESS_WIDTH bound to: 9 - type: integer 
 	Parameter DEPTH bound to: 256 - type: integer 
 	Parameter MEMFILE bound to: 576'b010000110011101000101111010101010111001101100101011100100111001100101111011010000110000101101000001101010011000000101111010001000110111101110111011011100110110001101111011000010110010001110011001011110110010101100011011001010010110100110011001101010011000000101101011101000110000101101110011010110010110101110011011010000110111101101111011101000110010101110010001011110110110101100101011011010101111101100110011010010110110001100101011100110010111101110000001100100101010001100001011011100110101101100011011011110110110001101111011100100111001100101110011011010110010101101101 
-INFO: [Synth 8-3876] $readmem data file 'C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/p2Tankcolors.mem' is read successfully [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:13]
-INFO: [Synth 8-6155] done synthesizing module 'VRAM__parameterized2' (43#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:2]
-WARNING: [Synth 8-7071] port 'dataIn' of module 'VRAM' is unconnected for instance 'ColorPalette3' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:212]
-WARNING: [Synth 8-7023] instance 'ColorPalette3' of module 'VRAM' has 5 connections declared, but only 4 given [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:212]
+INFO: [Synth 8-3876] $readmem data file 'C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/p2Tankcolors.mem' is read successfully [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'VRAM__parameterized2' (46#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:2]
 INFO: [Synth 8-6157] synthesizing module 'VRAM__parameterized3' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:2]
 	Parameter DATA_WIDTH bound to: 9 - type: integer 
 	Parameter ADDRESS_WIDTH bound to: 20 - type: integer 
 	Parameter DEPTH bound to: 307200 - type: integer 
-	Parameter MEMFILE bound to: 520'b0100001100111010001011110101010101110011011001010111001001110011001011110110100001100001011010000011010100110000001011110100010001101111011101110110111001101100011011110110000101100100011100110010111101100101011000110110010100101101001100110011010100110000001011010111010001100001011011100110101100101101011100110110100001101111011011110111010001100101011100100010111101101101011001010110110101011111011001100110100101101100011001010111001100101111011010010110110101100001011001110110010100101110011011010110010101101101 
-INFO: [Synth 8-3876] $readmem data file 'C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/image.mem' is read successfully [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:13]
-INFO: [Synth 8-6155] done synthesizing module 'VRAM__parameterized3' (43#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:2]
-WARNING: [Synth 8-7071] port 'dataIn' of module 'VRAM' is unconnected for instance 'ImageData' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:227]
-WARNING: [Synth 8-7023] instance 'ImageData' of module 'VRAM' has 5 connections declared, but only 4 given [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:227]
+	Parameter MEMFILE bound to: 616'b0100001100111010001011110101010101110011011001010111001001110011001011110110100001100001011010000011010100110000001011110100010001101111011101110110111001101100011011110110000101100100011100110010111101100101011000110110010100101101001100110011010100110000001011010111010001100001011011100110101100101101011100110110100001101111011011110111010001100101011100100010111101101101011001010110110101011111011001100110100101101100011001010111001100101111011000010111001001100101011011100110000101001101011000010111000001010000011001010110111001110100011010010110110101100001011001110110010100101110011011010110010101101101 
+INFO: [Synth 8-3876] $readmem data file 'C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/arenaMapPentimage.mem' is read successfully [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'VRAM__parameterized3' (46#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:2]
 INFO: [Synth 8-6157] synthesizing module 'VRAM__parameterized4' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:2]
 	Parameter DATA_WIDTH bound to: 12 - type: integer 
 	Parameter ADDRESS_WIDTH bound to: 9 - type: integer 
 	Parameter DEPTH bound to: 256 - type: integer 
-	Parameter MEMFILE bound to: 528'b010000110011101000101111010101010111001101100101011100100111001100101111011010000110000101101000001101010011000000101111010001000110111101110111011011100110110001101111011000010110010001110011001011110110010101100011011001010010110100110011001101010011000000101101011101000110000101101110011010110010110101110011011010000110111101101111011101000110010101110010001011110110110101100101011011010101111101100110011010010110110001100101011100110010111101100011011011110110110001101111011100100111001100101110011011010110010101101101 
-INFO: [Synth 8-3876] $readmem data file 'C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/colors.mem' is read successfully [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:13]
-INFO: [Synth 8-6155] done synthesizing module 'VRAM__parameterized4' (43#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:2]
-WARNING: [Synth 8-7071] port 'dataIn' of module 'VRAM' is unconnected for instance 'ColorPalette' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:241]
-WARNING: [Synth 8-7023] instance 'ColorPalette' of module 'VRAM' has 5 connections declared, but only 4 given [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:241]
-INFO: [Synth 8-6155] done synthesizing module 'VGAController' (44#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:2]
-INFO: [Synth 8-6155] done synthesizing module 'Wrapper' (45#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Wrapper.v:27]
+	Parameter MEMFILE bound to: 624'b010000110011101000101111010101010111001101100101011100100111001100101111011010000110000101101000001101010011000000101111010001000110111101110111011011100110110001101111011000010110010001110011001011110110010101100011011001010010110100110011001101010011000000101101011101000110000101101110011010110010110101110011011010000110111101101111011101000110010101110010001011110110110101100101011011010101111101100110011010010110110001100101011100110010111101100001011100100110010101101110011000010100110101100001011100000101000001100101011011100111010001100011011011110110110001101111011100100111001100101110011011010110010101101101 
+INFO: [Synth 8-3876] $readmem data file 'C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/arenaMapPentcolors.mem' is read successfully [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'VRAM__parameterized4' (46#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:2]
+INFO: [Synth 8-6157] synthesizing module 'VRAM__parameterized5' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:2]
+	Parameter DATA_WIDTH bound to: 9 - type: integer 
+	Parameter ADDRESS_WIDTH bound to: 20 - type: integer 
+	Parameter DEPTH bound to: 307200 - type: integer 
+	Parameter MEMFILE bound to: 616'b0100001100111010001011110101010101110011011001010111001001110011001011110110100001100001011010000011010100110000001011110100010001101111011101110110111001101100011011110110000101100100011100110010111101100101011000110110010100101101001100110011010100110000001011010111010001100001011011100110101100101101011100110110100001101111011011110111010001100101011100100010111101101101011001010110110101011111011001100110100101101100011001010111001100101111011100110111010001100001011100100111010001010011011000110111001001100101011001010110111000110001011010010110110101100001011001110110010100101110011011010110010101101101 
+INFO: [Synth 8-3876] $readmem data file 'C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/startScreen1image.mem' is read successfully [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'VRAM__parameterized5' (46#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:2]
+INFO: [Synth 8-6157] synthesizing module 'VRAM__parameterized6' [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:2]
+	Parameter DATA_WIDTH bound to: 12 - type: integer 
+	Parameter ADDRESS_WIDTH bound to: 9 - type: integer 
+	Parameter DEPTH bound to: 256 - type: integer 
+	Parameter MEMFILE bound to: 624'b010000110011101000101111010101010111001101100101011100100111001100101111011010000110000101101000001101010011000000101111010001000110111101110111011011100110110001101111011000010110010001110011001011110110010101100011011001010010110100110011001101010011000000101101011101000110000101101110011010110010110101110011011010000110111101101111011101000110010101110010001011110110110101100101011011010101111101100110011010010110110001100101011100110010111101110011011101000110000101110010011101000101001101100011011100100110010101100101011011100011000101100011011011110110110001101111011100100111001100101110011011010110010101101101 
+INFO: [Synth 8-3876] $readmem data file 'C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/startScreen1colors.mem' is read successfully [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'VRAM__parameterized6' (46#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v:2]
+INFO: [Synth 8-6155] done synthesizing module 'VGAController' (47#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v:2]
+INFO: [Synth 8-6155] done synthesizing module 'Wrapper' (48#1) [C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/Wrapper.v:27]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1480.953 ; gain = 152.324
+Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1778.883 ; gain = 449.438
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1480.953 ; gain = 152.324
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1778.883 ; gain = 449.438
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1480.953 ; gain = 152.324
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1778.883 ; gain = 449.438
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.156 . Memory (MB): peak = 1480.953 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.165 . Memory (MB): peak = 1778.883 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -329,20 +350,20 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/Wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 1519.793 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 1790.398 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.034 . Memory (MB): peak = 1519.793 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.061 . Memory (MB): peak = 1790.398 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1519.793 ; gain = 191.164
+Finished Constraint Validation : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1790.398 ; gain = 460.953
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1519.793 ; gain = 191.164
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1790.398 ; gain = 460.953
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -351,54 +372,52 @@ Applied set_property IO_BUFFER_TYPE = NONE for clk_100mhz. (constraint file  c:/
 Applied set_property CLOCK_BUFFER_TYPE = NONE for clk_100mhz. (constraint file  c:/Users/hah50/Downloads/ece-350-tank-shooter/project_1/project_1.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc, line 4).
 Applied set_property KEEP_HIERARCHY = SOFT for pll. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1519.793 ; gain = 191.164
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1790.398 ; gain = 460.953
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1519.793 ; gain = 191.164
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:59 ; elapsed = 00:01:01 . Memory (MB): peak = 2418.773 ; gain = 1089.328
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input   12 Bit       Adders := 2     
-	   3 Input   11 Bit       Adders := 131   
-	   2 Input   11 Bit       Adders := 5     
-	   2 Input   10 Bit       Adders := 7     
+	   3 Input   12 Bit       Adders := 66    
+	   3 Input   11 Bit       Adders := 66    
+	   2 Input   10 Bit       Adders := 2     
 	   3 Input   10 Bit       Adders := 2     
-	   2 Input    9 Bit       Adders := 2     
+	   3 Input    9 Bit       Adders := 2     
 +---XORs : 
 	   2 Input     32 Bit         XORs := 1     
 	   3 Input      1 Bit         XORs := 321   
 	   2 Input      1 Bit         XORs := 1     
 +---Registers : 
-	               32 Bit    Registers := 67    
-	               30 Bit    Registers := 1     
-	               12 Bit    Registers := 3     
-	               10 Bit    Registers := 4     
-	                9 Bit    Registers := 5     
+	               32 Bit    Registers := 77    
+	               12 Bit    Registers := 4     
+	               10 Bit    Registers := 2     
+	                8 Bit    Registers := 1     
+	                6 Bit    Registers := 2     
+	                4 Bit    Registers := 1     
 	                1 Bit    Registers := 1685  
 +---RAMs : 
-	            2700K Bit	(307200 X 9 bit)          RAMs := 1     
 	             128K Bit	(4096 X 32 bit)          RAMs := 1     
-	              36K Bit	(4096 X 9 bit)          RAMs := 2     
-	               3K Bit	(256 X 12 bit)          RAMs := 3     
+	              39K Bit	(1250 X 32 bit)          RAMs := 1     
 +---ROMs : 
-	                    ROMs := 1     
+	                    ROMs := 5     
 +---Muxes : 
 	   2 Input   64 Bit        Muxes := 1     
 	   2 Input   33 Bit        Muxes := 8     
-	   2 Input   32 Bit        Muxes := 40    
-	   3 Input   32 Bit        Muxes := 2     
-	   2 Input   12 Bit        Muxes := 3     
+	   2 Input   32 Bit        Muxes := 38    
+	   3 Input   32 Bit        Muxes := 1     
+	   4 Input   32 Bit        Muxes := 1     
+	 257 Input   12 Bit        Muxes := 4     
+	   2 Input   12 Bit        Muxes := 4     
 	   2 Input   10 Bit        Muxes := 1     
-	   3 Input   10 Bit        Muxes := 2     
 	   2 Input    9 Bit        Muxes := 1     
-	   3 Input    9 Bit        Muxes := 2     
 	   2 Input    5 Bit        Muxes := 7     
 	   3 Input    5 Bit        Muxes := 1     
 	   6 Input    3 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 727   
+	   2 Input    1 Bit        Muxes := 724   
 	   7 Input    1 Bit        Muxes := 1     
 	   3 Input    1 Bit        Muxes := 1     
 	  64 Input    1 Bit        Muxes := 1     
@@ -421,241 +440,5 @@ DSP Report: Generating DSP imgAddress, operation Mode is: C+(A:0x280)*B.
 DSP Report: operator imgAddress is absorbed into DSP imgAddress.
 DSP Report: operator imgAddress0 is absorbed into DSP imgAddress.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 1602.586 ; gain = 273.957
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:46 ; elapsed = 00:01:49 . Memory (MB): peak = 2418.773 ; gain = 1089.328
 ---------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start ROM, RAM, DSP, Shift Register and Retiming Reporting
----------------------------------------------------------------------------------
-
-ROM: Preliminary Mapping Report
-+------------+---------------------+---------------+----------------+
-|Module Name | RTL Object          | Depth x Width | Implemented As | 
-+------------+---------------------+---------------+----------------+
-|Wrapper     | InstMem/dataOut_reg | 4096x30       | Block RAM      | 
-+------------+---------------------+---------------+----------------+
-
-
-Block RAM: Preliminary Mapping Report (see note below)
-+----------------------+-------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-|Module Name           | RTL Object              | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
-+----------------------+-------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-|Wrapper               | ProcMem/MemoryArray_reg | 4 K x 32(NO_CHANGE)    | W | R |                        |   |   | Port A           | 0      | 4      | 
-|VRAM:                 | MemoryArray_reg         | 4 K x 9(NO_CHANGE)     | W | R |                        |   |   | Port A           | 0      | 1      | 
-|VRAM__parameterized0: | MemoryArray_reg         | 256 x 12(NO_CHANGE)    | W | R |                        |   |   | Port A           | 1      | 0      | 
-|VRAM__parameterized1: | MemoryArray_reg         | 4 K x 9(NO_CHANGE)     | W | R |                        |   |   | Port A           | 0      | 1      | 
-|VRAM__parameterized2: | MemoryArray_reg         | 256 x 12(NO_CHANGE)    | W | R |                        |   |   | Port A           | 1      | 0      | 
-|VRAM__parameterized3: | MemoryArray_reg         | 300 K x 9(NO_CHANGE)   | W | R |                        |   |   | Port A           | 0      | 90     | 
-|VRAM__parameterized4: | MemoryArray_reg         | 256 x 12(NO_CHANGE)    | W | R |                        |   |   | Port A           | 1      | 0      | 
-+----------------------+-------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-
-Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
-
-DSP: Preliminary Mapping Report (see note below)
-+--------------+---------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|Module Name   | DSP Mapping   | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
-+--------------+---------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|VGAController | C+(A:0x280)*B | 9      | 10     | 10     | -      | 19     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
-+--------------+---------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-
-Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
----------------------------------------------------------------------------------
-Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Applying XDC Timing Constraints
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:46 ; elapsed = 00:00:47 . Memory (MB): peak = 1602.586 ; gain = 273.957
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Timing Optimization
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:49 ; elapsed = 00:00:50 . Memory (MB): peak = 1602.586 ; gain = 273.957
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start ROM, RAM, DSP, Shift Register and Retiming Reporting
----------------------------------------------------------------------------------
-
-Block RAM: Final Mapping Report
-+----------------------+-------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-|Module Name           | RTL Object              | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
-+----------------------+-------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-|Wrapper               | ProcMem/MemoryArray_reg | 4 K x 32(NO_CHANGE)    | W | R |                        |   |   | Port A           | 0      | 4      | 
-|VRAM:                 | MemoryArray_reg         | 4 K x 9(NO_CHANGE)     | W | R |                        |   |   | Port A           | 0      | 1      | 
-|VRAM__parameterized0: | MemoryArray_reg         | 256 x 12(NO_CHANGE)    | W | R |                        |   |   | Port A           | 1      | 0      | 
-|VRAM__parameterized1: | MemoryArray_reg         | 4 K x 9(NO_CHANGE)     | W | R |                        |   |   | Port A           | 0      | 1      | 
-|VRAM__parameterized2: | MemoryArray_reg         | 256 x 12(NO_CHANGE)    | W | R |                        |   |   | Port A           | 1      | 0      | 
-|VRAM__parameterized3: | MemoryArray_reg         | 300 K x 9(NO_CHANGE)   | W | R |                        |   |   | Port A           | 0      | 90     | 
-|VRAM__parameterized4: | MemoryArray_reg         | 256 x 12(NO_CHANGE)    | W | R |                        |   |   | Port A           | 1      | 0      | 
-+----------------------+-------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-
----------------------------------------------------------------------------------
-Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Technology Mapping
----------------------------------------------------------------------------------
-INFO: [Synth 8-7052] The timing for the instance ProcMem/MemoryArray_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance ProcMem/MemoryArray_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance ProcMem/MemoryArray_reg_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance ProcMem/MemoryArray_reg_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData2/MemoryArray_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ColorPalette2/MemoryArray_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData3/MemoryArray_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ColorPalette3/MemoryArray_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_1_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_1_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_1_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_1_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_1_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_1_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_1_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_1_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_3_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_3_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_3_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_3_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_3_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_3_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_3_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_3_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_5_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_5_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_5_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_5_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_5_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_5_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_5_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_5_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_7_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_7_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_7_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_7_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_7_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_7_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_7_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_7_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_9_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_9_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_9_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_9_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_9_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_9_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_9_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ImageData/MemoryArray_reg_9_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VGAControllerInstance/ColorPalette/MemoryArray_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance InstMem/dataOut_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance InstMem/dataOut_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance InstMem/dataOut_reg_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance InstMem/dataOut_reg_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
----------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:54 ; elapsed = 00:00:55 . Memory (MB): peak = 1674.664 ; gain = 346.035
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start IO Insertion
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Flattening Before IO Insertion
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Flattening Before IO Insertion
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Final Netlist Cleanup
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Final Netlist Cleanup
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:58 ; elapsed = 00:00:59 . Memory (MB): peak = 1688.781 ; gain = 360.152
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Renaming Generated Instances
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:58 ; elapsed = 00:00:59 . Memory (MB): peak = 1688.781 ; gain = 360.152
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Rebuilding User Hierarchy
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:59 ; elapsed = 00:01:00 . Memory (MB): peak = 1688.781 ; gain = 360.152
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Renaming Generated Ports
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:59 ; elapsed = 00:01:00 . Memory (MB): peak = 1688.781 ; gain = 360.152
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Handling Custom Attributes
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:59 ; elapsed = 00:01:01 . Memory (MB): peak = 1688.781 ; gain = 360.152
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Renaming Generated Nets
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:59 ; elapsed = 00:01:01 . Memory (MB): peak = 1688.781 ; gain = 360.152
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Writing Synthesis Report
----------------------------------------------------------------------------------
-
-Report BlackBoxes: 
-+------+--------------+----------+
-|      |BlackBox name |Instances |
-+------+--------------+----------+
-|1     |clk_wiz_0     |         1|
-+------+--------------+----------+
-
-Report Cell Usage: 
-+------+---------+------+
-|      |Cell     |Count |
-+------+---------+------+
-|1     |clk_wiz  |     1|
-|2     |BUFG     |     1|
-|3     |CARRY4   |   681|
-|4     |DSP48E1  |     1|
-|5     |LUT1     |   136|
-|6     |LUT2     |  1553|
-|7     |LUT3     |   694|
-|8     |LUT4     |  2005|
-|9     |LUT5     |   831|
-|10    |LUT6     |  2540|
-|11    |MUXF7    |   273|
-|12    |MUXF8    |   128|
-|13    |RAMB18E1 |     3|
-|16    |RAMB36E1 |    90|
-|30    |FDCE     |  1642|
-|31    |FDRE     |  2186|
-|32    |IBUF     |    13|
-|33    |OBUF     |    14|
-+------+---------+------+
----------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:59 ; elapsed = 00:01:01 . Memory (MB): peak = 1688.781 ; gain = 360.152
----------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:49 ; elapsed = 00:00:58 . Memory (MB): peak = 1688.781 ; gain = 321.312
-Synthesis Optimization Complete : Time (s): cpu = 00:00:59 ; elapsed = 00:01:01 . Memory (MB): peak = 1688.781 ; gain = 360.152
-INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.205 . Memory (MB): peak = 1700.875 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 1176 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
-INFO: [Project 1-570] Preparing netlist for logic optimization
-INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1704.520 ; gain = 0.000
-INFO: [Project 1-111] Unisim Transformation Summary:
-No Unisim elements were transformed.
-
-Synth Design complete, checksum: 3934e146
-INFO: [Common 17-83] Releasing license: Synthesis
-177 Infos, 139 Warnings, 5 Critical Warnings and 0 Errors encountered.
-synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:05 ; elapsed = 00:01:07 . Memory (MB): peak = 1704.520 ; gain = 375.891
-INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
-INFO: [Common 17-1381] The checkpoint 'C:/Users/hah50/Downloads/ece-350-tank-shooter/project_1/project_1.runs/synth_1/Wrapper.dcp' has been generated.
-INFO: [runtcl-4] Executing : report_utilization -file Wrapper_utilization_synth.rpt -pb Wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri Dec  6 17:30:36 2024...

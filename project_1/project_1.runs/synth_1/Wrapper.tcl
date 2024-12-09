@@ -71,8 +71,6 @@ proc create_report { reportName command } {
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 3
-set_param xicom.use_bs_reader 1
-set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
@@ -103,12 +101,17 @@ read_mem {
   C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/arenaMapcolors.mem
   C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/arenaMapimage.mem
   C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/bullet_test.mem
+  C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/startScreen1image.mem
+  C:/Users/hah50/Downloads/ece-350-tank-shooter/mem_files/startScreen1colors.mem
 }
 read_verilog -library xil_defaultlib {
+  C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/ArenaRAM.v
   C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/BulletRAM.v
+  C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/HealthRAM.v
   C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/MMIO.v
   C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/RAM.v
   C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/ROM.v
+  C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/SpriteRAM.v
   C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGAController.v
   C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VGATimingGenerator.v
   C:/Users/hah50/Downloads/ece-350-tank-shooter/CPU/VRAM.v

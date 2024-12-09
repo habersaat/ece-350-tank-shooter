@@ -144,8 +144,7 @@ module VGAController(
 	ImageData2(
 		.clk(clk), 						         // Falling edge of the 100 MHz clk
 		.addr(spriteAddress1),					 // Image data address
-		.dataOut(sprite1ColorAddr),				 // Color palette address
-		.wEn(1'b0)); 						     // We're always reading
+		.dataOut(sprite1ColorAddr)); 						  
 	
 	// Color Palette to Map Color Address to 12-Bit Color
 	wire[BITS_PER_COLOR-1:0] sprite1ColorData; // 12-bit color data at current pixel
@@ -158,8 +157,7 @@ module VGAController(
 	ColorPalette2(
 		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
 		.addr(sprite1ColorAddr),					   // Address from the ImageData RAM
-		.dataOut(sprite1ColorData),				   // Color at current pixel
-		.wEn(1'b0)); 						       // We're always reading
+		.dataOut(sprite1ColorData)); 						     
 		
 		
 		
@@ -178,8 +176,7 @@ module VGAController(
 	ImageData3(
 		.clk(clk), 						         // Falling edge of the 100 MHz clk
 		.addr(spriteAddress2),					 // Image data address
-		.dataOut(sprite2ColorAddr),				 // Color palette address
-		.wEn(1'b0)); 						     // We're always reading
+		.dataOut(sprite2ColorAddr)); 						     // We're always reading
 	
 	// Color Palette to Map Color Address to 12-Bit Color
 	wire[BITS_PER_COLOR-1:0] sprite2ColorData; // 12-bit color data at current pixel
@@ -192,8 +189,7 @@ module VGAController(
 	ColorPalette3(
 		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
 		.addr(sprite2ColorAddr),					   // Address from the ImageData RAM
-		.dataOut(sprite2ColorData),				   // Color at current pixel
-		.wEn(1'b0)); 						       // We're always reading
+		.dataOut(sprite2ColorData)); 						       // We're always reading
 	
 	
 	
@@ -207,8 +203,7 @@ module VGAController(
 	ImageData (
 		.clk(clk), 						 // Falling edge of the 100 MHz clk
 		.addr(imgAddress),					 // Image data address
-		.dataOut(colorAddr),				 // Color palette address
-		.wEn(1'b0)); 						 // We're always reading
+		.dataOut(colorAddr)); 						 // We're always reading
 
 	// Color Palette to Map Color Address to 12-Bit Color
 	wire[BITS_PER_COLOR-1:0] colorData; // 12-bit color data at current pixel
@@ -221,8 +216,7 @@ module VGAController(
 	ColorPalette (
 		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
 		.addr(colorAddr),					       // Address from the ImageData RAM
-		.dataOut(colorData),				       // Color at current pixel
-		.wEn(1'b0)); 						       // We're always reading
+		.dataOut(colorData)); 						       // We're always reading
 
 	// Start Screen Image 1
 	VRAM #(		
@@ -233,8 +227,7 @@ module VGAController(
 	ImageData4 (
 		.clk(clk), 						 // Falling edge of the 100 MHz clk
 		.addr(startScreen1imgAddress),					 // Image data address
-		.dataOut(startScreen1colorAddr),				 // Color palette address
-		.wEn(1'b0)); 						 // We're always reading
+		.dataOut(startScreen1colorAddr));				 // Color palette address); 		
 
 	wire[BITS_PER_COLOR-1:0] startScreen1colorData; // 12-bit color data at current pixel
 	wire[PIXEL_ADDRESS_WIDTH-1:0] startScreen1imgAddress;  	 // Image address for the image data
@@ -249,8 +242,7 @@ module VGAController(
 	ColorPalette4 (
 		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
 		.addr(startScreen1colorAddr),					       // Address from the ImageData RAM
-		.dataOut(startScreen1colorData),				       // Color at current pixel
-		.wEn(1'b0)); 						       // We're always reading
+		.dataOut(startScreen1colorData)); 						      
 
 	
 
