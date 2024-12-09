@@ -52,3 +52,4 @@ VRAM.v
 SpriteRAM.v
 HealthRAM.v
 ArenaRAM.v
+VROM.v
