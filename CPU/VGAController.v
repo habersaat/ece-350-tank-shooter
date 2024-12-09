@@ -1466,7 +1466,7 @@ module VGAController(
 	assign colorOut = active ? 
     	(p1isInSquare ? sprite1ColorData : 
     	p2isInSquare ? sprite2ColorData :
-     	isBulletActive ? bulletColorData : 
+     	isBulletActive ? bulletColorData :
 		(isInP1Health && p1Health == 100) ? p1_health100_ColorData :
 		(isInP1Health && p1Health == 95) ? p1_health95_ColorData :
 		(isInP1Health && p1Health == 90) ? p1_health90_ColorData :
