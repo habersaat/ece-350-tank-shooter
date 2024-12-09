@@ -55,10 +55,10 @@ module VGAController(
     assign p2isInSquare = (x >= currX2 && x < currX2 + SPRITE_SIZE) && (y >= currY2 && y < currY2 + SPRITE_SIZE) && p2Health > 0;
 	   
 	wire isInP1Health;
-	assign isInP1Health = (x > 30 && x < 30 + HEALTH_WIDTH) && (y >= 30 && y < 30 + HEALTH_HEIGHT);
+	assign isInP1Health = (x > 31 && x < 30 + HEALTH_WIDTH) && (y >= 30 && y < 30 + HEALTH_HEIGHT);
 
 	wire isInP2Health;
-	assign isInP2Health = (x > 530 && x < 530 + HEALTH_WIDTH) && (y >= 30 && y < 30 + HEALTH_HEIGHT);
+	assign isInP2Health = (x > 511 && x < 510 + HEALTH_WIDTH) && (y >= 30 && y < 30 + HEALTH_HEIGHT);
 	
 
     // P1 LEFT
@@ -879,7 +879,7 @@ module VGAController(
 	
 
 
-	wire [9:0] p2_health1_x = x - 530;
+	wire [9:0] p2_health1_x = x - 510;
     wire [8:0] p2_health1_y = y - 30;
 
 	wire[HEALTH_PIXEL_ADDRESS_WIDTH-1:0] p2_health_imgAddress;  	 // Image address for the image data
