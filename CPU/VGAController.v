@@ -306,7 +306,7 @@ module VGAController(
 		.DEPTH(HEALTH_PIXEL_COUNT), 		            // Set RAM depth to contain every pixel
 		.DATA_WIDTH(PALETTE_ADDRESS_WIDTH),             // Set data width according to the color palette
 		.ADDRESS_WIDTH(HEALTH_PIXEL_ADDRESS_WIDTH),     // Set address with according to the pixel count
-		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health100image.mem"}))            // Memory initialization
+		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_100image.mem"}))            // Memory initialization
 	ImageData10(
 		.clk(clk), 						         // Falling edge of the 100 MHz clk
 		.addr(health1imgAddress),					 // Image data address
@@ -320,7 +320,7 @@ module VGAController(
 		.DEPTH(PALETTE_COLOR_COUNT), 		       // Set depth to contain every color		
 		.DATA_WIDTH(BITS_PER_COLOR), 		       // Set data width according to the bits per color
 		.ADDRESS_WIDTH(PALETTE_ADDRESS_WIDTH),     // Set address width according to the color count
-		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health100colors.mem"}))  // Memory initialization
+		.MEMFILE({MEM_FILES_PATH, "health/health_mem/health_100colors.mem"}))  // Memory initialization
 	ColorPalette10(
 		.clk(clk), 							   	   // Rising edge of the 100 MHz clk
 		.addr(health1colorAddr),					   // Address from the ImageData RAM
