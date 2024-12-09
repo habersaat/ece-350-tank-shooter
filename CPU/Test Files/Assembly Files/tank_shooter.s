@@ -1028,18 +1028,12 @@ arena_collision_check:
     addi $r17, $r28, 0         # ArenaRAM base address (stored in $r28)
 
 collision_loop:
-    addi $r18, $r0, 1250              # Total number of ArenaRAM entries
+    addi $r18, $r0, 1              # Total number of ArenaRAM entries
     blt $r16, $r18, load_arena_pixel  # Continue loop if index < 1250
     j arena_collisions_handled        # Exit loop if no collision
 
 load_arena_pixel:
     lw $r19, 0($r17)           # Load ArenaRAM[$r16] into $r19
-
-    j increment_arena_pixel     # Continue to next pixel
-
-make_bullet_hidden:
-    addi $r9, $r0, 0          # deactivate bullet
-    j pack_bullet 
 
 increment_arena_pixel:
     # Increment ArenaRAM index and continue checking
