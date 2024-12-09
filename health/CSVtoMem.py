@@ -1,5 +1,5 @@
 import csv
-path = "" # "C:/Users/hah50/Downloads/lab6_kit/"
+path = ""
 
 with open(path + "colors.csv", "r") as csvFile:
        with open(path + "colors.mem", "w") as memFile:
